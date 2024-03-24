@@ -1,3 +1,5 @@
+cd "$(dirname "$0")"
+
 # ---------- NixOS ---------- #
 
 # Generate configuration.nix with current location via pwd

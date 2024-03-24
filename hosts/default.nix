@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  # Import host specific configuration
+  imports = [ ./host.nix ];
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
