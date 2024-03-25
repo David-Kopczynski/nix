@@ -5,8 +5,7 @@
     <home-manager/nixos>
   ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # Modules that are installed on system level
   environment.systemPackages = with pkgs; [
     home-manager
   ];

@@ -65,25 +65,5 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "user";
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [];
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  #services.openssh = {
-  #  enable = true;
-  #  settings.PasswordAuthentication = false;
-  #  settings.KbdInteractiveAuthentication = false;
-  #};
-
   system.stateVersion = "23.11";
 }

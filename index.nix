@@ -2,6 +2,6 @@
   imports =
     [
       ./hosts/default.nix
-      ./modules/modules.nix
+      ./modules/index.nix
     ];
 }
