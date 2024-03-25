@@ -7,7 +7,7 @@
 | User | `user` |
 | Password | *(found in Bitwarden)* |
 
-When dealing with [packages](https://search.nixos.org/packages) or [home-manager options](https://nix-community.github.io/home-manager/options.xhtml) it is helpful to read the appropiate documentation.
+When dealing with [packages](https://search.nixos.org/packages) or [home-manager options](https://nix-community.github.io/home-manager/options.xhtml) it is helpful to read the appropriate documentation.
 
 Additionally, the following commands will be often used:
 
