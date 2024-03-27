@@ -4,7 +4,8 @@
     # Import host specific configuration
     imports = [ 
         ./default/index.nix 
-        ./host.nix 
+        ./laptop/index.nix
+        ./pc/index.nix
     ];
 
     # Bootloader

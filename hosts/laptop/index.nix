@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-{
+lib.mkIf (config.host == "laptop") {
+    
     # Hardware supported
     hardware.bluetooth.enable = true;
 

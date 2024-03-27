@@ -26,9 +26,6 @@ echo "{ config, lib, ... }:
     };
 }" > .env.nix
 
-# Create correct hardlink for host.nix inclusion
-ln "hosts/${host}/host.nix" hosts/host.nix
-
 fi
 
 # ---------- NixOS ---------- #
