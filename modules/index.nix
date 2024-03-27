@@ -20,6 +20,8 @@
         # Programs
         vscode
         firefox
+        discord
+        spotify
 
         # Gaming
         steam
