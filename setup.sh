@@ -14,6 +14,7 @@ read -p "Host: " host
 # Create .env.nix with all necessary environment variables
 touch .env.nix
 echo "{ config, lib, ... }:
+
 {
     options = with lib; with types; {
       root = mkOption { type = str; };
@@ -53,6 +54,10 @@ chmod 644 nixos/hardware-configuration.nix
 # Create hardlinks from /etc/nixos to ./nixos for better file management
 ln nixos/configuration.nix /etc/nixos/configuration.nix
 ln nixos/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
+
+# Allow unfree packages in command line
+mkdir -p ~/.config/nixpkgs
+echo "{ allowUnfree = true; }" >> ~/.config/nixpkgs/config.nix
 
 # Add all missing channels
 sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager

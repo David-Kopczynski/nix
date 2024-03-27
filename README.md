@@ -15,6 +15,7 @@ Additionally, the following commands will be often used:
 | --- | --- |
 | `sudo nixos-rebuild switch` | build and deploy new system packages |
 | `home-manager switch` | build and deploy new user packages |
+| `nix-shell -p <package>` | install a package temporarily |
 | `nix-channel --update` | update packages at system level |
 
 When copying the system to a new device it is necessary to generate or copy additional files:
