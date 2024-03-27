@@ -21,6 +21,6 @@ When copying the system to a new device it is necessary to generate or copy addi
 
 | Action | Reason |
 | --- | --- |
-| Setup | run `sh setup.sh` to setup all files for the first time |
-| Install correct system | run `sh hosts/*/install.sh` to set correct host |
+| Initial git clone | add config from `nixos/initial.configuration.nix` for first clone |
 | Add SSH keys | `ssh-keygen` *(or ideally copy the SSH from the other device into `~/.ssh`)* |
+| Setup | run `sh setup.sh` to setup all files for the first time |

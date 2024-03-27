@@ -7,16 +7,27 @@ if [ -f .env.nix ]; then
   echo ".env.nix already exists. Skipping generation of environment variables."
 else
 
-  # Get environment variables for NixOS setup
-  echo "Generation of environment variables for NixOS setup:"
-  read -p "Host: " host
+# Get environment variables for NixOS setup
+echo "Generation of environment variables for NixOS setup:"
+read -p "Host: " host
 
-  # Create .env.nix with all necessary environment variables
-  touch .env.nix
-  echo "{
+# Create .env.nix with all necessary environment variables
+touch .env.nix
+echo "{ config, lib, ... }:
+{
+  options = with lib; with types; {
+    root = mkOption { type = str; };
+    host = mkOption { type = str; };
+  };
+  config = {
     root = \"$PWD\";
     host = \"$host\";
-  }" > .env.nix
+  };
+}" > .env.nix
+
+# Install correct script
+sh "hosts/${host}/install.sh"
+
 fi
 
 # ---------- NixOS ---------- #
@@ -43,11 +54,21 @@ chmod 644 nixos/hardware-configuration.nix
 ln nixos/configuration.nix /etc/nixos/configuration.nix
 ln nixos/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
 
-# ---------- Home Manager ---------- #
-
-# Add home manager to channels
+# Add all missing channels
 sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager
 sudo nix-channel --update
 
+# Rebuild to include all modules
+nixos-rebuild switch
+
+# ---------- Home Manager ---------- #
+
+# Init home-manager for default home file and delete it immediately
+home-manager init
+rm ~/.config/home-manager/home.nix
+
 # Create hardlink from ~/.config/home-manager to ./modules/home-manager for better file management
 ln modules/home-manager/home.nix ~/.config/home-manager/home.nix
+
+# Apply home-manager configuration
+home-manager switch
