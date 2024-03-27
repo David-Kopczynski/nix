@@ -6,6 +6,9 @@ lib.mkIf (config.host == "pc") {
     services.xserver.displayManager.autoLogin.enable = true;
     services.xserver.displayManager.autoLogin.user = "user";
 
+    # Hardware supported
+    hardware.bluetooth.enable = true;
+
     # Graphic card drivers
     hardware.opengl = {
         enable = true;
