@@ -23,7 +23,7 @@
 
         # Gaming
         steam
-        minecraft
+        prismlauncher
     ];
 
     # Programs with additional settings
