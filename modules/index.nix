@@ -3,6 +3,8 @@
 {
     imports = [
         ./modules.nix
+        ./hosts/laptop.nix
+        ./hosts/pc.nix
     ];
 
     # Allow unfree packages
@@ -12,12 +14,16 @@
     # $ nix search wget
     environment.systemPackages = with pkgs; [
 
-        # Generic
+        # System
+        pass
         git
         openssh
+
+        # Generic
+        wget
         neovim
         python3
-
+        
         # Programs
         vscode
         firefox
