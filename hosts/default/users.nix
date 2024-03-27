@@ -5,6 +5,6 @@
     users.users.user = {
         isNormalUser = true;
         description = "David Kopczynski";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "networkmanager" "wheel" "dialout" ];
     };
 }
