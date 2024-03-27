@@ -25,8 +25,8 @@ echo "{ config, lib, ... }:
   };
 }" > .env.nix
 
-# Install correct script
-sh "hosts/${host}/install.sh"
+# Create correct hardlink for host.nix inclusion
+ln "hosts/${host}/host.nix" hosts/host.nix
 
 fi
 
