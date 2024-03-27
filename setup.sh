@@ -15,14 +15,14 @@ read -p "Host: " host
 touch .env.nix
 echo "{ config, lib, ... }:
 {
-  options = with lib; with types; {
-    root = mkOption { type = str; };
-    host = mkOption { type = str; };
-  };
-  config = {
-    root = \"$PWD\";
-    host = \"$host\";
-  };
+    options = with lib; with types; {
+      root = mkOption { type = str; };
+      host = mkOption { type = str; };
+    };
+    config = {
+      root = \"$PWD\";
+      host = \"$host\";
+    };
 }" > .env.nix
 
 # Create correct hardlink for host.nix inclusion
@@ -35,10 +35,10 @@ fi
 # Generate configuration.nix with current location via pwd
 touch nixos/configuration.nix
 echo "{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      $(pwd)/index.nix
+    imports = [ 
+        # Include the results of the hardware scan.
+        ./hardware-configuration.nix
+        $(pwd)/index.nix
     ];
 }" > nixos/configuration.nix
 

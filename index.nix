@@ -1,8 +1,7 @@
 {
-  imports =
-    [
-      ./.env.nix
-      ./hosts/default.nix
-      ./modules/index.nix
+    imports = [
+        ./.env.nix
+        ./hosts/index.nix
+        ./modules/index.nix
     ];
 }
