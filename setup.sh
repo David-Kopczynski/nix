@@ -14,6 +14,7 @@ read -p "Host: " host
 # Create .env.nix with all necessary environment variables
 touch .env.nix
 echo "{ config, lib, ... }:
+
 {
     options = with lib; with types; {
       root = mkOption { type = str; };
