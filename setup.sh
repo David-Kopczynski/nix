@@ -74,3 +74,8 @@ ln modules/home-manager/home.nix ~/.config/home-manager/home.nix
 
 # Apply home-manager configuration
 home-manager switch
+
+# ---------- Konsave ---------- #
+
+# Apply current themes
+sudo sh modules/konsave/apply.sh
