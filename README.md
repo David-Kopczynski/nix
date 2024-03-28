@@ -18,12 +18,12 @@ Additionally, the following commands will be often used:
 | `nix-shell -p <package>` | install a package temporarily |
 | `nix-channel --update` | update packages at system level |
 
-When dealing with theming, the current scripts are available: 
+When dealing not-synced files, changes must be applied manually with: 
 
-| Script | Reason |
+| Action | Reason |
 | --- | --- |
-| `sh modules/konsave/apply.sh` | apply themes to current system |
-| `sh modules/konsave/backup.sh` | backup current themes |
+| `sh apply.sh` | apply changes to the system |
+| `sh backup.sh` | backup changes to the system |
 
 When copying the system to a new device it is necessary to generate or copy additional files:
 

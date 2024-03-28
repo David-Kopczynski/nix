@@ -88,12 +88,9 @@ wget -O modules/lightpack/prismatik.flatpak https://github.com/psieg/Lightpack/r
 flatpak install modules/lightpack/prismatik.flatpak
 flatpak override --filesystem=host com.prismatik.Prismatik
 
-# Copy prismatik config to correct location
-cp modules/lightpack/.Prismatik ~
-
 fi
 
-# ---------- Konsave ---------- #
+# ---------- Final ---------- #
 
-# Apply current themes
-sudo sh modules/konsave/apply.sh
+# Apply all manual configurations
+sh apply.sh
