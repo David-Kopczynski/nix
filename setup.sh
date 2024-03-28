@@ -88,11 +88,8 @@ wget -O modules/lightpack/prismatik.flatpak https://github.com/psieg/Lightpack/r
 flatpak install modules/lightpack/prismatik.flatpak
 flatpak override --filesystem=host com.prismatik.Prismatik
 
-# Create hardlinks for all prismatik configuration
-mkdir -p ~/.Prismatik/Profiles
-ln modules/lightpack/.Prismatik/main.conf ~/.Prismatik/main.conf
-ln modules/lightpack/.Prismatik/Profiles/Screencapture.ini ~/.Prismatik/Profiles/Screencapture.ini
-ln modules/lightpack/.Prismatik/Profiles/Cinema.ini ~/.Prismatik/Profiles/Cinema.ini
+# Copy prismatik config to correct location
+cp modules/lightpack/.Prismatik ~
 
 fi
 
