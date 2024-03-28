@@ -14,7 +14,6 @@ echo "Generation of environment variables for NixOS setup:"
 read -p "Host: " host
 
 # Create .env.nix with all necessary environment variables
-touch .env.nix
 echo "{ config, lib, ... }:
 
 {
@@ -40,7 +39,6 @@ if [ -f nixos/configuration.nix ]; then
 else
 
 # Generate configuration.nix with current location via pwd
-touch nixos/configuration.nix
 echo "{
     imports = [
         # Include the results of the hardware scan.
@@ -54,18 +52,13 @@ sudo rm /etc/nixos/configuration.nix
 sudo mv /etc/nixos/hardware-configuration.nix nixos
 
 # Update permissions of files and folder
-sudo chmod 644 nixos/configuration.nix
-sudo chmod 644 nixos/hardware-configuration.nix
+sudo chmod 644 nixos/configuration.nix nixos/hardware-configuration.nix
 
 # Create hardlinks from /etc/nixos to ./nixos for better file management
 sudo ln nixos/configuration.nix /etc/nixos/configuration.nix
 sudo ln nixos/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
 
 fi
-
-# Allow unfree packages in command line
-mkdir -p ~/.config/nixpkgs
-echo "{ allowUnfree = true; }" > ~/.config/nixpkgs/config.nix
 
 # Rebuild to include all modules
 sudo nixos-rebuild switch
