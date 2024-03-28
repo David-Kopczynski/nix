@@ -19,7 +19,7 @@
         git
         openssh
 
-        # Generic
+        # CLI tools
         wget
         neovim
         python3
@@ -30,6 +30,7 @@
         firefox
         discord
         spotify
+        pdfarranger
 
         # Gaming
         steam
