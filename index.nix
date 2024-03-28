@@ -1,7 +1,15 @@
 {
     imports = [
+
+        # Envorinment variables
         ./.env.nix
-        ./hosts/index.nix
-        ./modules/index.nix
+
+        # Default system configuration
+        ./hosts/default/index.nix
+
+        # Packages, programs and services
+        ./packages/index.nix
+        ./programs/index.nix
+        ./services/index.nix
     ];
 }

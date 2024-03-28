@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 
-lib.mkIf (config.host == "pc") {
+lib.mkIf (config.host == "workstation") {
 
     # Enable automatic login for the user.
     services.xserver.displayManager.autoLogin.enable = true;

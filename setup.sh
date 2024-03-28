@@ -19,12 +19,12 @@ echo "{ config, lib, ... }:
 
 {
     options = with lib; with types; {
-      root = mkOption { type = str; };
-      host = mkOption { type = str; };
+        root = mkOption { type = str; };
+        host = mkOption { type = str; };
     };
     config = {
-      root = \"$PWD\";
-      host = \"$host\";
+        root = \"$PWD\";
+        host = \"$host\";
     };
 }" > .env.nix
 
@@ -42,7 +42,7 @@ else
 # Generate configuration.nix with current location via pwd
 touch nixos/configuration.nix
 echo "{
-    imports = [ 
+    imports = [
         # Include the results of the hardware scan.
         ./hardware-configuration.nix
         $(pwd)/index.nix
@@ -78,25 +78,19 @@ echo ""; echo "Flatpak setup:"
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak update
 
-# Install prismatik flatpak when on pc
-if [ "$host" = "pc" ]; then
+# Install prismatik flatpak when on workstation
+if [ "$host" = "workstation" ]; then
 
 # Skip if prismatik already installed
 if [ -f modules/lightpack/prismatik.flatpak ]; then
   echo "Prismatik already installed. Skipping installation of Prismatik."
 else
 
-wget -O modules/lightpack/prismatik.flatpak https://github.com/psieg/Lightpack/releases/download/5.11.2.31/prismatik_5.11.2.31.flatpak
-flatpak install modules/lightpack/prismatik.flatpak
+wget -O prismatik.flatpak https://github.com/psieg/Lightpack/releases/download/5.11.2.31/prismatik_5.11.2.31.flatpak
+flatpak install prismatik.flatpak
+rm prismatik.flatpak
 sudo flatpak override --filesystem=host com.prismatik.Prismatik
 
 fi
 
 fi
-
-# ---------- Final ---------- #
-
-echo ""; echo "Final setup:"
-
-# Apply all manual configurations
-sh apply.sh

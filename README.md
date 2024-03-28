@@ -1,4 +1,4 @@
-# NixOS
+# ❄️ NixOS
 [NixOS](https://nixos.org/download/#nix-install-linux) is installed with **Plasma Desktop** with the following system configuration:
 
 | Setting | Value |
@@ -7,9 +7,19 @@
 | User | `user` |
 | Password | *(found in Bitwarden)* |
 
-When dealing with [packages](https://search.nixos.org/packages) or [home-manager options](https://home-manager-options.extranix.com/?) it is helpful to read the appropriate documentation.
+## 📁 Configuration Structure
+When dealing with installations in `.nix`, programs and services are to be preferred to simple package installments. This repo is structured as follows:
 
-Additionally, the following commands will be often used:
+| Directory | Description |
+| --- | --- |
+| `./hosts` | general system configurations |
+| `./nixos` | system configurations |
+| [`./packages`](https://search.nixos.org/packages) | system packages that are simply installed |
+| [`./programs`](https://search.nixos.org/options) | system programs that are installed and configured *(preferred)* |
+| [`./services`](https://search.nixos.org/options) | system services that are installed and configured *(preferred)* |
+
+## 📜 Commands
+When dealing with NixOS, the following commands will be often used to manage the system:
 
 | Command | Reason |
 | --- | --- |
@@ -17,13 +27,7 @@ Additionally, the following commands will be often used:
 | `nix-shell -p <package>` | install a package temporarily |
 | `nix-channel --update` | update packages at system level |
 
-When dealing not-synced files, changes must be applied manually with: 
-
-| Action | Reason |
-| --- | --- |
-| `sh apply.sh` | apply changes to the system |
-| `sh backup.sh` | backup changes to the system |
-
+## 🚀 Setup
 When copying the system to a new device it is necessary to generate or copy additional files:
 
 | Action | Reason |
