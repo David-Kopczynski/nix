@@ -2,8 +2,8 @@
 
 {
     # Import host specific configuration
-    imports = [ 
-        ./default/index.nix 
+    imports = [
+        ./default/index.nix
         ./laptop/index.nix
         ./pc/index.nix
     ];

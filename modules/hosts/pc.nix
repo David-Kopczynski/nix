@@ -2,7 +2,7 @@
 
 lib.mkIf (config.host == "pc") {
 
-    # Run de.psieg.Prismatik at startup    
+    # Run de.psieg.Prismatik at startup
     systemd.user.services.prismatik = {
         enable = true;
 

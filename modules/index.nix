@@ -23,7 +23,7 @@
         wget
         neovim
         python3
-        
+
         # Programs
         vscode
         ksnip

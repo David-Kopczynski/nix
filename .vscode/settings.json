@@ -1,5 +1,6 @@
 {
     "editor.tabSize": 4,
+    "files.trimTrailingWhitespace": true,
     "cSpell.words": [
         "Bitwarden",
         "konsave",
