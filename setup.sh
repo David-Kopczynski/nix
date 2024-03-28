@@ -75,6 +75,26 @@ ln modules/home-manager/home.nix ~/.config/home-manager/home.nix
 # Apply home-manager configuration
 home-manager switch
 
+# ---------- Flatpaks ---------- #
+
+# Add Flathub repository
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak update
+
+# Install prismatik flatpak when on pc
+if [ "$host" = "pc" ]; then
+
+wget -O modules/lightpack/prismatik.flatpak https://github.com/psieg/Lightpack/releases/download/5.11.2.31/prismatik_5.11.2.31.flatpak
+flatpak install modules/lightpack/prismatik.flatpak
+flatpak override --filesystem=host com.prismatik.Prismatik
+
+# Create hardlinks for all prismatik configuration
+mkdir -p ~/.Prismatik/Profiles
+ln modules/lightpack/.Prismatik/main.conf ~/.Prismatik/main.conf
+ln modules/lightpack/.Prismatik/Profiles/Screencapture.ini ~/.Prismatik/Profiles/Screencapture.ini
+
+fi
+
 # ---------- Konsave ---------- #
 
 # Apply current themes

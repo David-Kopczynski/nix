@@ -43,4 +43,5 @@
 
     # Services to enable
     services.printing.enable = true; # CUPS to print documents
+    services.flatpak.enable  = true; # Flatpak for additional programs
 }
