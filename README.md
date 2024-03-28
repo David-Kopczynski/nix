@@ -14,7 +14,6 @@ Additionally, the following commands will be often used:
 | Command | Reason |
 | --- | --- |
 | `sudo nixos-rebuild switch` | build and deploy new system packages |
-| `home-manager switch` | build and deploy new user packages |
 | `nix-shell -p <package>` | install a package temporarily |
 | `nix-channel --update` | update packages at system level |
 

@@ -67,33 +67,8 @@ fi
 mkdir -p ~/.config/nixpkgs
 echo "{ allowUnfree = true; }" > ~/.config/nixpkgs/config.nix
 
-# Add all missing channels
-sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager
-sudo nix-channel --update
-
 # Rebuild to include all modules
 sudo nixos-rebuild switch
-
-# ---------- Home Manager ---------- #
-
-echo ""; echo "Home Manager setup:"
-
-# Skip if home.nix already set up
-if [ -f ~/.config/home-manager/home.nix ]; then
-  echo "Home Manager configuration already set up. Skipping Home Manager setup."
-else
-
-# Init home-manager for default home file and delete it immediately
-home-manager init
-rm ~/.config/home-manager/home.nix
-
-# Create hardlink from ~/.config/home-manager to ./modules/home-manager for better file management
-ln modules/home-manager/home.nix ~/.config/home-manager/home.nix
-
-# Apply home-manager configuration
-home-manager switch
-
-fi
 
 # ---------- Flatpaks ---------- #
 
