@@ -9,11 +9,4 @@
     services.xserver.desktopManager.plasma5.enable = true;
     
     services.xserver.libinput.touchpad.naturalScrolling = true;
-
-    # System theming and appearance
-    qt = {
-        enable = true; 
-        platformTheme = "kde";
-        style = "breeze";
-    };
 }
