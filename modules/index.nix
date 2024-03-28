@@ -26,6 +26,7 @@
         
         # Programs
         vscode
+        ksnip
         firefox
         discord
         spotify
