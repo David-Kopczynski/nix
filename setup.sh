@@ -92,6 +92,7 @@ flatpak override --filesystem=host com.prismatik.Prismatik
 mkdir -p ~/.Prismatik/Profiles
 ln modules/lightpack/.Prismatik/main.conf ~/.Prismatik/main.conf
 ln modules/lightpack/.Prismatik/Profiles/Screencapture.ini ~/.Prismatik/Profiles/Screencapture.ini
+ln modules/lightpack/.Prismatik/Profiles/Cinema.ini ~/.Prismatik/Profiles/Cinema.ini
 
 fi
 
