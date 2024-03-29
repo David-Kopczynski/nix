@@ -23,10 +23,12 @@
 
         # ---------- Programs ---------- #
         vscode
-        ksnip
-        discord
         spotify
         pdfarranger
+
+        (pkgs.writeShellScriptBin "discord" ''
+            exec ${pkgs.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland
+        '')
 
         # ---------- Games ---------- #
         prismlauncher

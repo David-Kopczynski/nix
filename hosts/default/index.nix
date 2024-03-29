@@ -8,11 +8,11 @@
         ../workstation.nix
 
         # Import all used NixOS modules
-        ./kde.nix
         ./locale.nix
         ./network.nix
         ./sound.nix
         ./system.nix
         ./users.nix
+        ./window.nix
     ];
 }
