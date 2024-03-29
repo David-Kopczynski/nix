@@ -28,10 +28,4 @@ When dealing with NixOS, the following commands will be often used to manage the
 | `nix-channel --update` | update packages at system level |
 
 ## 🚀 Setup
-When copying the system to a new device it is necessary to generate or copy additional files:
-
-| Action | Reason |
-| --- | --- |
-| Initial git clone | add config from `nixos/initial.configuration.nix` for first clone |
-| Add SSH keys | `ssh-keygen` *(or ideally copy the SSH from the other device into `~/.ssh`)* |
-| Setup | run `sh setup.sh` to setup all files for the first time |
+When copying the system to a new device it is necessary to add some base configurations to the system in order to clone this repository. The configuration can be found in `./nixos/initial.configuration.nix` while the SSH keys should be copied into `~/.ssh` or generated with `ssh-keygen`. Afterwards, the setup script can be run with `sh setup.sh` to setup all files for the first time.
