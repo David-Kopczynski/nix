@@ -14,4 +14,5 @@ lib.mkIf (config.host == "laptop") {
 
     # Finger scanner
     services.fprintd.enable = true; # Store fingerprints with `fprintd-enroll`
+    security.pam.services.login.fprintAuth = false; # Disable fingerprint login to prevent 30sec timeout when not using fingerprint after password login
 }
