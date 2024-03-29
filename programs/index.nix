@@ -16,6 +16,7 @@
 
         # ---------- Tools ---------- #
         neovim.enable = true;
+        npm.enable = true;
 
         # ---------- Programs ---------- #
         firefox.enable = true;
