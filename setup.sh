@@ -81,7 +81,6 @@ else
 wget -O prismatik.flatpak https://github.com/psieg/Lightpack/releases/download/5.11.2.31/prismatik_5.11.2.31.flatpak
 flatpak install prismatik.flatpak
 rm prismatik.flatpak
-sudo flatpak override --filesystem=host com.prismatik.Prismatik
 
 fi
 
