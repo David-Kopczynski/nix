@@ -10,7 +10,6 @@ if [ -f .env.nix ]; then
 else
 
 # Get environment variables for NixOS setup
-echo "Generation of environment variables for NixOS setup:"
 read -p "Host: " host
 
 # Create .env.nix with all necessary environment variables
