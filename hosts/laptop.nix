@@ -1,8 +1,12 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
-lib.mkIf (config.host == "laptop") {
+{
+    # Fetch hardware config from nixos-hardware
+    imports = [
+        "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/framework/13-inch/13th-gen-intel"
+    ];
 
-    # Hardware supported
+    # Enable bluetooth
     hardware.bluetooth.enable = true;
 
     # Graphic card drivers
@@ -12,7 +16,9 @@ lib.mkIf (config.host == "laptop") {
         driSupport32Bit = true;
     };
 
-    # Finger scanner
-    services.fprintd.enable = true; # Store fingerprints with `fprintd-enroll`
-    security.pam.services.login.fprintAuth = false; # Disable fingerprint login to prevent 30sec timeout when not using fingerprint after password login
+    # Disable fingerprint login to prevent 30sec timeout when not using fingerprint after password login
+    security.pam.services.login.fprintAuth = false;
+
+    # Enable firmware updates
+    services.fwupd.enable = true;
 }

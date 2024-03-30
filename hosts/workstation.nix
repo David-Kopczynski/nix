@@ -1,6 +1,13 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
-lib.mkIf (config.host == "workstation") {
+{
+    # Fetch hardware config from nixos-hardware
+    imports = [
+        "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/pc"
+        "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/pc/ssd"
+        "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/gpu/nvidia"
+        "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/cpu/intel/cpu-only.nix"
+    ];
 
     # Enable automatic login for the user.
     services.xserver.displayManager.autoLogin.enable = true;

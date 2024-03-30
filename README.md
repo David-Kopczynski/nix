@@ -35,5 +35,12 @@ When dealing with NixOS, the following native commands can also be used to manag
 | `nix-shell -p <package>` | install a package temporarily |
 | `nix-channel --update` | update packages at system level |
 
+## 🖥️ Hosts
+Hosts store systematic differences between machines. Currently, [`laptop`](https://github.com/NixOS/nixos-hardware/tree/master/framework) and `workstation` are used in this repository. Furthermore, when dealing with specific hardware it can be necessary to run the following commands for some configuration:
+
+| Command | Reason |
+| --- | --- |
+| `fprintd-enroll` | enroll fingerprint reader |
+
 ## 🚀 Setup
 When copying the system to a new device it is necessary to add some base configurations to the system in order to clone this repository. The configuration can be found in `./nixos/initial.configuration.nix` while the SSH keys should be copied into `~/.ssh` or generated with `ssh-keygen`. Afterwards, the setup script can be run with `sh setup.sh` to setup all files for the first time.
