@@ -19,6 +19,10 @@
         flatpak.enable  = true;
 
         # ---------- Programs ---------- #
+        udev.packages = with pkgs; [
+            platformio-core
+            openocd
+        ];
 
         # ---------- Games ---------- #
     };
