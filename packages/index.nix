@@ -25,6 +25,7 @@
         vscode
         spotify
         pdfarranger
+        gnome.gnome-calculator
 
         # Wayland temp fix
         tela-circle-icon-theme
