@@ -8,6 +8,7 @@
 
         # Default system configuration
         ./hosts/default
+        ./hosts
 
         # Packages, programs and services
         ./packages

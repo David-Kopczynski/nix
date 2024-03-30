@@ -1,13 +1,8 @@
 { config, pkgs, ... }:
 
 {
+    # Import all used NixOS modules
     imports = [
-
-        # Host dependent configuration
-        ../laptop.nix
-        ../workstation.nix
-
-        # Import all used NixOS modules
         ./locale.nix
         ./network.nix
         ./sound.nix
