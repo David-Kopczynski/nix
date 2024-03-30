@@ -7,12 +7,12 @@
         ./.env.nix
 
         # Default system configuration
-        ./hosts/default/index.nix
+        ./hosts/default
 
         # Packages, programs and services
-        ./packages/index.nix
-        ./programs/index.nix
-        ./services/index.nix
+        ./packages
+        ./programs
+        ./services
     ];
 
     # Custom commands and functions

@@ -42,7 +42,7 @@ echo "{
     imports = [
         # Include the results of the hardware scan.
         ./hardware-configuration.nix
-        $(pwd)/index.nix
+        $(pwd)
     ];
 }" > nixos/configuration.nix
 
