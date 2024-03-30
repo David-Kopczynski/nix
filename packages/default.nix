@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
-{
+let
+    # Allow unstable packages
+    unstable = import <unstable> { config = { allowUnfree = true; }; };
+in {
     # Host specific configuration
     imports = [
         ./hosts/laptop.nix
@@ -31,5 +34,6 @@
         # ---------- Games ---------- #
         prismlauncher
         heroic
+        unstable.r2modman
     ];
 }
