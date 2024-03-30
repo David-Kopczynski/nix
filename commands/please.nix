@@ -5,7 +5,7 @@ pkgs.writeShellScriptBin "please" ''
     # ---------- add ---------- #
     if [ "$1" = "add" ]; then
 
-    # Pass arguments to git add script in user repository
+    # pass arguments to git add script in user repository
     shift
     sh ~/gitadd "$@"
 
