@@ -8,5 +8,7 @@
     services.xserver.displayManager.sddm.enable = true;
     services.xserver.desktopManager.plasma5.enable = true;
 
+    # Mouse and touchpad settings
+    services.xserver.libinput.mouse.accelProfile = "flat";
     services.xserver.libinput.touchpad.naturalScrolling = true;
 }
