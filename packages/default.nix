@@ -30,6 +30,7 @@ in {
         discord
         pdfarranger
         gnome.gnome-calculator
+        wootility
 
         # ---------- Games ---------- #
         prismlauncher
