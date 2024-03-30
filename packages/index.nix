@@ -30,5 +30,6 @@
 
         # ---------- Games ---------- #
         prismlauncher
+        heroic
     ];
 }
