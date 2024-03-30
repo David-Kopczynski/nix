@@ -19,7 +19,15 @@ When dealing with installations in `.nix`, programs and services are to be prefe
 | [`./services`](https://search.nixos.org/options) | system services that are installed and configured *(preferred)* |
 
 ## 📜 Commands
-When dealing with NixOS, the following commands will be often used to manage the system:
+This repository offers a set of custom commands that can be used to manage the system using `please` in combination with [user](https://github.com/David-Kopczynski/user):
+
+| Command | Description |
+| --- | --- |
+| `please add <path>` | add files to [user](https://github.com/David-Kopczynski/user) using the offered script |
+| `please pull` | pull all user and nix data from git |
+| `please switch` | build the system with the latest data and switch to it |
+
+When dealing with NixOS, the following native commands can also be used to manage the system:
 
 | Command | Reason |
 | --- | --- |

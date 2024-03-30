@@ -1,3 +1,5 @@
+{ config, pkgs, ... }:
+
 {
     imports = [
 
@@ -11,5 +13,10 @@
         ./packages/index.nix
         ./programs/index.nix
         ./services/index.nix
+    ];
+
+    # Custom commands and functions
+    environment.systemPackages = [
+        (import ./commands/please.nix { inherit config pkgs; })
     ];
 }
