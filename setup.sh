@@ -69,3 +69,19 @@ echo ""; echo "Flatpak setup:"
 # Add Flathub repository
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak update
+
+# Install prismatik flatpak when on workstation
+if [ "$host" = "workstation" ]; then
+
+# Skip if prismatik already installed
+if [ -f modules/lightpack/prismatik.flatpak ]; then
+  echo "Prismatik already installed. Skipping installation of Prismatik."
+else
+
+wget -O prismatik.flatpak https://github.com/psieg/Lightpack/releases/download/5.11.2.31/prismatik_5.11.2.31.flatpak
+flatpak install prismatik.flatpak
+rm prismatik.flatpak
+
+fi
+
+fi

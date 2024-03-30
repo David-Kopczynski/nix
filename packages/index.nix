@@ -24,17 +24,9 @@
         # ---------- Programs ---------- #
         vscode
         spotify
+        discord
         pdfarranger
         gnome.gnome-calculator
-
-        # Wayland temp fix
-        tela-circle-icon-theme
-        (pkgs.makeDesktopItem {
-            name = "discord";
-            exec = "${pkgs.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-            desktopName = "Discord";
-            icon = "${pkgs.tela-circle-icon-theme}/share/icons/Tela-circle/scalable/apps/discord.svg";
-        })
 
         # ---------- Games ---------- #
         prismlauncher
