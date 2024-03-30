@@ -51,4 +51,11 @@ lib.mkIf (config.host == "workstation") {
         # Optionally, you may need to select the appropriate driver version for your specific GPU.
         package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+
+    # Fix low refresh rate on high refresh rate monitors
+    services.xserver.displayManager.setupCommands = ''
+        KWIN_X11_REFRESH_RATE=165000
+        KWIN_X11_NO_SYNC_TO_VBLANK=1
+        KWIN_X11_FORCE_SOFTWARE_VSYNC=1
+    '';
 }
