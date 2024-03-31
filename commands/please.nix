@@ -2,13 +2,6 @@
 
 pkgs.writeShellScriptBin "please" ''
 
-    # ---------- add ---------- #
-    if [ "$1" = "add" ]; then
-
-    # pass arguments to git add script in user repository
-    shift
-    sh ~/gitadd "$@"
-
     # ---------- pull ---------- #
     elif [ "$1" = "pull" ]; then
 
@@ -30,7 +23,6 @@ pkgs.writeShellScriptBin "please" ''
 
     echo "command not found"
     echo "possible commands are:"
-    echo "  add      <- add files to user repository"
     echo "  pull     <- pull data from user and nix repository"
     echo "  switch   <- build nixos and switch to it"
 
