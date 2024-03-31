@@ -9,10 +9,6 @@
         "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/cpu/intel/cpu-only.nix"
     ];
 
-    # Enable automatic login for the user.
-    services.xserver.displayManager.autoLogin.enable = true;
-    services.xserver.displayManager.autoLogin.user = "user";
-
     # Hardware supported
     hardware.bluetooth.enable = true;
     hardware.wooting.enable = true;
@@ -36,11 +32,4 @@
         nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
-
-    # Fix low refresh rate on high refresh rate monitors
-    services.xserver.displayManager.setupCommands = ''
-        KWIN_X11_REFRESH_RATE=165000
-        KWIN_X11_NO_SYNC_TO_VBLANK=1
-        KWIN_X11_FORCE_SOFTWARE_VSYNC=1
-    '';
 }

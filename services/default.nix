@@ -16,7 +16,6 @@
         printing.enable = true;
 
         # ---------- Tools ---------- #
-        flatpak.enable  = true;
 
         # ---------- Programs ---------- #
         udev.packages = with pkgs; [

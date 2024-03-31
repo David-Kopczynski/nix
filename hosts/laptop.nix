@@ -17,9 +17,6 @@
         driSupport32Bit = true;
     };
 
-    # Disable fingerprint login to prevent 30sec timeout when not using fingerprint after password login
-    security.pam.services.login.fprintAuth = false;
-
     # Enable firmware updates
     services.fwupd.enable = true;
 }
