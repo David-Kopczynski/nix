@@ -2,7 +2,11 @@
 
 let
     # Allow unstable packages
-    unstable = import <unstable> { config = { allowUnfree = true; }; };
+    unstable = import (builtins.fetchGit {
+        name = "nixpkgs-unstable";
+        url = https://github.com/nixos/nixpkgs/;
+        ref = "nixos-unstable";
+    }) { config = { allowUnfree = true; }; };
 in {
     # Host specific configuration
     imports = [

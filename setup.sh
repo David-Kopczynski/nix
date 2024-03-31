@@ -62,10 +62,6 @@ sudo ln nixos/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
 
 fi
 
-# Add unstable channel in case it is needed for some packages
-sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
-sudo nix-channel --update
-
 # Rebuild to include all modules
 sudo nixos-rebuild switch
 
