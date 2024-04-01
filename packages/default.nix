@@ -8,12 +8,6 @@ let
         ref = "nixos-unstable";
     }) { config = { allowUnfree = true; }; };
 in {
-    # Host specific configuration
-    imports = [
-        ./hosts/laptop.nix
-        ./hosts/workstation.nix
-    ];
-
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
@@ -33,7 +27,6 @@ in {
         spotify
         discord
         pdfarranger
-        gnome.gnome-calculator
         wootility
 
         # ---------- Games ---------- #

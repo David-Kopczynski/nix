@@ -1,12 +1,6 @@
 { config, pkgs, ... }:
 
 {
-    # Host specific configuration
-    imports = [
-        ./hosts/laptop.nix
-        ./hosts/workstation.nix
-    ];
-
     # Programs installed with possibly custom configuration
     # Options can be found in https://search.nixos.org/options
     programs = {
