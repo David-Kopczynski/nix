@@ -10,23 +10,11 @@
     services.xserver.desktopManager.gnome.enable = true;
 
     # Remove unnecessary packages from gnome
-    environment.gnome.excludePackages = (with pkgs; [
-        gnome-tour
-        gnome-connections
-        gnome.gnome-music
-        gnome.gnome-terminal
-        gnome.gedit
-        gnome.epiphany
-        gnome.geary
-        gnome.tali
-        gnome.iagno
-        gnome.hitori
-        gnome.atomix
-        gnome.simple-scan
-        gnome.yelp
-        gnome.gnome-contacts
-        gnome.gnome-maps
-        gnome.gnome-weather
-        gnome.gnome-calendar
-    ]);
+    environment.gnome.excludePackages =
+        (with pkgs; [
+            gnome-tour                  # Tour of GNOME
+        ])++ (with pkgs.gnome; [
+            epiphany                    # web browser
+            yelp                        # help browser
+        ]);
 }
