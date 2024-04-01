@@ -23,15 +23,16 @@ in {
         python3
 
         # ---------- Programs ---------- #
-        vscode
         spotify
-        discord
         pdfarranger
-        wootility
+
+        unstable.vscode
+        unstable.discord
+        unstable.wootility
 
         # ---------- Games ---------- #
-        prismlauncher
-        heroic
+        unstable.prismlauncher
+        unstable.heroic
         unstable.r2modman
     ];
 }
