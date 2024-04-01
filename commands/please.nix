@@ -44,6 +44,13 @@ pkgs.writeShellScriptBin "please" ''
         git -C ~ push
     fi
 
+    # ---------- test ---------- #
+    elif [ "$1" = "test" ]; then
+
+    # test if configuration is valid
+    sudo nixos-rebuild test
+    rm result
+
     # ---------- switch ---------- #
     elif [ "$1" = "switch" ]; then
 
@@ -56,6 +63,7 @@ pkgs.writeShellScriptBin "please" ''
     echo "command not found"
     echo "possible commands are:"
     echo "  sync     <- sync data from user and nix repository"
+    echo "  test     <- test if configuration is valid"
     echo "  switch   <- build nixos and switch to it"
 
     fi
