@@ -12,6 +12,7 @@
     # Remove unnecessary packages from gnome
     environment.gnome.excludePackages = (with pkgs; [
         gnome-tour
+        gnome-connections
         gnome.gnome-music
         gnome.gnome-terminal
         gnome.gedit
@@ -21,5 +22,10 @@
         gnome.iagno
         gnome.hitori
         gnome.atomix
+        gnome.simple-scan
+        gnome.yelp
+        gnome.gnome-contacts
+        gnome.gnome-maps
+        gnome.gnome-weather
     ]);
 }
