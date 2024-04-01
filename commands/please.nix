@@ -2,15 +2,47 @@
 
 pkgs.writeShellScriptBin "please" ''
 
-    # ---------- pull ---------- #
-    elif [ "$1" = "pull" ]; then
+    # ---------- sync ---------- #
+    if [ "$1" = "sync" ]; then
 
     # pull data from user and nix repository
+    # and apply various configuration synchronizations
+    echo "staging user..."
+    dconf dump / > ~/.config/dconf/user.txt
+    git -C ~ add .
+
+    if git -C ~ diff --quiet --staged; then
+        echo "No changes to commit."
+    else
+        git -C ~ diff --staged
+
+        echo "Please enter a commit message:"
+        read commit_message
+        git -C ~ commit -m "$commit_message"
+    fi
+
     echo "pulling user..."
-    git -C ~ pull
+    if ! git -C ~ pull; then
+        echo "Conflict occurred while pulling user changes. Please resolve manually."
+        exit 1
+    fi
 
     echo "pulling nix..."
-    git -C ${config.root} pull
+    if ! git -C ${config.root} pull; then
+        echo "Conflict occurred while pulling nix changes. Please resolve manually."
+        exit 1
+    fi
+
+    echo "applying user..."
+    dconf load / < ~/.config/dconf/user.txt
+
+    current_branch=$(git -C ~ rev-parse --abbrev-ref HEAD)
+    if git -C ~ diff --quiet origin/$current_branch; then
+        echo "No changes to push."
+    else
+        echo "pushing user..."
+        git -C ~ push
+    fi
 
     # ---------- switch ---------- #
     elif [ "$1" = "switch" ]; then
@@ -23,7 +55,7 @@ pkgs.writeShellScriptBin "please" ''
 
     echo "command not found"
     echo "possible commands are:"
-    echo "  pull     <- pull data from user and nix repository"
+    echo "  sync     <- sync data from user and nix repository"
     echo "  switch   <- build nixos and switch to it"
 
     fi
