@@ -14,6 +14,10 @@
 
         # ---------- Programs ---------- #
         firefox.enable = true;
+        ausweisapp = {
+            enable = true;          # Start with AusweisApp
+            openFirewall = true;
+        };
 
         # ---------- Games ---------- #
         steam = {
