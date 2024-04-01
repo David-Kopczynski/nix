@@ -9,12 +9,6 @@
         "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/cpu/intel/cpu-only.nix"
     ];
 
-    # Enable automatic login for the user.
-    services.xserver.displayManager.autoLogin.enable = true;
-    services.xserver.displayManager.autoLogin.user = "user";
-    systemd.services."getty@tty1".enable = false; # Fix autologin crashing sometimes on boot
-    systemd.services."autovt@tty1".enable = false;
-
     # Hardware supported
     hardware.bluetooth.enable = true;
     hardware.wooting.enable = true;
