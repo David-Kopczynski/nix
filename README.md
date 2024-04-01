@@ -43,4 +43,4 @@ Hosts store systematic differences between machines. Currently, [`laptop`](https
 | `fprintd-enroll` | enroll fingerprint reader |
 
 ## 🚀 Setup
-When copying the system to a new device it is necessary to add some base configurations to the system in order to clone this repository. The configuration can be found in `./nixos/initial.configuration.nix` while the SSH keys should be copied into `~/.ssh` or generated with `ssh-keygen`. Afterwards, the setup script can be run with `sh setup.sh` to setup all files for the first time.
+When copying the system to a new device it is necessary to add some base configurations to the system in order to clone this repository. The configuration can be found in `./nixos/initial.configuration.nix` while the SSH keys should be copied into `~/.ssh` or generated with `ssh-keygen`. Afterwards, the setup script can be run with `sh setup.sh` to setup all files for the first time. (When migrating the system to another device, the keystore in `~/.local/share/keyrings` should also be copied to the new device.)
