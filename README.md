@@ -23,8 +23,8 @@ This repository offers a set of custom commands that can be used to manage the s
 
 | Command | Description |
 | --- | --- |
-| `please add <path>` | add files to [user](https://github.com/David-Kopczynski/user) using the offered script |
-| `please pull` | pull all user and nix data from git |
+| `please sync` | sync all user and nix data from git |
+| `please test` | test build without creating EFI entry point |
 | `please switch` | build the system with the latest data and switch to it |
 
 When dealing with NixOS, the following native commands can also be used to manage the system:
