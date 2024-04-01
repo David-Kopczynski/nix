@@ -57,6 +57,14 @@ pkgs.writeShellScriptBin "please" ''
     # simply build nixos and switch to it
     sudo nixos-rebuild switch
 
+    # ---------- clean ---------- #
+    elif [ "$1" = "clean" ]; then
+
+    # delete old generations and garbage collect
+    echo "deleting old generations..."
+    sudo nix-collect-garbage --delete-older-than 7d
+    sudo /run/current-system/bin/switch-to-configuration boot
+
     # ---------- help ---------- #
     else
 
