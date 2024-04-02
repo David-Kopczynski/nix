@@ -22,6 +22,10 @@ in {
         wget
         python3
 
+        # ---------- Gnome ---------- #
+        gnomeExtensions.clipboard-history
+        gnomeExtensions.noannoyance-fork
+
         # ---------- Programs ---------- #
         spotify
         pdfarranger
