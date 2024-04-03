@@ -29,6 +29,7 @@ in {
         # ---------- Programs ---------- #
         spotify
         pdfarranger
+        webex
 
         unstable.vscode
         unstable.discord
