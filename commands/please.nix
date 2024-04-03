@@ -15,6 +15,9 @@ pkgs.writeShellScriptBin "please" ''
     # and remove all that are host related
     sed -i '/^[^\[]*\b\(window\|width\|height\|size\|maximized\|panel\|last-\|active-\|keyring\)\b/d' ~/.config/dconf/user.txt
 
+    # cleanup dconf from settings that have no configuration
+    sed -i '/^\[.*\]$/{N;/\n$/d}' ~/.config/dconf/user.txt
+
     git -C ~ add .
 
     if git -C ~ diff --quiet --staged; then
