@@ -17,10 +17,11 @@ in {
     environment.systemPackages = with pkgs; [
 
         # ---------- System ---------- #
+        wget
 
         # ---------- Tools ---------- #
-        wget
         python3
+        texliveFull
 
         # ---------- Gnome ---------- #
         gnomeExtensions.clipboard-history
@@ -30,6 +31,7 @@ in {
         spotify
         pdfarranger
         webex
+        libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE
 
         unstable.vscode
         unstable.discord
