@@ -26,6 +26,7 @@ in {
         # ---------- Gnome ---------- #
         gnomeExtensions.clipboard-history
         gnomeExtensions.noannoyance-fork
+        gnomeExtensions.smile-complementary-extension
 
         # ---------- Programs ---------- #
         spotify
@@ -33,6 +34,7 @@ in {
         webex
         libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE
 
+        unstable.smile # Currently only available in unstable
         unstable.vscode
         unstable.discord
         unstable.wootility
