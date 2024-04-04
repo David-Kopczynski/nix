@@ -32,25 +32,33 @@ pkgs.writeShellScriptBin "please" ''
 
     echo "pulling user..."
     if ! git -C ~ pull; then
-        echo "Conflict occurred while pulling user changes. Please resolve manually."
-        exit 1
+        # if conflict occurred, open vscode to resolve manually
+        code --wait ~
     fi
 
     echo "pulling nix..."
     if ! git -C ${config.root} pull; then
-        echo "Conflict occurred while pulling nix changes. Please resolve manually."
-        exit 1
+        # if conflict occurred, open vscode to resolve manually
+        code --wait ~
     fi
 
     echo "applying user..."
     dconf load / < ~/.config/dconf/user.txt
 
+    echo "pushing user..."
     current_branch=$(git -C ~ rev-parse --abbrev-ref HEAD)
     if git -C ~ diff --quiet origin/$current_branch; then
         echo "No changes to push."
     else
-        echo "pushing user..."
         git -C ~ push
+    fi
+
+    echo "pushing nix..."
+    current_branch=$(git -C ${config.root} rev-parse --abbrev-ref HEAD)
+    if git -C ${config.root} diff --quiet origin/$current_branch; then
+        echo "No changes to push."
+    else
+        git -C ${config.root} push
     fi
 
     # ---------- test ---------- #
