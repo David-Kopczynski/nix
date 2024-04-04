@@ -5,7 +5,7 @@ pkgs.writeShellScriptBin "please" ''
     # ---------- sync ---------- #
     if [ "$1" = "sync" ]; then
 
-    # pull data from user and nix repository
+    # pull data from user and Nix repository
     # and apply various configuration synchronizations
     echo "staging user..."
     dconf dump / > ~/.config/dconf/user.txt
@@ -36,7 +36,7 @@ pkgs.writeShellScriptBin "please" ''
         code --wait ~
     fi
 
-    echo "pulling nix..."
+    echo "pulling Nix..."
     if ! git -C ${config.root} pull; then
         # if conflict occurred, open vscode to resolve manually
         code --wait ~
@@ -44,6 +44,9 @@ pkgs.writeShellScriptBin "please" ''
 
     echo "applying user..."
     dconf load / < ~/.config/dconf/user.txt
+
+    echo "applying Nix..."
+    please switch
 
     echo "pushing user..."
     current_branch=$(git -C ~ rev-parse --abbrev-ref HEAD)
@@ -53,7 +56,7 @@ pkgs.writeShellScriptBin "please" ''
         git -C ~ push
     fi
 
-    echo "pushing nix..."
+    echo "pushing Nix..."
     current_branch=$(git -C ${config.root} rev-parse --abbrev-ref HEAD)
     if git -C ${config.root} diff --quiet origin/$current_branch; then
         echo "No changes to push."
@@ -71,25 +74,33 @@ pkgs.writeShellScriptBin "please" ''
     # ---------- switch ---------- #
     elif [ "$1" = "switch" ]; then
 
-    # simply build nixos and switch to it
+    # limit the number of generations to 10 (-1 as the current generation is not counted)
+    # remove all except the last 9 lines from --list-generations and feed them into --delete-generations
+    delete_gen=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | head -n -9 | awk '{print $1}' | tr '\n' ' ')
+    sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $delete_gen
+
+    # simply build NixOS and switch to it
     sudo nixos-rebuild switch
 
     # ---------- clean ---------- #
     elif [ "$1" = "clean" ]; then
 
-    # delete old generations and garbage collect
-    echo "deleting old generations..."
-    sudo nix-collect-garbage --delete-older-than 7d
-    sudo /run/current-system/bin/switch-to-configuration boot
+    # limit the number of generations to 10 (-1 as the current generation is not counted)
+    # remove all except the last 9 lines from --list-generations and feed them into --delete-generations
+    delete_gen=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | head -n -9 | awk '{print $1}' | tr '\n' ' ')
+    sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $delete_gen
+
+    sudo nix-collect-garbage
 
     # ---------- help ---------- #
     else
 
     echo "command not found"
     echo "possible commands are:"
-    echo "  sync     <- sync data from user and nix repository"
+    echo "  sync     <- sync data from user and Nix repository"
     echo "  test     <- test if configuration is valid"
-    echo "  switch   <- build nixos and switch to it"
+    echo "  switch   <- build NixOS and switch to it"
+    echo "  clean    <- clean up Nix and old generations"
 
     fi
 ''
