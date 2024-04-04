@@ -38,8 +38,10 @@ in {
         unstable.wootility
 
         # ---------- Games ---------- #
+        # see https://www.protondb.com/ for compatibility
         unstable.prismlauncher
         unstable.heroic
+        unstable.lutris
         unstable.r2modman
     ];
 }
