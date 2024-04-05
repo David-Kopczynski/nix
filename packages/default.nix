@@ -46,4 +46,10 @@ in {
         unstable.lutris
         unstable.r2modman
     ];
+
+    # Remove packages that are installed another way
+    environment.gnome.excludePackages = with pkgs.gnome; [
+        pkgs.gnome-text-editor
+        gnome-characters
+    ];
 }
