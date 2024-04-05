@@ -31,10 +31,10 @@ in {
         # ---------- Programs ---------- #
         spotify
         pdfarranger
-        webex
         libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE
 
         unstable.smile # Currently only available in unstable
+        unstable.webex
         unstable.vscode
         unstable.discord
         unstable.wootility
