@@ -9,6 +9,7 @@
             "networkmanager" "wheel"    # Default groups
             "dialout"                   # Serial port access with PlatformIO
             "input"                     # Access to input devices with Wootility
+            "docker"                    # Docker access
         ];
     };
 }

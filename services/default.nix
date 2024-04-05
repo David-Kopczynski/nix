@@ -25,4 +25,7 @@
 
         # ---------- Games ---------- #
     };
+
+    # ---------- Tools ---------- #
+    virtualisation.docker.enable = true;
 }
