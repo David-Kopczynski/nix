@@ -22,6 +22,7 @@ in {
         # ---------- Tools ---------- #
         python3
         texliveFull
+        openconnect
 
         # ---------- Gnome ---------- #
         gnomeExtensions.clipboard-history
