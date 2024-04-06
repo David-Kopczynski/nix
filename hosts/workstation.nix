@@ -32,4 +32,11 @@
         nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+
+    # Additional drives
+    fileSystems."/mnt/data" = {
+        device = "/dev/disk/by-uuid/941fa4a1-3f46-4db9-8a2f-50f1ee2ac3f5";
+        fsType = "ext4";
+        options = ["defaults" "x-gvfs-show"];
+    };
 }
