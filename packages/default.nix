@@ -50,6 +50,8 @@ in {
 
     # Remove packages that are installed another way
     environment.gnome.excludePackages = with pkgs.gnome; [
+        pkgs.gnome-tour             # tour of GNOME
+        yelp                        # help browser
         epiphany                    # web browser
         pkgs.gnome-text-editor      # text editor
         gnome-characters            # character browser
