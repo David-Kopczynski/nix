@@ -46,7 +46,12 @@ pkgs.writeShellScriptBin "please" ''
     dconf load / < ~/.config/dconf/user.txt
 
     echo "applying Nix..."
-    please switch
+    echo "Switch to the NixOS configuration in the Nix repository? (yes/no)"
+    read switch
+
+    if [ "$switch" = "yes" ]; then
+        please switch
+    fi
 
     echo "pushing user..."
     current_branch=$(git -C ~ rev-parse --abbrev-ref HEAD)
