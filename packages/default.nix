@@ -36,6 +36,7 @@ in {
         thunderbird
         libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE
         gimp
+        mpv
 
         unstable.smile # Currently only available in unstable
         unstable.webex
@@ -60,5 +61,6 @@ in {
         pkgs.gnome-text-editor      # text editor
         gnome-characters            # character browser
         geary                       # email client
+        totem                       # video player
     ];
 }
