@@ -28,12 +28,14 @@ in {
         gnomeExtensions.clipboard-history
         gnomeExtensions.noannoyance-fork
         gnomeExtensions.smile-complementary-extension
+        gnomeExtensions.color-picker
 
         # ---------- Programs ---------- #
         spotify
         pdfarranger
         thunderbird
         libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE
+        gimp
 
         unstable.smile # Currently only available in unstable
         unstable.webex
