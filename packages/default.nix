@@ -32,6 +32,7 @@ in {
         # ---------- Programs ---------- #
         spotify
         pdfarranger
+        thunderbird
         libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE
 
         unstable.smile # Currently only available in unstable
@@ -49,11 +50,13 @@ in {
     ];
 
     # Remove packages that are installed another way
+    # see https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
     environment.gnome.excludePackages = with pkgs.gnome; [
         pkgs.gnome-tour             # tour of GNOME
         yelp                        # help browser
         epiphany                    # web browser
         pkgs.gnome-text-editor      # text editor
         gnome-characters            # character browser
+        geary                       # email client
     ];
 }
