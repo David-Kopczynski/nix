@@ -39,4 +39,7 @@
         fsType = "ext4";
         options = ["defaults" "x-gvfs-show"];
     };
+
+    # Enable firmware updates
+    services.fwupd.enable = true;
 }
