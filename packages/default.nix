@@ -18,6 +18,7 @@ in {
 
         # ---------- System ---------- #
         wget
+        powertop
 
         # ---------- Tools ---------- #
         python3
