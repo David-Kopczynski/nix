@@ -38,6 +38,7 @@ in {
         libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE
         gimp
         mpv
+        kicad
 
         unstable.smile # Currently only available in unstable
         unstable.webex
