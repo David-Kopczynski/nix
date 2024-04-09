@@ -22,6 +22,7 @@ in {
 
         # ---------- Tools ---------- #
         python3
+        ghc
         texliveFull
         openconnect
 
