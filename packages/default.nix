@@ -39,6 +39,7 @@ in {
         gimp
         mpv
         kicad
+        anki-bin
 
         unstable.smile # Currently only available in unstable
         unstable.webex
