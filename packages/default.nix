@@ -19,6 +19,7 @@ in {
         # ---------- System ---------- #
         wget
         powertop
+        qemu quickemu # Install and run with `quickget windows 11` & `quickemu --vm windows-11.conf`
 
         # ---------- Tools ---------- #
         python3
