@@ -15,7 +15,7 @@
         # ---------- Programs ---------- #
         firefox.enable = true;
         ausweisapp = {
-            enable = true;          # Start with AusweisApp
+            enable = true;
             openFirewall = true;
         };
 
