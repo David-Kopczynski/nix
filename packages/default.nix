@@ -23,6 +23,7 @@ in {
 
         # ---------- Tools ---------- #
         python3
+        ghc
         texliveFull
         openconnect
 
@@ -39,6 +40,7 @@ in {
         libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE
         gimp
         mpv
+        kicad
         anki-bin
 
         unstable.smile # Currently only available in unstable

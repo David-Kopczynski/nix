@@ -9,7 +9,6 @@
         git.enable = true;
 
         # ---------- Tools ---------- #
-        neovim.enable = true;
         npm.enable = true;
 
         # ---------- Programs ---------- #
