@@ -26,6 +26,7 @@ in {
         ghc
         texliveFull
         openconnect
+        nodejs
 
         # ---------- Gnome ---------- #
         gnomeExtensions.clipboard-history
