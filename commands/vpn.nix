@@ -5,12 +5,12 @@ pkgs.writeShellScriptBin "vpn" ''
     # ---------- rwth ---------- #
     if [ "$1" = "rwth" ]; then
 
-    sudo openconnect --useragent AnyConnect vpn.rwth-aachen.de --authgroup 'RWTH-VPN (Full Tunnel)' --user hg066732
+    sudo openconnect --useragent AnyConnect vpn.rwth-aachen.de --authgroup 'RWTH-VPN (Split Tunnel)' --user hg066732
 
     # ---------- i11 ---------- #
     elif [ "$1" = "i11" ]; then
 
-    sudo openconnect --useragent AnyConnect vpn.i11.rwth-aachen.de --authgroup 'i11-praktikum-VPN(Full-Tunnel)' --user hg066732 --no-external-auth
+    sudo openconnect --useragent AnyConnect vpn.i11.rwth-aachen.de --authgroup 'i11-praktikum-VPN(Split-Tunnel)' --user hg066732 --no-external-auth
 
     # ---------- help ---------- #
     else
