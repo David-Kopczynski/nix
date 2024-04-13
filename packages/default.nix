@@ -39,7 +39,7 @@ in {
         pdfarranger
         thunderbird
         libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE
-        gimp
+        gimp darktable
         mpv
         kicad
         anki-bin
