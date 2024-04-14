@@ -36,6 +36,9 @@ pkgs.writeShellScriptBin "please" ''
         code --wait ~
     fi
 
+    # remember if nix repo was behind
+    nix_behind=$(git -C ${config.root} status -uno | grep -q "Your branch is behind" && echo 1 || echo 0)
+
     echo "pulling Nix..."
     if ! git -C ${config.root} pull; then
         # if conflict occurred, open vscode to resolve manually
@@ -46,11 +49,16 @@ pkgs.writeShellScriptBin "please" ''
     dconf load / < ~/.config/dconf/user.txt
 
     echo "applying Nix..."
-    echo "Switch to the NixOS configuration in the Nix repository? (yes/no)"
-    read switch
+    if [ "$nix_behind" = 0 ]; then
+        echo "Nix repository is behind."
+        echo "Switch to new configuration? (yes/no)"
+        read switch
 
-    if [ "$switch" = "yes" ]; then
-        please switch
+        if [ "$switch" = "yes" ] || [ "$switch" = "y" ] || [ "$switch" = "" ]; then
+            please switch
+        fi
+    else
+        echo "Nix repository is up to date."
     fi
 
     echo "pushing user..."
