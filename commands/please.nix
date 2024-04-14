@@ -49,7 +49,7 @@ pkgs.writeShellScriptBin "please" ''
     dconf load / < ~/.config/dconf/user.txt
 
     echo "applying Nix..."
-    if [ "$nix_behind" = 0 ]; then
+    if [ "$nix_behind" = 1 ]; then
         echo "Nix repository is behind."
         echo "Switch to new configuration? (yes/no)"
         read switch
