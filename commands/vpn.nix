@@ -2,15 +2,33 @@
 
 pkgs.writeShellScriptBin "vpn" ''
 
+    # Login to bitwarden for credentials if not already logged in
+    # Check if rwth or i11 correclty provided
+    if [ "$1" = "rwth" ] || [ "$1" = "i11" ]; then
+        echo "logging in to bitwarden..."
+        source ~/.bashrc >/dev/null 2>&1
+
+        if [ -z "$BW_SESSION" ]; then
+            echo "export BW_SESSION=$(bw unlock --raw)" >> ~/.bashrc
+            source ~/.bashrc
+        else
+            echo "Already logged in."
+        fi
+    fi
+
+    # Get password and totp from bitwarden
+    password=$(bw get password e5d3a9af-974a-4781-8a8c-ada7009d2a7f)
+    totp=$(bw get totp e5d3a9af-974a-4781-8a8c-ada7009d2a7f)
+
     # ---------- rwth ---------- #
     if [ "$1" = "rwth" ]; then
 
-    sudo openconnect --useragent AnyConnect vpn.rwth-aachen.de --authgroup 'RWTH-VPN (Split Tunnel)' --user hg066732
+    echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.rwth-aachen.de --authgroup 'RWTH-VPN (Split Tunnel)' --user hg066732
 
     # ---------- i11 ---------- #
     elif [ "$1" = "i11" ]; then
 
-    sudo openconnect --useragent AnyConnect vpn.i11.rwth-aachen.de --authgroup 'i11-praktikum-VPN(Split-Tunnel)' --user hg066732 --no-external-auth
+    echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.i11.rwth-aachen.de --authgroup 'i11-praktikum-VPN(Split-Tunnel)' --user hg066732 --no-external-auth
 
     # ---------- help ---------- #
     else

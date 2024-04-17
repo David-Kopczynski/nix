@@ -19,7 +19,7 @@ in {
         # ---------- System ---------- #
         wget
         powertop
-        qemu quickemu virt-viewer # Install and run with `quickget windows 11` & `quickemu --vm windows-11.conf`
+        qemu quickemu virt-viewer               # Install and run with `quickget windows 11` & `quickemu --vm windows-11.conf`
 
         # ---------- Tools ---------- #
         python3
@@ -27,6 +27,7 @@ in {
         texliveFull
         openconnect
         nodejs
+        bitwarden-cli                           # Install with `bw login`
 
         # ---------- Gnome ---------- #
         gnomeExtensions.clipboard-history
