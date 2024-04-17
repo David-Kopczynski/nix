@@ -9,6 +9,8 @@
         "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/cpu/intel/cpu-only.nix"
     ];
 
+    services.xserver.displayManager.gdm.wayland = false; # This is an patch for NVIDIA as wayland crashes
+
     # Hardware supported
     hardware.bluetooth.enable = true;
     hardware.wooting.enable = true;
