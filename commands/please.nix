@@ -13,7 +13,7 @@ pkgs.writeShellScriptBin "please" ''
     # cleanup dconf from host related settings
     # select all lines that do not start with "[" (section header)
     # and remove all that are host related
-    sed -i '/^[^\[]*\b\(window\|width\|height\|size\|maximized\|panel\|last-\|active-\|selected\)\b/d' ~/.config/dconf/user.txt
+    sed -i '/^[^\[]*\b\(window\|width\|height\|size\|maximized\|panel\|last-\|active-\|selected\|history\)\b/d' ~/.config/dconf/user.txt
 
     # cleanup dconf from settings that have no configuration
     sed -i '/^\[.*\]$/{N;/\n$/d}' ~/.config/dconf/user.txt
