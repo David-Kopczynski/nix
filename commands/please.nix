@@ -37,6 +37,7 @@ pkgs.writeShellScriptBin "please" ''
     fi
 
     # remember if nix repo was behind
+    git -C ${config.root} remote update
     nix_behind=$(git -C ${config.root} status -uno | grep -q "Your branch is behind" && echo 1 || echo 0)
 
     echo "pulling Nix..."
