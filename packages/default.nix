@@ -45,6 +45,7 @@ in {
         kicad
         anki-bin
         soundux
+        ungoogled-chromium
 
         unstable.smile # Currently only available in unstable
         unstable.webex
