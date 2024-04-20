@@ -10,6 +10,7 @@
             "dialout"                   # Serial port access with PlatformIO
             "input"                     # Access to input devices with Wootility
             "docker"                    # Docker access
+            "i2c"                       # I2C access (for ddcutil)
         ];
     };
 }

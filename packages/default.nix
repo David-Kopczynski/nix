@@ -28,12 +28,14 @@ in {
         openconnect
         nodejs
         bitwarden-cli                           # Install with `bw login`
+        ddcutil
 
         # ---------- Gnome ---------- #
         gnomeExtensions.clipboard-history
         gnomeExtensions.noannoyance-fork
         gnomeExtensions.smile-complementary-extension
         gnomeExtensions.color-picker
+        gnomeExtensions.brightness-control-using-ddcutil
 
         # ---------- Programs ---------- #
         spotify
