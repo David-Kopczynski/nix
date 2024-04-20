@@ -17,6 +17,7 @@
             enable = true;
             openFirewall = true;
         };
+        noisetorch.enable = true;
 
         # ---------- Games ---------- #
         steam = {

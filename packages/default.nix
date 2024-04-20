@@ -47,7 +47,7 @@ in {
         soundux
         ungoogled-chromium
 
-        unstable.smile # Currently only available in unstable
+        unstable.smile                          # Currently only available in unstable
         unstable.webex
         unstable.vscode
         unstable.discord
