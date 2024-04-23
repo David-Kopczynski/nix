@@ -36,6 +36,7 @@ in {
         gnomeExtensions.smile-complementary-extension
         gnomeExtensions.color-picker
         gnomeExtensions.brightness-control-using-ddcutil
+        gnomeExtensions.executor
 
         # ---------- Programs ---------- #
         spotify
