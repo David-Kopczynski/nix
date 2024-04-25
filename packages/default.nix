@@ -49,6 +49,7 @@ in {
         anki-bin
         soundux
         ungoogled-chromium
+        obs-studio
 
         unstable.smile                          # Currently only available in unstable
         unstable.webex
