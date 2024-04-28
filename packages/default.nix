@@ -23,7 +23,7 @@ in {
 
         # ---------- Tools ---------- #
         python3
-        ghc
+        ghc hlint
         texliveFull
         openconnect
         nodejs
