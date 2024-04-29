@@ -17,66 +17,63 @@ in
   # List of packages installed in system scope
   # Packages can be found in https://search.nixos.org/packages
   # or with `nix search <package>`
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [ ]
 
     # ---------- Nix ---------- #
-    nil
-    nixpkgs-fmt
+    ++ [ nil nixpkgs-fmt ]
 
     # ---------- System ---------- #
-    wget
-    powertop
-
-    # ---------- Tools ---------- #
-    python3
-    ghc
-    texliveFull
-    openconnect
-    nodejs
-    bitwarden-cli # Install with `bw login`
-    ddcutil
+    ++ [ powertop ]
+    ++ [ wget ]
 
     # ---------- Gnome ---------- #
-    gnomeExtensions.clipboard-history
-    gnomeExtensions.noannoyance-fork
-    gnomeExtensions.smile-complementary-extension
-    gnomeExtensions.color-picker
-    gnomeExtensions.brightness-control-using-ddcutil
-    gnomeExtensions.executor
+    ++ [ gnomeExtensions.brightness-control-using-ddcutil ]
+    ++ [ gnomeExtensions.clipboard-history ]
+    ++ [ gnomeExtensions.color-picker ]
+    ++ [ gnomeExtensions.executor ]
+    ++ [ gnomeExtensions.noannoyance-fork ]
+    ++ [ gnomeExtensions.smile-complementary-extension ]
+
+    # ---------- Tools ---------- #
+    ++ [ bitwarden-cli ] # Install with `bw login`
+    ++ [ ddcutil ]
+    ++ [ openconnect ]
+    ++ [ texliveFull ]
+
+    # ---------- Languages ---------- #
+    ++ [ ghc hlint ]
+    ++ [ nodejs ]
+    ++ [ python3 ]
 
     # ---------- Programs ---------- #
-    spotify
-    pdfarranger
-    thunderbird
-    libreoffice
-    gimp
-    mpv
-    kicad
-    anki-bin
-    soundux
-    ungoogled-chromium
-    obs-studio
-    prusa-slicer
-    qemu
+    ++ [ anki-bin ]
+    ++ [ gimp darktable ]
+    ++ [ kicad ]
+    ++ [ libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
+    ++ [ mpv ]
+    ++ [ obs-studio ]
+    ++ [ pdfarranger ]
+    ++ [ prusa-slicer ]
+    ++ [ qemu quickemu virt-viewer ]
+    ++ [ soundux ]
+    ++ [ spotify ]
+    ++ [ thunderbird ]
+    ++ [ ungoogled-chromium ]
 
-    unstable.smile # Currently only available in unstable
-    unstable.webex
-    unstable.vscode
-    unstable.discord
-    unstable.wootility
+    ++ [ unstable.discord ]
+    ++ [ unstable.smile ] # Currently only available in unstable
+    ++ [ unstable.vscode ]
+    ++ [ unstable.webex ]
+    ++ [ unstable.wootility ]
 
     # ---------- Games ---------- #
     # see https://www.protondb.com/ for compatibility
-    unstable.prismlauncher
-    unstable.heroic
-    unstable.lutris
-    unstable.r2modman
-  ]
-  ++ [ hlint ] # ghc (Haskell linter)
-  ++ [ hunspell hunspellDicts.en_US hunspellDicts.de_DE ] # libreoffice (spell checking)
-  ++ [ darktable ] # gimp (extended image type support)
-  ++ [ quickemu virt-viewer ] # qemu (GUI for qemu)
-  ++ [ ];
+    ++ [ unstable.heroic ]
+    ++ [ unstable.lutris ]
+    ++ [ unstable.prismlauncher ]
+    ++ [ unstable.r2modman ]
+
+    ++ [ ];
 
   # Remove packages that are installed another way
   # see https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
