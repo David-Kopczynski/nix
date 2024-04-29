@@ -4,27 +4,27 @@ cd "$(dirname "$0")"
 
 echo "Generation of environment variables for NixOS setup:"
 
-# Skip if .env.nix already exists
-if [ -f .env.nix ]; then
-  echo ".env.nix already exists. Skipping generation of environment variables."
+# Skip if env.nix already exists
+if [ -f env.nix ]; then
+  echo "env.nix already exists. Skipping generation of environment variables."
 else
 
 # Get environment variables for NixOS setup
 read -p "Host: " host
 
-# Create .env.nix with all necessary environment variables
+# Create env.nix with all necessary environment variables
 echo "{ config, lib, ... }:
 
 {
-    options = with lib; with types; {
-        root = mkOption { type = str; };
-        host = mkOption { type = str; };
-    };
-    config = {
-        root = \"$PWD\";
-        host = \"$host\";
-    };
-}" > .env.nix
+  options = with lib; with types; {
+    root = mkOption { type = str; };
+    host = mkOption { type = str; };
+  };
+  config = {
+    root = \"$PWD\";
+    host = \"$host\";
+  };
+}" > env.nix
 
 # Softlink correct host configuration
 ln hosts/$host.nix hosts/default.nix
@@ -42,11 +42,11 @@ else
 
 # Generate configuration.nix with current location via pwd
 echo "{
-    imports = [
-        # Include the results of the hardware scan.
-        ./hardware-configuration.nix
-        $(pwd)
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    $(pwd)
+  ];
 }" > nixos/configuration.nix
 
 # Copy hardware-configuration into new location for further use and delete old config

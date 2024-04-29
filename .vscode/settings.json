@@ -1,12 +1,16 @@
 {
-    "editor.tabSize": 4,
-    "files.trimTrailingWhitespace": true,
-    "cSpell.words": [
-        "Bitwarden",
-        "fprintd",
-        "keyrings",
-        "konsave",
-        "Kopczynski",
-        "nixos"
-    ],
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+
+  "files.trimTrailingWhitespace": true,
+
+  "cSpell.words": [
+    "Bitwarden",
+    "fprintd",
+    "keyrings",
+    "konsave",
+    "Kopczynski",
+    "nixos"
+  ],
 }

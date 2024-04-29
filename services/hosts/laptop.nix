@@ -2,9 +2,7 @@
 
 lib.mkIf (config.host == "laptop") {
 
-    # Services started with possible configuration
-    # Options can be found in https://search.nixos.org/options
-    services = {
-
-    };
+  # Services started with possible configuration
+  # Options can be found in https://search.nixos.org/options
+  services = { };
 }
