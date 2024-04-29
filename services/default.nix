@@ -12,28 +12,52 @@
   services = {
 
     # ---------- System ---------- #
+
+    # { sort-start }
     openssh.enable = true;
     printing.enable = true;
+    # { sort-end }
 
     # ---------- Tools ---------- #
 
+    # { sort-start }
+    # { sort-end }
+
+    # ---------- Languages ---------- #
+
+    # { sort-start }
+    # { sort-end }
+
     # ---------- Programs ---------- #
+
+    # { sort-start }
     udev.packages = with pkgs; [ platformio-core openocd ];
+    # { sort-end }
 
     # ---------- Games ---------- #
+
+    # { sort-start }
+    # { sort-end }
   };
 
   virtualisation = {
 
     # ---------- Tools ---------- #
+
+    # { sort-start }
     docker.enable = true;
+    # { sort-end }
   };
 
   # Potential settings that have to be set on user level
   users.users.user = {
     extraGroups = [
+
+      # { sort-start }
       "dialout" # Serial port access with PlatformIO
       "docker" # Docker access
+      # { sort-end }
+
     ];
   };
 }

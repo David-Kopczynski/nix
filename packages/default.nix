@@ -112,8 +112,12 @@ in
   # Potential settings that have to be set on user level
   users.users.user = {
     extraGroups = [
+
+      # { sort-start }
       "i2c" # I2C access (for ddcutil)
       "input" # Access to input devices with Wootility
+      # { sort-end }
+
     ];
   };
 }

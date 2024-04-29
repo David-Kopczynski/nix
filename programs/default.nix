@@ -6,24 +6,37 @@
   programs = {
 
     # ---------- System ---------- #
-    git.enable = true;
+
+    # { sort-start }
+    # { sort-end }
 
     # ---------- Tools ---------- #
+
+    # { sort-start }
+    git.enable = true;
+    # { sort-end }
+
+    # ---------- Languages ---------- #
+
+    # { sort-start }
     npm.enable = true;
+    # { sort-end }
 
     # ---------- Programs ---------- #
-    ausweisapp = {
-      enable = true;
-      openFirewall = true;
-    };
+
+    # { sort-start }
+    ausweisapp.enable = true;
+    ausweisapp.openFirewall = true;
     firefox.enable = true;
     noisetorch.enable = true;
+    # { sort-end }
 
     # ---------- Games ---------- #
-    steam = {
-      enable = true;
-      dedicatedServer.openFirewall = true;
-      remotePlay.openFirewall = true;
-    };
+
+    # { sort-start }
+    steam.dedicatedServer.openFirewall = true;
+    steam.enable = true;
+    steam.remotePlay.openFirewall = true;
+    # { sort-end }
   };
 }
