@@ -8,8 +8,8 @@
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
-  hardware.wooting.enable = true;
   hardware.i2c.enable = true;
+  hardware.wooting.enable = true;
 
   # Graphic card drivers
   hardware.opengl = {

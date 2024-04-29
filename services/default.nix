@@ -18,10 +18,7 @@
     # ---------- Tools ---------- #
 
     # ---------- Programs ---------- #
-    udev.packages = with pkgs; [
-      platformio-core
-      openocd
-    ];
+    udev.packages = with pkgs; [ platformio-core openocd ];
 
     # ---------- Games ---------- #
   };

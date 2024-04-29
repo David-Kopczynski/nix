@@ -80,19 +80,19 @@ in
   environment.gnome.excludePackages = with pkgs.gnome; [
     pkgs.gnome-tour # tour of GNOME
 
-    yelp # help browser
     epiphany # web browser
-    pkgs.gnome-text-editor # text editor
-    gnome-characters # character browser
     geary # email client
+    gnome-characters # character browser
+    pkgs.gnome-text-editor # text editor
     totem # video player
+    yelp # help browser
   ];
 
   # Potential settings that have to be set on user level
   users.users.user = {
     extraGroups = [
-      "input" # Access to input devices with Wootility
       "i2c" # I2C access (for ddcutil)
+      "input" # Access to input devices with Wootility
     ];
   };
 }

@@ -12,18 +12,18 @@
     npm.enable = true;
 
     # ---------- Programs ---------- #
-    firefox.enable = true;
     ausweisapp = {
       enable = true;
       openFirewall = true;
     };
+    firefox.enable = true;
     noisetorch.enable = true;
 
     # ---------- Games ---------- #
     steam = {
       enable = true;
-      remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
+      remotePlay.openFirewall = true;
     };
   };
 }
