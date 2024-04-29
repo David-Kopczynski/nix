@@ -20,32 +20,49 @@ in
   environment.systemPackages = with pkgs; [ ]
 
     # ---------- Nix ---------- #
+
+    # { sort-start }
     ++ [ nil nixpkgs-fmt ]
+    # { sort-end }
 
     # ---------- System ---------- #
+
+    # { sort-start }
     ++ [ powertop ]
     ++ [ wget ]
+    # { sort-end }
 
     # ---------- Gnome ---------- #
+
+    # { sort-start }
     ++ [ gnomeExtensions.brightness-control-using-ddcutil ]
     ++ [ gnomeExtensions.clipboard-history ]
     ++ [ gnomeExtensions.color-picker ]
     ++ [ gnomeExtensions.executor ]
     ++ [ gnomeExtensions.noannoyance-fork ]
     ++ [ gnomeExtensions.smile-complementary-extension ]
+    # { sort-end }
 
     # ---------- Tools ---------- #
+
+    # { sort-start }
     ++ [ bitwarden-cli ] # Install with `bw login`
     ++ [ ddcutil ]
     ++ [ openconnect ]
     ++ [ texliveFull ]
+    # { sort-end }
 
     # ---------- Languages ---------- #
+
+    # { sort-start }
     ++ [ ghc hlint ]
     ++ [ nodejs ]
     ++ [ python3 ]
+    # { sort-end }
 
     # ---------- Programs ---------- #
+
+    # { sort-start }
     ++ [ anki-bin ]
     ++ [ gimp darktable ]
     ++ [ kicad ]
@@ -65,13 +82,17 @@ in
     ++ [ unstable.vscode ]
     ++ [ unstable.webex ]
     ++ [ unstable.wootility ]
+    # { sort-end }
 
     # ---------- Games ---------- #
     # see https://www.protondb.com/ for compatibility
+
+    # { sort-start }
     ++ [ unstable.heroic ]
     ++ [ unstable.lutris ]
     ++ [ unstable.prismlauncher ]
     ++ [ unstable.r2modman ]
+    # { sort-end }
 
     ++ [ ];
 
