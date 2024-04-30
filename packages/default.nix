@@ -35,19 +35,18 @@ in
     # ---------- Gnome ---------- #
 
     # { sort-start }
-    ++ [ gnomeExtensions.brightness-control-using-ddcutil ]
+    ++ [ gnomeExtensions.brightness-control-using-ddcutil ddcutil ]
     ++ [ gnomeExtensions.clipboard-history ]
     ++ [ gnomeExtensions.color-picker ]
     ++ [ gnomeExtensions.executor ]
     ++ [ gnomeExtensions.noannoyance-fork ]
-    ++ [ gnomeExtensions.smile-complementary-extension ]
+    ++ [ gnomeExtensions.smile-complementary-extension unstable.smile ] # Currently only available in unstable
     # { sort-end }
 
     # ---------- Tools ---------- #
 
     # { sort-start }
     ++ [ bitwarden-cli ] # Install with `bw login`
-    ++ [ ddcutil ]
     ++ [ openconnect ]
     ++ [ texliveFull ]
     # { sort-end }
@@ -78,7 +77,6 @@ in
     ++ [ ungoogled-chromium ]
 
     ++ [ unstable.discord ]
-    ++ [ unstable.smile ] # Currently only available in unstable
     ++ [ unstable.vscode ]
     ++ [ unstable.webex ]
     ++ [ unstable.wootility ]
