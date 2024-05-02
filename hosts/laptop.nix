@@ -6,6 +6,13 @@
     "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/framework/13-inch/13th-gen-intel"
   ];
 
+  # Wayland support
+  services.xserver.displayManager.gdm.wayland = true;
+  environment.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland"; # keepassxc / QT apps will use xwayland by default - override
+    NIXOS_OZONE_WL = "1"; # Ensure Electron / "Ozone platform" apps enable using wayland in NixOS
+  };
+
   # Enable bluetooth
   hardware.bluetooth.enable = true;
   hardware.i2c.enable = true;
