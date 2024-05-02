@@ -72,6 +72,7 @@ in
     ++ [ vscode ]
     ++ [ webex ]
     ++ [ wootility ]
+    ++ [ freecad ]
     # { sort-end }
 
     # ---------- Games ---------- #
