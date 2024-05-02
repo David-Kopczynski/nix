@@ -11,16 +11,11 @@
   # Options can be found in https://search.nixos.org/options
   services = {
 
-    # ---------- System ---------- #
+    # ---------- Tools ---------- #
 
     # { sort-start }
     openssh.enable = true;
     printing.enable = true;
-    # { sort-end }
-
-    # ---------- Tools ---------- #
-
-    # { sort-start }
     # { sort-end }
 
     # ---------- Languages ---------- #

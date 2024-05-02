@@ -25,13 +25,6 @@ in
     ++ [ nil nixpkgs-fmt ]
     # { sort-end }
 
-    # ---------- System ---------- #
-
-    # { sort-start }
-    ++ [ powertop ]
-    ++ [ wget ]
-    # { sort-end }
-
     # ---------- Gnome ---------- #
 
     # { sort-start }

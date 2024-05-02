@@ -5,11 +5,6 @@
   # Options can be found in https://search.nixos.org/options
   programs = {
 
-    # ---------- System ---------- #
-
-    # { sort-start }
-    # { sort-end }
-
     # ---------- Tools ---------- #
 
     # { sort-start }
