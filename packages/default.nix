@@ -56,6 +56,7 @@ in
 
     # { sort-start }
     ++ [ anki-bin ]
+    ++ [ discord ]
     ++ [ gimp darktable ]
     ++ [ kicad ]
     ++ [ libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
@@ -68,11 +69,9 @@ in
     ++ [ spotify ]
     ++ [ thunderbird ]
     ++ [ ungoogled-chromium ]
-
-    ++ [ unstable.discord ]
-    ++ [ unstable.vscode ]
-    ++ [ unstable.webex ]
-    ++ [ unstable.wootility ]
+    ++ [ vscode ]
+    ++ [ webex ]
+    ++ [ wootility ]
     # { sort-end }
 
     # ---------- Games ---------- #
