@@ -27,7 +27,7 @@ echo "{ config, lib, ... }:
 }" > env.nix
 
 # Softlink correct host configuration
-ln hosts/$host.nix hosts/default.nix
+ln -s $host.nix hosts/default.nix
 
 fi
 
