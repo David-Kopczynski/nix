@@ -8,16 +8,8 @@ pkgs.writeShellScriptBin "please" ''
   # pull data from user and Nix repository
   # and apply various configuration synchronizations
   echo "staging user..."
+
   dconf dump / > ~/.config/dconf/user.txt
-
-  # cleanup dconf from host related settings
-  # select all lines that do not start with "[" (section header)
-  # and remove all that are host related
-  sed -i '/^[^\[]*\b\(window\|width\|height\|size\|maximized\|panel\|last-\|active-\|selected\|history\)\b/d' ~/.config/dconf/user.txt
-
-  # cleanup dconf from settings that have no configuration
-  sed -i '/^\[.*\]$/{N;/\n$/d}' ~/.config/dconf/user.txt
-
   git -C ~ add .
 
   if git -C ~ diff --quiet --staged; then
