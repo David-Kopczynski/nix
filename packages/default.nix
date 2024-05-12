@@ -58,7 +58,6 @@ in
     ++ [ soundux ]
     ++ [ unstable.anki-bin ]
     ++ [ unstable.discord ]
-    ++ [ unstable.freecad ]
     ++ [ unstable.gimp unstable.darktable ]
     ++ [ unstable.kicad ]
     ++ [ unstable.libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
