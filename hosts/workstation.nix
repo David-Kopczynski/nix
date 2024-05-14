@@ -13,6 +13,7 @@
 
   # Hardware supported
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   hardware.i2c.enable = true;
   hardware.wooting.enable = true;
 
