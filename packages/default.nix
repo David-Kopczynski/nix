@@ -29,7 +29,6 @@ in
 
     # { sort-start }
     ++ [ gnomeExtensions.brightness-control-using-ddcutil ddcutil ]
-    ++ [ gnomeExtensions.clipboard-history ]
     ++ [ gnomeExtensions.color-picker ]
     ++ [ gnomeExtensions.executor ]
     ++ [ gnomeExtensions.legacy-gtk3-theme-scheme-auto-switcher ]
