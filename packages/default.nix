@@ -32,6 +32,7 @@ in
     ++ [ gnomeExtensions.clipboard-history ]
     ++ [ gnomeExtensions.color-picker ]
     ++ [ gnomeExtensions.executor ]
+    ++ [ gnomeExtensions.legacy-gtk3-theme-scheme-auto-switcher ]
     ++ [ gnomeExtensions.noannoyance-fork ]
     ++ [ gnomeExtensions.smile-complementary-extension unstable.smile ] # Currently only available in unstable
     # { sort-end }
