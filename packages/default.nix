@@ -39,8 +39,7 @@ in
     # ---------- Tools ---------- #
 
     # { sort-start }
-    ++ [ bitwarden-cli ] # Install with `bw login --apikey`
-    ++ [ libsecret ]
+    ++ [ bitwarden-cli libsecret ] # Install with `bw login --apikey`
     ++ [ openconnect ]
     ++ [ texliveFull ]
     # { sort-end }
