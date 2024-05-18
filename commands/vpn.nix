@@ -8,7 +8,10 @@ pkgs.writeShellScriptBin "vpn" ''
     echo "logging in to bitwarden..."
     session="$(secret-tool lookup bw_session bw_session_key)"
 
-    if [ -z "$session" ]; then
+    # Check if session is still valid
+    unlocked=$(bw status --session $session | grep "unlocked")
+
+    if [ -z "$unlocked" ]; then
       session=$(bw unlock --raw)
       echo "$session" | secret-tool store --label='Bitwarden' bw_session bw_session_key
     else
