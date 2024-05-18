@@ -40,6 +40,7 @@ in
 
     # { sort-start }
     ++ [ bitwarden-cli ] # Install with `bw login`
+    ++ [ libsecret ]
     ++ [ openconnect ]
     ++ [ texliveFull ]
     # { sort-end }

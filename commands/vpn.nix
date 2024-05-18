@@ -6,19 +6,19 @@ pkgs.writeShellScriptBin "vpn" ''
   # Check if rwth or i11 correclty provided
   if [ "$1" = "rwth" ] || [ "$1" = "i11" ]; then
     echo "logging in to bitwarden..."
-    source ~/.bashrc >/dev/null 2>&1
+    session="$(secret-tool lookup bw_session bw_session_key)"
 
-    if [ -z "$BW_SESSION" ]; then
-      echo "export BW_SESSION=$(bw unlock --raw)" >> ~/.bashrc
-      source ~/.bashrc
+    if [ -z "$session" ]; then
+      session=$(bw unlock --raw)
+      echo "$session" | secret-tool store --label='Bitwarden' bw_session bw_session_key
     else
       echo "Already logged in."
     fi
   fi
 
   # Get password and totp from bitwarden
-  password=$(bw get password e5d3a9af-974a-4781-8a8c-ada7009d2a7f)
-  totp=$(bw get totp e5d3a9af-974a-4781-8a8c-ada7009d2a7f)
+  password=$(bw get password e5d3a9af-974a-4781-8a8c-ada7009d2a7f --session $session)
+  totp=$(bw get totp e5d3a9af-974a-4781-8a8c-ada7009d2a7f --session $session)
 
   # ---------- rwth ---------- #
   if [ "$1" = "rwth" ]; then
