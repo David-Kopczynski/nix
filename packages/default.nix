@@ -59,6 +59,7 @@ in
     ++ [ unstable.anki-bin ]
     ++ [ unstable.blender ]
     ++ [ unstable.discord ]
+    ++ [ unstable.freecad ]
     ++ [ unstable.gimp unstable.darktable ]
     ++ [ unstable.godot_4 ]
     ++ [ unstable.kicad ]
