@@ -57,6 +57,7 @@ in
     # { sort-start }
     ++ [ soundux ]
     ++ [ unstable.anki-bin ]
+    ++ [ unstable.blender ]
     ++ [ unstable.discord ]
     ++ [ unstable.gimp unstable.darktable ]
     ++ [ unstable.godot_4 ]
