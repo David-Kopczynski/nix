@@ -59,6 +59,7 @@ in
     ++ [ unstable.anki-bin ]
     ++ [ unstable.discord ]
     ++ [ unstable.gimp unstable.darktable ]
+    ++ [ unstable.godot_4 ]
     ++ [ unstable.kicad ]
     ++ [ unstable.libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
     ++ [ unstable.mpv ]
