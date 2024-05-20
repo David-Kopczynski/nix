@@ -67,6 +67,7 @@ in
     ++ [ unstable.mpv ]
     ++ [ unstable.obs-studio ]
     ++ [ unstable.pdfarranger ]
+    ++ [ unstable.postman ]
     ++ [ unstable.prusa-slicer ]
     ++ [ unstable.qemu unstable.quickemu unstable.virt-viewer ]
     ++ [ unstable.spotify ]
