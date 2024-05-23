@@ -28,6 +28,7 @@ in
     # ---------- Gnome ---------- #
 
     # { sort-start }
+    #++ [ gnomeExtensions.cloudflare-warp-toggle cloudflare-warp ] # Install with `warp-cli register`
     ++ [ gnomeExtensions.brightness-control-using-ddcutil ddcutil ]
     ++ [ gnomeExtensions.color-picker ]
     ++ [ gnomeExtensions.executor ]
@@ -65,7 +66,6 @@ in
     ++ [ unstable.kicad ]
     ++ [ unstable.libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
     ++ [ unstable.mpv ]
-    ++ [ unstable.nextcloud-client ]
     ++ [ unstable.obs-studio ]
     ++ [ unstable.pdfarranger ]
     ++ [ unstable.postman ]
@@ -115,4 +115,9 @@ in
 
     ];
   };
+
+  # Add required setup for cloudflare-warp to work
+  ## https://github.com/NixOS/nixpkgs/issues/213177
+  #systemd.packages = [ pkgs.cloudflare-warp ];
+  #systemd.targets.multi-user.wants = [ "warp-svc.service" ];
 }
