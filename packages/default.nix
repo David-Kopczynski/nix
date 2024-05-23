@@ -65,6 +65,7 @@ in
     ++ [ unstable.kicad ]
     ++ [ unstable.libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
     ++ [ unstable.mpv ]
+    ++ [ unstable.nextcloud-client ]
     ++ [ unstable.obs-studio ]
     ++ [ unstable.pdfarranger ]
     ++ [ unstable.postman ]
