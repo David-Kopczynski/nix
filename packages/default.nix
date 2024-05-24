@@ -59,6 +59,7 @@ in
     ++ [ soundux ]
     ++ [ unstable.anki-bin ]
     ++ [ unstable.blender ]
+    ++ [ unstable.cloudflared ]
     ++ [ unstable.discord ]
     ++ [ unstable.freecad ]
     ++ [ unstable.gimp unstable.darktable ]
