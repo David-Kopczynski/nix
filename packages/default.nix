@@ -41,6 +41,7 @@ in
 
     # { sort-start }
     ++ [ bitwarden-cli libsecret ] # Install with `bw login --apikey`
+    ++ [ btop ]
     ++ [ openconnect ]
     ++ [ texliveFull ]
     # { sort-end }
