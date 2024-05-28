@@ -9,7 +9,6 @@
 
     # { sort-start }
     git.enable = true;
-    neovim.enable = true;
     # { sort-end }
 
     # ---------- Languages ---------- #
