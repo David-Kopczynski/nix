@@ -80,6 +80,7 @@ in
     ++ [ unstable.vscode ]
     ++ [ unstable.webex ]
     ++ [ unstable.wootility ]
+    ++ [ unstable.zoom-us ]
     # { sort-end }
 
     # ---------- Games ---------- #
