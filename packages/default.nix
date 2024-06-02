@@ -66,6 +66,7 @@ in
     ++ [ unstable.gh unstable.gh-copilot ] # Install with `gh auth login`
     ++ [ unstable.gimp unstable.darktable ]
     ++ [ unstable.godot_4 ]
+    ++ [ unstable.inkscape ]
     ++ [ unstable.kicad ]
     ++ [ unstable.libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
     ++ [ unstable.mpv ]
