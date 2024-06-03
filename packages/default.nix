@@ -57,7 +57,6 @@ in
     # ---------- Programs ---------- #
 
     # { sort-start }
-    ++ [ soundux ]
     ++ [ unstable.anki-bin ]
     ++ [ unstable.blender ]
     ++ [ unstable.cloudflared ]
