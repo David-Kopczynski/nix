@@ -31,9 +31,9 @@ in
     ++ [ gnomeExtensions.brightness-control-using-ddcutil ddcutil ]
     ++ [ gnomeExtensions.color-picker ]
     ++ [ gnomeExtensions.executor ]
-    ++ [ gnomeExtensions.legacy-gtk3-theme-scheme-auto-switcher ]
-    ++ [ gnomeExtensions.noannoyance-fork ]
-    ++ [ gnomeExtensions.smile-complementary-extension unstable.smile ] # Currently only available in unstable
+    ++ [ gnomeExtensions.just-perfection ]
+    ++ [ gnomeExtensions.smile-complementary-extension smile ]
+    ++ [ gnomeExtensions.user-themes-x ]
     # { sort-end }
 
     # ---------- Tools ---------- #
