@@ -7,31 +7,31 @@
 
     # ---------- Tools ---------- #
 
-    # { sort-start }
     git.enable = true;
-    # { sort-end }
 
     # ---------- Languages ---------- #
 
-    # { sort-start }
     npm.enable = true;
-    # { sort-end }
 
     # ---------- Programs ---------- #
 
-    # { sort-start }
     ausweisapp.enable = true;
     ausweisapp.openFirewall = true;
+    chromium.enable = true;
+    chromium.extraOpts = {
+      "BrowserSignin" = 0;
+      "SyncDisabled" = true;
+      "PasswordManagerEnabled" = false;
+      "SpellcheckEnabled" = true;
+      "SpellcheckLanguage" = [ "de" "en-US" ];
+    };
     firefox.enable = true;
     noisetorch.enable = true;
-    # { sort-end }
 
     # ---------- Games ---------- #
 
-    # { sort-start }
     steam.dedicatedServer.openFirewall = true;
     steam.enable = true;
     steam.remotePlay.openFirewall = true;
-    # { sort-end }
   };
 }

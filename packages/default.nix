@@ -58,6 +58,7 @@ in
     # { sort-start }
     ++ [ unstable.anki-bin ]
     ++ [ unstable.blender ]
+    ++ [ unstable.chromium ]
     ++ [ unstable.cloudflared ]
     ++ [ unstable.f3d ]
     ++ [ unstable.freecad ]
@@ -75,7 +76,6 @@ in
     ++ [ unstable.qemu unstable.quickemu unstable.virt-viewer ]
     ++ [ unstable.spotify ]
     ++ [ unstable.thunderbird ]
-    ++ [ unstable.ungoogled-chromium ]
     ++ [ unstable.vscode ]
     ++ [ unstable.webex ]
     ++ [ unstable.wootility ]
@@ -110,12 +110,8 @@ in
   # Potential settings that have to be set on user level
   users.users.user = {
     extraGroups = [
-
-      # { sort-start }
       "i2c" # I2C access (for ddcutil)
       "input" # Access to input devices with Wootility
-      # { sort-end }
-
     ];
   };
 }
