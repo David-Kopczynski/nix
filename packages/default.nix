@@ -59,7 +59,6 @@ in
     ++ [ unstable.anki-bin ]
     ++ [ unstable.blender ]
     ++ [ unstable.cloudflared ]
-    ++ [ unstable.discord ]
     ++ [ unstable.f3d ]
     ++ [ unstable.freecad ]
     ++ [ unstable.gh unstable.gh-copilot ] # Install with `gh auth login`
