@@ -66,7 +66,7 @@ in
     ++ [ unstable.gimp unstable.darktable ]
     ++ [ unstable.godot_4 ]
     ++ [ unstable.inkscape ]
-    ++ [ unstable.kicad ]
+    ++ [ unstable.kicad-small ]
     ++ [ unstable.libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
     ++ [ unstable.mpv ]
     ++ [ unstable.obs-studio ]
