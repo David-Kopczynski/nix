@@ -41,6 +41,7 @@ in
     # { sort-start }
     ++ [ bitwarden-cli libsecret ] # Install with `bw login --apikey`
     ++ [ btop ]
+    ++ [ cloudflared ]
     ++ [ openconnect ]
     ++ [ texliveFull ]
     # { sort-end }
@@ -59,7 +60,6 @@ in
     ++ [ unstable.anki-bin ]
     ++ [ unstable.blender ]
     ++ [ unstable.chromium ]
-    ++ [ unstable.cloudflared ]
     ++ [ unstable.f3d ]
     ++ [ unstable.freecad ]
     ++ [ unstable.gh unstable.gh-copilot ] # Install with `gh auth login`
