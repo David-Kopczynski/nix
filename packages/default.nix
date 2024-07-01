@@ -42,6 +42,7 @@ in
     ++ [ bitwarden-cli libsecret ] # Install with `bw login --apikey`
     ++ [ btop ]
     ++ [ cloudflared ]
+    ++ [ kubectl minikube ]
     ++ [ openconnect ]
     ++ [ texliveFull ]
     # { sort-end }
