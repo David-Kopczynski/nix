@@ -58,16 +58,19 @@ in
     # ---------- Programs ---------- #
 
     # { sort-start }
+    ++ [ freecad ]
+    ++ [ kicad-small ]
+    # { sort-end }
+
+    # { sort-start }
     ++ [ unstable.anki-bin ]
     ++ [ unstable.blender ]
     ++ [ unstable.chromium ]
     ++ [ unstable.f3d ]
-    ++ [ unstable.freecad ]
     ++ [ unstable.gh unstable.gh-copilot ] # Install with `gh auth login`
     ++ [ unstable.gimp unstable.darktable ]
     ++ [ unstable.godot_4 ]
     ++ [ unstable.inkscape ]
-    ++ [ unstable.kicad-small ]
     ++ [ unstable.libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
     ++ [ unstable.mpv ]
     ++ [ unstable.obs-studio ]
@@ -75,6 +78,7 @@ in
     ++ [ unstable.postman ]
     ++ [ unstable.prusa-slicer ]
     ++ [ unstable.qemu unstable.quickemu unstable.virt-viewer ]
+    ++ [ unstable.shotcut ]
     ++ [ unstable.spotify ]
     ++ [ unstable.thunderbird ]
     ++ [ unstable.vscode ]
