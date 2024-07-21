@@ -39,7 +39,7 @@ in
     # ---------- Tools ---------- #
 
     # { sort-start }
-    ++ [ ansible ]
+    ++ [ ansible ansible-lint ]
     ++ [ bitwarden-cli libsecret ] # Install with `bw login --apikey`
     ++ [ btop ]
     ++ [ cloudflared ]
