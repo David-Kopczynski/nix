@@ -54,7 +54,7 @@ in
     ++ [ ghc hlint ]
     ++ [ nodejs ]
     ++ [ python3 ]
-    ++ [ rustup ]
+    ++ [ rustup gcc ]
     # { sort-end }
 
     # ---------- Programs ---------- #
