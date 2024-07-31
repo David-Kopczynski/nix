@@ -6,16 +6,12 @@
     "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/framework/13-inch/13th-gen-intel"
   ];
 
-  # Wayland support
-  environment.sessionVariables = {
-    QT_QPA_PLATFORM = "wayland"; # keepassxc / QT apps will use xwayland by default - override
-    NIXOS_OZONE_WL = "1"; # Ensure Electron / "Ozone platform" apps enable using wayland in NixOS
-  };
-
   # Disable fingerprint for login
   # This prevents a race condition with some gnome related services
   # This also prevents the keyring from asking the password anyways
   security.pam.services.login.fprintAuth = false;
+
+  services.xserver.displayManager.gdm.wayland = false;
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;

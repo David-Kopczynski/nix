@@ -15,6 +15,7 @@
 
     openssh.enable = true;
     printing.enable = true;
+    touchegg.enable = true;
 
     # ---------- Languages ---------- #
 

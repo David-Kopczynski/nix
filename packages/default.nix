@@ -34,6 +34,7 @@ in
     ++ [ gnomeExtensions.just-perfection ]
     ++ [ gnomeExtensions.smile-complementary-extension smile ]
     ++ [ gnomeExtensions.user-themes-x ]
+    ++ [ gnomeExtensions.x11-gestures ]
     # { sort-end }
 
     # ---------- Tools ---------- #
@@ -70,7 +71,7 @@ in
     ++ [ unstable.chromium ]
     ++ [ unstable.f3d ]
     ++ [ unstable.gh unstable.gh-copilot ] # Install with `gh auth login`
-    ++ [ unstable.gimp unstable.darktable ]
+    ++ [ unstable.gimp darktable ]
     ++ [ unstable.godot_4 ]
     ++ [ unstable.inkscape ]
     ++ [ unstable.libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
