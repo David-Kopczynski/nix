@@ -5,7 +5,7 @@ pkgs.writeShellScriptBin "vpn" ''
   # Login to bitwarden for credentials if not already logged in
   # Check if rwth or i11 correclty provided
   if [ "$1" = "rwth" ] || [ "$1" = "i11" ]; then
-    echo "logging in to bitwarden..."
+    sudo echo "logging in to bitwarden..."
     session="$(secret-tool lookup bw_session bw_session_key)"
 
     # Check if session is still valid
@@ -31,7 +31,7 @@ pkgs.writeShellScriptBin "vpn" ''
   # ---------- i11 ---------- #
   elif [ "$1" = "i11" ]; then
 
-  echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.i11.rwth-aachen.de --authgroup 'i11-praktikum-VPN(Split-Tunnel)' --user hg066732 --no-external-auth
+  echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de --authgroup 'i11-praktikum-VPN(Split-Tunnel)' --user hg066732 --no-external-auth
 
   # ---------- help ---------- #
   else
