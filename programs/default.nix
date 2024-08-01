@@ -26,7 +26,6 @@
       "SpellcheckLanguage" = [ "de" "en-US" ];
     };
     firefox.enable = true;
-    noisetorch.enable = true;
 
     # ---------- Games ---------- #
 
