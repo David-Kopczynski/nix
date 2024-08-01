@@ -5,6 +5,12 @@
   # Options can be found in https://search.nixos.org/options
   programs = {
 
+    # ---------- Gnome ---------- #
+    kdeconnect = {
+      enable = true;
+      package = pkgs.gnomeExtensions.gsconnect;
+    };
+
     # ---------- Tools ---------- #
 
     git.enable = true;
@@ -22,12 +28,12 @@
     chromium = {
       enable = true;
       extraOpts = {
-      "BrowserSignin" = 0;
-      "SyncDisabled" = true;
-      "PasswordManagerEnabled" = false;
-      "SpellcheckEnabled" = true;
-      "SpellcheckLanguage" = [ "de" "en-US" ];
-    };
+        "BrowserSignin" = 0;
+        "SyncDisabled" = true;
+        "PasswordManagerEnabled" = false;
+        "SpellcheckEnabled" = true;
+        "SpellcheckLanguage" = [ "de" "en-US" ];
+      };
     };
     firefox = {
       enable = true;
