@@ -15,17 +15,23 @@
 
     # ---------- Programs ---------- #
 
-    ausweisapp.enable = true;
-    ausweisapp.openFirewall = true;
-    chromium.enable = true;
-    chromium.extraOpts = {
+    ausweisapp = {
+      enable = true;
+      openFirewall = true;
+    };
+    chromium = {
+      enable = true;
+      extraOpts = {
       "BrowserSignin" = 0;
       "SyncDisabled" = true;
       "PasswordManagerEnabled" = false;
       "SpellcheckEnabled" = true;
       "SpellcheckLanguage" = [ "de" "en-US" ];
     };
-    firefox.enable = true;
+    };
+    firefox = {
+      enable = true;
+    };
 
     # ---------- Games ---------- #
 
