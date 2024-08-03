@@ -70,6 +70,39 @@ pkgs.writeShellScriptBin "please" ''
     git -C ${config.root} push
   fi
 
+  # ---------- reset ---------- #
+  elif [ "$1" = "reset" ]; then
+
+  # reset all changes in user and Nix repository
+  if git -C ~ diff --quiet --staged; then
+    switch="yes"
+  else
+    echo "Changes in user repository:"
+    echo $(git -C ~ status -s)
+    echo "Reset user? (yes/no)"
+    read switch
+  fi
+
+  if [ "$switch" = "yes" ] || [ "$switch" = "y" ] || [ "$switch" = "" ]; then
+    echo "resetting user..."
+    git -C ~ reset --hard
+    dconf load / < ~/.config/dconf/user.txt
+  fi
+
+  if git -C ${config.root} diff --quiet; then
+    switch="yes"
+  else
+    echo "Changes in Nix repository:"
+    echo $(git -C ${config.root} status -s)
+    echo "Reset Nix? (yes/no)"
+    read switch
+  fi
+
+  if [ "$switch" = "yes" ] || [ "$switch" = "y" ] || [ "$switch" = "" ]; then
+    echo "resetting Nix..."
+    git -C ${config.root} reset --hard
+  fi
+
   # ---------- test ---------- #
   elif [ "$1" = "test" ]; then
 
@@ -104,6 +137,7 @@ pkgs.writeShellScriptBin "please" ''
   echo "command not found"
   echo "possible commands are:"
   echo "  sync     <- sync data from user and Nix repository"
+  echo "  reset    <- reset NixOS to the last state"
   echo "  test     <- test if configuration is valid"
   echo "  switch   <- build NixOS and switch to it"
   echo "  clean    <- clean up Nix and old generations"
