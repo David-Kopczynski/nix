@@ -44,6 +44,7 @@ in
     ++ [ bitwarden-cli libsecret ] # Install with `bw login --apikey`
     ++ [ btop ]
     ++ [ cloudflared ]
+    ++ [ gh gh-copilot ] # Install with `gh auth login`
     ++ [ kubectl minikube ]
     ++ [ openconnect ]
     ++ [ texliveFull ]
@@ -61,32 +62,31 @@ in
     # ---------- Programs ---------- #
 
     # { sort-start }
+    ++ [ anki-bin ]
+    ++ [ blender ]
+    ++ [ chromium ]
+    ++ [ f3d ]
     ++ [ freecad ]
+    ++ [ gimp darktable ]
+    ++ [ godot_4 ]
+    ++ [ inkscape ]
     ++ [ kicad-small ]
+    ++ [ libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
+    ++ [ libsForQt5.kdenlive ]
+    ++ [ mpv ]
+    ++ [ obs-studio ]
+    ++ [ postman ]
+    ++ [ qemu quickemu virt-viewer ]
+    ++ [ spotify ]
+    ++ [ thunderbird ]
+    ++ [ webex ]
+    ++ [ zoom-us ]
     # { sort-end }
 
     # { sort-start }
-    ++ [ unstable.anki-bin ]
-    ++ [ unstable.blender ]
-    ++ [ unstable.chromium ]
-    ++ [ unstable.f3d ]
-    ++ [ unstable.gh unstable.gh-copilot ] # Install with `gh auth login`
-    ++ [ unstable.gimp darktable ]
-    ++ [ unstable.godot_4 ]
-    ++ [ unstable.inkscape ]
-    ++ [ unstable.libreoffice hunspell hunspellDicts.en_US hunspellDicts.de_DE ]
-    ++ [ unstable.libsForQt5.kdenlive ]
-    ++ [ unstable.mpv ]
-    ++ [ unstable.obs-studio ]
-    ++ [ unstable.postman ]
     ++ [ unstable.prusa-slicer ]
-    ++ [ unstable.qemu unstable.quickemu unstable.virt-viewer ]
-    ++ [ unstable.spotify ]
-    ++ [ unstable.thunderbird ]
     ++ [ unstable.vscode ]
-    ++ [ unstable.webex ]
     ++ [ unstable.wootility ]
-    ++ [ unstable.zoom-us ]
     # { sort-end }
 
     # ---------- Games ---------- #
