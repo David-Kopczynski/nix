@@ -27,10 +27,13 @@
   };
 
   virtualisation = {
+
     # ---------- Tools ---------- #
 
-    docker.enable = true;
-    docker.liveRestore = false;
+    docker = {
+      enable = true;
+      liveRestore = false;
+    };
   };
 
   # Potential settings that have to be set on user level

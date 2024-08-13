@@ -41,8 +41,10 @@
 
     # ---------- Games ---------- #
 
-    steam.dedicatedServer.openFirewall = true;
-    steam.enable = true;
-    steam.remotePlay.openFirewall = true;
+    steam = {
+      enable = true;
+      dedicatedServer.openFirewall = true;
+      remotePlay.openFirewall = true;
+    };
   };
 }
