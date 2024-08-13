@@ -34,6 +34,8 @@
       enable = true;
       liveRestore = false;
     };
+
+    spiceUSBRedirection.enable = true;
   };
 
   # Potential settings that have to be set on user level
