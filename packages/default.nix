@@ -56,7 +56,7 @@ in
     ++ [ ghc hlint ]
     ++ [ nodejs ]
     ++ [ python3 ]
-    ++ [ rustup gcc ]
+    ++ [ rustc cargo gcc rustfmt clippy ]
     # { sort-end }
 
     # ---------- Programs ---------- #
@@ -100,6 +100,13 @@ in
     # { sort-end }
 
     ++ [ ];
+
+  environment.variables = {
+
+    # Rust tool setup with NixOS
+    # See: https://nixos.wiki/wiki/Rust
+    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+  };
 
   # Remove packages that are installed another way
   # see https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
