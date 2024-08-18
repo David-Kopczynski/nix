@@ -48,6 +48,7 @@ in
     ++ [ kubectl minikube ]
     ++ [ openconnect ]
     ++ [ texliveFull ]
+    ++ [ tldr ]
     # { sort-end }
 
     # ---------- Languages ---------- #
