@@ -70,9 +70,6 @@ pkgs.writeShellScriptBin "please" ''
     git -C ${config.root} push
   fi
 
-  echo "cleaning old images..."
-  please clean
-
   # ---------- reset ---------- #
   elif [ "$1" = "reset" ]; then
 
@@ -116,12 +113,11 @@ pkgs.writeShellScriptBin "please" ''
   # ---------- switch ---------- #
   elif [ "$1" = "switch" ]; then
 
-  # limit the number of generations to 10 (-1 as the current generation is not counted)
-  # remove all except the last 9 lines from --list-generations and feed them into --delete-generations
-  delete_gen=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | head -n -9 | awk '{print $1}' | tr '\n' ' ')
-  sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $delete_gen
+  echo "cleaning old images..."
+  please clean
 
   # simply build NixOS and switch to it
+  echo "switching to new configuration..."
   sudo nixos-rebuild switch
 
   # ---------- clean ---------- #
