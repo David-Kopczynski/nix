@@ -70,6 +70,9 @@ pkgs.writeShellScriptBin "please" ''
     git -C ${config.root} push
   fi
 
+  echo "cleaning old images..."
+  please clean
+
   # ---------- reset ---------- #
   elif [ "$1" = "reset" ]; then
 
