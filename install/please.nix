@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
-pkgs.writeShellScriptBin "please" ''
+let
+  please = pkgs.writeShellScriptBin "please" ''
 
   # ---------- sync ---------- #
   if [ "$1" = "sync" ]; then
@@ -142,4 +143,8 @@ pkgs.writeShellScriptBin "please" ''
   echo "  clean    <- clean up Nix and old generations"
 
   fi
-''
+'';
+in
+{
+  environment.systemPackages = [ please ];
+}

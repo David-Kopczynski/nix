@@ -44,3 +44,15 @@ Hosts store systematic differences between machines. Currently, [`laptop`](https
 
 ## 🚀 Setup
 When copying the system to a new device it is necessary to add some base configurations to the system in order to clone this repository. The configuration can be found in `./nixos/initial.configuration.nix` while the SSH keys should be copied into `~/.ssh` or generated with `ssh-keygen`. Afterwards, the setup script can be run with `sh setup.sh` to setup all files for the first time. (When migrating the system to another device, the keystore in `~/.local/share/keyrings` should also be copied to the new device.)
+
+
+# Rework....
+
+Channels must be subscribed to manually with `nix-channel --add $URL $NAME` and updated with `nix-channel --update`. This setup requires the following channels:
+
+```bash
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz home-manager
+sudo nix-channel --add https://nixos.org/channels/nixos-24.05 nixos
+sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
+sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+```

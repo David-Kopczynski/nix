@@ -3,7 +3,8 @@
 {
   # Fetch hardware config from nixos-hardware
   imports = [
-    "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/framework/13-inch/13th-gen-intel"
+    <nixos-hardware/framework/13-inch/13th-gen-intel>
+    ./hardware-configuration.nix
   ];
 
   # Disable fingerprint for login
@@ -16,8 +17,6 @@
   # Enable bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  hardware.i2c.enable = true;
-  hardware.wooting.enable = true;
 
   # Graphic card drivers
   hardware.opengl = {

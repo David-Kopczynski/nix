@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -9,17 +9,11 @@
     # Default system configuration
     ./hosts/default
     ./hosts
+  ]
 
-    # Packages, programs and services
-    ./packages
-    ./programs
-    ./services
-  ];
+  # Automatically include all channel configs from ./channels
+  ++ builtins.map (n: toString ./channels + "/${n}") (builtins.attrNames (builtins.readDir ./channels))
 
-  # Custom commands and functions
-  environment.systemPackages = [
-    (import ./commands/ansible.nix { inherit config pkgs; })
-    (import ./commands/please.nix { inherit config pkgs; })
-    (import ./commands/vpn.nix { inherit config pkgs; })
-  ];
+  # Automatically include all install configs from ./install
+  ++ builtins.map (n: toString ./install + "/${n}") (builtins.attrNames (builtins.readDir ./install));
 }

@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
-pkgs.writeShellScriptBin "vpn" ''
+let
+  vpn = pkgs.writeShellScriptBin "vpn" ''
 
   # Login to bitwarden for credentials if not already logged in
   # Check if rwth or i11 correclty provided
@@ -42,4 +43,10 @@ pkgs.writeShellScriptBin "vpn" ''
   echo "  i11      <- connect to i11 embedded vpn using student network"
 
   fi
-''
+'';
+in
+{
+  environment.systemPackages = [ vpn ] ++ [ pkgs.openconnect pkgs.bitwarden-cli pkgs.libsecret ];
+
+  # Bitwarden is initially installed using `bw login --apikey`
+}

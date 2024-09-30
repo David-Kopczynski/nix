@@ -1,21 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  # Fetch hardware config from nixos-hardware
-  imports = [
-    "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/pc"
-    "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/pc/ssd"
-    "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/gpu/nvidia"
-    "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/cpu/intel/cpu-only.nix"
-  ];
-
   services.xserver.displayManager.gdm.wayland = false; # This is an patch for NVIDIA as wayland crashes
 
   # Hardware supported
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  hardware.i2c.enable = true;
-  hardware.wooting.enable = true;
 
   # Graphic card drivers
   hardware.opengl = {
