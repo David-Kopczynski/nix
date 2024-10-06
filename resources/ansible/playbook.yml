@@ -1,0 +1,24 @@
+- name: Proxmox System Updates and Upgrades
+  hosts: system:&proxmox*
+  roles:
+    - system
+
+- name: Reverse Proxy System Updates and Upgrades
+  hosts: system:&proxy*
+  roles:
+    - system
+
+- name: System Updates and Upgrades
+  hosts: system:!proxmox*:!proxy*
+  roles:
+    - system
+
+- name: Reverse Proxy Docker Image Update
+  hosts: docker:&proxy*
+  roles:
+    - docker
+
+- name: Docker Image Updates
+  hosts: docker:!proxmox*:!proxy*
+  roles:
+    - docker

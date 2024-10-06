@@ -1,0 +1,23 @@
+- name: Update Packages
+  ansible.builtin.apt:
+    name: '*'
+    state: latest
+    update_cache: true
+
+- name: Remove Packages that are Not Needed Anymore
+  ansible.builtin.apt:
+    autoremove: true
+
+- name: Check if a Reboot is Needed
+  register: reboot_required_file
+  ansible.builtin.stat:
+    path: /var/run/reboot-required
+
+- name: Reboot
+  ansible.builtin.reboot:
+    msg: "Reboot Initiated by Ansible for Kernel Updates"
+    connect_timeout: 5
+    reboot_timeout: 300
+    post_reboot_delay: 30
+    test_command: uptime
+  when: reboot_required_file.stat.exists

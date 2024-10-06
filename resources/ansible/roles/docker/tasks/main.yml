@@ -1,0 +1,17 @@
+- name: Prune Docker
+  ansible.builtin.command: docker system prune -af
+  changed_when: false
+
+- name: Pull Images
+  ansible.builtin.command: docker compose pull
+  args:
+    chdir: "{{ path }}"
+  register: result
+  changed_when: result.stderr_lines is search("Downloading")
+
+- name: Update Docker
+  ansible.builtin.command: docker compose up -d --remove-orphans
+  args:
+    chdir: "{{ path }}"
+  changed_when: false
+  when: result.stderr_lines is search("Downloading")
