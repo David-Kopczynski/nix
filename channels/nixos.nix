@@ -2,5 +2,7 @@
 
 {
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = import ../resources/nixpkgs/config.nix;
+
+  home-manager.users.user.xdg.configFile."nixpkgs/config.nix".source = ../resources/nixpkgs/config.nix;
 }
