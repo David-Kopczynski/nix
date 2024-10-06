@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -12,8 +12,8 @@
   ]
 
   # Automatically include all channel configs from ./channels
-  ++ builtins.map (n: toString ./channels + "/${n}") (builtins.attrNames (builtins.readDir ./channels))
+  ++ builtins.map (n: toString ./channels + "/${n}") (builtins.filter (lib.strings.hasSuffix ".nix") (builtins.attrNames (builtins.readDir ./channels)))
 
   # Automatically include all install configs from ./install
-  ++ builtins.map (n: toString ./install + "/${n}") (builtins.attrNames (builtins.readDir ./install));
+  ++ builtins.map (n: toString ./install + "/${n}") (builtins.filter (lib.strings.hasSuffix ".nix") (builtins.attrNames (builtins.readDir ./install)));
 }
