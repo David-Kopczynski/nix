@@ -15,5 +15,14 @@
       disable-user-extensions = false;
       enabled-extensions = with pkgs.gnomeExtensions; [ brightness-control-using-ddcutil.extensionUuid ];
     };
+
+    # Add extension settings
+    settings."org/gnome/shell/extensions/display-brightness-ddcutil" = {
+      ddcutil-binary-path = "${pkgs.ddcutil}/bin/ddcutil";
+      button-location = 1;
+      hide-system-indicator = true;
+      show-value-label = true;
+      allow-zero-brightness = true;
+    };
   };
 }
