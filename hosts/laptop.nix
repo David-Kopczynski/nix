@@ -2,10 +2,7 @@
 
 {
   # Fetch hardware config from nixos-hardware
-  imports = [
-    <nixos-hardware/framework/13-inch/13th-gen-intel>
-    ./hardware-configuration.nix
-  ];
+  imports = [ <nixos-hardware/framework/13-inch/13th-gen-intel> ];
 
   # Disable fingerprint for login
   # This prevents a race condition with some gnome related services
