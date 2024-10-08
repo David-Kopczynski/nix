@@ -15,6 +15,11 @@ with lib.gvariant;
       accel-profile = "flat";
     };
 
+    # Window manager
+    settings."org/gnome/mutter" = {
+      edge-tiling = true;
+    };
+
     # Touchpad
     settings."org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;
