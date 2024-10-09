@@ -46,5 +46,12 @@ with lib.gvariant;
       command = "kgx";
       binding = "<Control><Alt>t";
     };
+
+    # Display color
+    settings."org/gnome/settings-daemon/plugins/color" = {
+      night-light-enabled = true;
+      night-light-schedule-automatic = true;
+      night-light-temperature = mkUint32 4700;
+    };
   };
 }
