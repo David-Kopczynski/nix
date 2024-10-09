@@ -21,7 +21,6 @@
       ddcutil-binary-path = "${pkgs.ddcutil}/bin/ddcutil";
       button-location = 1;
       hide-system-indicator = true;
-      show-value-label = true;
       allow-zero-brightness = true;
     };
   };
