@@ -145,11 +145,12 @@ with lib.gvariant;
       ];
     };
 
-    # Modify clock format
+    # Modify top bar format
     settings."org/gnome/desktop/interface" = {
       clock-show-seconds = false;
       clock-show-weekday = false;
       enable-animations = true;
+      show-battery-percentage = true;
     };
 
     # Add world clocks
