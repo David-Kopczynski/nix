@@ -10,7 +10,7 @@
   };
 
   home-manager.users.user.dconf = {
-    inherit (config.programs.dconf) enable;
+    # Do not enable by default: this retains the current behavior
 
     # Enable extension
     settings."org/gnome/shell" = {
