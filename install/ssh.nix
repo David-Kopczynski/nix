@@ -96,6 +96,6 @@
       };
     };
 
-    userKnownHostsFile = "~/.ssh/known_hosts ${config.root}/resources/known_hosts";
+    userKnownHostsFile = "~/.ssh/known_hosts ${config.root}/resources/ssh/known_hosts";
   };
 }
