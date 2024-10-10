@@ -1,6 +1,14 @@
 { config, pkgs, ... }:
 
 {
+  # Fetch hardware config from nixos-hardware
+  imports = [
+    <nixos-hardware/common/pc>
+    <nixos-hardware/common/pc/ssd>
+    <nixos-hardware/common/gpu/nvidia>
+    <nixos-hardware/common/cpu/intel/cpu-only.nix>
+  ];
+
   services.xserver.displayManager.gdm.wayland = false; # This is an patch for NVIDIA as wayland crashes
 
   # Hardware supported
