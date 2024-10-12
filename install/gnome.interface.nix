@@ -156,26 +156,30 @@ with lib.gvariant;
     # Add world clocks
     settings."org/gnome/clocks" = {
       world-clocks = [
-        (mkDictionaryEntry "location" (mkVariant (mkTuple [
-          (mkUint32 2)
-          (mkVariant (mkTuple [
-            "Coordinated Universal Time (UTC)"
-            "@UTC"
-            false
-            (mkEmptyArray (type.tupleOf [ type.double type.double ]))
-            (mkEmptyArray (type.tupleOf [ type.double type.double ]))
-          ]))
-        ])))
-        (mkDictionaryEntry "location" (mkVariant (mkTuple [
-          (mkUint32 2)
-          (mkVariant (mkTuple [
-            "Berlin"
-            "EDDT"
-            true
-            [ (mkTuple [ 0.91746141594945008 0.23241968454167572 ]) ]
-            [ (mkTuple [ 0.91658875132345297 0.23387411976724018 ]) ]
-          ]))
-        ])))
+        ([
+          (mkDictionaryEntry "location" (mkVariant (mkTuple [
+            (mkUint32 2)
+            (mkVariant (mkTuple [
+              "Coordinated Universal Time (UTC)"
+              "@UTC"
+              false
+              (mkEmptyArray (type.tupleOf [ type.double type.double ]))
+              (mkEmptyArray (type.tupleOf [ type.double type.double ]))
+            ]))
+          ])))
+        ])
+        ([
+          (mkDictionaryEntry "location" (mkVariant (mkTuple [
+            (mkUint32 2)
+            (mkVariant (mkTuple [
+              "Berlin"
+              "EDDT"
+              true
+              [ (mkTuple [ 0.91746141594945008 0.23241968454167572 ]) ]
+              [ (mkTuple [ 0.91658875132345297 0.23387411976724018 ]) ]
+            ]))
+          ])))
+        ])
       ];
     };
     settings."org/gnome/shell/world-clocks" = {
