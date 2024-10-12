@@ -12,7 +12,6 @@
       # # # # # # # # # # # # # # # # # # # # # # # # # # #
       "proxy" = {
         hostname = "ssh.davidkopczynski.com";
-        proxyCommand = "cloudflared access ssh --hostname ssh.davidkopczynski.com";
         user = "root";
       };
       "proxmox" = {
