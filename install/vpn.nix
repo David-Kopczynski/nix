@@ -32,7 +32,7 @@ let
   # ---------- i11 ---------- #
   elif [ "$1" = "i11" ]; then
 
-  echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de --authgroup 'i11-praktikum-VPN(Split-Tunnel)' --user hg066732 --no-external-auth
+  echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de --authgroup 'i11-studenten-VPN(Split-Tunnel)' --user hg066732 --no-external-auth
 
   # ---------- help ---------- #
   else
