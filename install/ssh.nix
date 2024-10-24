@@ -81,6 +81,11 @@
         proxyJump = "proxy";
         user = "root";
       };
+      "backup-server" = {
+        hostname = "10.0.1.20";
+        proxyJump = "proxy";
+        user = "root";
+      };
 
       # # # # # # # # # # # # # # # # # # # # # # # # # # #
       #                   PSP Websites                    #

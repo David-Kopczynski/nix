@@ -1,5 +1,5 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#         Cloudflared Reverse Proxy for SSH         #
+#               Reverse Proxy for SSH               #
 # # # # # # # # # # # # # # # # # # # # # # # # # # #
 ssh.davidkopczynski.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILN6NiXXh1HTVrG1GDKiB4X3qkMCUVmHTPSS5974VHXZ
 ssh.davidkopczynski.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCq/UVXWCHh0n3cPvtbjyBfFEgXrsMsobTvF6hE+mweVtAczRn99rzf4Ne2M8bKhvm1/lHtT8dGfT6WU0YDjYC3Fr+k9+lILilhqzncSlUgf3SiRfjq4aDM+m/UCiHpIs5Op2Feq5y83ojUfvwEfQs9/WLB3BBa28I4M3WbpScEs7dQajZBbw7FslPwtAI0WbUeMxicJ+rL859ivMLFuQ7qx5x3OW1rEx3kWC3HtsgfdGHN2wqszXKOQhzeePGGmWtiAEGeSywcXxma79LZ+MEHcM/cMBkC8UKsah8+Nk/Qw2nOUpRdaXm90xv3RlUwX+Hk6r5787W4TanemeIFjLb46zVpR7c0jBj8w96CmcVWc8IrjCiFw4QvgXATBPe+mXgCFYNLokcwl5ylW0Cq1n+Wshadw3xTfW2GHXhosVTgA5Odb44slTLp/0uov7V8OKufYGM8c43FVb3oFZu1M5xJkNJlCS+9ZFi18IIrAxxuNjdUzGvy2auydPUwSLsX5Kc=
@@ -22,6 +22,7 @@ ssh.davidkopczynski.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAI
 10.0.9.0 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILzYByaF7P4k0uuikwqlxagSQ0d8BXYWwef/hDoFKQXN
 10.0.9.0 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCafcy7b1glElgllvpaTZvgma/pGA8eOrSzf30pUQcvern4GcTPd+3IcNjoxbM4PLmCkbR5R7GJulqH4+1Fv8HJAk6dYQcd2IOqPNmKCdaOt6pPVaS4CIDFo6voek9igZbaUwyMNlautg60QzzXJ7OmNPQ7XMSI34WhLSW8UzOe42W2C0lJBEzCdgx2PVHC6Hfv/xOTo9r52FtIgMVBwcD8KIK9ygQ/JjCR7Jii4G5eMN/3AlLaXgC6Gj2fR8eXZClyRxvHjXev7P7NEcTM6Q8mVrISdNjfbasgIv14mwZ9aTvfO9HxQ2KFYIblKGHIgvPJQc+MyzNf7Th/1g6B8rPV2aQd2l6c5NCAf7iNSznOgQrYq9sVbikUrWDN34zex1QLXSVMAa55B91xCGa1jwB6vLdOqtKq2Iu6EcQmG+uB9a95zySqDqg36Fem7jdxSPxIA1DiZOJ5kaT2W0uvkloQG8zd2l7ZK0mvOgqyY6izMhPvG82O0jvPHrS/Tnq1UPM=
 10.0.9.0 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAeG+6PYCLZwGFE/tnJJ5F3WxZTFniJ7qfMQf8HWmzFL3yhb3mu954kHB76lpOYDXgZGyqhkEk7XwJjkPLph95c=
+10.0.1.20 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE0Oczr0l8wwIgl8I1MDRFpg5axqOILQBtRbKeYcj7g/
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                   PSP Websites                    #
