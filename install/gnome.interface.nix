@@ -26,7 +26,6 @@ with lib.gvariant;
             "org.gnome.SystemMonitor.desktop"
             "gnome"
             "btop.desktop"
-            "xterm.desktop"
             "chromium-browser.desktop"
             "postman.desktop"
             "it.mijorus.smile.desktop"
