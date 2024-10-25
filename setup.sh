@@ -66,6 +66,3 @@ echo "{
     $(pwd)
   ];
 }" | sudo tee /etc/nixos/configuration.nix
-
-# Rebuild to include all modules
-sudo nixos-rebuild switch
