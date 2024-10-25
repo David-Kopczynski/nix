@@ -30,4 +30,3 @@ with lib.gvariant;
     };
   };
 }
-
