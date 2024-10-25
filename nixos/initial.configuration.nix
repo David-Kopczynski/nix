@@ -11,5 +11,6 @@
   # 3. create ~/.ssh with mkdir ~/.ssh
   # 4. copy SSH keys into ~/.ssh
   # 5. clone project and run `setup.sh`
-  # 6. apply with sudo nixos-rebuild switch
+  # 6. add secrets to `secrets.nix`
+  # 7. apply with sudo nixos-rebuild switch
 }

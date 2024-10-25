@@ -30,6 +30,30 @@ echo "{ config, lib, ... }:
 
 fi
 
+# ---------- Generate secrets ---------- #
+
+echo ""; echo "Generation of secrets for NixOS setup:"
+
+# Skip if secrets.nix already exists
+if [ -f secrets.nix ]; then
+  echo "secrets.nix already exists. Skipping generation of secrets."
+else
+
+# Create secrets.nix with base structure
+echo "{ config, lib, ... }:
+
+{
+  options.secrets = with lib; with types; {
+    homeassistant.token = mkOption { type = str; };
+  };
+  config.secrets = {
+    homeassistant.token = "";
+  };
+}
+" > secrets.nix
+
+fi
+
 # ---------- NixOS ---------- #
 
 echo ""; echo "NixOS setup:"

@@ -47,3 +47,5 @@ sudo nix-channel --add https://nixos.org/channels/nixos-24.05 nixos
 sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 ```
+
+Lastly, some configuration requires keys that should not be public. These keys are taken from various services and stored within `./secrets.nix` which is not included in this repository, but generated during initial setup.

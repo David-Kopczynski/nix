@@ -4,6 +4,7 @@
   imports =
     [
       ./env.nix # Envorinment variables
+      ./secrets.nix # Secrets
     ]
 
     # Automatically include default system configuration from ./hosts/default
