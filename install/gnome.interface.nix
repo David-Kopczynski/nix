@@ -236,5 +236,10 @@ with lib.gvariant;
         ]))
       ];
     };
+
+    # Formats and units
+    settings."system/locale" = {
+      region = "de_DE.UTF-8";
+    };
   };
 }
