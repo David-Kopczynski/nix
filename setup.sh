@@ -16,6 +16,8 @@ read -p "Host: " host
 echo "{ config, lib, ... }:
 
 {
+  imports = [ ./hosts/${host}.nix ];
+
   options = with lib; with types; {
     root = mkOption { type = str; };
     host = mkOption { type = str; };
@@ -26,19 +28,11 @@ echo "{ config, lib, ... }:
   };
 }" > env.nix
 
-# Softlink correct host configuration
-ln -s $host.nix hosts/default.nix
-
 fi
 
 # ---------- NixOS ---------- #
 
 echo ""; echo "NixOS setup:"
-
-# Skip if config already setp
-if [ -f nixos/configuration.nix ]; then
-  echo "NixOS configuration already set up. Skipping NixOS setup."
-else
 
 # Generate configuration.nix with current location via pwd
 echo "{
@@ -47,20 +41,7 @@ echo "{
     ./hardware-configuration.nix
     $(pwd)
   ];
-}" > nixos/configuration.nix
-
-# Copy hardware-configuration into new location for further use and delete old config
-sudo rm /etc/nixos/configuration.nix
-sudo mv /etc/nixos/hardware-configuration.nix nixos
-
-# Update permissions of files and folder
-sudo chmod 644 nixos/configuration.nix nixos/hardware-configuration.nix
-
-# Create hardlinks from /etc/nixos to ./nixos for better file management
-sudo ln nixos/configuration.nix /etc/nixos/configuration.nix
-sudo ln nixos/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
-
-fi
+}" | sudo tee /etc/nixos/configuration.nix
 
 # Rebuild to include all modules
 sudo nixos-rebuild switch

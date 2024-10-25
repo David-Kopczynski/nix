@@ -10,5 +10,6 @@
   # 2. sudo nixos-rebuild switch to apply
   # 3. create ~/.ssh with mkdir ~/.ssh
   # 4. copy SSH keys into ~/.ssh
-  # 5. Apply with sudo nixos-rebuild switch
+  # 5. clone project and run `setup.sh`
+  # 6. apply with sudo nixos-rebuild switch
 }

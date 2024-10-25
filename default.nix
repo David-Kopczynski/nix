@@ -1,19 +1,17 @@
 { lib, ... }:
 
 {
-  imports = [
+  imports =
+    [
+      ./env.nix # Envorinment variables
+    ]
 
-    # Envorinment variables
-    ./env.nix
+    # Automatically include default system configuration from ./hosts/default
+    ++ builtins.map (n: toString ./hosts/default + "/${n}") (builtins.filter (lib.strings.hasSuffix ".nix") (builtins.attrNames (builtins.readDir ./hosts/default)))
 
-    # Default system configuration
-    ./hosts/default
-    ./hosts
-  ]
+    # Automatically include all channel configs from ./channels
+    ++ builtins.map (n: toString ./channels + "/${n}") (builtins.filter (lib.strings.hasSuffix ".nix") (builtins.attrNames (builtins.readDir ./channels)))
 
-  # Automatically include all channel configs from ./channels
-  ++ builtins.map (n: toString ./channels + "/${n}") (builtins.filter (lib.strings.hasSuffix ".nix") (builtins.attrNames (builtins.readDir ./channels)))
-
-  # Automatically include all install configs from ./install
-  ++ builtins.map (n: toString ./install + "/${n}") (builtins.filter (lib.strings.hasSuffix ".nix") (builtins.attrNames (builtins.readDir ./install)));
+    # Automatically include all install configs from ./install
+    ++ builtins.map (n: toString ./install + "/${n}") (builtins.filter (lib.strings.hasSuffix ".nix") (builtins.attrNames (builtins.readDir ./install)));
 }
