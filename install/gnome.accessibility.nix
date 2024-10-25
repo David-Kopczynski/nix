@@ -53,5 +53,15 @@ with lib.gvariant;
       night-light-schedule-automatic = true;
       night-light-temperature = mkUint32 4700;
     };
+
+    # File history and trash
+    settings."org/gnome/desktop/privacy" = {
+      remember-recent-files = true;
+      recent-files-max-age = mkUint32 7;
+
+      remove-old-trash-files = true;
+      remove-old-temp-files = true;
+      remove-trash-days = mkUint32 30;
+    };
   };
 }
