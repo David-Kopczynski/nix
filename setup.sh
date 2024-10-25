@@ -47,10 +47,9 @@ echo "{ config, lib, ... }:
     homeassistant.token = mkOption { type = str; };
   };
   config.secrets = {
-    homeassistant.token = "";
+    homeassistant.token = \"\";
   };
-}
-" > secrets.nix
+}" > secrets.nix
 
 fi
 
