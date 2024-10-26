@@ -26,6 +26,9 @@ let
   echo "switching to new configuration..."
   sudo nixos-rebuild switch
 
+  echo "optimizing store..."
+  sudo nix-store --optimise
+
   # ---------- test ---------- #
   elif [ "$1" = "test" ]; then
 
