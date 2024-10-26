@@ -9,8 +9,6 @@
   # This also prevents the keyring from asking the password anyways
   security.pam.services.login.fprintAuth = false;
 
-  services.xserver.displayManager.gdm.wayland = false;
-
   # Enable bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
