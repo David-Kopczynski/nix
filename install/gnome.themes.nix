@@ -22,4 +22,11 @@
     chown root:root /var/lib/AccountsService/icons/user
     chmod 0444 /var/lib/AccountsService/icons/user
   '';
+
+  # QT theme
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
 }
