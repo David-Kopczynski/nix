@@ -21,7 +21,7 @@ with lib.gvariant;
           [
             "nixos-manual.desktop"
             "org.gnome.Settings.desktop"
-            "org.gnome.Connections.desktop"
+            "org.remmina.Remmina.desktop"
             "remote-viewer.desktop"
             "org.gnome.SystemMonitor.desktop"
             "gnome"
