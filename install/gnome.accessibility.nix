@@ -64,4 +64,16 @@ with lib.gvariant;
       remove-trash-days = mkUint32 30;
     };
   };
+
+  # Inherit specific settings for GDM
+  programs.dconf.profiles.gdm.databases = [{
+    lockAll = true;
+
+    settings = (builtins.listToAttrs
+      (builtins.map (n: { name = "${n}"; value = config.home-manager.users.user.dconf.settings."${n}"; }) [
+        "org/gnome/desktop/peripherals/mouse"
+        "org/gnome/desktop/peripherals/touchpad"
+        "org/gnome/settings-daemon/plugins/color"
+      ]));
+  }];
 }
