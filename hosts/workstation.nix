@@ -31,6 +31,15 @@
     options = [ "defaults" "x-gvfs-show" ];
   };
 
+  # Disable sleep mode
+  home-manager.users.user.dconf = {
+    inherit (config.programs.dconf) enable;
+
+    settings."org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-type = "nothing";
+    };
+  };
+
   # Enable firmware updates
   services.fwupd.enable = true;
 }
