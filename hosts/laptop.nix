@@ -20,6 +20,18 @@
     driSupport32Bit = true;
   };
 
+  # Remap keyboard keys
+  services.keyd = {
+    enable = true;
+
+    keyboards.default = {
+      ids = [ "*" ];
+
+      # Open terminal with FK12
+      settings.main.media = "C-A-t";
+    };
+  };
+
   # Better battery life
   powerManagement.powertop.enable = true;
 
