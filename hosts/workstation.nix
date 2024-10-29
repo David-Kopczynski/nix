@@ -31,10 +31,16 @@
     options = [ "defaults" "x-gvfs-show" ];
   };
 
-  # Disable sleep mode
+
   home-manager.users.user.dconf = {
     inherit (config.programs.dconf) enable;
 
+    # Enable FreeSync support
+    settings."org/gnome/mutter" = {
+      experimental-features = [ "variable-refresh-rate" ];
+    };
+
+    # Disable sleep mode
     settings."org/gnome/settings-daemon/plugins/power" = {
       sleep-inactive-ac-type = "nothing";
     };
