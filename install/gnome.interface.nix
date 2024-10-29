@@ -78,12 +78,6 @@ with lib.gvariant;
             "net.lutris.Lutris.desktop"
             "org.prismlauncher.PrismLauncher.desktop"
             "r2modman.desktop"
-
-            "PAYDAY 2.desktop"
-            "Lethal Company.desktop"
-            "Sons Of The Forest.desktop"
-            "Enshrouded.desktop"
-            "Content Warning.desktop"
           ]
         )
       ];
