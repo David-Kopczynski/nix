@@ -1,7 +1,15 @@
 { config, ... }:
 
 {
-  services.openssh.enable = true;
+  # OpenSSH server configuration
+  services.openssh = {
+    enable = true;
+
+    # Allow only my public keys
+    settings.PasswordAuthentication = false;
+    settings.PubkeyAuthentication = false;
+    authorizedKeysFiles = [ "${config.root}/resources/ssh/authorized_keys" ];
+  };
 
   home-manager.users.user.programs.ssh = {
     inherit (config.services.openssh) enable;
