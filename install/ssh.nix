@@ -8,7 +8,7 @@
 
     matchBlocks = {
       # # # # # # # # # # # # # # # # # # # # # # # # # # #
-      #         Cloudflared Reverse Proxy for SSH         #
+      #               Reverse Proxy for SSH               #
       # # # # # # # # # # # # # # # # # # # # # # # # # # #
       "proxy" = {
         hostname = "ssh.davidkopczynski.com";
@@ -85,6 +85,11 @@
         hostname = "10.0.1.20";
         proxyJump = "proxy";
         user = "root";
+      };
+      "workstation" = {
+        hostname = "192.168.0.123";
+        proxyJump = "proxy";
+        user = "user";
       };
 
       # # # # # # # # # # # # # # # # # # # # # # # # # # #
