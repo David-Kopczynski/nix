@@ -7,7 +7,7 @@
 
     # Allow only my public keys
     settings.PasswordAuthentication = false;
-    settings.PubkeyAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
     authorizedKeysFiles = [ "${config.root}/resources/ssh/authorized_keys" ];
   };
 
