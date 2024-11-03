@@ -56,7 +56,7 @@ with lib.gvariant;
         (lib.lists.imap0 (i: name: (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ])))
           [
             "thunderbird.desktop"
-            "chrome-notion.desktop"
+            "notion.desktop"
             "webex.desktop"
             "Zoom.desktop"
             "simple-scan.desktop"
@@ -72,7 +72,7 @@ with lib.gvariant;
             "nvidia-settings.desktop"
 
             "wootility-lekker.desktop"
-            "chrome-discord.desktop"
+            "discord.desktop"
             "steam.desktop"
             "com.heroicgameslauncher.hgl.desktop"
             "net.lutris.Lutris.desktop"
