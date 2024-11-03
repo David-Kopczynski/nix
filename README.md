@@ -25,6 +25,7 @@ This repository offers a set of custom commands that can be used to manage the s
 | Command | Description |
 | --- | --- |
 | `please clean` | clean the system of old data and generations |
+| `please optimize` | optimize the system store disk usage |
 | `please switch` | build the system with the latest data and switch to it |
 | `please test` | test build without creating EFI entry point |
 

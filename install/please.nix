@@ -13,11 +13,15 @@ let
 
   sudo nix-collect-garbage
 
+  # ---------- optimize ---------- #
+  elif [ "$1" = "optimize" ]; then
+
+  # optimize Nix store
+  echo "optimizing store..."
+  sudo nix-store --optimise
+
   # ---------- switch ---------- #
   elif [ "$1" = "switch" ]; then
-
-  echo "cleaning old images..."
-  please clean
 
   echo "update channels..."
   sudo nix-channel --update
@@ -26,8 +30,8 @@ let
   echo "switching to new configuration..."
   sudo nixos-rebuild switch
 
-  echo "optimizing store..."
-  sudo nix-store --optimise
+  echo "cleaning old images..."
+  please clean
 
   # ---------- test ---------- #
   elif [ "$1" = "test" ]; then
@@ -42,6 +46,7 @@ let
   echo "command not found"
   echo "possible commands are:"
   echo "  clean    <- clean up Nix and old generations"
+  echo "  optimize <- optimize Nix store"
   echo "  switch   <- build NixOS and switch to it"
   echo "  test     <- test if configuration is valid"
 
