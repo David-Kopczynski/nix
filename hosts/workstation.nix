@@ -22,6 +22,7 @@
 
   # Latest GPU drivers
   boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
+  boot.kernelPackages = pkgs.unstable.linuxPackages;
   hardware.nvidia.package = pkgs.unstable.linuxPackages.nvidiaPackages.stable;
 
   # Additional drives
