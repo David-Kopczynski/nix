@@ -50,7 +50,11 @@ stdenv.mkDerivation rec {
         x, y, width, height,
         show: false,
         autoHideMenuBar: true,
-        webPreferences: { contextIsolation: true, nodeIntegration: false }
+        webPreferences: {
+          contextIsolation: true,
+          nodeIntegration: false,
+          spellcheck: true
+        }
       });
 
       window.setFullScreen(fullscreen);
@@ -73,6 +77,9 @@ stdenv.mkDerivation rec {
         shell.openExternal(url);
         return { action: 'deny' };
       });
+
+      // Enable spell checking
+      window.webContents.session.setSpellCheckerLanguages(['en-US', 'de-DE']);
     });
   '';
   dontUnpack = true;
