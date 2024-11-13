@@ -36,6 +36,7 @@ stdenv.mkDerivation rec {
   meta = with lib;{
     description = "The interactive and stylish replacement for ls & cd!";
     homepage = "https://github.com/Jojo4GH/nav";
+    license = licenses.mit;
     maintainers = with maintainers; [ David-Kopczynski ];
     platforms = [ "aarch64-linux" "x86_64-linux" ];
     mainProgram = pname;
