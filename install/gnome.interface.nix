@@ -57,7 +57,6 @@ with lib.gvariant;
           [
             "thunderbird.desktop"
             "notion.desktop"
-            "webex.desktop"
             "Zoom.desktop"
             "simple-scan.desktop"
             "cups.desktop"
