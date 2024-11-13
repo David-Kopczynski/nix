@@ -2,6 +2,7 @@
 , lib
 , fetchzip
 , autoPatchelfHook
+, libxcrypt-legacy
 }:
 
 let
@@ -21,7 +22,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoPatchelfHook ];
-  autoPatchelfIgnoreMissingDeps = [ "libcrypt.so.1" "libgcc_s.so.1" ];
+  buildInputs = [ stdenv.cc.cc libxcrypt-legacy ];
 
   installPhase = ''
     runHook preInstall
