@@ -10,7 +10,7 @@
   };
 
   # Theming
-  programs.zsh.oh-my-zsh = {
+  programs.zsh.ohMyZsh = {
     enable = true;
     theme = "robbyrussell";
   };
