@@ -1,6 +1,7 @@
 { stdenv
 , lib
 , fetchzip
+, nix-update-script
 , autoPatchelfHook
 , libxcrypt-legacy
 }:
@@ -33,12 +34,20 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
+  passthru.updateScript = nix-update-script { };
+
   meta = with lib;{
-    description = "The interactive and stylish replacement for ls & cd!";
+    description = "The Interactive and Stylish Replacement for ls & cd";
+    longDescription = ''
+      To make use of nav, add the following lines to your configuration:
+      `programs.bash.shellInit = "eval \"$(nav --init bash)\"";` and
+      `programs.zsh.shellInit = "eval \"$(nav --init zsh)\"";`
+    '';
     homepage = "https://github.com/Jojo4GH/nav";
     license = licenses.mit;
-    maintainers = with maintainers; [ David-Kopczynski ];
+    maintainers = with maintainers; [ David-Kopczynski Jojo4GH ];
     platforms = [ "aarch64-linux" "x86_64-linux" ];
-    mainProgram = pname;
+    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
+    mainProgram = "nav";
   };
 }
