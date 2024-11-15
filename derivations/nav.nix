@@ -1,9 +1,10 @@
-{ stdenv
-, lib
-, fetchzip
-, nix-update-script
-, autoPatchelfHook
-, libxcrypt-legacy
+{
+  stdenv,
+  lib,
+  fetchzip,
+  nix-update-script,
+  autoPatchelfHook,
+  libxcrypt-legacy,
 }:
 
 let
@@ -16,14 +17,19 @@ stdenv.mkDerivation rec {
 
   src = fetchzip {
     url = "https://github.com/Jojo4GH/nav/releases/download/v${version}/nav-${platform}.tar.gz";
-    sha256 = {
-      x86_64-linux = "sha256-ihn5wlagmujHlSfJpgojQNqa4NjLF1wk2pt8wHi60DY=";
-      aarch64-linux = "sha256-l3rKu3OU/TUUjmx3p06k9V5eN3ZDNcxbxObLqVQ2B7U=";
-    }.${stdenv.hostPlatform.system} or (throw "unsupported system ${stdenv.hostPlatform.system}");
+    sha256 =
+      {
+        x86_64-linux = "sha256-ihn5wlagmujHlSfJpgojQNqa4NjLF1wk2pt8wHi60DY=";
+        aarch64-linux = "sha256-l3rKu3OU/TUUjmx3p06k9V5eN3ZDNcxbxObLqVQ2B7U=";
+      }
+      .${stdenv.hostPlatform.system} or (throw "unsupported system ${stdenv.hostPlatform.system}");
   };
 
   nativeBuildInputs = [ autoPatchelfHook ];
-  buildInputs = [ stdenv.cc.cc libxcrypt-legacy ];
+  buildInputs = [
+    stdenv.cc.cc
+    libxcrypt-legacy
+  ];
 
   installPhase = ''
     runHook preInstall
@@ -36,7 +42,7 @@ stdenv.mkDerivation rec {
 
   passthru.updateScript = nix-update-script { };
 
-  meta = with lib;{
+  meta = with lib; {
     description = "The Interactive and Stylish Replacement for ls & cd";
     longDescription = ''
       To make use of nav, add the following lines to your configuration:
@@ -45,8 +51,14 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://github.com/Jojo4GH/nav";
     license = licenses.mit;
-    maintainers = with maintainers; [ David-Kopczynski Jojo4GH ];
-    platforms = [ "aarch64-linux" "x86_64-linux" ];
+    maintainers = with maintainers; [
+      David-Kopczynski
+      Jojo4GH
+    ];
+    platforms = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     mainProgram = "nav";
   };

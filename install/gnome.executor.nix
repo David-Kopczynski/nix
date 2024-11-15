@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib.gvariant;
 {
@@ -24,7 +29,9 @@ with lib.gvariant;
       left-index = 10;
 
       right-active = false;
-      right-commands-json = [ (mkDictionaryEntry "commands" [ (mkEmptyArray (type.dictionaryEntryOf type.string type.string)) ]) ];
+      right-commands-json = [
+        (mkDictionaryEntry "commands" [ (mkEmptyArray (type.dictionaryEntryOf type.string type.string)) ])
+      ];
 
       click-on-output-active = false;
     };

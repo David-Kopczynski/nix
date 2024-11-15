@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ ghc hlint ];
+  environment.systemPackages = with pkgs; [
+    ghc
+    hlint
+  ];
 }

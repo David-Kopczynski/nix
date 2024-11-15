@@ -1,16 +1,17 @@
-{ stdenv
-, lib
-, pkgs
-, makeWrapper
-, electron
-, asar
-, makeDesktopItem
-, copyDesktopItems
-, name ? "electron-wrapper"
-, desktopName ? name
-, url ? "about:blank"
-, description ? "This is a wrapper for Electron"
-, icon ? null
+{
+  stdenv,
+  lib,
+  pkgs,
+  makeWrapper,
+  electron,
+  asar,
+  makeDesktopItem,
+  copyDesktopItems,
+  name ? "electron-wrapper",
+  desktopName ? name,
+  url ? "about:blank",
+  description ? "This is a wrapper for Electron",
+  icon ? null,
 }:
 
 stdenv.mkDerivation rec {
@@ -110,7 +111,11 @@ stdenv.mkDerivation rec {
   '';
   dontUnpack = true;
 
-  nativeBuildInputs = [ makeWrapper asar copyDesktopItems ];
+  nativeBuildInputs = [
+    makeWrapper
+    asar
+    copyDesktopItems
+  ];
 
   installPhase = ''
     runHook preInstall

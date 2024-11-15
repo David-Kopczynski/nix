@@ -17,7 +17,11 @@ with lib.gvariant;
 
       app-picker-layout = [
         # Page 1: General tools and utilities
-        (lib.lists.imap0 (i: name: (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ])))
+        (lib.lists.imap0
+          (
+            i: name:
+            (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ]))
+          )
           [
             "nixos-manual.desktop"
             "org.gnome.Settings.desktop"
@@ -34,7 +38,11 @@ with lib.gvariant;
         )
 
         # Page 2: Creative tools
-        (lib.lists.imap0 (i: name: (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ])))
+        (lib.lists.imap0
+          (
+            i: name:
+            (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ]))
+          )
           [
             "gimp.desktop"
             "org.darktable.darktable.desktop"
@@ -53,7 +61,11 @@ with lib.gvariant;
         )
 
         # Page 3: Office
-        (lib.lists.imap0 (i: name: (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ])))
+        (lib.lists.imap0
+          (
+            i: name:
+            (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ]))
+          )
           [
             "thunderbird.desktop"
             "notion.desktop"
@@ -66,7 +78,11 @@ with lib.gvariant;
         )
 
         # Page 4: Games
-        (lib.lists.imap0 (i: name: (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ])))
+        (lib.lists.imap0
+          (
+            i: name:
+            (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ]))
+          )
           [
             "nvidia-settings.desktop"
 
@@ -149,28 +165,52 @@ with lib.gvariant;
     settings."org/gnome/clocks" = {
       world-clocks = [
         ([
-          (mkDictionaryEntry "location" (mkVariant (mkTuple [
-            (mkUint32 2)
-            (mkVariant (mkTuple [
-              "Coordinated Universal Time (UTC)"
-              "@UTC"
-              false
-              (mkEmptyArray (type.tupleOf [ type.double type.double ]))
-              (mkEmptyArray (type.tupleOf [ type.double type.double ]))
-            ]))
-          ])))
+          (mkDictionaryEntry "location" (
+            mkVariant (mkTuple [
+              (mkUint32 2)
+              (mkVariant (mkTuple [
+                "Coordinated Universal Time (UTC)"
+                "@UTC"
+                false
+                (mkEmptyArray (
+                  type.tupleOf [
+                    type.double
+                    type.double
+                  ]
+                ))
+                (mkEmptyArray (
+                  type.tupleOf [
+                    type.double
+                    type.double
+                  ]
+                ))
+              ]))
+            ])
+          ))
         ])
         ([
-          (mkDictionaryEntry "location" (mkVariant (mkTuple [
-            (mkUint32 2)
-            (mkVariant (mkTuple [
-              "Berlin"
-              "EDDT"
-              true
-              [ (mkTuple [ 0.91746141594945008 0.23241968454167572 ]) ]
-              [ (mkTuple [ 0.91658875132345297 0.23387411976724018 ]) ]
-            ]))
-          ])))
+          (mkDictionaryEntry "location" (
+            mkVariant (mkTuple [
+              (mkUint32 2)
+              (mkVariant (mkTuple [
+                "Berlin"
+                "EDDT"
+                true
+                [
+                  (mkTuple [
+                    0.9174614159494501
+                    0.23241968454167572
+                  ])
+                ]
+                [
+                  (mkTuple [
+                    0.916588751323453
+                    0.23387411976724018
+                  ])
+                ]
+              ]))
+            ])
+          ))
         ])
       ];
     };
@@ -182,8 +222,18 @@ with lib.gvariant;
             "Coordinated Universal Time (UTC)"
             "@UTC"
             false
-            (mkEmptyArray (type.tupleOf [ type.double type.double ]))
-            (mkEmptyArray (type.tupleOf [ type.double type.double ]))
+            (mkEmptyArray (
+              type.tupleOf [
+                type.double
+                type.double
+              ]
+            ))
+            (mkEmptyArray (
+              type.tupleOf [
+                type.double
+                type.double
+              ]
+            ))
           ]))
         ]))
         (mkVariant (mkTuple [
@@ -192,8 +242,18 @@ with lib.gvariant;
             "Berlin"
             "EDDT"
             true
-            [ (mkTuple [ 0.91746141594945008 0.23241968454167572 ]) ]
-            [ (mkTuple [ 0.91658875132345297 0.23387411976724018 ]) ]
+            [
+              (mkTuple [
+                0.9174614159494501
+                0.23241968454167572
+              ])
+            ]
+            [
+              (mkTuple [
+                0.916588751323453
+                0.23387411976724018
+              ])
+            ]
           ]))
         ]))
       ];
@@ -208,8 +268,18 @@ with lib.gvariant;
             "Aachen"
             "ETNG"
             false
-            [ (mkTuple [ 0.88953614791754076 0.10559241974565695 ]) ]
-            [ (mkTuple [ 0.88953614791754076 0.10559241974565695 ]) ]
+            [
+              (mkTuple [
+                0.8895361479175408
+                0.10559241974565695
+              ])
+            ]
+            [
+              (mkTuple [
+                0.8895361479175408
+                0.10559241974565695
+              ])
+            ]
           ]))
         ]))
       ];
@@ -223,8 +293,18 @@ with lib.gvariant;
             "Aachen"
             "ETNG"
             false
-            [ (mkTuple [ 0.88953614791754076 0.10559241974565695 ]) ]
-            [ (mkTuple [ 0.88953614791754076 0.10559241974565695 ]) ]
+            [
+              (mkTuple [
+                0.8895361479175408
+                0.10559241974565695
+              ])
+            ]
+            [
+              (mkTuple [
+                0.8895361479175408
+                0.10559241974565695
+              ])
+            ]
           ]))
         ]))
       ];

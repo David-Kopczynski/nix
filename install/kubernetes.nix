@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ kubectl minikube ];
+  environment.systemPackages = with pkgs; [
+    kubectl
+    minikube
+  ];
 }

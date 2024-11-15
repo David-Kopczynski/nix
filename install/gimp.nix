@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ gimp darktable ];
+  environment.systemPackages = with pkgs; [
+    gimp
+    darktable
+  ];
 }

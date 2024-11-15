@@ -10,7 +10,10 @@
       "SyncDisabled" = true;
       "PasswordManagerEnabled" = false;
       "SpellcheckEnabled" = true;
-      "SpellcheckLanguage" = [ "de" "en-US" ];
+      "SpellcheckLanguage" = [
+        "de"
+        "en-US"
+      ];
     };
   };
 }

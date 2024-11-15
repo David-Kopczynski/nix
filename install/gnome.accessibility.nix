@@ -35,7 +35,9 @@ with lib.gvariant;
     };
 
     settings."org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-terminal/" ];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-terminal/"
+      ];
 
       home = [ "<Super>e" ];
       mic-mute = [ "<Control>dead_acute" ];
@@ -66,14 +68,24 @@ with lib.gvariant;
   };
 
   # Inherit specific settings for GDM
-  programs.dconf.profiles.gdm.databases = [{
-    lockAll = true;
+  programs.dconf.profiles.gdm.databases = [
+    {
+      lockAll = true;
 
-    settings = (builtins.listToAttrs
-      (builtins.map (n: { name = "${n}"; value = config.home-manager.users.user.dconf.settings."${n}"; }) [
-        "org/gnome/desktop/peripherals/mouse"
-        "org/gnome/desktop/peripherals/touchpad"
-        "org/gnome/settings-daemon/plugins/color"
-      ]));
-  }];
+      settings = (
+        builtins.listToAttrs (
+          builtins.map
+            (n: {
+              name = "${n}";
+              value = config.home-manager.users.user.dconf.settings."${n}";
+            })
+            [
+              "org/gnome/desktop/peripherals/mouse"
+              "org/gnome/desktop/peripherals/touchpad"
+              "org/gnome/settings-daemon/plugins/color"
+            ]
+        )
+      );
+    }
+  ];
 }

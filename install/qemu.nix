@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ qemu quickemu virt-viewer ];
+  environment.systemPackages = with pkgs; [
+    qemu
+    quickemu
+    virt-viewer
+  ];
 
   virtualisation = {
 

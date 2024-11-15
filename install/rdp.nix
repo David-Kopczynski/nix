@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 lib.mkIf (config.host == "workstation") {
   environment.systemPackages = with pkgs.gnome; [ gnome-remote-desktop ];

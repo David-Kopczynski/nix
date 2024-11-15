@@ -1,7 +1,13 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ rustc cargo gcc rustfmt clippy ];
+  environment.systemPackages = with pkgs; [
+    rustc
+    cargo
+    gcc
+    rustfmt
+    clippy
+  ];
 
   environment.variables = {
 

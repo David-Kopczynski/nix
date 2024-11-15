@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ gnomeExtensions.smile-complementary-extension ] ++ [ smile ];
+  environment.systemPackages = with pkgs; [
+    gnomeExtensions.smile-complementary-extension
+    smile
+  ];
 
   # Remove default gnome applications
   environment.gnome.excludePackages = with pkgs.gnome; [ gnome-characters ];
@@ -21,7 +24,9 @@
 
     # Add custom keybinding
     settings."org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-smile/" ];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-smile/"
+      ];
     };
 
     settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-smile" = {

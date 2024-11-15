@@ -1,5 +1,12 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ gcc cmake gnumake clang-tools ccls gdb ];
+  environment.systemPackages = with pkgs; [
+    gcc
+    cmake
+    gnumake
+    clang-tools
+    ccls
+    gdb
+  ];
 }
