@@ -16,7 +16,7 @@
     # Enable extension
     settings."org/gnome/shell" = {
       disable-user-extensions = false;
-      enabled-extensions = with pkgs.gnomeExtensions; [ brightness-control-using-ddcutil.extensionUuid ];
+      enabled-extensions = with pkgs; [ gnomeExtensions.brightness-control-using-ddcutil.extensionUuid ];
     };
 
     # Add extension settings

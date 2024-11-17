@@ -10,7 +10,7 @@ in
   home-manager.users.user.programs.vscode = {
     enable = true;
     package = pkgs.vscode.fhsWithPackages (
-      ps: with ps; config.environment.systemPackages ++ [ patched-openssh ]
+      ps: config.environment.systemPackages ++ [ patched-openssh ]
     );
   };
 

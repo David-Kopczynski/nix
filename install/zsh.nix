@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
@@ -16,6 +16,6 @@
   };
 
   # Enable ZSH as default shell
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = with pkgs; zsh;
   environment.shells = with pkgs; [ zsh ];
 }

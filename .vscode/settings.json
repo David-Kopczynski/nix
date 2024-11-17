@@ -1,24 +1,31 @@
 {
+  // Basic editor settings
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
-
+  //
   "files.trimTrailingWhitespace": true,
-
+  //
+  // Formatter settings
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "brettm12345.nixfmt-vscode",
-
-  "cSpell.words": [
-    "Bitwarden",
-    "fprintd",
-    "keyrings",
-    "KHTML",
-    "konsave",
-    "Kopczynski",
-    "nixos"
-  ],
-
+  //
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
+  //
+  // Nix related settings
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+  "nix.serverSettings": {
+    "nixd": {
+      "formatting": {
+        "command": [
+          "nixfmt"
+        ]
+      },
+    },
+  }
 }

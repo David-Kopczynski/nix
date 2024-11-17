@@ -42,7 +42,7 @@ stdenv.mkDerivation rec {
 
   passthru.updateScript = nix-update-script { };
 
-  meta = with lib; {
+  meta = {
     description = "The Interactive and Stylish Replacement for ls & cd";
     longDescription = ''
       To make use of nav, add the following lines to your configuration:
@@ -50,8 +50,8 @@ stdenv.mkDerivation rec {
       `programs.zsh.shellInit = "eval \"$(nav --init zsh)\"";`
     '';
     homepage = "https://github.com/Jojo4GH/nav";
-    license = licenses.mit;
-    maintainers = with maintainers; [
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [
       David-Kopczynski
       Jojo4GH
     ];
@@ -59,7 +59,7 @@ stdenv.mkDerivation rec {
       "aarch64-linux"
       "x86_64-linux"
     ];
-    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
+    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
     mainProgram = "nav";
   };
 }

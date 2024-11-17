@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    // Nix related
+    "jnoortheen.nix-ide",
+    //
+    // Resource related
+    "redhat.ansible",
+    "redhat.vscode-yaml",
+    "ms-python.python"
+  ]
+}

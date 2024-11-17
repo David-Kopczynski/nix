@@ -1,7 +1,6 @@
 {
   stdenv,
   lib,
-  pkgs,
   makeWrapper,
   electron,
   asar,

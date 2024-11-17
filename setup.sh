@@ -13,14 +13,14 @@ else
 read -p "Host: " host
 
 # Create env.nix with all necessary environment variables
-echo "{ config, lib, ... }:
+echo "{ lib, ... }:
 
 {
   imports = [ ./hosts/${host}.nix ];
 
-  options = with lib; with types; {
-    root = mkOption { type = str; };
-    host = mkOption { type = str; };
+  options = with lib; {
+    root = mkOption { type = types.str; };
+    host = mkOption { type = types.str; };
   };
   config = {
     root = \"$PWD\";
@@ -40,11 +40,11 @@ if [ -f secrets.nix ]; then
 else
 
 # Create secrets.nix with base structure
-echo "{ config, lib, ... }:
+echo "{ lib, ... }:
 
 {
-  options.secrets = with lib; with types; {
-    homeassistant.token = mkOption { type = str; };
+  options.secrets = with lib; {
+    homeassistant.token = mkOption { type = types.str; };
   };
   config.secrets = {
     homeassistant.token = \"\";

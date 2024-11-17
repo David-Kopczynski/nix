@@ -7,7 +7,7 @@
   ];
 
   # Remove default gnome applications
-  environment.gnome.excludePackages = with pkgs.gnome; [ gnome-characters ];
+  environment.gnome.excludePackages = with pkgs; [ gnome.gnome-characters ];
 
   home-manager.users.user.dconf = {
     inherit (config.programs.dconf) enable;
@@ -15,7 +15,7 @@
     # Enable extension
     settings."org/gnome/shell" = {
       disable-user-extensions = false;
-      enabled-extensions = with pkgs.gnomeExtensions; [ smile-complementary-extension.extensionUuid ];
+      enabled-extensions = with pkgs; [ gnomeExtensions.smile-complementary-extension.extensionUuid ];
     };
 
     settings."it/mijorus/smile" = {

@@ -1,7 +1,12 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  home-manager.users.user.dconf = with lib.gvariant; {
+  home-manager.users.user.dconf = {
     inherit (config.programs.dconf) enable;
 
     # Disable sound error beep
@@ -27,8 +32,8 @@
 
     # Keyboard keybindings
     settings."org/gnome/desktop/wm/keybindings" = {
-      switch-applications = mkEmptyArray type.string;
-      switch-applications-backward = mkEmptyArray type.string;
+      switch-applications = with lib.gvariant; mkEmptyArray type.string;
+      switch-applications-backward = with lib.gvariant; mkEmptyArray type.string;
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];
     };
@@ -52,17 +57,17 @@
     settings."org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
       night-light-schedule-automatic = true;
-      night-light-temperature = mkUint32 4700;
+      night-light-temperature = lib.gvariant.mkUint32 4700;
     };
 
     # File history and trash
     settings."org/gnome/desktop/privacy" = {
       remember-recent-files = true;
-      recent-files-max-age = mkUint32 7;
+      recent-files-max-age = lib.gvariant.mkUint32 7;
 
       remove-old-trash-files = true;
       remove-old-temp-files = true;
-      remove-trash-days = mkUint32 30;
+      remove-trash-days = lib.gvariant.mkUint32 30;
     };
   };
 
@@ -71,20 +76,20 @@
     {
       lockAll = true;
 
-      settings = (
-        builtins.listToAttrs (
-          builtins.map
-            (n: {
+      settings =
+        pkgs.lib.pipe
+          [
+            "org/gnome/desktop/peripherals/mouse"
+            "org/gnome/desktop/peripherals/touchpad"
+            "org/gnome/settings-daemon/plugins/color"
+          ]
+          [
+            (builtins.map (n: {
               name = "${n}";
               value = config.home-manager.users.user.dconf.settings."${n}";
-            })
-            [
-              "org/gnome/desktop/peripherals/mouse"
-              "org/gnome/desktop/peripherals/touchpad"
-              "org/gnome/settings-daemon/plugins/color"
-            ]
-        )
-      );
+            }))
+            builtins.listToAttrs
+          ];
     }
   ];
 }

@@ -6,15 +6,15 @@
 }:
 
 {
-  environment.systemPackages = with pkgs.gnomeExtensions; [ executor ];
+  environment.systemPackages = with pkgs; [ gnomeExtensions.executor ];
 
-  home-manager.users.user.dconf = with lib.gvariant; {
+  home-manager.users.user.dconf = {
     inherit (config.programs.dconf) enable;
 
     # Enable extension
     settings."org/gnome/shell" = {
       disable-user-extensions = false;
-      enabled-extensions = with pkgs.gnomeExtensions; [ executor.extensionUuid ];
+      enabled-extensions = with pkgs; [ gnomeExtensions.executor.extensionUuid ];
     };
 
     # Custom settings
@@ -28,7 +28,7 @@
       left-index = 10;
 
       right-active = false;
-      right-commands-json = [
+      right-commands-json = with lib.gvariant; [
         (mkDictionaryEntry "commands" [ (mkEmptyArray (type.dictionaryEntryOf type.string type.string)) ])
       ];
 

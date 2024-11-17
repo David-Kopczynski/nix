@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-  home-manager.users.user.dconf = with lib.gvariant; {
+  home-manager.users.user.dconf = {
     inherit (config.programs.dconf) enable;
 
     # Main applications
@@ -19,7 +19,11 @@
         (lib.lists.imap0
           (
             i: name:
-            (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ]))
+            (lib.gvariant.mkDictionaryEntry name (
+              lib.gvariant.mkVariant [
+                (lib.gvariant.mkDictionaryEntry "position" (lib.gvariant.mkVariant (lib.gvariant.mkUint32 i)))
+              ]
+            ))
           )
           [
             "nixos-manual.desktop"
@@ -41,7 +45,11 @@
         (lib.lists.imap0
           (
             i: name:
-            (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ]))
+            (lib.gvariant.mkDictionaryEntry name (
+              lib.gvariant.mkVariant [
+                (lib.gvariant.mkDictionaryEntry "position" (lib.gvariant.mkVariant (lib.gvariant.mkUint32 i)))
+              ]
+            ))
           )
           [
             "gimp.desktop"
@@ -64,7 +72,11 @@
         (lib.lists.imap0
           (
             i: name:
-            (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ]))
+            (lib.gvariant.mkDictionaryEntry name (
+              lib.gvariant.mkVariant [
+                (lib.gvariant.mkDictionaryEntry "position" (lib.gvariant.mkVariant (lib.gvariant.mkUint32 i)))
+              ]
+            ))
           )
           [
             "thunderbird.desktop"
@@ -81,7 +93,11 @@
         (lib.lists.imap0
           (
             i: name:
-            (mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ]))
+            (lib.gvariant.mkDictionaryEntry name (
+              lib.gvariant.mkVariant [
+                (lib.gvariant.mkDictionaryEntry "position" (lib.gvariant.mkVariant (lib.gvariant.mkUint32 i)))
+              ]
+            ))
           )
           [
             "nvidia-settings.desktop"
@@ -164,149 +180,185 @@
     # Add world clocks
     settings."org/gnome/clocks" = {
       world-clocks = [
-        ([
-          (mkDictionaryEntry "location" (
-            mkVariant (mkTuple [
-              (mkUint32 2)
-              (mkVariant (mkTuple [
+        [
+          (lib.gvariant.mkDictionaryEntry "location" (
+            lib.gvariant.mkVariant (
+              lib.gvariant.mkTuple [
+                (lib.gvariant.mkUint32 2)
+                (lib.gvariant.mkVariant (
+                  lib.gvariant.mkTuple [
+                    "Coordinated Universal Time (UTC)"
+                    "@UTC"
+                    false
+                    (
+                      with lib.gvariant;
+                      mkEmptyArray (
+                        type.tupleOf [
+                          type.double
+                          type.double
+                        ]
+                      )
+                    )
+                    (
+                      with lib.gvariant;
+                      mkEmptyArray (
+                        type.tupleOf [
+                          type.double
+                          type.double
+                        ]
+                      )
+                    )
+                  ]
+                ))
+              ]
+            )
+          ))
+        ]
+        [
+          (lib.gvariant.mkDictionaryEntry "location" (
+            lib.gvariant.mkVariant (
+              lib.gvariant.mkTuple [
+                (lib.gvariant.mkUint32 2)
+                (lib.gvariant.mkVariant (
+                  lib.gvariant.mkTuple [
+                    "Berlin"
+                    "EDDT"
+                    true
+                    [
+                      (lib.gvariant.mkTuple [
+                        0.9174614159494501
+                        0.23241968454167572
+                      ])
+                    ]
+                    [
+                      (lib.gvariant.mkTuple [
+                        0.916588751323453
+                        0.23387411976724018
+                      ])
+                    ]
+                  ]
+                ))
+              ]
+            )
+          ))
+        ]
+      ];
+    };
+    settings."org/gnome/shell/world-clocks" = {
+      locations = [
+        (lib.gvariant.mkVariant (
+          lib.gvariant.mkTuple [
+            (lib.gvariant.mkUint32 2)
+            (lib.gvariant.mkVariant (
+              lib.gvariant.mkTuple [
                 "Coordinated Universal Time (UTC)"
                 "@UTC"
                 false
-                (mkEmptyArray (
-                  type.tupleOf [
-                    type.double
-                    type.double
-                  ]
-                ))
-                (mkEmptyArray (
-                  type.tupleOf [
-                    type.double
-                    type.double
-                  ]
-                ))
-              ]))
-            ])
-          ))
-        ])
-        ([
-          (mkDictionaryEntry "location" (
-            mkVariant (mkTuple [
-              (mkUint32 2)
-              (mkVariant (mkTuple [
+                (
+                  with lib.gvariant;
+                  mkEmptyArray (
+                    type.tupleOf [
+                      type.double
+                      type.double
+                    ]
+                  )
+                )
+                (
+                  with lib.gvariant;
+                  mkEmptyArray (
+                    type.tupleOf [
+                      type.double
+                      type.double
+                    ]
+                  )
+                )
+              ]
+            ))
+          ]
+        ))
+        (lib.gvariant.mkVariant (
+          lib.gvariant.mkTuple [
+            (lib.gvariant.mkUint32 2)
+            (lib.gvariant.mkVariant (
+              lib.gvariant.mkTuple [
                 "Berlin"
                 "EDDT"
                 true
                 [
-                  (mkTuple [
+                  (lib.gvariant.mkTuple [
                     0.9174614159494501
                     0.23241968454167572
                   ])
                 ]
                 [
-                  (mkTuple [
+                  (lib.gvariant.mkTuple [
                     0.916588751323453
                     0.23387411976724018
                   ])
                 ]
-              ]))
-            ])
-          ))
-        ])
-      ];
-    };
-    settings."org/gnome/shell/world-clocks" = {
-      locations = [
-        (mkVariant (mkTuple [
-          (mkUint32 2)
-          (mkVariant (mkTuple [
-            "Coordinated Universal Time (UTC)"
-            "@UTC"
-            false
-            (mkEmptyArray (
-              type.tupleOf [
-                type.double
-                type.double
               ]
             ))
-            (mkEmptyArray (
-              type.tupleOf [
-                type.double
-                type.double
-              ]
-            ))
-          ]))
-        ]))
-        (mkVariant (mkTuple [
-          (mkUint32 2)
-          (mkVariant (mkTuple [
-            "Berlin"
-            "EDDT"
-            true
-            [
-              (mkTuple [
-                0.9174614159494501
-                0.23241968454167572
-              ])
-            ]
-            [
-              (mkTuple [
-                0.916588751323453
-                0.23387411976724018
-              ])
-            ]
-          ]))
-        ]))
+          ]
+        ))
       ];
     };
 
     # Add weather
     settings."org/gnome/Weather" = {
       locations = [
-        (mkVariant (mkTuple [
-          (mkUint32 2)
-          (mkVariant (mkTuple [
-            "Aachen"
-            "ETNG"
-            false
-            [
-              (mkTuple [
-                0.8895361479175408
-                0.10559241974565695
-              ])
-            ]
-            [
-              (mkTuple [
-                0.8895361479175408
-                0.10559241974565695
-              ])
-            ]
-          ]))
-        ]))
+        (lib.gvariant.mkVariant (
+          lib.gvariant.mkTuple [
+            (lib.gvariant.mkUint32 2)
+            (lib.gvariant.mkVariant (
+              lib.gvariant.mkTuple [
+                "Aachen"
+                "ETNG"
+                false
+                [
+                  (lib.gvariant.mkTuple [
+                    0.8895361479175408
+                    0.10559241974565695
+                  ])
+                ]
+                [
+                  (lib.gvariant.mkTuple [
+                    0.8895361479175408
+                    0.10559241974565695
+                  ])
+                ]
+              ]
+            ))
+          ]
+        ))
       ];
     };
     settings."org/gnome/shell/weather" = {
       automatic-location = true;
       locations = [
-        (mkVariant (mkTuple [
-          (mkUint32 2)
-          (mkVariant (mkTuple [
-            "Aachen"
-            "ETNG"
-            false
-            [
-              (mkTuple [
-                0.8895361479175408
-                0.10559241974565695
-              ])
-            ]
-            [
-              (mkTuple [
-                0.8895361479175408
-                0.10559241974565695
-              ])
-            ]
-          ]))
-        ]))
+        (lib.gvariant.mkVariant (
+          lib.gvariant.mkTuple [
+            (lib.gvariant.mkUint32 2)
+            (lib.gvariant.mkVariant (
+              lib.gvariant.mkTuple [
+                "Aachen"
+                "ETNG"
+                false
+                [
+                  (lib.gvariant.mkTuple [
+                    0.8895361479175408
+                    0.10559241974565695
+                  ])
+                ]
+                [
+                  (lib.gvariant.mkTuple [
+                    0.8895361479175408
+                    0.10559241974565695
+                  ])
+                ]
+              ]
+            ))
+          ]
+        ))
       ];
     };
 

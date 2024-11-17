@@ -6,7 +6,7 @@
   # Enable KDE Connect
   programs.kdeconnect = {
     enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
+    package = with pkgs; gnomeExtensions.gsconnect;
   };
 
   home-manager.users.user.dconf = {
@@ -15,7 +15,7 @@
     # Enable extension
     settings."org/gnome/shell" = {
       disable-user-extensions = false;
-      enabled-extensions = with pkgs.gnomeExtensions; [ gsconnect.extensionUuid ];
+      enabled-extensions = with pkgs; [ gnomeExtensions.gsconnect.extensionUuid ];
     };
 
     # Configuration
