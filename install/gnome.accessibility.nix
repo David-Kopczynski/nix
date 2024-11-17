@@ -1,8 +1,7 @@
 { config, lib, ... }:
 
-with lib.gvariant;
 {
-  home-manager.users.user.dconf = {
+  home-manager.users.user.dconf = with lib.gvariant; {
     inherit (config.programs.dconf) enable;
 
     # Disable sound error beep

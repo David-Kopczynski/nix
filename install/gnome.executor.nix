@@ -5,11 +5,10 @@
   ...
 }:
 
-with lib.gvariant;
 {
   environment.systemPackages = with pkgs.gnomeExtensions; [ executor ];
 
-  home-manager.users.user.dconf = {
+  home-manager.users.user.dconf = with lib.gvariant; {
     inherit (config.programs.dconf) enable;
 
     # Enable extension

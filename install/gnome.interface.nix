@@ -1,8 +1,7 @@
 { config, lib, ... }:
 
-with lib.gvariant;
 {
-  home-manager.users.user.dconf = {
+  home-manager.users.user.dconf = with lib.gvariant; {
     inherit (config.programs.dconf) enable;
 
     # Main applications
@@ -30,6 +29,7 @@ with lib.gvariant;
             "org.gnome.SystemMonitor.desktop"
             "gnome"
             "btop.desktop"
+            "nvim.desktop"
             "chromium-browser.desktop"
             "postman.desktop"
             "it.mijorus.smile.desktop"
