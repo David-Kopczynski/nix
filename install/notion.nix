@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = [
-    (pkgs.callPackage ./../derivations/electron-wrapper.nix {
+    (pkgs.callPackage ./../derivations/electron-wrapper {
       name = "notion";
       desktopName = "Notion";
       url = "https://www.notion.so/";

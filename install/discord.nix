@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = [
-    (pkgs.callPackage ./../derivations/electron-wrapper.nix {
+    (pkgs.callPackage ./../derivations/electron-wrapper {
       name = "discord";
       desktopName = "Discord";
       url = "https://discord.com/app";
