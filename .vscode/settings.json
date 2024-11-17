@@ -12,8 +12,13 @@
     "Bitwarden",
     "fprintd",
     "keyrings",
+    "KHTML",
     "konsave",
     "Kopczynski",
     "nixos"
   ],
+
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
 }
