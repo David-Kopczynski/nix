@@ -17,8 +17,7 @@ lib.mkIf (config.host == "workstation") {
     after = [ "network-online.target" ];
 
     serviceConfig = {
-      User = "root";
-      Group = "root";
+      User = "user";
       ExecStart = "${pkgs.hyperion-ng}/bin/hyperiond --service";
       TimeoutStopSec = "10";
       Restart = "on-failure";
