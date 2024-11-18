@@ -10,7 +10,7 @@ lib.mkIf (config.host == "workstation") {
   services.gnome.gnome-remote-desktop.enable = true;
 
   services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "${pkgs.gnome.gnome-session}/bin/gnome-session";
+  services.xrdp.defaultWindowManager = with pkgs; "${gnome.gnome-session}/bin/gnome-session";
   services.xrdp.openFirewall = true;
 
   systemd.targets.sleep.enable = false;
