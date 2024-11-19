@@ -18,7 +18,7 @@ export function init(window) {
 
     if (selection.response) {
       const source = sources[selection.response - 1];
-      callback({ video: source, audio: "loopback" });
+      callback({ video: source });
     }
     else
       callback(null);
