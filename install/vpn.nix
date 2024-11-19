@@ -4,7 +4,7 @@ let
   vpn = pkgs.writeShellScriptBin "vpn" ''
 
     # Login to bitwarden for credentials if not already logged in
-    # Check if rwth or i11 correclty provided
+    # Check if rwth or i11 correctly provided
     if [ "$1" = "rwth" ] || [ "$1" = "i11" ]; then
       sudo echo "logging in to bitwarden..."
       session="$(secret-tool lookup bw_session bw_session_key)"

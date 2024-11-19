@@ -3,7 +3,7 @@
 {
   imports =
     [
-      ./env.nix # Envorinment variables
+      ./env.nix # Environment variables
       ./secrets.nix # Secrets
     ]
 
