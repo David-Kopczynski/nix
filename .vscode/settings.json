@@ -31,4 +31,7 @@
       },
     },
   },
+  //
+  // Resource related settings
+  "ansible.python.interpreterPath": "/run/current-system/sw/bin/python",
 }

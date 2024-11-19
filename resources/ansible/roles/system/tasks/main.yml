@@ -2,6 +2,7 @@
   ansible.builtin.apt:
     name: '*'
     state: latest
+    only_upgrade: true
     update_cache: true
 
 - name: Remove Packages that are Not Needed Anymore

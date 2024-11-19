@@ -6,6 +6,8 @@
     // Resource related
     "redhat.ansible",
     "redhat.vscode-yaml",
-    "ms-python.python"
+    "ms-python.vscode-pylance",
+    "ms-python.python",
+    "ms-python.debugpy",
   ]
 }
