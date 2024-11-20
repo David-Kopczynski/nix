@@ -3,7 +3,7 @@
 {
   # see https://www.programmingfonts.org for more examples
   fonts.packages = with pkgs; [
-    camingo-code
+    fira-code
     monocraft
   ];
 
@@ -12,7 +12,7 @@
 
     # other values are: serif sansSerif emoji
     monospace = [
-      "CamingoCode"
+      "FiraCode"
       "Monocraft"
     ];
   };
