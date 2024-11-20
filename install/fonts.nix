@@ -1,13 +1,20 @@
 { config, pkgs, ... }:
 
 {
-  fonts.packages = with pkgs; [ monocraft ];
+  # see https://www.programmingfonts.org for more examples
+  fonts.packages = with pkgs; [
+    camingo-code
+    monocraft
+  ];
 
   # Default fonts for special purposes
   fonts.fontconfig.defaultFonts = {
 
     # other values are: serif sansSerif emoji
-    monospace = [ "Monocraft" ];
+    monospace = [
+      "CamingoCode"
+      "Monocraft"
+    ];
   };
 
   home-manager.users.user.dconf = {
@@ -16,7 +23,7 @@
     settings."org/gnome/desktop/interface" = {
 
       # other values are: font-name document-font-name
-      monospace-font-name = "Monocraft";
+      monospace-font-name = "Monocraft 8";
     };
   };
 }
