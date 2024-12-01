@@ -2,6 +2,7 @@
 
 let
   please = pkgs.writeShellScriptBin "please" ''
+    set -e -u -o pipefail
 
     # ---------- clean ---------- #
     if [ "$1" = "clean" ]; then

@@ -2,6 +2,7 @@
 
 let
   vpn = pkgs.writeShellScriptBin "vpn" ''
+    set -e -u -o pipefail
 
     # Login to bitwarden for credentials if not already logged in
     # Check if rwth or i11 correctly provided
