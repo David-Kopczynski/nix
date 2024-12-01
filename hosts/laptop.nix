@@ -14,11 +14,7 @@
   hardware.bluetooth.powerOnBoot = true;
 
   # Graphic card drivers
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+  hardware.graphics.enable = true;
 
   # Remap keyboard keys
   services.keyd = {

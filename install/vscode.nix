@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   patched-openssh = pkgs.openssh.overrideAttrs (prev: {
@@ -9,9 +9,7 @@ in
 {
   home-manager.users.user.programs.vscode = {
     enable = true;
-    package = pkgs.vscode.fhsWithPackages (
-      ps: config.environment.systemPackages ++ [ patched-openssh ]
-    );
+    package = pkgs.vscode.fhsWithPackages (ps: [ patched-openssh ]);
   };
 
   # Remove gnome default application

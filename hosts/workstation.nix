@@ -14,16 +14,7 @@
   hardware.bluetooth.powerOnBoot = true;
 
   # Graphic card drivers
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
-  # Latest GPU drivers
-  boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
-  boot.kernelPackages = pkgs.unstable.linuxPackages;
-  hardware.nvidia.package = pkgs.unstable.linuxPackages.nvidiaPackages.stable;
+  hardware.graphics.enable = true;
 
   # Additional drives
   fileSystems."/mnt/data" = {

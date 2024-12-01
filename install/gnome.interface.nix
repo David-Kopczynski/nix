@@ -171,6 +171,7 @@
 
     # Modify top bar format
     settings."org/gnome/desktop/interface" = {
+      accent-color = "green";
       clock-show-seconds = false;
       clock-show-weekday = false;
       enable-animations = true;

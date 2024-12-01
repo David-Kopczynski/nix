@@ -4,7 +4,7 @@
   # Remove unnecessary gnome applications
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
-    gnome.yelp
+    yelp
   ];
   services.xserver.excludePackages = with pkgs; [ xterm ];
 }
