@@ -9,7 +9,7 @@
   # Remove default gnome applications
   environment.gnome.excludePackages = with pkgs; [ gnome.gnome-characters ];
 
-  home-manager.users.user.dconf = {
+  home-manager.users.${config.user}.dconf = {
     inherit (config.programs.dconf) enable;
 
     # Enable extension

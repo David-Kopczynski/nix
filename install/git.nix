@@ -3,7 +3,7 @@
 {
   programs.git.enable = true;
 
-  home-manager.users.user.programs.git = {
+  home-manager.users.${config.user}.programs.git = {
     inherit (config.programs.git) enable;
 
     userName = "David E. C. Kopczynski";

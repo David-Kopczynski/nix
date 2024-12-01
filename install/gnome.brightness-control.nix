@@ -10,7 +10,7 @@
   hardware.i2c.enable = true;
   users.users.user.extraGroups = [ "i2c" ];
 
-  home-manager.users.user.dconf = {
+  home-manager.users.${config.user}.dconf = {
     inherit (config.programs.dconf) enable;
 
     # Enable extension

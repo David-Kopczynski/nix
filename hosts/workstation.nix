@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   # Fetch hardware config from nixos-hardware
@@ -35,7 +35,7 @@
     ];
   };
 
-  home-manager.users.user.dconf = {
+  home-manager.users.${config.user}.dconf = {
     inherit (config.programs.dconf) enable;
 
     # Enable FreeSync support

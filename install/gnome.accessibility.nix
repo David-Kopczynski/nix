@@ -6,7 +6,7 @@
 }:
 
 {
-  home-manager.users.user.dconf = {
+  home-manager.users.${config.user}.dconf = {
     inherit (config.programs.dconf) enable;
 
     # Disable sound error beep
@@ -86,7 +86,7 @@
           [
             (builtins.map (n: {
               name = "${n}";
-              value = config.home-manager.users.user.dconf.settings."${n}";
+              value = config.home-manager.users.${config.user}.dconf.settings."${n}";
             }))
             builtins.listToAttrs
           ];

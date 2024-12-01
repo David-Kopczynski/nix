@@ -17,7 +17,7 @@
     ];
   };
 
-  home-manager.users.user.dconf = {
+  home-manager.users.${config.user}.dconf = {
     inherit (config.programs.dconf) enable;
 
     settings."org/gnome/desktop/interface" = {

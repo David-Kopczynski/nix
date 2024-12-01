@@ -9,7 +9,7 @@
     package = with pkgs; gnomeExtensions.gsconnect;
   };
 
-  home-manager.users.user.dconf = {
+  home-manager.users.${config.user}.dconf = {
     inherit (config.programs.dconf) enable;
 
     # Enable extension

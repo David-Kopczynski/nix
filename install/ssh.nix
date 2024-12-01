@@ -11,7 +11,7 @@
     authorizedKeysFiles = [ "${config.root}/resources/ssh/authorized_keys" ];
   };
 
-  home-manager.users.user.programs.ssh = {
+  home-manager.users.${config.user}.programs.ssh = {
     inherit (config.services.openssh) enable;
 
     matchBlocks = {
