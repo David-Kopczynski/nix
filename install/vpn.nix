@@ -45,14 +45,15 @@ let
 
     fi
   '';
+
+  packages = with pkgs; [
+    openconnect
+    bitwarden-cli
+    libsecret
+  ];
 in
 {
-  environment.systemPackages = [
-    vpn
-    pkgs.openconnect
-    pkgs.bitwarden-cli
-    pkgs.libsecret
-  ];
+  environment.systemPackages = packages ++ [ vpn ];
 
   # Bitwarden is initially installed using `bw login --apikey`
 }

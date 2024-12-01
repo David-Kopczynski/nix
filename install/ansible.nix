@@ -8,11 +8,12 @@ let
     ansible-playbook ${config.root}/resources/ansible/playbook.yml
 
   '';
+
+  packages = with pkgs; [
+    ansible
+    ansible-lint
+  ];
 in
 {
-  environment.systemPackages = [
-    ansible-update
-    pkgs.ansible
-    pkgs.ansible-lint
-  ];
+  environment.systemPackages = packages ++ [ ansible-update ];
 }
