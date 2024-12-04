@@ -4,11 +4,6 @@
   # Fetch hardware config from nixos-hardware
   imports = [ <nixos-hardware/framework/13-inch/13th-gen-intel> ];
 
-  # Disable fingerprint for login
-  # This prevents a race condition with some gnome related services
-  # This also prevents the keyring from asking the password anyways
-  security.pam.services.login.fprintAuth = false;
-
   # Enable bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
