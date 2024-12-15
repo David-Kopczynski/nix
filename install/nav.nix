@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [ (pkgs.callPackage ./../derivations/nav { }) ];
+  environment.systemPackages = with pkgs; [ nav ];
 
   # Setup nav correctly
   programs.bash.shellInit = "eval \"$(nav --init bash)\"";
