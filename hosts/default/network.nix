@@ -4,7 +4,7 @@
   # Enable networking
   networking.hostName = "nixos-${config.host}";
   networking.networkmanager.enable = true;
-  users.users.user = {
+  users.users.${config.user} = {
     extraGroups = [ "networkmanager" ];
   };
 }

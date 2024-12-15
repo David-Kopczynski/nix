@@ -8,7 +8,7 @@
 
   # Allow access to I2C peripherals
   hardware.i2c.enable = true;
-  users.users.user.extraGroups = [ "i2c" ];
+  users.users.${config.user}.extraGroups = [ "i2c" ];
 
   home-manager.users.${config.user}.dconf = {
     inherit (config.programs.dconf) enable;
