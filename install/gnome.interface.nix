@@ -14,105 +14,71 @@
         "org.gnome.Console.desktop"
       ];
 
-      app-picker-layout = [
-        # Page 1: General tools and utilities
-        (lib.lists.imap0
-          (
+      app-picker-layout =
+        map
+          (lib.lists.imap0 (
             i: name:
-            (lib.gvariant.mkDictionaryEntry name (
-              lib.gvariant.mkVariant [
-                (lib.gvariant.mkDictionaryEntry "position" (lib.gvariant.mkVariant (lib.gvariant.mkUint32 i)))
-              ]
-            ))
-          )
+            (
+              with lib.gvariant;
+              mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ])
+            )
+          ))
           [
-            "nixos-manual.desktop"
-            "org.gnome.Settings.desktop"
-            "org.remmina.Remmina.desktop"
-            "remote-viewer.desktop"
-            "org.gnome.SystemMonitor.desktop"
-            "gnome"
-            "btop.desktop"
-            "nvim.desktop"
-            "chromium-browser.desktop"
-            "postman.desktop"
-            "it.mijorus.smile.desktop"
-            "anki.desktop"
-          ]
-        )
+            [
+              # Page 1: General tools and utilities
+              "nixos-manual.desktop"
+              "org.gnome.Settings.desktop"
+              "org.remmina.Remmina.desktop"
+              "remote-viewer.desktop"
+              "org.gnome.SystemMonitor.desktop"
+              "gnome"
+              "btop.desktop"
+              "nvim.desktop"
+              "chromium-browser.desktop"
+              "postman.desktop"
+              "it.mijorus.smile.desktop"
+              "anki.desktop"
+            ]
+            [
+              # Page 2: Creative tools
+              "gimp.desktop"
+              "org.kde.krita.desktop"
+              "org.darktable.darktable.desktop"
+              "org.inkscape.Inkscape.desktop"
+              "org.freecadweb.FreeCAD.desktop"
+              "kicad"
+              "blender.desktop"
+              "f3d.desktop"
+              "org.godotengine.Godot4.desktop"
+              "PrusaSlicer.desktop"
+              "PrusaGcodeviewer.desktop"
+              "mpv.desktop"
+              "com.obsproject.Studio.desktop"
+              "org.kde.kdenlive.desktop"
+            ]
+            [
+              # Page 3: Office
+              "thunderbird.desktop"
+              "notion.desktop"
+              "Zoom.desktop"
+              "simple-scan.desktop"
+              "cups.desktop"
+              "libre"
+              "com.governikus.ausweisapp2.desktop"
+            ]
+            [
+              # Page 4: Games
+              "nvidia-settings.desktop"
 
-        # Page 2: Creative tools
-        (lib.lists.imap0
-          (
-            i: name:
-            (lib.gvariant.mkDictionaryEntry name (
-              lib.gvariant.mkVariant [
-                (lib.gvariant.mkDictionaryEntry "position" (lib.gvariant.mkVariant (lib.gvariant.mkUint32 i)))
-              ]
-            ))
-          )
-          [
-            "gimp.desktop"
-            "org.kde.krita.desktop"
-            "org.darktable.darktable.desktop"
-            "org.inkscape.Inkscape.desktop"
-            "org.freecadweb.FreeCAD.desktop"
-            "kicad"
-            "blender.desktop"
-            "f3d.desktop"
-            "org.godotengine.Godot4.desktop"
-            "PrusaSlicer.desktop"
-            "PrusaGcodeviewer.desktop"
-            "mpv.desktop"
-            "com.obsproject.Studio.desktop"
-            "org.kde.kdenlive.desktop"
-          ]
-        )
-
-        # Page 3: Office
-        (lib.lists.imap0
-          (
-            i: name:
-            (lib.gvariant.mkDictionaryEntry name (
-              lib.gvariant.mkVariant [
-                (lib.gvariant.mkDictionaryEntry "position" (lib.gvariant.mkVariant (lib.gvariant.mkUint32 i)))
-              ]
-            ))
-          )
-          [
-            "thunderbird.desktop"
-            "notion.desktop"
-            "Zoom.desktop"
-            "simple-scan.desktop"
-            "cups.desktop"
-            "libre"
-            "com.governikus.ausweisapp2.desktop"
-          ]
-        )
-
-        # Page 4: Games
-        (lib.lists.imap0
-          (
-            i: name:
-            (lib.gvariant.mkDictionaryEntry name (
-              lib.gvariant.mkVariant [
-                (lib.gvariant.mkDictionaryEntry "position" (lib.gvariant.mkVariant (lib.gvariant.mkUint32 i)))
-              ]
-            ))
-          )
-          [
-            "nvidia-settings.desktop"
-
-            "wootility-lekker.desktop"
-            "discord.desktop"
-            "steam.desktop"
-            "com.heroicgameslauncher.hgl.desktop"
-            "net.lutris.Lutris.desktop"
-            "org.prismlauncher.PrismLauncher.desktop"
-            "r2modman.desktop"
-          ]
-        )
-      ];
+              "wootility-lekker.desktop"
+              "discord.desktop"
+              "steam.desktop"
+              "com.heroicgameslauncher.hgl.desktop"
+              "net.lutris.Lutris.desktop"
+              "org.prismlauncher.PrismLauncher.desktop"
+              "r2modman.desktop"
+            ]
+          ];
     };
 
     # Custom folders
@@ -181,186 +147,150 @@
 
     # Add world clocks
     settings."org/gnome/clocks" = {
-      world-clocks = [
+      world-clocks = with lib.gvariant; [
         [
-          (lib.gvariant.mkDictionaryEntry "location" (
-            lib.gvariant.mkVariant (
-              lib.gvariant.mkTuple [
-                (lib.gvariant.mkUint32 2)
-                (lib.gvariant.mkVariant (
-                  lib.gvariant.mkTuple [
-                    "Coordinated Universal Time (UTC)"
-                    "@UTC"
-                    false
-                    (
-                      with lib.gvariant;
-                      mkEmptyArray (
-                        type.tupleOf [
-                          type.double
-                          type.double
-                        ]
-                      )
-                    )
-                    (
-                      with lib.gvariant;
-                      mkEmptyArray (
-                        type.tupleOf [
-                          type.double
-                          type.double
-                        ]
-                      )
-                    )
-                  ]
-                ))
-              ]
-            )
-          ))
-        ]
-        [
-          (lib.gvariant.mkDictionaryEntry "location" (
-            lib.gvariant.mkVariant (
-              lib.gvariant.mkTuple [
-                (lib.gvariant.mkUint32 2)
-                (lib.gvariant.mkVariant (
-                  lib.gvariant.mkTuple [
-                    "Berlin"
-                    "EDDT"
-                    true
-                    [
-                      (lib.gvariant.mkTuple [
-                        0.9174614159494501
-                        0.23241968454167572
-                      ])
-                    ]
-                    [
-                      (lib.gvariant.mkTuple [
-                        0.916588751323453
-                        0.23387411976724018
-                      ])
-                    ]
-                  ]
-                ))
-              ]
-            )
-          ))
-        ]
-      ];
-    };
-    settings."org/gnome/shell/world-clocks" = {
-      locations = [
-        (lib.gvariant.mkVariant (
-          lib.gvariant.mkTuple [
-            (lib.gvariant.mkUint32 2)
-            (lib.gvariant.mkVariant (
-              lib.gvariant.mkTuple [
+          (mkDictionaryEntry "location" (
+            mkVariant (mkTuple [
+              (mkUint32 2)
+              (mkVariant (mkTuple [
                 "Coordinated Universal Time (UTC)"
                 "@UTC"
                 false
-                (
-                  with lib.gvariant;
-                  mkEmptyArray (
-                    type.tupleOf [
-                      type.double
-                      type.double
-                    ]
-                  )
-                )
-                (
-                  with lib.gvariant;
-                  mkEmptyArray (
-                    type.tupleOf [
-                      type.double
-                      type.double
-                    ]
-                  )
-                )
-              ]
-            ))
-          ]
-        ))
-        (lib.gvariant.mkVariant (
-          lib.gvariant.mkTuple [
-            (lib.gvariant.mkUint32 2)
-            (lib.gvariant.mkVariant (
-              lib.gvariant.mkTuple [
+                (mkEmptyArray (
+                  type.tupleOf [
+                    type.double
+                    type.double
+                  ]
+                ))
+                (mkEmptyArray (
+                  type.tupleOf [
+                    type.double
+                    type.double
+                  ]
+                ))
+              ]))
+            ])
+          ))
+        ]
+        [
+          (mkDictionaryEntry "location" (
+            mkVariant (mkTuple [
+              (mkUint32 2)
+              (mkVariant (mkTuple [
                 "Berlin"
                 "EDDT"
                 true
                 [
-                  (lib.gvariant.mkTuple [
+                  (mkTuple [
                     0.9174614159494501
                     0.23241968454167572
                   ])
                 ]
                 [
-                  (lib.gvariant.mkTuple [
+                  (mkTuple [
                     0.916588751323453
                     0.23387411976724018
                   ])
                 ]
+              ]))
+            ])
+          ))
+        ]
+      ];
+    };
+    settings."org/gnome/shell/world-clocks" = {
+      locations = with lib.gvariant; [
+        (mkVariant (mkTuple [
+          (mkUint32 2)
+          (mkVariant (mkTuple [
+            "Coordinated Universal Time (UTC)"
+            "@UTC"
+            false
+            (mkEmptyArray (
+              type.tupleOf [
+                type.double
+                type.double
               ]
             ))
-          ]
-        ))
+            (mkEmptyArray (
+              type.tupleOf [
+                type.double
+                type.double
+              ]
+            ))
+          ]))
+        ]))
+        (mkVariant (mkTuple [
+          (mkUint32 2)
+          (mkVariant (mkTuple [
+            "Berlin"
+            "EDDT"
+            true
+            [
+              (mkTuple [
+                0.9174614159494501
+                0.23241968454167572
+              ])
+            ]
+            [
+              (mkTuple [
+                0.916588751323453
+                0.23387411976724018
+              ])
+            ]
+          ]))
+        ]))
       ];
     };
 
     # Add weather
     settings."org/gnome/Weather" = {
-      locations = [
-        (lib.gvariant.mkVariant (
-          lib.gvariant.mkTuple [
-            (lib.gvariant.mkUint32 2)
-            (lib.gvariant.mkVariant (
-              lib.gvariant.mkTuple [
-                "Aachen"
-                "ETNG"
-                false
-                [
-                  (lib.gvariant.mkTuple [
-                    0.8895361479175408
-                    0.10559241974565695
-                  ])
-                ]
-                [
-                  (lib.gvariant.mkTuple [
-                    0.8895361479175408
-                    0.10559241974565695
-                  ])
-                ]
-              ]
-            ))
-          ]
-        ))
+      locations = with lib.gvariant; [
+        (mkVariant (mkTuple [
+          (mkUint32 2)
+          (mkVariant (mkTuple [
+            "Aachen"
+            "ETNG"
+            false
+            [
+              (mkTuple [
+                0.8895361479175408
+                0.10559241974565695
+              ])
+            ]
+            [
+              (mkTuple [
+                0.8895361479175408
+                0.10559241974565695
+              ])
+            ]
+          ]))
+        ]))
       ];
     };
     settings."org/gnome/shell/weather" = {
       automatic-location = true;
-      locations = [
-        (lib.gvariant.mkVariant (
-          lib.gvariant.mkTuple [
-            (lib.gvariant.mkUint32 2)
-            (lib.gvariant.mkVariant (
-              lib.gvariant.mkTuple [
-                "Aachen"
-                "ETNG"
-                false
-                [
-                  (lib.gvariant.mkTuple [
-                    0.8895361479175408
-                    0.10559241974565695
-                  ])
-                ]
-                [
-                  (lib.gvariant.mkTuple [
-                    0.8895361479175408
-                    0.10559241974565695
-                  ])
-                ]
-              ]
-            ))
-          ]
-        ))
+      locations = with lib.gvariant; [
+        (mkVariant (mkTuple [
+          (mkUint32 2)
+          (mkVariant (mkTuple [
+            "Aachen"
+            "ETNG"
+            false
+            [
+              (mkTuple [
+                0.8895361479175408
+                0.10559241974565695
+              ])
+            ]
+            [
+              (mkTuple [
+                0.8895361479175408
+                0.10559241974565695
+              ])
+            ]
+          ]))
+        ]))
       ];
     };
 
