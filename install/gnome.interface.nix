@@ -53,6 +53,7 @@
           )
           [
             "gimp.desktop"
+            "org.kde.krita.desktop"
             "org.darktable.darktable.desktop"
             "org.inkscape.Inkscape.desktop"
             "org.freecadweb.FreeCAD.desktop"
