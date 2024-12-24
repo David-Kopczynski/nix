@@ -54,16 +54,3 @@ echo "{ lib, ... }:
 }" > secrets.nix
 
 fi
-
-# ---------- NixOS ---------- #
-
-echo ""; echo "NixOS setup:"
-
-# Generate configuration.nix with current location via pwd
-echo "{
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    $(pwd)
-  ];
-}" | sudo tee /etc/nixos/configuration.nix
