@@ -15,6 +15,4 @@
   # Prevent shutdown delays
   systemd.extraConfig = "DefaultTimeoutStopSec=10s";
   systemd.user.extraConfig = config.systemd.extraConfig;
-
-  system.stateVersion = "23.11";
 }

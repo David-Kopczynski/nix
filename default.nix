@@ -13,7 +13,6 @@
         [
           # Automatically include all configuration from:
           ./channels
-          ./hosts/default
           ./install
         ];
 }
