@@ -1,6 +1,8 @@
 { config, ... }:
 
 {
+  nixpkgs.hostPlatform = "x86_64-linux";
+
   # Fetch hardware config from nixos-hardware
   imports = [
     <nixos-hardware/common/pc>
@@ -9,22 +11,45 @@
     <nixos-hardware/common/cpu/intel/cpu-only.nix>
   ];
 
-  # Hardware supported
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  # Boot parameters taken from hardware-configuration.nix
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
+  boot.kernelModules = [ "kvm-intel" ];
 
-  # Graphic card drivers
-  hardware.graphics.enable = true;
+  # File systems
+  swapDevices = [ ];
 
-  # Additional drives
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/boot";
+    fsType = "vfat";
+  };
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/nixos";
+    fsType = "ext4";
+  };
+
   fileSystems."/mnt/data" = {
-    device = "/dev/disk/by-uuid/941fa4a1-3f46-4db9-8a2f-50f1ee2ac3f5";
+    device = "/dev/disk/by-label/data";
     fsType = "ext4";
     options = [
       "defaults"
       "x-gvfs-show"
     ];
   };
+
+  # Hardware supported
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  # Graphic card drivers
+  hardware.graphics.enable = true;
 
   home-manager.users.${config.user}.dconf = {
     inherit (config.programs.dconf) enable;
@@ -42,6 +67,9 @@
 
   # Enable firmware updates
   services.fwupd.enable = true;
+
+  hardware.cpu.intel.updateMicrocode = true;
+  hardware.enableRedistributableFirmware = true;
 
   system.stateVersion = "23.11";
 }
