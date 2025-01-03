@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs.unstable; [ heroic ];
+  environment.systemPackages = with pkgs; [ heroic ];
 }

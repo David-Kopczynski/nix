@@ -9,7 +9,7 @@ in
 {
   home-manager.users.user.programs.vscode = {
     enable = true;
-    package = pkgs.vscode.fhsWithPackages (ps: [ patched-openssh ]);
+    package = with pkgs.unstable; vscode.fhsWithPackages (ps: [ patched-openssh ]);
   };
 
   # Remove gnome default application

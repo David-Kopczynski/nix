@@ -10,6 +10,6 @@ in
 {
   # Expose unstable channel by using `pkgs.unstable`
   nixpkgs.config = {
-    packageOverrides = pkgs: { unstable = unstable; };
+    packageOverrides = pkgs: { inherit unstable; };
   };
 }

@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs.unstable; [ prusa-slicer ];
+  environment.systemPackages = with pkgs; [ prusa-slicer ];
 }

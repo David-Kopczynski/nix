@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs.unstable; [ prismlauncher ];
+  environment.systemPackages = with pkgs; [ prismlauncher ];
 }
