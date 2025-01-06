@@ -1,58 +1,38 @@
 { pkgs, ... }:
 
 let
-  please = pkgs.writeShellScriptBin "please" ''
-    set -e -u -o pipefail
+  please = pkgs.writeShellApplication {
 
-    # ---------- clean ---------- #
-    if [ "$1" = "clean" ]; then
+    name = "please";
+    text = ''
+      # ---------- switch ---------- #
+      if [ "$1" = "switch" ]; then
 
-    # limit the number of generations to 10 (-1 as the current generation is not counted)
-    # remove all except the last 9 lines from --list-generations and feed them into --delete-generations
-    delete_gen=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | head -n -9 | awk '{print $1}' | tr '\n' ' ')
-    sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $delete_gen
+      echo "update channels..."
+      sudo nix-channel --update
 
-    sudo nix-collect-garbage
+      # simply build NixOS and switch to it
+      echo "switching to new configuration..."
+      sudo nixos-rebuild switch
 
-    # ---------- optimize ---------- #
-    elif [ "$1" = "optimize" ]; then
+      # ---------- test ---------- #
+      elif [ "$1" = "test" ]; then
 
-    # optimize Nix store
-    echo "optimizing store..."
-    sudo nix-store --optimise
+      # test if configuration is valid
+      echo "testing configuration..."
+      sudo nixos-rebuild test --fast && rm result
 
-    # ---------- switch ---------- #
-    elif [ "$1" = "switch" ]; then
+      # ---------- help ---------- #
+      else
 
-    echo "update channels..."
-    sudo nix-channel --update
+      echo "command not found"
+      echo "possible commands are:"
+      echo "  switch   <- build NixOS and switch to it"
+      echo "  test     <- test if configuration is valid"
 
-    # simply build NixOS and switch to it
-    echo "switching to new configuration..."
-    sudo nixos-rebuild switch
-
-    echo "cleaning old images..."
-    please clean
-
-    # ---------- test ---------- #
-    elif [ "$1" = "test" ]; then
-
-    # test if configuration is valid
-    echo "testing configuration..."
-    sudo nixos-rebuild test --fast && rm result
-
-    # ---------- help ---------- #
-    else
-
-    echo "command not found"
-    echo "possible commands are:"
-    echo "  clean    <- clean up Nix and old generations"
-    echo "  optimize <- optimize Nix store"
-    echo "  switch   <- build NixOS and switch to it"
-    echo "  test     <- test if configuration is valid"
-
-    fi
-  '';
+      fi
+    '';
+  };
 in
 {
   environment.systemPackages = [ please ];

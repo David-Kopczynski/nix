@@ -1,13 +1,15 @@
 { config, pkgs, ... }:
 
 let
-  ansible-update = pkgs.writeShellScriptBin "ansible-update" ''
+  ansible-update = pkgs.writeShellApplication {
 
-    # Execute playbook
-    export ANSIBLE_CONFIG=${config.root}/resources/ansible/ansible.cfg
-    ansible-playbook ${config.root}/resources/ansible/playbook.yml
-
-  '';
+    name = "ansible-update";
+    text = ''
+      # Execute playbook
+      export ANSIBLE_CONFIG=${config.root}/resources/ansible/ansible.cfg
+      ansible-playbook ${config.root}/resources/ansible/playbook.yml
+    '';
+  };
 
   packages = with pkgs; [
     ansible

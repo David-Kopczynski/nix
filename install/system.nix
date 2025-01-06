@@ -3,7 +3,11 @@
 {
   # Bootloader
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 16;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Automatically keep system clean
+  nix.gc.automatic = true;
 
   # Path to nixos-configuration
   nix.nixPath = [
