@@ -8,6 +8,7 @@
 
   # Automatically keep system clean
   nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 14d";
 
   # Path to nixos-configuration
   nix.nixPath = [
