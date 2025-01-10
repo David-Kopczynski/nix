@@ -7,10 +7,14 @@ let
     # ---------- clean ---------- #
     if [ "$1" = "clean" ]; then
 
-    # limit the number of generations to 10 (-1 as the current generation is not counted)
-    # remove all except the last 9 lines from --list-generations and feed them into --delete-generations
-    delete_gen=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | head -n -9 | awk '{print $1}' | tr '\n' ' ')
-    sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system $delete_gen
+    N=''${2:-10};
+    # limit the number of generations to $N;
+    sudo nix-env --delete-generations +$N;
+
+    n=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | wc -l);
+    if [ $n -gt $N ]; then
+      echo "Just a heads-up that more than the expected $N generations are currently alive. This is likely due to you having had rolled back from the latest generation before running this command."
+    fi
 
     sudo nix-collect-garbage
 
