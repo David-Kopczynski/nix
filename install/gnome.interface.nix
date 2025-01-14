@@ -72,7 +72,7 @@
               "nvidia-settings.desktop"
 
               "wootility-lekker.desktop"
-              "discord.desktop"
+              "webcord.desktop"
               "steam.desktop"
               "com.heroicgameslauncher.hgl.desktop"
               "net.lutris.Lutris.desktop"
