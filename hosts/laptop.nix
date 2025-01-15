@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -35,6 +35,18 @@
 
   # Graphic card drivers
   hardware.graphics.enable = true;
+
+  home-manager.users.${config.user}.dconf = {
+    inherit (config.programs.dconf) enable;
+
+    # Enable fractional scaling
+    settings."org/gnome/mutter" = {
+      experimental-features = [
+        "scale-monitor-framebuffer"
+        "xwayland-native-scaling"
+      ];
+    };
+  };
 
   # Remap keyboard keys
   services.keyd = {
