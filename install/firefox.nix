@@ -22,7 +22,6 @@
     AutofillAddressEnabled = false;
     AutofillCreditCardEnabled = false;
     OfferToSaveLogins = false;
-    PasswordManagerEnabled = false;
 
     # Default search engine (ESR only)
     SearchEngines.Default = "Qwant";
