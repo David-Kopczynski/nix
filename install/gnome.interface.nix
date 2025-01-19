@@ -9,7 +9,7 @@
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
         "code.desktop"
-        "firefox.desktop"
+        "firefox-esr.desktop"
         "spotify.desktop"
         "org.gnome.Console.desktop"
       ];
