@@ -1,8 +1,10 @@
 { ... }:
 
 {
+  programs.steam.enable = true;
   programs.steam = {
-    enable = true;
+
+    # General configuration
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;

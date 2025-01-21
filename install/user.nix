@@ -1,8 +1,9 @@
-{ config, ... }:
+{ ... }:
 
 {
-  # User configuration
-  users.users.${config.user} = {
+  users.users."user" = {
+
+    # User configuration
     isNormalUser = true;
     description = "David Kopczynski";
     extraGroups = [ "wheel" ];

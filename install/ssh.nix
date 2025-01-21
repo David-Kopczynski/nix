@@ -2,8 +2,8 @@
 
 {
   # OpenSSH server configuration
+  services.openssh.enable = true;
   services.openssh = {
-    enable = true;
 
     # Allow only my public keys
     settings.PasswordAuthentication = false;
@@ -11,7 +11,7 @@
     authorizedKeysFiles = [ "${config.root}/resources/ssh/authorized_keys" ];
   };
 
-  home-manager.users.${config.user}.programs.ssh = {
+  home-manager.users."user".programs.ssh = {
     inherit (config.services.openssh) enable;
 
     matchBlocks = {

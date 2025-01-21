@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 {
+  programs.zsh.enable = true;
   programs.zsh = {
-    enable = true;
 
     # General configuration
     autosuggestions.enable = true;

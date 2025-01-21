@@ -20,7 +20,9 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [
+    "kvm-intel"
+  ];
 
   # File systems
   swapDevices = [ ];
@@ -51,7 +53,7 @@
   # Graphic card drivers
   hardware.graphics.enable = true;
 
-  home-manager.users.${config.user}.dconf = {
+  home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
     # Enable FreeSync support
@@ -72,4 +74,5 @@
   hardware.enableRedistributableFirmware = true;
 
   system.stateVersion = "23.11";
+  home-manager.users."user".home.stateVersion = "24.05";
 }

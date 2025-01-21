@@ -1,12 +1,9 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs.unstable; [ wootility ];
 
+  # Allow connection to keyboard
   hardware.wooting.enable = true;
-  users.users.${config.user} = {
-
-    # Allow access to keyboard peripherals
-    extraGroups = [ "input" ];
-  };
+  users.users."user".extraGroups = [ "input" ];
 }

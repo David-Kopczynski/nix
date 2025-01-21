@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-  home-manager.users.${config.user}.dconf = {
+  home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
     # Main applications

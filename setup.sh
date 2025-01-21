@@ -21,12 +21,10 @@ echo "{ lib, ... }:
   options = with lib; {
     root = mkOption { type = types.str; };
     host = mkOption { type = types.str; };
-    user = mkOption { type = types.str; };
   };
   config = {
     root = \"$PWD\";
     host = \"$host\";
-    user = \"user\";
   };
 }" > env.nix
 

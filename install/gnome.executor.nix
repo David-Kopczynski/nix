@@ -8,7 +8,7 @@
 {
   environment.systemPackages = with pkgs; [ gnomeExtensions.executor ];
 
-  home-manager.users.${config.user}.dconf = {
+  home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
     # Enable extension

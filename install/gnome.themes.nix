@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  home-manager.users.${config.user}.dconf = {
+  home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
     settings."org/gnome/desktop/background" = {
@@ -32,8 +32,10 @@
   '';
 
   # QT theme
+  qt.enable = true;
   qt = {
-    enable = true;
+
+    # General configuration
     platformTheme = "gnome";
     style = "adwaita-dark";
   };
