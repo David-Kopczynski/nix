@@ -6,7 +6,7 @@ let
     name = "please";
     text = ''
       # ---------- switch ---------- #
-      if [ "$1" = "switch" ]; then
+      if [ $# -ge 1 ] && [ "$1" = "switch" ]; then
 
       echo "update channels..."
       sudo nix-channel --update
@@ -16,7 +16,7 @@ let
       sudo nixos-rebuild switch
 
       # ---------- test ---------- #
-      elif [ "$1" = "test" ]; then
+      elif [ $# -ge 1 ] && [ "$1" = "test" ]; then
 
       # test if configuration is valid
       echo "testing configuration..."
