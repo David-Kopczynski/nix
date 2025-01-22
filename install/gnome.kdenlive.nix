@@ -18,8 +18,8 @@
 
     # Configuration
     settings."org/gnome/shell/extensions/gsconnect" = {
-      id = "${config.host}";
-      name = "${config.host}";
+      id = config.system.name;
+      name = config.system.name;
     };
   };
 }

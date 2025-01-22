@@ -8,7 +8,7 @@
     # Allow only my public keys
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
-    authorizedKeysFiles = [ "${config.root}/resources/ssh/authorized_keys" ];
+    authorizedKeysFiles = [ (toString ../resources/ssh/authorized_keys) ];
   };
 
   home-manager.users."user".programs.ssh = {
@@ -51,6 +51,6 @@
       };
     };
 
-    userKnownHostsFile = "~/.ssh/known_hosts ${config.root}/resources/ssh/known_hosts";
+    userKnownHostsFile = "~/.ssh/known_hosts ${../resources/ssh/known_hosts}";
   };
 }

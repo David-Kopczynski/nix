@@ -1,6 +1,7 @@
 { config, ... }:
 
 {
+  system.name = "laptop";
   nixpkgs.hostPlatform = "x86_64-linux";
 
   # Fetch hardware config from nixos-hardware
