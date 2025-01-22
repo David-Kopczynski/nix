@@ -1,13 +1,18 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
+  ansible-source = lib.fileset.toSource {
+    root = ../resources/ansible;
+    fileset = ../resources/ansible;
+  };
+
   ansible-update = pkgs.writeShellApplication {
 
     name = "ansible-update";
     text = ''
       # Execute playbook
-      export ANSIBLE_CONFIG=${../resources/ansible/ansible.cfg}
-      ansible-playbook ${../resources/ansible/playbook.yml}
+      export ANSIBLE_CONFIG=${ansible-source}/ansible.cfg
+      ansible-playbook ${ansible-source}/playbook.yml
     '';
   };
 
