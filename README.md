@@ -38,7 +38,7 @@ When dealing with NixOS, the following native commands can also be used to manag
 Hosts store systematic differences between machines. Currently, [`laptop`](./hosts/laptop.nix) and [`workstation`](./hosts/workstation.nix) are used in this repository.
 
 ## 🚀 Setup
-When copying the system to a new device it is necessary to add some base configuration to the system in order to clone this repository. Afterwards, the setup script can be run with `sh setup.sh` to setup all files for the first time (when migrating the system to another device, the keystore in `~/.local/share/keyrings` should also be copied to the new device), followed by `sudo nixos-rebuild -I nixos-config=PATH_TO_THIS_REPOSITORY switch` to build the system -- this is only required once.
+When copying the system to a new device it is necessary to add some base configuration to the system in order to clone this repository. Afterwards, the setup script can be run with `sh setup.sh` to load this repository for the first time (when migrating the system to another device, the keystore in `~/.local/share/keyrings` should also be copied to the new device, as well as the SSH keys in `~/.ssh` and age keys in `~/.config/sops/age`), followed by `sudo nixos-rebuild switch` to build the system.
 
 Additionally, channels must be subscribed to manually with `sudo nix-channel --add $URL $NAME` and updated with `sudo nix-channel --update`. This setup requires the following channels:
 
@@ -47,6 +47,5 @@ sudo nix-channel --add https://github.com/nix-community/home-manager/archive/rel
 sudo nix-channel --add https://nixos.org/channels/nixos-24.11 nixos
 sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+sudo nix-channel --add https://github.com/Mic92/sops-nix/archive/master.tar.gz sops-nix
 ```
-
-Lastly, some configuration requires keys that should not be public. These keys are taken from various services and stored within `./secrets.nix` which is not included in this repository, but generated during initial setup.

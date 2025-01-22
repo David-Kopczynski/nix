@@ -7,10 +7,10 @@ let
   });
 in
 {
-  home-manager.users.user.programs.vscode = {
-    enable = true;
-    package = with pkgs.unstable; vscode.fhsWithPackages (ps: [ patched-openssh ]);
-  };
+  home-manager.users."user".programs.vscode.enable = true;
+  home-manager.users."user".programs.vscode.package =
+    with pkgs.unstable;
+    vscode.fhsWithPackages (ps: [ patched-openssh ]);
 
   # Remove gnome default application
   environment.gnome.excludePackages = with pkgs; [ gnome-text-editor ];

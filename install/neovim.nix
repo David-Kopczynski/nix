@@ -2,9 +2,9 @@
 
 {
   programs.neovim.enable = true;
-
-  # Additional basic configuration options
   programs.neovim = {
+
+    # General configuration
     vimAlias = true;
     viAlias = true;
 

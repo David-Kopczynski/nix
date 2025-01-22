@@ -1,10 +1,8 @@
 { config, ... }:
 
 {
-  # Enable networking
-  networking.hostName = "nixos-${config.host}";
+  networking.hostName = "nixos-${config.system.name}";
   networking.networkmanager.enable = true;
-  users.users.${config.user} = {
-    extraGroups = [ "networkmanager" ];
-  };
+
+  users.users."user".extraGroups = [ "networkmanager" ];
 }

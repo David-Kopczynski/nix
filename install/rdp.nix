@@ -5,7 +5,7 @@
   ...
 }:
 
-lib.mkIf (config.host == "workstation") {
+lib.mkIf (config.system.name == "workstation") {
   environment.systemPackages = with pkgs; [ gnome-remote-desktop ];
   services.gnome.gnome-remote-desktop.enable = true;
 

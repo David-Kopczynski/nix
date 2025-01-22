@@ -1,8 +1,6 @@
 { ... }:
 
 {
-  programs.ausweisapp = {
-    enable = true;
-    openFirewall = true;
-  };
+  programs.ausweisapp.enable = true;
+  programs.ausweisapp.openFirewall = true;
 }

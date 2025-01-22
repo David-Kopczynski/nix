@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-  home-manager.users.${config.user}.dconf = {
+  home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
     # Main applications
@@ -9,7 +9,7 @@
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
         "code.desktop"
-        "firefox.desktop"
+        "firefox-esr.desktop"
         "spotify.desktop"
         "org.gnome.Console.desktop"
       ];
@@ -50,6 +50,7 @@
               "blender.desktop"
               "f3d.desktop"
               "org.godotengine.Godot4.desktop"
+              "unityhub.desktop"
               "PrusaSlicer.desktop"
               "PrusaGcodeviewer.desktop"
               "mpv.desktop"
@@ -71,7 +72,7 @@
               "nvidia-settings.desktop"
 
               "wootility-lekker.desktop"
-              "discord.desktop"
+              "webcord.desktop"
               "steam.desktop"
               "com.heroicgameslauncher.hgl.desktop"
               "net.lutris.Lutris.desktop"

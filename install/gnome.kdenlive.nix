@@ -4,12 +4,10 @@
   environment.systemPackages = with pkgs; [ libsForQt5.kdenlive ];
 
   # Enable KDE Connect
-  programs.kdeconnect = {
-    enable = true;
-    package = with pkgs; gnomeExtensions.gsconnect;
-  };
+  programs.kdeconnect.enable = true;
+  programs.kdeconnect.package = with pkgs; gnomeExtensions.gsconnect;
 
-  home-manager.users.${config.user}.dconf = {
+  home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
     # Enable extension
@@ -20,8 +18,8 @@
 
     # Configuration
     settings."org/gnome/shell/extensions/gsconnect" = {
-      id = "${config.host}";
-      name = "${config.host}";
+      id = config.system.name;
+      name = config.system.name;
     };
   };
 }

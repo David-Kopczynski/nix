@@ -7,9 +7,6 @@
     virt-viewer
   ];
 
-  virtualisation = {
-
-    # Enable USB redirection for Spice
-    spiceUSBRedirection.enable = true;
-  };
+  # Allow USB passthrough
+  virtualisation.spiceUSBRedirection.enable = true;
 }

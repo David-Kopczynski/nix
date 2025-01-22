@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   services.udev.packages = with pkgs; [
@@ -6,5 +6,5 @@
     openocd
   ];
 
-  users.users.${config.user}.extraGroups = [ "dialout" ];
+  users.users."user".extraGroups = [ "dialout" ];
 }

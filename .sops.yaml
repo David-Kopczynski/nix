@@ -1,0 +1,7 @@
+keys:
+  - &user age1nhssvcts5qr9m3gjl2ps5p4ss7nez6nnhjncrvwm0gpy7x0nqeeq97tm9v
+creation_rules:
+  - path_regex: resources/sops/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *user

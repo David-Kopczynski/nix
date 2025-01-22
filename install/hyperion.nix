@@ -5,11 +5,10 @@
   ...
 }:
 
-lib.mkIf (config.host == "workstation") {
+lib.mkIf (config.system.name == "workstation") {
   environment.systemPackages = with pkgs; [ hyperion-ng ];
 
   systemd.services.hyperiond = {
-    enable = true;
 
     description = "Hyperion.ng Service";
     wantedBy = [ "multi-user.target" ];

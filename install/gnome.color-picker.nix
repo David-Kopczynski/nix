@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [ gnomeExtensions.color-picker ];
 
-  home-manager.users.${config.user}.dconf = {
+  home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
     # Enable extension
