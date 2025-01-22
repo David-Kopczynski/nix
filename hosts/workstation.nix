@@ -18,6 +18,7 @@
 
   # File systems
   swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
+  zramSwap.enable = true;
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/boot";
