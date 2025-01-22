@@ -8,16 +8,8 @@
   imports = [ <nixos-hardware/framework/13-inch/13th-gen-intel> ];
 
   # Boot parameters taken from hardware-configuration.nix
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "thunderbolt"
-    "nvme"
-    "usb_storage"
-    "sd_mod"
-  ];
-  boot.kernelModules = [
-    "kvm-intel"
-  ];
+  boot.initrd.availableKernelModules = [ "nvme" ];
+  boot.kernelModules = [ "kvm-intel" ];
 
   # File systems
   swapDevices = [ ];
@@ -25,6 +17,10 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/boot";
     fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   fileSystems."/" = {
