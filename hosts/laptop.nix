@@ -12,7 +12,7 @@
   boot.kernelModules = [ "kvm-intel" ];
 
   # File systems
-  swapDevices = [ ];
+  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
   zramSwap.enable = true;
 
   fileSystems."/boot" = {
