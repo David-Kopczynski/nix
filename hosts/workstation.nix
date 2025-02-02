@@ -50,17 +50,37 @@
   # Graphic card drivers
   hardware.graphics.enable = true;
 
-  home-manager.users."user".dconf = {
-    inherit (config.programs.dconf) enable;
+  home-manager.users."user" = {
 
-    # Enable FreeSync support
-    settings."org/gnome/mutter" = {
-      experimental-features = [ "variable-refresh-rate" ];
+    dconf = {
+      inherit (config.programs.dconf) enable;
+
+      # Enable FreeSync support
+      settings."org/gnome/mutter" = {
+        experimental-features = [ "variable-refresh-rate" ];
+      };
+
+      # Disable sleep mode
+      settings."org/gnome/settings-daemon/plugins/power" = {
+        sleep-inactive-ac-type = "nothing";
+      };
     };
 
-    # Disable sleep mode
-    settings."org/gnome/settings-daemon/plugins/power" = {
-      sleep-inactive-ac-type = "nothing";
+    # Monitor configuration
+    xdg.configFile."_monitors.xml" = {
+
+      # Copy config into place to prevent read-only errors
+      onChange =
+        let
+          dir = config.home-manager.users."user".xdg.configHome;
+        in
+        ''
+          rm -f ${dir}/monitors.xml
+          cp ${dir}/_monitors.xml ${dir}/monitors.xml
+          chmod u+w ${dir}/monitors.xml
+        '';
+
+      source = ../resources/gnome/workstation-monitors.xml;
     };
   };
 
