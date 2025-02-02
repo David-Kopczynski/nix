@@ -40,10 +40,6 @@
 
   # QT theme
   qt.enable = true;
-  qt = {
-
-    # General configuration
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
+  qt.platformTheme = "gnome";
+  qt.style = "adwaita-dark";
 }
