@@ -4,23 +4,30 @@ let
   please = pkgs.writeShellApplication {
 
     name = "please";
+    runtimeInputs = with pkgs; [
+      nix-output-monitor
+      nvd
+    ];
     text = ''
       # ---------- switch ---------- #
       if [ $# -ge 1 ] && [ "$1" = "switch" ]; then
 
-      echo "update channels..."
+      sudo echo "update channels..."
       sudo nix-channel --update
 
       # simply build NixOS and switch to it
-      echo "switching to new configuration..."
-      sudo nixos-rebuild switch
+      sudo echo "switching to new configuration..."
+      OLD_GEN=$(readlink -f /run/current-system)
+      sudo nixos-rebuild switch --log-format internal-json |& nom --json
+      NEW_GEN=$(readlink -f /run/current-system)
+      nvd diff "$OLD_GEN" "$NEW_GEN"
 
       # ---------- test ---------- #
       elif [ $# -ge 1 ] && [ "$1" = "test" ]; then
 
       # test if configuration is valid
-      echo "testing configuration..."
-      sudo nixos-rebuild test --fast && rm result
+      sudo echo "testing configuration..."
+      sudo nixos-rebuild test --fast --log-format internal-json |& nom --json && rm result
 
       # ---------- help ---------- #
       else
