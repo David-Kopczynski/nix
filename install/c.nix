@@ -2,11 +2,11 @@
 
 {
   environment.systemPackages = with pkgs; [
-    gcc
-    cmake
-    gnumake
-    clang-tools
     ccls
+    clang-tools
+    cmake
+    gcc
     gdb
+    gnumake
   ];
 }
