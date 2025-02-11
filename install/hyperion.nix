@@ -8,9 +8,9 @@
 lib.mkIf (config.system.name == "workstation") {
   environment.systemPackages = with pkgs; [ hyperion-ng ];
 
-  systemd.services.hyperiond = {
+  systemd.services."hyperiond" = {
 
-    description = "Hyperion.ng Service";
+    description = "hyperion.ng Service";
     wantedBy = [ "multi-user.target" ];
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
@@ -22,4 +22,6 @@ lib.mkIf (config.system.name == "workstation") {
       Restart = "on-failure";
     };
   };
+
+  users.users."user".extraGroups = [ "dialout" ];
 }
