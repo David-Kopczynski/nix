@@ -25,37 +25,44 @@
         commands = [
           {
             isActive = true;
-            command = ''
-              result=$(curl -H "Authorization: Bearer $(cat ${
-                config.sops.secrets."homeassistant".path
-              })" -H "Content-Type: application/json" https://home.davidkopczynski.com/api/states/sensor.david_handy_next_alarm | grep -Po '"state":"\K[^"]*')
+            command = "${
+              pkgs.writeShellApplication {
 
-              alarm=$(date -d "$result" +%s)
-              current=$(date +%s)
-              diff=$((alarm - current))
+                name = "executor-alarm";
+                runtimeInputs = with pkgs; [ curl ];
+                text = ''
+                  result=$(curl -H "Authorization: Bearer $(cat ${
+                    config.sops.secrets."homeassistant".path
+                  })" -H "Content-Type: application/json" https://home.davidkopczynski.com/api/states/sensor.david_handy_next_alarm | grep -Po '"state":"\K[^"]*')
 
-              if [ $result = "unavailable" ] || [ $result = "" ] || [ 0 -gt $diff ]; then
-                echo "No Alarm Set"
-              else
-                hours=$((diff / 3600))
-                minutes=$(((diff % 3600) / 60))
-                output="Alarm in"
+                  alarm=$(date -d "$result" +%s)
+                  current=$(date +%s)
+                  diff=$((alarm - current))
 
-                if   [ $minutes -lt 5 ]; then                        minutes=0; output="$output About"
-                elif [ $minutes -gt 55 ]; then hours=$((hours + 1)); minutes=0; output="$output About"
-                elif [ $minutes -ge 40 ]; then hours=$((hours + 1)); minutes=0; output="$output Nearly"
-                elif [ $minutes -le 20 ]; then                       minutes=0; output="$output Just Over"
-                fi
-                if   [ $hours -gt 0 ] && [ $minutes -ne 0 ]; then               output="$output $hours and a Half Hours"
-                elif [ $minutes -ne 0 ]; then                                   output="$output Half an Hour"
-                elif [ $hours -gt 1 ]; then                                     output="$output $hours Hours"
-                elif [ $hours -gt 0 ]; then                                     output="$output 1 Hour"
-                else                                                            output="Alarm Soon"
-                fi
+                  if [ "$result" = "unavailable" ] || [ "$result" = "" ] || [ 0 -gt $diff ]; then
+                    echo "No Alarm Set"
+                  else
+                    hours=$((diff / 3600))
+                    minutes=$(((diff % 3600) / 60))
+                    output="Alarm in"
 
-                echo $output
-              fi
-            '';
+                    if   [ $minutes -lt 5 ]; then                        minutes=0; output="$output About"
+                    elif [ $minutes -gt 55 ]; then hours=$((hours + 1)); minutes=0; output="$output About"
+                    elif [ $minutes -ge 40 ]; then hours=$((hours + 1)); minutes=0; output="$output Nearly"
+                    elif [ $minutes -le 20 ]; then                       minutes=0; output="$output Just Over"
+                    fi
+                    if   [ $hours -gt 0 ] && [ $minutes -ne 0 ]; then               output="$output $hours and a Half Hours"
+                    elif [ $minutes -ne 0 ]; then                                   output="$output Half an Hour"
+                    elif [ $hours -gt 1 ]; then                                     output="$output $hours Hours"
+                    elif [ $hours -gt 0 ]; then                                     output="$output 1 Hour"
+                    else                                                            output="Alarm Soon"
+                    fi
+
+                    echo "$output"
+                  fi
+                '';
+              }
+            }/bin/executor-alarm";
             interval = 600;
             uuid = "alarm";
           }
@@ -68,17 +75,24 @@
         commands = [
           {
             isActive = true;
-            command = ''
-              result=$(curl -H "Authorization: Bearer $(cat ${
-                config.sops.secrets."homeassistant".path
-              })" -H "Content-Type: application/json" https://home.davidkopczynski.com/api/states/sensor.esphome_web_a326a4_co2_gehalt_david | grep -Po '"state":"\K[^"]*')
+            command = "${
+              pkgs.writeShellApplication {
 
-              if [ $result = "unavailable" ] || [ $result = "" ]; then
-                echo "HomeAssistant Offline"
-              else
-                echo "$result ppm"
-              fi
-            '';
+                name = "executor-ppm";
+                runtimeInputs = with pkgs; [ curl ];
+                text = ''
+                  result=$(curl -H "Authorization: Bearer $(cat ${
+                    config.sops.secrets."homeassistant".path
+                  })" -H "Content-Type: application/json" https://home.davidkopczynski.com/api/states/sensor.esphome_web_a326a4_co2_gehalt_david | grep -Po '"state":"\K[^"]*')
+
+                  if [ "$result" = "unavailable" ] || [ "$result" = "" ]; then
+                    echo "HomeAssistant Offline"
+                  else
+                    echo "$result ppm"
+                  fi
+                '';
+              }
+            }/bin/executor-ppm";
             interval = 300;
             uuid = "ppm";
           }
