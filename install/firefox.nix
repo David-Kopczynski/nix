@@ -42,6 +42,8 @@
     "browser.translations.automaticallyPopup" = false;
   };
 
+  xdg.mime.defaultApplications."application/pdf" = "firefox-esr.desktop";
+
   # Remove gnome default application
   environment.gnome.excludePackages = with pkgs; [
     epiphany
