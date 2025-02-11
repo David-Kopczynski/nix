@@ -60,7 +60,6 @@
               # Page 3: Office
               "thunderbird.desktop"
               "notion.desktop"
-              "Zoom.desktop"
               "cups.desktop"
               "libre"
               "com.governikus.ausweisapp2.desktop"
