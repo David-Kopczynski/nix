@@ -43,5 +43,8 @@
   };
 
   # Remove gnome default application
-  environment.gnome.excludePackages = with pkgs; [ epiphany ];
+  environment.gnome.excludePackages = with pkgs; [
+    epiphany
+    evince
+  ];
 }

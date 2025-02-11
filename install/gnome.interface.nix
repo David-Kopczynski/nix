@@ -30,7 +30,6 @@
               "org.gnome.Settings.desktop"
               "org.remmina.Remmina.desktop"
               "remote-viewer.desktop"
-              "org.gnome.SystemMonitor.desktop"
               "gnome"
               "btop.desktop"
               "nvim.desktop"
@@ -62,7 +61,6 @@
               "thunderbird.desktop"
               "notion.desktop"
               "Zoom.desktop"
-              "simple-scan.desktop"
               "cups.desktop"
               "libre"
               "com.governikus.ausweisapp2.desktop"
@@ -70,7 +68,6 @@
             [
               # Page 4: Games
               "nvidia-settings.desktop"
-
               "wootility-lekker.desktop"
               "webcord.desktop"
               "steam.desktop"
@@ -94,22 +91,13 @@
     settings."org/gnome/desktop/app-folders/folders/gnome" = {
       name = "GNOME";
       apps = [
-        "org.gnome.Contacts.desktop"
         "org.gnome.Calendar.desktop"
         "org.gnome.Weather.desktop"
         "org.gnome.clocks.desktop"
-        "org.gnome.Maps.desktop"
         "org.gnome.Snapshot.desktop"
         "org.gnome.Loupe.desktop"
-        "org.gnome.Music.desktop"
         "org.gnome.Calculator.desktop"
-        "org.gnome.font-viewer.desktop"
         "org.gnome.Extensions.desktop"
-        "org.gnome.baobab.desktop"
-        "org.gnome.DiskUtility.desktop"
-        "org.gnome.Logs.desktop"
-        "org.gnome.Evince.desktop"
-        "org.gnome.FileRoller.desktop"
         "org.gnome.seahorse.Application.desktop"
       ];
     };
