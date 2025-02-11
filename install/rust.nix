@@ -13,6 +13,6 @@
 
     # Rust tool setup with NixOS
     # See: https://nixos.wiki/wiki/Rust
-    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+    RUST_SRC_PATH = "${with pkgs; rust.packages.stable.rustPlatform.rustLibSrc}";
   };
 }

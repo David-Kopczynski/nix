@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  vpn = pkgs.pkgs.writeShellApplication {
+  vpn = pkgs.writeShellApplication {
 
     name = "vpn";
     text = ''

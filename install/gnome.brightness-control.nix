@@ -21,7 +21,7 @@
 
     # Add extension settings
     settings."org/gnome/shell/extensions/display-brightness-ddcutil" = {
-      ddcutil-binary-path = "${pkgs.ddcutil}/bin/ddcutil";
+      ddcutil-binary-path = "${with pkgs; ddcutil}/bin/ddcutil";
       button-location = 1;
       hide-system-indicator = true;
       allow-zero-brightness = true;
