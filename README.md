@@ -8,11 +8,11 @@
 | Password | *(found in Bitwarden)* |
 
 ## 📁 Configuration Structure
-When dealing with installations in `.nix`, general hardware, different hosts, and general installations are differentiated as follows:
+This repository is structured into small nix files that are combined to create the system configuration. The general structure is as follows:
 
 | Directory | Description |
 | --- | --- |
-| `./channels` | channel configuration for other configs |
+| `./channels` | channel configuration |
 | `./derivations` | custom derivations for the system |
 | `./hosts` | specific hardware / system configurations |
 | `./install` | general installation configurations |
@@ -23,22 +23,11 @@ This repository offers a set of custom commands that can be used to manage the s
 
 | Command | Description |
 | --- | --- |
-| `please clean` | clean the system of old data and generations |
-| `please optimize` | optimize the system store disk usage |
 | `please switch` | build the system with the latest data and switch to it |
 | `please test` | test build without creating EFI entry point |
 
-When dealing with NixOS, the following native commands can also be used to manage the system:
-
-| Command | Reason |
-| --- | --- |
-| `nix-shell -p <package>` | install a package temporarily |
-
-## 🖥️ Hosts
-Hosts store systematic differences between machines. Currently, [`laptop`](./hosts/laptop.nix) and [`workstation`](./hosts/workstation.nix) are used in this repository.
-
 ## 🚀 Setup
-When copying the system to a new device it is necessary to add some base configuration to the system in order to clone this repository. Afterwards, the setup script can be run with `sh setup.sh` to load this repository for the first time (when migrating the system to another device, the keystore in `~/.local/share/keyrings` should also be copied to the new device, as well as the SSH keys in `~/.ssh` and age keys in `~/.config/sops/age`), followed by `sudo nixos-rebuild switch` to build the system.
+When copying the system to a new device it is necessary to add some base configuration to the system in order to clone this repository (git, ssh). Afterwards, the setup script can be run with `sh setup.sh` to load this repository for the first time (when migrating the system to another device, the keystore in `~/.local/share/keyrings` should also be copied to the new device, as well as the SSH keys in `~/.ssh` and age keys in `~/.config/sops/age`), followed by `sudo nixos-rebuild switch` to build the system.
 
 Additionally, channels must be subscribed to manually with `sudo nix-channel --add $URL $NAME` and updated with `sudo nix-channel --update`. This setup requires the following channels:
 
