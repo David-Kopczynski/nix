@@ -86,6 +86,9 @@
     };
   };
 
+  # Performance tweaks
+  services.preload.enable = true;
+
   # Enable firmware updates
   services.fwupd.enable = true;
   services.fwupd.extraRemotes = [ "lvfs-testing" ];
