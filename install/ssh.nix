@@ -53,4 +53,8 @@
 
     userKnownHostsFile = "~/.ssh/known_hosts ${../resources/ssh/known_hosts}";
   };
+
+  # Security
+  services.fail2ban.enable = true;
+  services.fail2ban.bantime-increment.enable = true;
 }
