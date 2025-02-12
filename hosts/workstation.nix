@@ -43,6 +43,8 @@
     ];
   };
 
+  services.smartd.enable = true;
+
   # Hardware supported
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
