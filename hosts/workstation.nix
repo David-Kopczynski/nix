@@ -86,6 +86,7 @@
 
   # Enable firmware updates
   services.fwupd.enable = true;
+  services.fwupd.extraRemotes = [ "lvfs-testing" ];
 
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
