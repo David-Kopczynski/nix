@@ -4,35 +4,62 @@ let
   vpn = pkgs.writeShellApplication {
 
     name = "vpn";
+    runtimeInputs = with pkgs; [
+      openconnect
+      bitwarden-cli
+      libsecret
+    ];
     text = ''
-      # Login to bitwarden for credentials if not already logged in
-      # Check if rwth or i11 correctly provided
-      if [ "$1" = "rwth" ] || [ "$1" = "i11" ]; then
-        sudo echo "logging in to bitwarden..."
-        session="$(secret-tool lookup bw_session bw_session_key)"
+      # Logging into Bitwarden
+      session=$(secret-tool lookup bw_session bw_session_key)
 
-        # Check if session is still valid
-        unlocked=$(bw status --session "$session" | grep "unlocked")
-
-        if [ -z "$unlocked" ]; then
-          session=$(bw unlock --raw)
-          echo "$session" | secret-tool store --label='Bitwarden' bw_session bw_session_key
-        else
-          echo "Already logged in."
-        fi
+      if [ -z "$session" ]; then
+        echo "no bitwarden session found..."
+        session=$(bw login --apikey)
+        echo "$session" | secret-tool store --label='Bitwarden' bw_session bw_session_key
       fi
 
-      # Get password and totp from bitwarden
+      if bw status --session "$session" | grep -q "unlocked"; then
+        echo "bitwarden session expired..."
+        session=$(bw unlock --raw)
+        echo "$session" | secret-tool store --label='Bitwarden' bw_session bw_session_key
+      fi
+
+      # Change the UUID to the one of your VPN credentials
       password=$(bw get password e5d3a9af-974a-4781-8a8c-ada7009d2a7f --session "$session")
       totp=$(bw get totp e5d3a9af-974a-4781-8a8c-ada7009d2a7f --session "$session")
 
       # ---------- rwth ---------- #
       if [ "$1" = "rwth" ]; then
 
-      echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.rwth-aachen.de --authgroup 'RWTH-VPN (Split Tunnel)' --user hg066732
+      # Select authgroup
+      echo "Select authgroup:"
+      groups=$(echo "" | openconnect --useragent AnyConnect vpn.rwth-aachen.de 2>&1 | grep -Po 'GROUP: \[\K[^]]+' | uniq | tr '|' '\n') || true
+      echo "$groups" | nl
+      read -p "Num: " -r selection
+      authgroup=$(echo "$groups" | sed -n "$selection p")
+
+      if [ -z "$authgroup" ]; then
+        echo "no authgroup selected..."
+        exit 1
+      fi
+
+      echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.rwth-aachen.de --authgroup "$authgroup" --user hg066732
 
       # ---------- i11 ---------- #
       elif [ "$1" = "i11" ]; then
+
+      # Select authgroup
+      echo "Select authgroup:"
+      groups=$(echo "" | openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de 2>&1 | grep -Po 'GROUP: \[\K[^]]+' | uniq | tr '|' '\n') || true
+      echo "$groups" | nl
+      read -p "Num: " -r selection
+      authgroup=$(echo "$groups" | sed -n "$selection p")
+
+      if [ -z "$authgroup" ]; then
+        echo "no authgroup selected..."
+        exit 1
+      fi
 
       echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de --authgroup 'i11-studenten-VPN(Split-Tunnel)' --user hg066732 --no-external-auth
 
@@ -47,15 +74,7 @@ let
       fi
     '';
   };
-
-  packages = with pkgs; [
-    openconnect
-    bitwarden-cli
-    libsecret
-  ];
 in
 {
-  environment.systemPackages = packages ++ [ vpn ];
-
-  # Bitwarden is initially installed using `bw login --apikey`
+  environment.systemPackages = [ vpn ];
 }
