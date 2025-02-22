@@ -17,7 +17,7 @@ lib.mkIf (config.system.name == "workstation") {
 
     serviceConfig = {
       User = "user";
-      ExecStart = "${with pkgs; hyperion-ng}/bin/hyperiond --service";
+      ExecStart = "${with pkgs; hyperion-ng}/bin/hyperiond --service --userdata ${toString ../resources/hyperion}";
       TimeoutStopSec = "10";
       Restart = "on-failure";
     };
