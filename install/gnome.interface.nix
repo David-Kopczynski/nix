@@ -31,6 +31,7 @@
               "org.remmina.Remmina.desktop"
               "remote-viewer.desktop"
               "gnome"
+              "com.github.wwmm.easyeffects.desktop"
               "btop.desktop"
               "nvim.desktop"
               "chromium-browser.desktop"
