@@ -15,11 +15,22 @@ lib.mkIf (config.system.name == "workstation") {
     OnlyShowIn=GNOME;
   '';
 
-  # Prevent screen lock
+  # Prevent fullscreen pipewire issues
+  environment.systemPackages = with pkgs; [ gnomeExtensions.disable-unredirect-fullscreen-windows ];
+
   home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
+    # Prevent screen lock
     settings."org/gnome/desktop/session".idle-delay = lib.gvariant.mkUint32 0;
+
+    # Enable extension
+    settings."org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = with pkgs; [
+        gnomeExtensions.disable-unredirect-fullscreen-windows.extensionUuid
+      ];
+    };
   };
 
   users.users."user".extraGroups = [ "dialout" ];
