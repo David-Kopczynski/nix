@@ -50,7 +50,6 @@
               "blender.desktop"
               "f3d.desktop"
               "org.godotengine.Godot4.desktop"
-              "unityhub.desktop"
               "PrusaSlicer.desktop"
               "PrusaGcodeviewer.desktop"
               "mpv.desktop"
