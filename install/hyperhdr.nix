@@ -10,8 +10,9 @@ lib.mkIf (config.system.name == "workstation") {
     [Desktop Entry]
     Type=Application
     Name=HyperHDR
-    Exec=${with pkgs; hyperhdr}/bin/hyperhdr --service --pipewire --userdata ${toString ../resources/hyperhdr}
+    Exec=${with pkgs; hyperhdr}/bin/hyperhdr --service --pipewire --userdata ${../resources/hyperhdr}
     X-GNOME-Autostart-enabled=true
+    OnlyShowIn=GNOME;
   '';
 
   users.users."user".extraGroups = [ "dialout" ];
