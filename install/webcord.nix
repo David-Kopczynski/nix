@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ webcord ];
+  # Override electron version until fixed: https://github.com/NixOS/nixpkgs/issues/385588
+  environment.systemPackages = with pkgs; [ (webcord.override { electron = electron_32; }) ];
 
   home-manager.users."user".xdg.configFile."WebCord/_config.json" = {
 
