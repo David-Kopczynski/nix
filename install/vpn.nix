@@ -16,13 +16,13 @@ let
       if [ -z "$session" ]; then
         echo "no bitwarden session found..."
         session=$(bw login --apikey)
-        echo "$session" | secret-tool store --label='Bitwarden' bw_session bw_session_key
+        echo "$session" | secret-tool store --label="Bitwarden" bw_session bw_session_key
       fi
 
       if bw status --session "$session" | grep -q "unlocked"; then
         echo "bitwarden session expired..."
         session=$(bw unlock --raw)
-        echo "$session" | secret-tool store --label='Bitwarden' bw_session bw_session_key
+        echo "$session" | secret-tool store --label="Bitwarden" bw_session bw_session_key
       fi
 
       # Change the UUID to the one of your VPN credentials
@@ -34,7 +34,7 @@ let
 
       # Select authgroup
       echo "Select authgroup:"
-      groups=$(echo "" | openconnect --useragent AnyConnect vpn.rwth-aachen.de 2>&1 | grep -Po 'GROUP: \[\K[^]]+' | uniq | tr '|' '\n') || true
+      groups=$(echo "" | openconnect --useragent AnyConnect vpn.rwth-aachen.de 2>&1 | grep -Po "GROUP: \[\K[^]]+" | uniq | tr "|" "\n") || true
       echo "$groups" | nl
       read -p "Num: " -r selection
       authgroup=$(echo "$groups" | sed -n "$selection p")
@@ -51,7 +51,7 @@ let
 
       # Select authgroup
       echo "Select authgroup:"
-      groups=$(echo "" | openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de 2>&1 | grep -Po 'GROUP: \[\K[^]]+' | uniq | tr '|' '\n') || true
+      groups=$(echo "" | openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de 2>&1 | grep -Po "GROUP: \[\K[^]]+" | uniq | tr "|" "\n") || true
       echo "$groups" | nl
       read -p "Num: " -r selection
       authgroup=$(echo "$groups" | sed -n "$selection p")
@@ -61,7 +61,7 @@ let
         exit 1
       fi
 
-      echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de --authgroup 'i11-studenten-VPN(Split-Tunnel)' --user hg066732 --no-external-auth
+      echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de --authgroup "$authgroup" --user hg066732 --no-external-auth
 
       # ---------- help ---------- #
       else
