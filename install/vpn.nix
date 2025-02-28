@@ -10,6 +10,10 @@ let
       libsecret
     ];
     text = ''
+      # Configuration
+      bitwarden_entry="e5d3a9af-974a-4781-8a8c-ada7009d2a7f"
+      user=hg066732
+
       # Logging into Bitwarden
       session=$(secret-tool lookup bw_session bw_session_key)
 
@@ -26,11 +30,11 @@ let
       fi
 
       # Change the UUID to the one of your VPN credentials
-      password=$(bw get password e5d3a9af-974a-4781-8a8c-ada7009d2a7f --session "$session")
-      totp=$(bw get totp e5d3a9af-974a-4781-8a8c-ada7009d2a7f --session "$session")
+      password=$(bw get password "$bitwarden_entry" --session "$session")
+      totp=$(bw get totp "$bitwarden_entry" --session "$session")
 
       # ---------- rwth ---------- #
-      if [ "$1" = "rwth" ]; then
+      if [ $# -gt 0 ] && [ "$1" = "rwth" ]; then
 
       # Select authgroup
       echo "Select authgroup:"
@@ -44,10 +48,10 @@ let
         exit 1
       fi
 
-      echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.rwth-aachen.de --authgroup "$authgroup" --user hg066732
+      echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.rwth-aachen.de --authgroup "$authgroup" --user "$user"
 
       # ---------- i11 ---------- #
-      elif [ "$1" = "i11" ]; then
+      elif [ $# -gt 0 ] && [ "$1" = "i11" ]; then
 
       # Select authgroup
       echo "Select authgroup:"
@@ -61,7 +65,7 @@ let
         exit 1
       fi
 
-      echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de --authgroup "$authgroup" --user hg066732 --no-external-auth
+      echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de --authgroup "$authgroup" --user "$user" --no-external-auth
 
       # ---------- help ---------- #
       else
