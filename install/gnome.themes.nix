@@ -10,12 +10,10 @@
     };
   };
 
-  # Profile picture (workaround) and
-  # inherit monitor layout to gdm
+  # Profile picture (workaround)
   system.activationScripts."profile-picture".text =
     let
       image = toString ../resources/gnome/profile-picture.png;
-      monitor = toString /home/user/.config/monitors.xml;
     in
     ''
       if [ -f ${image} ]; then
@@ -29,7 +27,14 @@
         chown root:root /var/lib/AccountsService/icons/user
         chmod 0444 /var/lib/AccountsService/icons/user
       fi
+    '';
 
+  # Inherit monitor layout to gdm
+  system.activationScripts."monitor-layout".text =
+    let
+      monitor = toString /home/user/.config/monitors.xml;
+    in
+    ''
       if [ -f ${monitor} ]; then
         mkdir -p /run/gdm/.config
         cp ${monitor} /run/gdm/.config/
