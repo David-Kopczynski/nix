@@ -45,7 +45,6 @@
               "org.kde.krita.desktop"
               "org.darktable.darktable.desktop"
               "org.inkscape.Inkscape.desktop"
-              "org.freecadweb.FreeCAD.desktop"
               "kicad"
               "blender.desktop"
               "f3d.desktop"
