@@ -4,6 +4,7 @@
   environment.gnome.excludePackages = with pkgs; [
     baobab
     file-roller
+    gnome-connections
     gnome-contacts
     gnome-disk-utility
     gnome-font-viewer

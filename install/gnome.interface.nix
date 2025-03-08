@@ -28,7 +28,6 @@
               # Page 1: General tools and utilities
               "nixos-manual.desktop"
               "org.gnome.Settings.desktop"
-              "org.remmina.Remmina.desktop"
               "remote-viewer.desktop"
               "gnome"
               "com.github.wwmm.easyeffects.desktop"
