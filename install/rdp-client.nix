@@ -12,12 +12,11 @@ let
     runtimeInputs = with pkgs; [ freerdp3 ];
     text = ''
       # Forward RDP over SSH
-      ssh workstation -L 3389:localhost:3389 -NT &
-      SSH_PID=$!
-      sleep 1
+      ssh workstation -L 3389:localhost:3389 -fNT
+      SSH_PID=$(pgrep -n -x ssh)
 
       clean() {
-        kill $SSH_PID
+        kill "$SSH_PID"
       }
 
       trap clean EXIT
