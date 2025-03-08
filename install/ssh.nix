@@ -33,7 +33,7 @@
         user = "root";
       };
       "workstation" = {
-        hostname = "192.168.0.123";
+        hostname = "192.168.0.20";
         proxyJump = "nixos-server";
         user = "user";
       };

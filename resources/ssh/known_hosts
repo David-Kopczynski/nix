@@ -4,7 +4,7 @@
 ssh.davidkopczynski.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAdg1kU3VTqcvAPmijOgVl9sPNJj08W8QsI4M5qidDxt
 10.1.0.0 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEnQssJHJPe+Nea80W7j9jAYwBoa6rbbpkLmAVN+tIm
 10.0.1.20 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE0Oczr0l8wwIgl8I1MDRFpg5axqOILQBtRbKeYcj7g/
-192.168.0.123 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQMfpeMgEEWbyU75Rv5Hvwq/u2giIDjoPFDe1U86biM
+192.168.0.20 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQMfpeMgEEWbyU75Rv5Hvwq/u2giIDjoPFDe1U86biM
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                   PSP Websites                    #
