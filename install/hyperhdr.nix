@@ -6,14 +6,35 @@
 }:
 
 lib.mkIf (config.system.name == "workstation") {
-  home-manager.users."user".xdg.configFile."autostart/hyperhdr.desktop".text = ''
-    [Desktop Entry]
-    Type=Application
-    Name=HyperHDR
-    Exec=${with pkgs; hyperhdr}/bin/hyperhdr --service --pipewire --userdata ${../resources/hyperhdr}
-    X-GNOME-Autostart-enabled=true
-    OnlyShowIn=GNOME;
-  '';
+  home-manager.users."user".xdg.configFile."autostart/hyperhdr.desktop".text =
+    let
+      dir = config.home-manager.users."user".xdg.configHome;
+    in
+    ''
+      [Desktop Entry]
+      Type=Application
+      Name=HyperHDR
+      Exec=${with pkgs; hyperhdr}/bin/hyperhdr --service --pipewire --userdata ${dir}/hyperhdr
+      X-GNOME-Autostart-enabled=true
+      OnlyShowIn=GNOME;
+    '';
+
+  # Writable config directory
+  home-manager.users."user".xdg.configFile."_hyperhdr" = {
+
+    # Copy config into place to prevent read-only errors
+    onChange =
+      let
+        dir = config.home-manager.users."user".xdg.configHome;
+      in
+      ''
+        rm -rf ${dir}/hyperhdr
+        cp -rL ${dir}/_hyperhdr ${dir}/hyperhdr
+        chmod -R u+w ${dir}/hyperhdr
+      '';
+
+    source = ../resources/hyperhdr;
+  };
 
   # Prevent fullscreen pipewire issues
   environment.systemPackages = with pkgs; [ gnomeExtensions.disable-unredirect-fullscreen-windows ];
