@@ -6,9 +6,6 @@
 }:
 
 lib.mkIf (config.system.name == "workstation") {
-  environment.systemPackages = with pkgs; [ gnome-remote-desktop ];
-  services.gnome.gnome-remote-desktop.enable = true;
-
   services.xrdp.enable = true;
   services.xrdp.audio.enable = true;
   services.xrdp.defaultWindowManager = "${with pkgs; gnome-session}/bin/gnome-session";
