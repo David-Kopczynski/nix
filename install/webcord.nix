@@ -3,6 +3,7 @@
 {
   # Override electron version until fixed: https://github.com/NixOS/nixpkgs/issues/385588
   environment.systemPackages = with pkgs; [ (webcord.override { electron = electron_32; }) ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-32.3.3" ];
 
   home-manager.users."user".xdg.configFile."WebCord/_config.json" = {
 
