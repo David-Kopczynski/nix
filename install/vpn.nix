@@ -11,15 +11,16 @@ let
     ];
     text = ''
       # Configuration
-      bitwarden_entry="e5d3a9af-974a-4781-8a8c-ada7009d2a7f"
+      bitwarden_entry="c01c571c-0a1b-4c7a-b44f-b29d013a3099"
       user=hg066732
 
       # Logging into Bitwarden
-      session=$(secret-tool lookup bw_session bw_session_key)
+      session=$(secret-tool lookup bw_session bw_session_key || true)
 
       if [ -z "$session" ]; then
         echo "no bitwarden session found..."
-        session=$(bw login --apikey)
+        bw login --apikey --quiet
+        session=$(bw unlock --raw)
         echo "$session" | secret-tool store --label="Bitwarden" bw_session bw_session_key
       fi
 
