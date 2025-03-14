@@ -64,7 +64,7 @@
             [
               # Page 4: Games
               "nvidia-settings.desktop"
-              "wootility-lekker.desktop"
+              "wootility.desktop"
               "webcord.desktop"
               "steam.desktop"
               "com.heroicgameslauncher.hgl.desktop"
