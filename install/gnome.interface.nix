@@ -71,6 +71,7 @@
               "net.lutris.Lutris.desktop"
               "org.prismlauncher.PrismLauncher.desktop"
               "r2modman.desktop"
+              "dev.suyu_emu.suyu.desktop"
             ]
           ];
     };
