@@ -10,11 +10,12 @@ lib.mkIf (config.system.name == "workstation") {
     let
       dir = config.home-manager.users."user".xdg.configHome;
     in
+    # Check if running via RDP etc. by checking for :10 in DISPLAY
     ''
       [Desktop Entry]
       Type=Application
       Name=HyperHDR
-      Exec=${with pkgs; hyperhdr}/bin/hyperhdr --service --pipewire --userdata ${dir}/hyperhdr
+      Exec=sh -c '[ "''${DISPLAY#:10}" == "$DISPLAY" ] && exec ${with pkgs; hyperhdr}/bin/hyperhdr --service --pipewire --userdata ${dir}/hyperhdr'
       X-GNOME-Autostart-enabled=true
       OnlyShowIn=GNOME;
     '';
