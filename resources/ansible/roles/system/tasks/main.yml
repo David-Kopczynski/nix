@@ -9,6 +9,12 @@
   ansible.builtin.apt:
     autoremove: true
 
+- name: Remove Proxmox "No valid subscription" Popup
+  ansible.builtin.replace:
+    path: /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+    regexp: '^(.*)Ext\.Msg\.show\(\{(.*)$\n^(.*)No valid subscription(.*)$'
+    replace: '\1void({\2\n\3No valid subscription\4'
+
 - name: Check if a Reboot is Needed
   register: reboot_required_file
   ansible.builtin.stat:
