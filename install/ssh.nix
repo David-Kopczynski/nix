@@ -18,23 +18,58 @@
       # # # # # # # # # # # # # # # # # # # # # # # # # # #
       #               Reverse Proxy for SSH               #
       # # # # # # # # # # # # # # # # # # # # # # # # # # #
-      "proxmox" = {
-        hostname = "10.1.0.0";
-        proxyJump = "nixos-server";
+      "backup-server" = {
+        hostname = "10.0.1.20";
+        proxyJump = "nginx";
         user = "root";
       };
-      "nixos-server" = {
+      "home-assistant" = {
+        hostname = "home-assistant";
+        proxyJump = "nginx";
+        user = "root";
+      };
+      "immich" = {
+        hostname = "immich";
+        proxyJump = "nginx";
+        user = "root";
+      };
+      "nextcloud" = {
+        hostname = "nextcloud";
+        proxyJump = "nginx";
+        user = "root";
+      };
+      "nginx" = {
         hostname = "ssh.davidkopczynski.com";
         user = "root";
       };
-      "backup-server" = {
-        hostname = "10.0.1.20";
-        proxyJump = "nixos-server";
+      "octoprint" = {
+        hostname = "octoprint";
+        proxyJump = "nginx";
+        user = "root";
+      };
+      "paperless" = {
+        hostname = "paperless";
+        proxyJump = "nginx";
+        user = "root";
+      };
+      "proxmox" = {
+        hostname = "10.1.0.0";
+        proxyJump = "nginx";
+        user = "root";
+      };
+      "stirling-pdf" = {
+        hostname = "stirling-pdf";
+        proxyJump = "nginx";
+        user = "root";
+      };
+      "uptime-kuma" = {
+        hostname = "uptime-kuma";
+        proxyJump = "nginx";
         user = "root";
       };
       "workstation" = {
         hostname = "192.168.0.20";
-        proxyJump = "nixos-server";
+        proxyJump = "nginx";
         user = "user";
       };
 
