@@ -19,7 +19,7 @@
       #               Reverse Proxy for SSH               #
       # # # # # # # # # # # # # # # # # # # # # # # # # # #
       "backup-server" = {
-        hostname = "10.0.1.20";
+        hostname = "192.168.0.170";
         proxyJump = "nginx";
         user = "root";
       };
@@ -53,7 +53,7 @@
         user = "root";
       };
       "proxmox" = {
-        hostname = "10.1.0.0";
+        hostname = "192.168.0.169";
         proxyJump = "nginx";
         user = "root";
       };
