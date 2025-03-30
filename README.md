@@ -18,14 +18,6 @@ This repository is structured into small nix files that are combined to create t
 | `./install` | general installation configurations |
 | `./resources` | resources for the system |
 
-## 📜 Commands
-This repository offers a set of custom commands that can be used to manage the system using `please`:
-
-| Command | Description |
-| --- | --- |
-| `please switch` | build the system with the latest data and switch to it |
-| `please test` | test build without creating EFI entry point |
-
 ## 🚀 Setup
 When copying the system to a new device it is necessary to add some base configuration to the system in order to clone this repository (git, ssh). Afterwards, the setup script can be run with `sh setup.sh` to load this repository for the first time (when migrating the system to another device, the keystore in `~/.local/share/keyrings` should also be copied to the new device, as well as the SSH keys in `~/.ssh` and age keys in `~/.config/sops/age`), followed by `sudo nixos-rebuild switch` to build the system.
 
