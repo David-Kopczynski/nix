@@ -7,6 +7,8 @@
 | User | `user` |
 | Password | *(found in Bitwarden)* |
 
+More specific installation instructions can be found in `./hosts/{hostname}/README.md`.
+
 ## 📁 Configuration Structure
 This repository is structured into small nix files that are combined to create the system configuration. The general structure is as follows:
 

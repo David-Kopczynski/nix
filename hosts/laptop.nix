@@ -8,21 +8,46 @@
   imports = [ <nixos-hardware/framework/13-inch/13th-gen-intel> ];
 
   # Boot parameters taken from hardware-configuration.nix
-  boot.initrd.availableKernelModules = [ "nvme" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.initrd.availableKernelModules =
+    [
+      "nvme"
+    ]
+    ++
+    # Optimization for LUKS unlock
+    [
+      "aesni_intel"
+      "cryptd"
+    ];
+  boot.kernelModules =
+    [ "kvm-intel" ]
+    ++
+    # YubiKey support during boot
+    [
+      "vfat"
+      "nls_cp437"
+      "nls_iso8859-1"
+      "usbhid"
+    ];
+
+  # Encryption with LUKS any YubiKey
+  boot.initrd.luks.yubikeySupport = true;
+  boot.initrd.luks.devices."crypted" = {
+    allowDiscards = config.services.fstrim.enable;
+    device = "/dev/disk/by-partlabel/disk-system-crypted";
+    yubikey.twoFactor = false;
+  };
 
   # File systems
-  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
-  zramSwap.enable = true;
+  swapDevices = [ { device = "/dev/mapper/vg-swap"; } ];
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-label/boot";
+    device = "/dev/disk/by-partlabel/disk-system-ESP";
     fsType = "vfat";
     options = [ "umask=0077" ];
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
+    device = "/dev/mapper/vg-root";
     fsType = "ext4";
   };
 
