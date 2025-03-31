@@ -7,10 +7,6 @@
   # Fetch hardware config from nixos-hardware
   imports = [ <nixos-hardware/framework/13-inch/13th-gen-intel> ];
 
-  # Boot parameters taken from hardware-configuration.nix
-  boot.initrd.availableKernelModules = [ "nvme" ];
-  boot.kernelModules = [ "kvm-intel" ];
-
   # File systems
   swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
   zramSwap.enable = true;
