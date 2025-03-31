@@ -19,7 +19,7 @@ This repository is structured into small nix files that are combined to create t
 | `./resources` | resources for the system |
 
 ## 🚀 Setup
-When copying the system to a new device it is necessary to add some base configuration to the system in order to clone this repository (git, ssh). Afterwards, the setup script can be run with `sh setup.sh` to load this repository for the first time (when migrating the system to another device, the keystore in `~/.local/share/keyrings` should also be copied to the new device, as well as the SSH keys in `~/.ssh` and age keys in `~/.config/sops/age`), followed by `sudo nixos-rebuild switch` to build the system.
+When copying the system to a new device it is necessary to add some base configuration to the system in order to clone this repository (git, ssh). Afterwards, the setup script can be run with `sh setup.sh` to load this repository for the first time (when migrating the system to another device, the keystore in `~/.local/share/keyrings` should also be copied to the new device, as well as the SSH keys in `~/.ssh`), followed by `sudo nixos-rebuild switch` to build the system.
 
 Additionally, channels must be subscribed to manually with `sudo nix-channel --add $URL $NAME` and updated with `sudo nix-channel --update`. This setup requires the following channels:
 
