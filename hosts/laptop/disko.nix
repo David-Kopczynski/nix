@@ -19,8 +19,8 @@
           hextorb() { ( tr '[:lower:]' '[:upper:]' | sed -e 's/\([0-9A-F]\{2\}\)/\\\\\\x\1/gI'| xargs printf ) }
 
           SALT="$(dd if=/dev/random bs=1 count=16 2>/dev/null | rbtohex)"
-          CHALLENGE="$(echo -n $SALT | ${with pkgs; openssl}/bin/openssl dgst -binary -sha512 | rbtohex)"
-          RESPONSE=$(${with pkgs; yubikey-personalization}/bin/ykchalresp -2 -x $CHALLENGE 2>/dev/null)
+          CHALLENGE="$(echo -n "$SALT" | ${with pkgs; openssl}/bin/openssl dgst -binary -sha512 | rbtohex)"
+          RESPONSE=$(${with pkgs; yubikey-personalization}/bin/ykchalresp -2 -x "$CHALLENGE" 2>/dev/null)
           LUKS_KEY="$(echo | ${
             pkgs.callPackage "${
               pkgs.fetchFromGitHub {
@@ -30,7 +30,7 @@
                 sha256 = "sha256-qmvBrvSo30kW+meehETdgjvxCmrWrc5cBBGdViJ39gU=";
               }
             }/pbkdf2-sha512" { }
-          }/bin/pbkdf2-sha512 $((512 / 8)) $ITERATIONS $RESPONSE | rbtohex)"
+          }/bin/pbkdf2-sha512 $((512 / 8)) $ITERATIONS "$RESPONSE" | rbtohex)"
 
           echo -n "$LUKS_KEY" | hextorb > /tmp/disko/key-file
           echo -ne "$SALT\n$ITERATIONS" > /tmp/disko/crypt-storage
