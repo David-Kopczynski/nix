@@ -59,7 +59,6 @@
               "notion.desktop"
               "cups.desktop"
               "libre"
-              "com.governikus.ausweisapp2.desktop"
             ]
             [
               # Page 4: Games
