@@ -80,6 +80,7 @@
 
   # Better battery life
   powerManagement.powertop.enable = true;
+  networking.networkmanager.wifi.powersave = true;
 
   # Enable firmware updates
   services.fwupd.enable = true;
