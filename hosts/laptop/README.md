@@ -5,7 +5,8 @@ My Framework 13 (13th gen) laptop is installed with a LUKS setup, running LVM wi
 First, make sure to have the secret configured on the YubiKey:
 
 ```bash
-nix-shell generate_yubikey.sh
+nix-shell luks_yubikey_generate.sh # if freshly setting up
+nix-shell luks_yubikey_restore.sh  # if trying to restore secret
 ```
 
 To install the partition layout and NixOS, simply run the following commands:
