@@ -36,7 +36,6 @@
               "chromium-browser.desktop"
               "postman.desktop"
               "it.mijorus.smile.desktop"
-              "anki.desktop"
             ]
             [
               # Page 2: Creative tools
