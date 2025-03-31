@@ -14,7 +14,6 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/boot";
     fsType = "vfat";
-    options = [ "umask=0077" ];
   };
 
   fileSystems."/" = {
