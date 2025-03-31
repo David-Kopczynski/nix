@@ -140,18 +140,8 @@
                 "Coordinated Universal Time (UTC)"
                 "@UTC"
                 false
-                (mkEmptyArray (
-                  type.tupleOf [
-                    type.double
-                    type.double
-                  ]
-                ))
-                (mkEmptyArray (
-                  type.tupleOf [
-                    type.double
-                    type.double
-                  ]
-                ))
+                (mkEmptyArray (type.tupleOf ([ type.double ] ++ [ type.double ])))
+                (mkEmptyArray (type.tupleOf ([ type.double ] ++ [ type.double ])))
               ]))
             ])
           ))
@@ -164,18 +154,8 @@
                 "Berlin"
                 "EDDT"
                 true
-                [
-                  (mkTuple [
-                    0.9174614159494501
-                    0.23241968454167572
-                  ])
-                ]
-                [
-                  (mkTuple [
-                    0.916588751323453
-                    0.23387411976724018
-                  ])
-                ]
+                [ (mkTuple ([ 0.9174614159494501 ] ++ [ 0.23241968454167572 ])) ]
+                [ (mkTuple ([ 0.916588751323453 ] ++ [ 0.23387411976724018 ])) ]
               ]))
             ])
           ))
@@ -190,18 +170,8 @@
             "Coordinated Universal Time (UTC)"
             "@UTC"
             false
-            (mkEmptyArray (
-              type.tupleOf [
-                type.double
-                type.double
-              ]
-            ))
-            (mkEmptyArray (
-              type.tupleOf [
-                type.double
-                type.double
-              ]
-            ))
+            (mkEmptyArray (type.tupleOf ([ type.double ] ++ [ type.double ])))
+            (mkEmptyArray (type.tupleOf ([ type.double ] ++ [ type.double ])))
           ]))
         ]))
         (mkVariant (mkTuple [
@@ -210,18 +180,8 @@
             "Berlin"
             "EDDT"
             true
-            [
-              (mkTuple [
-                0.9174614159494501
-                0.23241968454167572
-              ])
-            ]
-            [
-              (mkTuple [
-                0.916588751323453
-                0.23387411976724018
-              ])
-            ]
+            [ (mkTuple ([ 0.9174614159494501 ] ++ [ 0.23241968454167572 ])) ]
+            [ (mkTuple ([ 0.916588751323453 ] ++ [ 0.23387411976724018 ])) ]
           ]))
         ]))
       ];
@@ -236,18 +196,8 @@
             "Aachen"
             "ETNG"
             false
-            [
-              (mkTuple [
-                0.8895361479175408
-                0.10559241974565695
-              ])
-            ]
-            [
-              (mkTuple [
-                0.8895361479175408
-                0.10559241974565695
-              ])
-            ]
+            [ (mkTuple ([ 0.8895361479175408 ] ++ [ 0.10559241974565695 ])) ]
+            [ (mkTuple ([ 0.8895361479175408 ] ++ [ 0.10559241974565695 ])) ]
           ]))
         ]))
       ];
@@ -261,26 +211,35 @@
             "Aachen"
             "ETNG"
             false
-            [
-              (mkTuple [
-                0.8895361479175408
-                0.10559241974565695
-              ])
-            ]
-            [
-              (mkTuple [
-                0.8895361479175408
-                0.10559241974565695
-              ])
-            ]
+            [ (mkTuple ([ 0.8895361479175408 ] ++ [ 0.10559241974565695 ])) ]
+            [ (mkTuple ([ 0.8895361479175408 ] ++ [ 0.10559241974565695 ])) ]
           ]))
         ]))
       ];
+    };
+
+    # Datetime
+    settings."org/gnome/desktop/datetime" = {
+      automatic-timezone = true;
     };
 
     # Formats and units
     settings."system/locale" = {
       region = "de_DE.UTF-8";
     };
+  };
+
+  # System locale and formats
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_DE.UTF-8";
+    LC_IDENTIFICATION = "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
+    LC_NAME = "de_DE.UTF-8";
+    LC_NUMERIC = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+    LC_TELEPHONE = "de_DE.UTF-8";
+    LC_TIME = "de_DE.UTF-8";
   };
 }
