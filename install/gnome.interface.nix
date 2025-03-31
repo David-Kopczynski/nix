@@ -49,7 +49,6 @@
               "PrusaSlicer.desktop"
               "PrusaGcodeviewer.desktop"
               "mpv.desktop"
-              "com.obsproject.Studio.desktop"
               "org.kde.kdenlive.desktop"
             ]
             [
