@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.firefox.enable = true;
@@ -42,7 +42,19 @@
     "browser.translations.automaticallyPopup" = false;
   };
 
-  xdg.mime.defaultApplications."application/pdf" = "firefox-esr.desktop";
+  # Firefox as default browser
+  xdg.mime.enable = true;
+  xdg.mime.defaultApplications = lib.genAttrs [
+    "application/pdf"
+    "text/html"
+    "x-scheme-handler/about"
+    "x-scheme-handler/http"
+    "x-scheme-handler/https"
+    "x-scheme-handler/unknown"
+  ] (_: "firefox-esr.desktop");
+
+  xdg.portal.enable = true;
+  xdg.portal.xdgOpenUsePortal = true;
 
   # Remove gnome default application
   environment.gnome.excludePackages = with pkgs; [

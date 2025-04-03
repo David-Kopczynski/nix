@@ -7,29 +7,18 @@
   # Fetch hardware config from nixos-hardware
   imports = [ <nixos-hardware/framework/13-inch/13th-gen-intel> ];
 
-  # Boot parameters taken from hardware-configuration.nix
-  boot.initrd.availableKernelModules =
-    [
-      "nvme"
-    ]
-    ++
-    # Optimization for LUKS unlock
-    [
-      "aesni_intel"
-      "cryptd"
-    ];
-  boot.kernelModules =
-    [ "kvm-intel" ]
-    ++
-    # YubiKey support during boot
-    [
-      "vfat"
-      "nls_cp437"
-      "nls_iso8859-1"
-      "usbhid"
-    ];
-
   # Encryption with LUKS any YubiKey
+  boot.initrd.availableKernelModules = [
+    "aesni_intel"
+    "cryptd"
+  ];
+  boot.kernelModules = [
+    "vfat"
+    "nls_cp437"
+    "nls_iso8859-1"
+    "usbhid"
+  ];
+
   boot.initrd.luks.yubikeySupport = true;
   boot.initrd.luks.devices."crypted" = {
 
@@ -44,7 +33,6 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-partlabel/disk-system-ESP";
     fsType = "vfat";
-    options = [ "umask=0077" ];
   };
 
   fileSystems."/" = {
@@ -111,6 +99,7 @@
 
   # Better battery life
   powerManagement.powertop.enable = true;
+  networking.networkmanager.wifi.powersave = true;
 
   # Enable firmware updates
   services.fwupd.enable = true;
