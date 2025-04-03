@@ -8,16 +8,8 @@
   imports = [ <nixos-hardware/framework/13-inch/13th-gen-intel> ];
 
   # Encryption with LUKS any YubiKey
-  boot.initrd.availableKernelModules = [
-    "aesni_intel"
-    "cryptd"
-  ];
-  boot.kernelModules = [
-    "vfat"
-    "nls_cp437"
-    "nls_iso8859-1"
-    "usbhid"
-  ];
+  boot.initrd.availableKernelModules = [ "aesni_intel" ] ++ [ "cryptd" ];
+  boot.kernelModules = [ "vfat" ] ++ [ "nls_cp437" ] ++ [ "nls_iso8859-1" ] ++ [ "usbhid" ];
 
   boot.initrd.luks.yubikeySupport = true;
   boot.initrd.luks.devices."crypted" = {
