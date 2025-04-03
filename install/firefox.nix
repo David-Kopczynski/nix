@@ -53,6 +53,9 @@
     "x-scheme-handler/unknown"
   ] (_: "firefox-esr.desktop");
 
+  xdg.portal.enable = true;
+  xdg.portal.xdgOpenUsePortal = true;
+
   # Remove gnome default application
   environment.gnome.excludePackages = with pkgs; [
     epiphany
