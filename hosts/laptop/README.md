@@ -1,44 +1,26 @@
 # ❄️ Laptop
-My Framework 13 (13th gen) laptop is installed with a LUKS setup, running LVM with ext4. Unlocking the LUKS partition is done with a YubiKey!
+My Framework 13 (13th gen) laptop is installed with a LUKS setup, running a LVM with ext4. Unlocking the LUKS partition is done with a YubiKey, all configured with the help of a declarative `disko` setup!
 
 ## 🚀 Setup
-First, make sure to have the secret configured on the YubiKey:
+As we are on a fresh system, we need our configuration to get started. \
+Download the repository and navigate to this directory:
+
+```bash
+git clone https://github.com/David-Kopczynski/nix.git
+cd nix/hosts/laptop
+```
+
+Before installing anything on this system, make sure to have the secret configured on the YubiKey:
 
 ```bash
 nix-shell luks_yubikey_generate.sh # if freshly setting up
 nix-shell luks_yubikey_restore.sh  # if trying to restore secret
 ```
 
-To install the partition layout and NixOS, simply run the following commands:
+Then, to install the partition layout and the base starting configuration (after which the steps within the base [README.md](../../README.md) apply), simply run the following command:
 
 ```bash
-nix-shell -p disko --run "sudo disko --mode disko disko.nix"
-sudo nixos-generate-config --root /mnt
-```
-
-Then, copy the base configuration to get things started with `sudo nano /mnt/etc/nixos/configuration.nix`:
-
-```nix
-{
-  boot.kernelModules = [
-    "vfat"
-    "nls_cp437"
-    "nls_iso8859-1"
-    "usbhid"
-  ];
-  boot.initrd.luks.yubikeySupport = true;
-  boot.initrd.luks.devices."crypted" = {
-    allowDiscards = config.services.fstrim.enable;
-    device = "/dev/disk/by-partlabel/disk-system-crypted";
-    yubikey.twoFactor = false;
-  };
-}
-```
-
-Followed by the installation of the system:
-
-```bash
-sudo nixos-install
+nix-shell install.sh
 ```
 
 *It is important for this process to have the YubiKey inserted, as it is used to calculate the LUKS key.* \

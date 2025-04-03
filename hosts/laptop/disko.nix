@@ -46,6 +46,7 @@
           type = "gpt";
           partitions = {
             "ESP" = {
+              priority = 1;
               size = "512M";
               type = "EF00";
               content = {
@@ -56,6 +57,7 @@
               };
             };
             "crypted" = {
+              priority = 2;
               size = "100%";
               content = {
                 type = "luks";

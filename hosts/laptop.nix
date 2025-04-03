@@ -32,6 +32,7 @@
   # Encryption with LUKS any YubiKey
   boot.initrd.luks.yubikeySupport = true;
   boot.initrd.luks.devices."crypted" = {
+
     allowDiscards = config.services.fstrim.enable;
     device = "/dev/disk/by-partlabel/disk-system-crypted";
     yubikey.twoFactor = false;

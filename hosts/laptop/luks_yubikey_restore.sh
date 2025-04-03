@@ -4,5 +4,5 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-read -rp SECRET
+read -rp "YubiKey Secret: " SECRET
 ykpersonalize -2 -ochal-resp -ochal-hmac -a"$SECRET"
