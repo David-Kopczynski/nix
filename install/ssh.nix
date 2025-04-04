@@ -72,18 +72,6 @@
         proxyJump = "nginx";
         user = "user";
       };
-
-      # # # # # # # # # # # # # # # # # # # # # # # # # # #
-      #                   PSP Websites                    #
-      # # # # # # # # # # # # # # # # # # # # # # # # # # #
-      "psp-website" = {
-        hostname = "psp-website.embedded.rwth-aachen.de";
-        user = "psp";
-      };
-      "psp-website-dev" = {
-        hostname = "psp-website-dev.embedded.rwth-aachen.de";
-        user = "psp";
-      };
     };
 
     userKnownHostsFile = "~/.ssh/known_hosts ${../resources/ssh/known_hosts}";
