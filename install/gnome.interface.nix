@@ -4,119 +4,62 @@
   home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
-    # Main applications
+    # Application layout
     settings."org/gnome/shell" = {
-      favorite-apps = [
-        "org.gnome.Nautilus.desktop"
-        "code.desktop"
-        "firefox-esr.desktop"
-        "spotify.desktop"
-        "org.gnome.Console.desktop"
-      ];
-
-      app-picker-layout =
-        map
-          (lib.lists.imap0 (
-            i: name:
-            (
-              with lib.gvariant;
-              mkDictionaryEntry name (mkVariant [ (mkDictionaryEntry "position" (mkVariant (mkUint32 i))) ])
-            )
-          ))
-          [
-            [
-              # Page 1: General tools and utilities
-              "nixos-manual.desktop"
-              "org.gnome.Settings.desktop"
-              "remote-viewer.desktop"
-              "gnome"
-              "com.github.wwmm.easyeffects.desktop"
-              "btop.desktop"
-              "nvim.desktop"
-              "chromium-browser.desktop"
-              "postman.desktop"
-              "it.mijorus.smile.desktop"
-            ]
-            [
-              # Page 2: Creative tools
-              "gimp.desktop"
-              "org.kde.krita.desktop"
-              "org.darktable.darktable.desktop"
-              "org.inkscape.Inkscape.desktop"
-              "kicad"
-              "blender.desktop"
-              "f3d.desktop"
-              "PrusaSlicer.desktop"
-              "PrusaGcodeviewer.desktop"
-              "mpv.desktop"
-              "org.kde.kdenlive.desktop"
-            ]
-            [
-              # Page 3: Office
-              "thunderbird.desktop"
-              "notion.desktop"
-              "cups.desktop"
-              "libre"
-            ]
-            [
-              # Page 4: Games
-              "nvidia-settings.desktop"
-              "wootility.desktop"
-              "webcord.desktop"
-              "steam.desktop"
-              "com.heroicgameslauncher.hgl.desktop"
-              "net.lutris.Lutris.desktop"
-              "org.prismlauncher.PrismLauncher.desktop"
-              "r2modman.desktop"
-              "dev.suyu_emu.suyu.desktop"
-            ]
-          ];
+      favorite-apps = [ "org.gnome.Nautilus.desktop" ];
+      app-picker-layout = [ ]; # alphabetically sort apps
     };
 
-    # Custom folders
+    # Collect applications by category
     settings."org/gnome/desktop/app-folders" = {
       folder-children = [
-        "gnome"
-        "kicad"
-        "libre"
+        "AudioVideo"
+        "Browsing"
+        "Design"
+        "Development"
+        "Games"
+        "GNOME"
+        "Office"
+        "Utility"
+        "System"
       ];
     };
 
-    settings."org/gnome/desktop/app-folders/folders/gnome" = {
+    settings."org/gnome/desktop/app-folders/folders/AudioVideo" = {
+      name = "Audio & Video";
+      categories = [ "AudioVideo" ] ++ [ "Audio" ] ++ [ "Video" ] ++ [ "Recorder" ];
+    };
+    settings."org/gnome/desktop/app-folders/folders/Browsing" = {
+      name = "Browsing";
+      categories = [ "Network" ];
+    };
+    settings."org/gnome/desktop/app-folders/folders/Design" = {
+      name = "Design";
+      categories = [ "Graphics" ];
+    };
+    settings."org/gnome/desktop/app-folders/folders/Development" = {
+      name = "Development";
+      categories = [ "Development" ] ++ [ "Engineering" ];
+    };
+    settings."org/gnome/desktop/app-folders/folders/Games" = {
+      name = "Games";
+      categories = [ "Game" ];
+    };
+    settings."org/gnome/desktop/app-folders/folders/GNOME" = {
       name = "GNOME";
-      apps = [
-        "org.gnome.Calendar.desktop"
-        "org.gnome.Weather.desktop"
-        "org.gnome.clocks.desktop"
-        "org.gnome.Snapshot.desktop"
-        "org.gnome.Loupe.desktop"
-        "org.gnome.Calculator.desktop"
-        "org.gnome.Extensions.desktop"
-        "org.gnome.seahorse.Application.desktop"
-      ];
+      categories = [ "GNOME" ];
     };
-    settings."org/gnome/desktop/app-folders/folders/kicad" = {
-      name = "KiCad";
-      apps = [
-        "org.kicad.kicad.desktop"
-        "org.kicad.gerbview.desktop"
-        "org.kicad.bitmap2component.desktop"
-        "org.kicad.pcbcalculator.desktop"
-        "org.kicad.pcbnew.desktop"
-        "org.kicad.eeschema.desktop"
-      ];
+    settings."org/gnome/desktop/app-folders/folders/Office" = {
+      name = "Office";
+      categories = [ "Office" ] ++ [ "Chat" ];
     };
-    settings."org/gnome/desktop/app-folders/folders/libre" = {
-      name = "LibreOffice";
-      apps = [
-        "startcenter.desktop"
-        "base.desktop"
-        "calc.desktop"
-        "draw.desktop"
-        "impress.desktop"
-        "math.desktop"
-        "writer.desktop"
-      ];
+    settings."org/gnome/desktop/app-folders/folders/Utility" = {
+      name = "Utility";
+      categories = [ "Utility" ] ++ [ "ConsoleOnly" ];
+    };
+    settings."org/gnome/desktop/app-folders/folders/System" = {
+      name = "System";
+      categories = [ "System" ] ++ [ "Settings" ] ++ [ "Monitor" ];
     };
 
     # Modify top bar format
