@@ -39,8 +39,8 @@
           rm /tmp/disko/key-file
         '';
         postMountHook = ''
-          mkdir -p /boot/crypt-storage
-          cp /tmp/disko/crypt-storage /boot/crypt-storage/default
+          mkdir -p /mnt/boot/crypt-storage
+          cp /tmp/disko/crypt-storage /mnt/boot/crypt-storage/default
         '';
         content = {
           type = "gpt";

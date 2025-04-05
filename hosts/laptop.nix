@@ -16,6 +16,7 @@
 
     allowDiscards = config.services.fstrim.enable;
     device = "/dev/disk/by-partlabel/disk-system-crypted";
+    yubikey.storage.device = "/dev/nvme0n1p1";
     yubikey.twoFactor = false;
   };
 
