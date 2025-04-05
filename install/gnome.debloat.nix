@@ -6,7 +6,6 @@
     file-roller
     gnome-connections
     gnome-contacts
-    gnome-disk-utility
     gnome-font-viewer
     gnome-logs
     gnome-maps
