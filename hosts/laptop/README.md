@@ -3,6 +3,7 @@ My Framework 13 (13th gen) laptop is installed with a LUKS setup, running a LVM 
 
 ## 🚀 Setup
 As we are on a fresh system, we need our configuration to get started. \
+Start by going through the NixOS graphical installer to select the keyboard layout and then proceed to the terminal. \
 Download the repository and navigate to this directory:
 
 ```bash
@@ -24,4 +25,5 @@ nix-shell install.sh
 ```
 
 *It is important for this process to have the YubiKey inserted, as it is used to calculate the LUKS key.* \
-*Also, backup the secret used for the YubiKey in a safe place in case of emergency!*
+*Also, backup the secret used for the YubiKey as well as the seed in a safe place in case of emergency!* \
+*When reusing old configurations, make sure to update the `stateVersion` in the host configuration to the latest version.* \
