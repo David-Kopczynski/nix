@@ -1,10 +1,10 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
 
-  fileSystems."/boot".device = "/dev/nvme0n1p1";
-  fileSystems."/".device = "/dev/nvme0n1p2";
+  fileSystems."/boot".device = lib.mkForce "/dev/nvme0n1p1";
+  fileSystems."/".device = lib.mkForce "/dev/nvme0n1p2";
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
