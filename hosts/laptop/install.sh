@@ -7,6 +7,6 @@ set -o pipefail
 cd $(dirname "$0")
 
 sudo disko --mode disko disko.nix
-sudo mkdir -p /mnt/etc/nixos
+sudo nixos-generate-config --root /mnt
 sudo cp install.nix /mnt/etc/nixos/configuration.nix
 sudo nixos-install

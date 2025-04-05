@@ -1,20 +1,10 @@
 { config, ... }:
 
 {
-  nixpkgs.hostPlatform = "x86_64-linux";
+  imports = [ ./hardware-configuration.nix ];
 
-  # Disks
-  swapDevices = [ { device = "/dev/mapper/vg-swap"; } ];
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-partlabel/disk-system-ESP";
-    fsType = "vfat";
-  };
-
-  fileSystems."/" = {
-    device = "/dev/mapper/vg-root";
-    fsType = "ext4";
-  };
+  fileSystems."/boot".device = "/dev/nvme0n1p1";
+  fileSystems."/".device = "/dev/nvme0n1p2";
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -28,8 +18,8 @@
   boot.initrd.luks.devices."crypted" = {
 
     allowDiscards = config.services.fstrim.enable;
-    device = "/dev/disk/by-partlabel/disk-system-crypted";
-    yubikey.storage.device = "/dev/nvme0n1p1";
+    device = config.fileSystems."/".device;
+    yubikey.storage.device = config.fileSystems."/boot".device;
     yubikey.twoFactor = false;
   };
 
