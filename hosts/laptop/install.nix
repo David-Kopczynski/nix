@@ -3,6 +3,7 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
+  swapDevices = lib.mkForce [ { device = "/dev/mapper/vg-swap"; } ];
   fileSystems."/boot".device = lib.mkForce "/dev/disk/by-partlabel/disk-system-ESP";
   fileSystems."/".device = lib.mkForce "/dev/mapper/vg-root";
 
@@ -12,7 +13,7 @@
 
   # LUKS
   boot.initrd.availableKernelModules = [ "aesni_intel" ] ++ [ "cryptd" ];
-  boot.kernelModules = [ "vfat" ] ++ [ "nls_cp437" ] ++ [ "nls_iso8859-1" ] ++ [ "usbhid" ];
+  boot.initrd.kernelModules = [ "vfat" ] ++ [ "nls_cp437" ] ++ [ "nls_iso8859-1" ] ++ [ "usbhid" ];
 
   boot.initrd.luks.yubikeySupport = true;
   boot.initrd.luks.devices."crypted" = {
