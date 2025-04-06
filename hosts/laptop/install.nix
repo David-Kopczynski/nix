@@ -3,8 +3,8 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  fileSystems."/boot".device = lib.mkForce "/dev/nvme0n1p1";
-  fileSystems."/".device = lib.mkForce "/dev/nvme0n1p2";
+  fileSystems."/boot".device = lib.mkForce "/dev/disk/by-partlabel/disk-system-ESP";
+  fileSystems."/".device = lib.mkForce "/dev/mapper/vg-root";
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
