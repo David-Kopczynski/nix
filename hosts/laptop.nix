@@ -101,6 +101,6 @@
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
 
-  system.stateVersion = "23.11";
-  home-manager.users."user".home.stateVersion = "24.05";
+  system.stateVersion = "24.11";
+  home-manager.users."user".home.stateVersion = "24.11";
 }
