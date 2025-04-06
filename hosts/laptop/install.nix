@@ -18,7 +18,7 @@
   boot.initrd.luks.devices."crypted" = {
 
     allowDiscards = config.services.fstrim.enable;
-    device = config.fileSystems."/".device;
+    device = "/dev/disk/by-partlabel/disk-system-crypted";
     yubikey.storage.device = config.fileSystems."/boot".device;
     yubikey.twoFactor = false;
   };
