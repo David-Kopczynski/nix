@@ -12,8 +12,6 @@
     <nixos-hardware/common/cpu/intel/cpu-only.nix>
   ];
 
-  # (Tweaked) boot parameters taken from hardware-configuration.nix
-  boot.initrd.availableKernelModules = [ "nvme" ];
   boot.kernelModules = [ "kvm-intel" ];
 
   # File systems
@@ -33,10 +31,7 @@
   fileSystems."/mnt/data" = {
     device = "/dev/disk/by-label/data";
     fsType = "ext4";
-    options = [
-      "defaults"
-      "x-gvfs-show"
-    ];
+    options = [ "defaults" ] ++ [ "x-gvfs-show" ];
   };
 
   services.smartd.enable = true;
