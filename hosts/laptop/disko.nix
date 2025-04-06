@@ -69,6 +69,7 @@
                 ];
                 settings = {
                   allowDiscards = true;
+                  bypassWorkqueues = true;
                   keyFile = "/tmp/disko/key-file";
                 };
                 content = {
