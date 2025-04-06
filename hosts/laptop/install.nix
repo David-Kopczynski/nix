@@ -24,6 +24,9 @@
     yubikey.twoFactor = false;
   };
 
+  # Keyboard layout
+  console.keyMap = "de";
+
   # User
   users.users."user" = {
 
