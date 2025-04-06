@@ -34,9 +34,6 @@ let
       password=$(bw get password "$bitwarden_entry" --session "$session")
       totp=$(bw get totp "$bitwarden_entry" --session "$session")
 
-      # ---------- rwth ---------- #
-      if [ $# -gt 0 ] && [ "$1" = "rwth" ]; then
-
       # Select authgroup
       echo "Select authgroup:"
       groups=$(echo "" | openconnect --useragent AnyConnect vpn.rwth-aachen.de 2>&1 | grep -Po "GROUP: \[\K[^]]+" | uniq | tr "|" "\n") || true
@@ -50,33 +47,6 @@ let
       fi
 
       echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.rwth-aachen.de --authgroup "$authgroup" --user "$user"
-
-      # ---------- i11 ---------- #
-      elif [ $# -gt 0 ] && [ "$1" = "i11" ]; then
-
-      # Select authgroup
-      echo "Select authgroup:"
-      groups=$(echo "" | openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de 2>&1 | grep -Po "GROUP: \[\K[^]]+" | uniq | tr "|" "\n") || true
-      echo "$groups" | nl
-      read -p "Num: " -r selection
-      authgroup=$(echo "$groups" | sed -n "$selection p")
-
-      if [ -z "$authgroup" ]; then
-        echo "no authgroup selected..."
-        exit 1
-      fi
-
-      echo -e "$password\n$totp\n" | sudo openconnect --useragent AnyConnect vpn.embedded.rwth-aachen.de --authgroup "$authgroup" --user "$user" --no-external-auth
-
-      # ---------- help ---------- #
-      else
-
-      echo "command not found"
-      echo "possible commands are:"
-      echo "  rwth     <- connect to default rwth vpn"
-      echo "  i11      <- connect to i11 embedded vpn using student network"
-
-      fi
     '';
   };
 in

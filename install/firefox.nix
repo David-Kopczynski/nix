@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.firefox.enable = true;
@@ -55,6 +60,15 @@
 
   xdg.portal.enable = true;
   xdg.portal.xdgOpenUsePortal = true;
+
+  # Main application
+  home-manager.users."user".dconf = {
+    inherit (config.programs.dconf) enable;
+
+    settings."org/gnome/shell" = {
+      favorite-apps = [ "firefox-esr.desktop" ];
+    };
+  };
 
   # Remove gnome default application
   environment.gnome.excludePackages = with pkgs; [

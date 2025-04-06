@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   patched-openssh = pkgs.openssh.overrideAttrs (prev: {
@@ -21,6 +21,15 @@ in
         texliveFull
       ]
     );
+
+  # Main application
+  home-manager.users."user".dconf = {
+    inherit (config.programs.dconf) enable;
+
+    settings."org/gnome/shell" = {
+      favorite-apps = [ "code.desktop" ];
+    };
+  };
 
   # Remove gnome default application
   environment.gnome.excludePackages = with pkgs; [ gnome-text-editor ];

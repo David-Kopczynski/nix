@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.zsh.enable = true;
@@ -25,4 +25,13 @@
   environment.systemPackages = with pkgs; [ nav ];
   programs.bash.shellInit = "eval \"$(nav --init bash)\"";
   programs.zsh.shellInit = "eval \"$(nav --init zsh)\"";
+
+  # Main application
+  home-manager.users."user".dconf = {
+    inherit (config.programs.dconf) enable;
+
+    settings."org/gnome/shell" = {
+      favorite-apps = [ "org.gnome.Console.desktop" ];
+    };
+  };
 }

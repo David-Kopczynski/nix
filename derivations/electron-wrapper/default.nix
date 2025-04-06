@@ -68,6 +68,7 @@ stdenv.mkDerivation rec {
     (makeDesktopItem {
       name = pname;
       desktopName = desktopName;
+      categories = [ "Network" ];
       comment = meta.description;
       exec = pname;
       icon = pname;
