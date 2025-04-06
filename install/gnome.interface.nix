@@ -164,12 +164,19 @@
     settings."org/gnome/desktop/datetime" = {
       automatic-timezone = true;
     };
+    settings."org/gnome/system/location" = {
+      enabled = true;
+    };
 
     # Formats and units
     settings."system/locale" = {
       region = "de_DE.UTF-8";
     };
   };
+
+  # Timezone
+  services.automatic-timezoned.enable = true;
+  services.geoclue2.geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
 
   # System locale and formats
   i18n.defaultLocale = "en_US.UTF-8";
