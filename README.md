@@ -32,3 +32,5 @@ sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.ta
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 sudo nix-channel --add https://github.com/Mic92/sops-nix/archive/master.tar.gz sops-nix
 ```
+
+*When reusing old configurations, make sure to update the `stateVersion` in the host configuration to the latest version.*
