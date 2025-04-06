@@ -7,7 +7,6 @@
   users.users."user".extraGroups = [ "networkmanager" ];
 
   # Custom DNS (cloudflare malware blocking)
-  networking.networkmanager.dns = "none";
   networking.nameservers = [
     "2606:4700:4700::1112"
     "2606:4700:4700::1002"
