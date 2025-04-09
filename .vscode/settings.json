@@ -31,7 +31,4 @@
       },
     },
   },
-  //
-  // Resource related settings
-  "ansible.python.interpreterPath": "/bin/python",
 }

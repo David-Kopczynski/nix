@@ -1,9 +1,0 @@
-- name: Proxmox System Updates and Upgrades
-  hosts: system:&proxmox*
-  roles:
-    - system
-
-- name: System Updates and Upgrades
-  hosts: system:!proxmox*
-  roles:
-    - system
