@@ -5,6 +5,8 @@
   ...
 }:
 
+# https://lvra.gitlab.io/docs/fossvr/envision/
+# build failure...
 lib.mkIf (config.system.name == "workstation") {
   programs.envision.enable = true;
   programs.envision.openFirewall = false;
