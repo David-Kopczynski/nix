@@ -11,8 +11,21 @@ lib.mkIf (config.system.name == "workstation") {
   # journalctl --user --follow --unit monado.service
   services.monado.enable = true;
   services.monado.defaultRuntime = true;
+  services.monado.package =
+    with pkgs;
+    monado.overrideAttrs (
+      finalAttrs: previousAttrs: {
+        src = fetchFromGitLab {
+          domain = "gitlab.freedesktop.org";
+          owner = "thaytan"; # https://gitlab.freedesktop.org/monado/webpage/-/blob/master/index.md?ref_type=heads#supported-hardware
+          repo = "monado";
+          rev = "dev-constellation-controller-tracking";
+          hash = "sha256-Qif9aKHyGv0CTxtWCABrAxGe4JVtcp7E4tW6rlzGVG4=";
+        };
 
-  programs.envision.enable = true;
+        patches = [ ];
+      }
+    );
 
   systemd.user.services."monado".environment = {
     STEAMVR_LH_ENABLE = "1";
