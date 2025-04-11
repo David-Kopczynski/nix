@@ -6,32 +6,42 @@
 }:
 
 lib.mkIf (config.system.name == "workstation") {
-  home-manager.users."user".xdg.configFile."autostart/hyperhdr.desktop".text =
-    let
-      dir = config.home-manager.users."user".xdg.configHome;
-    in
-    # Check if running via RDP etc. by checking for :10 in DISPLAY
-    ''
-      [Desktop Entry]
-      Type=Application
-      Name=HyperHDR
-      Exec=sh -c '[ "''${DISPLAY#:10}" == "$DISPLAY" ] && exec ${pkgs.writeText "hyperhdr-wrapper" ''
-        echo "Starting HyperHDR..."
+  home-manager.users."user".xdg.configFile."autostart/hyperhdr.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=HyperHDR
+    Exec=sh ${
+      pkgs.writeShellApplication {
 
-        # Allow capture crashes (e.g. when locking screen)
-        for retry in $(seq 1 3); do
-          (${with pkgs; hyperhdr}/bin/hyperhdr --pipewire --userdata ${dir}/hyperhdr 2>&1) | while read line; do
-            if [[ $line =~ "<ERROR> Could not capture pipewire frame" ]]; then; echo "Capture crashed."; break; fi
-          done
+        name = "hyperhdr-wrapper";
+        runtimeInputs = with pkgs; [ hyperhdr ];
+        text = ''
+          # Check if running via RDP etc. by checking for :10 in DISPLAY
+          if [ "''${DISPLAY#:10}" == "$DISPLAY" ]; then
+            echo "Starting HyperHDR..."
 
-          sleep 1
-        done
+            # Allow capture crashes (e.g. when locking screen)
+            for _ in $(seq 1 3); do
+              (hyperhdr --pipewire --userdata ${
+                config.home-manager.users."user".xdg.configHome
+              }/hyperhdr 2>&1 || true) | while read -r line; do
+                if [[ $line =~ "<ERROR> Could not capture pipewire frame" ]]; then
+                  echo "Capture crashed."
+                  break
+                fi
+              done
 
-        echo "Max retries reached. Exiting..."
-      ''}'
-      X-GNOME-Autostart-enabled=true
-      OnlyShowIn=GNOME;
-    '';
+              sleep 1
+            done
+
+            echo "Max retries reached. Exiting..."
+          fi
+        '';
+      }
+    }/bin/hyperhdr-wrapper
+    X-GNOME-Autostart-enabled=true
+    OnlyShowIn=GNOME;
+  '';
 
   # Writable config directory
   home-manager.users."user".xdg.configFile."_hyperhdr" = {
