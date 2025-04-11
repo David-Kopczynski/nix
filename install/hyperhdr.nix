@@ -15,7 +15,20 @@ lib.mkIf (config.system.name == "workstation") {
       [Desktop Entry]
       Type=Application
       Name=HyperHDR
-      Exec=sh -c '[ "''${DISPLAY#:10}" == "$DISPLAY" ] && exec ${with pkgs; hyperhdr}/bin/hyperhdr --service --pipewire --userdata ${dir}/hyperhdr'
+      Exec=sh -c '[ "''${DISPLAY#:10}" == "$DISPLAY" ] && exec ${pkgs.writeText "hyperhdr-wrapper" ''
+        echo "Starting HyperHDR..."
+
+        # Allow capture crashes (e.g. when locking screen)
+        for retry in $(seq 1 3); do
+          (${with pkgs; hyperhdr}/bin/hyperhdr --pipewire --userdata ${dir}/hyperhdr 2>&1) | while read line; do
+            if [[ $line =~ "<ERROR> Could not capture pipewire frame" ]]; then; echo "Capture crashed."; break; fi
+          done
+
+          sleep 1
+        done
+
+        echo "Max retries reached. Exiting..."
+      ''}'
       X-GNOME-Autostart-enabled=true
       OnlyShowIn=GNOME;
     '';
