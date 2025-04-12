@@ -8,6 +8,7 @@
 lib.mkIf (config.system.name == "workstation") {
   # Monado can be run with the following commands:
   #   systemctl --user start monado.service
+  #   systemctl --user stop monado.{service,socket}
   #   journalctl --user --follow --unit monado.service
   # Games require LAUNCH OPTIONS: "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%"
   services.monado.enable = true;
@@ -35,7 +36,6 @@ lib.mkIf (config.system.name == "workstation") {
 
     # Enable debugging if needed
     XRT_DEBUG_GUI = "0";
-    RIFT_S_LOG = "0";
   };
 
   # OpenXR discovery
