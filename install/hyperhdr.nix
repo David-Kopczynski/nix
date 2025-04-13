@@ -31,7 +31,7 @@ lib.mkIf (config.system.name == "workstation") {
                 fi
               done
 
-              sleep 1
+              sleep 3
             done
 
             echo "Max retries reached. Exiting..."
