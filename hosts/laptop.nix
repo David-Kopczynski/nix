@@ -7,6 +7,8 @@
   # Fetch hardware config from nixos-hardware
   imports = [ <nixos-hardware/framework/13-inch/13th-gen-intel> ];
 
+  boot.kernelParams = [ "mem_sleep_default=s2idle" ];
+
   # Encryption with LUKS any YubiKey
   boot.initrd.availableKernelModules = [ "aesni_intel" ] ++ [ "cryptd" ];
   boot.initrd.kernelModules = [ "vfat" ] ++ [ "nls_cp437" ] ++ [ "nls_iso8859-1" ] ++ [ "usbhid" ];
