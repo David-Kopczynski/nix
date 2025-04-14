@@ -12,11 +12,17 @@
     <nixos-hardware/common/cpu/intel/cpu-only.nix>
   ];
 
+  boot.kernelParams = [ "intel_iommu=on" ] ++ [ "mem_sleep_default=s2idle" ];
   boot.kernelModules = [ "kvm-intel" ];
 
   # File systems
-  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
-  zramSwap.enable = true;
+  swapDevices = [
+    {
+      device = "/dev/disk/by-partlabel/swap";
+      randomEncryption.enable = true;
+      randomEncryption.allowDiscards = config.services.fstrim.enable;
+    }
+  ];
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/boot";
@@ -42,6 +48,7 @@
 
   # Graphic card drivers
   hardware.graphics.enable = true;
+  hardware.nvidia.powerManagement.enable = true;
 
   home-manager.users."user" = {
 
