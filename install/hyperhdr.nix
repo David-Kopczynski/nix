@@ -25,7 +25,7 @@ lib.mkIf (config.system.name == "workstation") {
               (hyperhdr --pipewire --userdata ${
                 config.home-manager.users."user".xdg.configHome
               }/hyperhdr 2>&1 || true) | while read -r line; do
-                if [[ $line =~ "<ERROR> Could not capture pipewire frame" ]]; then
+                if [[ $line =~ "Could not capture pipewire frame" ]]; then
                   echo "Capture crashed."
                   break
                 fi
