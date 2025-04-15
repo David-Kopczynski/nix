@@ -95,6 +95,7 @@
   };
 
   # Better battery life
+  powerManagement.cpuFreqGovernor = "ondemand";
   powerManagement.powertop.enable = true;
   networking.networkmanager.wifi.powersave = true;
 
