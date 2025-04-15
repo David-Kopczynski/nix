@@ -18,22 +18,25 @@ lib.mkIf (config.system.name == "workstation") {
         text = ''
           # Check if running via RDP etc. by checking for :10 in DISPLAY
           if [ "''${DISPLAY#:10}" == "$DISPLAY" ]; then
+            tmpfile=$(mktemp)
             echo "Starting HyperHDR..."
 
             # Allow capture crashes (e.g. when locking screen)
             for _ in $(seq 1 3); do
-              (hyperhdr --pipewire --userdata ${
+              hyperhdr --pipewire --userdata ${
                 config.home-manager.users."user".xdg.configHome
-              }/hyperhdr 2>&1 || true) | while read -r line; do
-                if [[ $line =~ "Could not capture pipewire frame" ]]; then
-                  echo "Capture crashed."
-                  break
-                fi
-              done
+              }/hyperhdr &> "$tmpfile" &
+              pid=$!
 
-              sleep 3
+              tail -F "$tmpfile" | grep -q "'no more input formats'" || true
+              echo "Capture crashed."
+              kill $pid || true
+              wait $pid || true
+
+              sleep 1
             done
 
+            rm "$tmpfile"
             echo "Max retries reached. Exiting..."
           fi
         '';
