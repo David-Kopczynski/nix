@@ -87,6 +87,8 @@
   # Performance tweaks
   services.preload.enable = true;
 
+  services.thermald.enable = true;
+
   # Enable firmware updates
   services.fwupd.enable = true;
   services.fwupd.extraRemotes = [ "lvfs-testing" ];
