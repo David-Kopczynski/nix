@@ -55,7 +55,6 @@
 
     # Display color
     settings."org/gnome/settings-daemon/plugins/color" = {
-      night-light-enabled = true;
       night-light-schedule-automatic = true;
       night-light-temperature = lib.gvariant.mkUint32 4700;
     };
