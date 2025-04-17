@@ -32,7 +32,7 @@
                 runtimeInputs = with pkgs; [ curl ];
                 text = ''
                   result=$(curl \
-                    --retry 9 --retry-delay 60 --retry-connrefused --retry-max-time 10 \
+                    --retry 9 --retry-delay 60 --retry-connrefused --max-time 10 \
                     -H "Authorization: Bearer $(cat ${config.sops.secrets."homeassistant".path})" \
                     -H "Content-Type: application/json" https://home.davidkopczynski.com/api/states/sensor.david_handy_next_alarm \
                   | grep -Po '"state":"\K[^"]*') || result="unavailable"
@@ -84,7 +84,7 @@
                 runtimeInputs = with pkgs; [ curl ];
                 text = ''
                   result=$(curl \
-                    --retry 9 --retry-delay 60 --retry-connrefused --retry-max-time 10 \
+                    --retry 4 --retry-delay 60 --retry-connrefused --max-time 10 \
                     -H "Authorization: Bearer $(cat ${config.sops.secrets."homeassistant".path})" \
                     -H "Content-Type: application/json" https://home.davidkopczynski.com/api/states/sensor.esphome_web_a326a4_co2_gehalt_david \
                   | grep -Po '"state":"\K[^"]*') || result="unavailable"
