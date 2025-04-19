@@ -6,5 +6,5 @@ Should the UEFI settings be reset, the `profile` configuration file can be found
 
 ```bash
 cd nix/hosts/workstation
-nix-shell -p sops --run "sops -d ../../resources/sops/workstation-profile > profile"
+nix-shell -p sops --run "sops -d ../../resources/sops/workstation/profile > profile"
 ```
