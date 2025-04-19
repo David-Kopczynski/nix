@@ -4,6 +4,9 @@
   system.name = "laptop";
   nixpkgs.hostPlatform = "x86_64-linux";
 
+  system.stateVersion = "24.11";
+  home-manager.users."user".home.stateVersion = "24.11";
+
   # Fetch hardware config from nixos-hardware
   imports = [ <nixos-hardware/framework/13-inch/13th-gen-intel> ];
 
@@ -39,10 +42,8 @@
 
   services.smartd.enable = true;
 
-  # Enable bluetooth
+  # Hardware supported
   hardware.bluetooth.enable = true;
-
-  # Graphic card drivers
   hardware.graphics.enable = true;
 
   home-manager.users."user".dconf = {
@@ -50,46 +51,7 @@
 
     # Enable fractional scaling
     settings."org/gnome/mutter" = {
-      experimental-features = [
-        "scale-monitor-framebuffer"
-        "xwayland-native-scaling"
-      ];
-    };
-  };
-
-  # Remap keyboard keys
-  services.keyd = {
-    enable = true;
-
-    keyboards.default = {
-      ids = [ "*" ];
-
-      # Open terminal with FK12
-      settings.main.media = "C-A-t";
-
-      # Disable caps lock
-      settings.main.capslock = "overload(caps, esc)";
-      settings.caps = {
-
-        # Special layer characters
-        w = "pageup";
-        a = "home";
-        s = "pagedown";
-        d = "end";
-
-        "1" = "f1";
-        "2" = "f2";
-        "3" = "f3";
-        "4" = "f4";
-        "5" = "f5";
-        "6" = "f6";
-        "7" = "f7";
-        "8" = "f8";
-        "9" = "f9";
-        "0" = "f10";
-        minus = "f11";
-        equal = "f12";
-      };
+      experimental-features = [ "scale-monitor-framebuffer" ] ++ [ "xwayland-native-scaling" ];
     };
   };
 
@@ -106,7 +68,4 @@
 
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableAllFirmware = true;
-
-  system.stateVersion = "24.11";
-  home-manager.users."user".home.stateVersion = "24.11";
 }

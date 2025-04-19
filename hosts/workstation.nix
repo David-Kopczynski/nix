@@ -4,6 +4,9 @@
   system.name = "workstation";
   nixpkgs.hostPlatform = "x86_64-linux";
 
+  system.stateVersion = "23.11";
+  home-manager.users."user".home.stateVersion = "24.05";
+
   # Fetch hardware config from nixos-hardware
   imports = [
     <nixos-hardware/common/pc>
@@ -44,8 +47,6 @@
 
   # Hardware supported
   hardware.bluetooth.enable = true;
-
-  # Graphic card drivers
   hardware.graphics.enable = true;
   hardware.nvidia.powerManagement.enable = true;
 
@@ -94,7 +95,4 @@
 
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableAllFirmware = true;
-
-  system.stateVersion = "23.11";
-  home-manager.users."user".home.stateVersion = "24.05";
 }
