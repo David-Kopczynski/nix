@@ -105,7 +105,7 @@
   services.fwupd.extraRemotes = [ "lvfs-testing" ];
 
   hardware.cpu.intel.updateMicrocode = true;
-  hardware.enableRedistributableFirmware = true;
+  hardware.enableAllFirmware = true;
 
   system.stateVersion = "24.11";
   home-manager.users."user".home.stateVersion = "24.11";
