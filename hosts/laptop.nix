@@ -41,7 +41,6 @@
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
 
   # Graphic card drivers
   hardware.graphics.enable = true;
