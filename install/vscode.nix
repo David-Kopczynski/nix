@@ -8,18 +8,16 @@ let
 in
 {
   home-manager.users."user".programs.vscode.enable = true;
-  home-manager.users."user".programs.vscode.package =
-    with pkgs.unstable;
-    vscode.fhsWithPackages (
-      ps:
-      [ patched-openssh ]
-      ++ [
-        # Packages required by various profiles
-        nixd
-        nixfmt-rfc-style
-        texliveFull
-      ]
-    );
+  home-manager.users."user".programs.vscode.package = pkgs.unstable.vscode.fhsWithPackages (
+    _:
+    [ patched-openssh ]
+    ++ (with pkgs; [
+      # Packages required by various profiles
+      nixd
+      nixfmt-rfc-style
+      texliveFull
+    ])
+  );
 
   # Main application
   home-manager.users."user".dconf = {
