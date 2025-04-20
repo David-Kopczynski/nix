@@ -55,6 +55,12 @@
     };
   };
 
+  sops.secrets."laptop/fprint.right-index" = {
+    format = "binary";
+    path = "/var/lib/fprint/user/goodixmoc/UID742C7B57_XXXX_MOC_B0/7";
+    sopsFile = ../resources/sops/laptop/fprint.right-index;
+  };
+
   # Better battery life
   powerManagement.cpuFreqGovernor = "ondemand";
   powerManagement.powertop.enable = true;
