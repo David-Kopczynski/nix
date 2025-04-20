@@ -5,11 +5,12 @@
   services.openssh.enable = true;
   services.openssh = {
 
-    # Allow only my public keys
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
-    authorizedKeysFiles = [ (toString ../resources/ssh/authorized_keys) ];
   };
+
+  # Allow only my public keys
+  users.users."user".openssh.authorizedKeys.keyFiles = [ ../resources/ssh/authorized_keys ];
 
   home-manager.users."user".programs.ssh = {
     inherit (config.services.openssh) enable;
