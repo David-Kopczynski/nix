@@ -2,12 +2,12 @@
 
 {
   environment.systemPackages = [
-    (pkgs.callPackage ./../derivations/electron-wrapper {
+    (pkgs.callPackage ../derivations/electron-wrapper {
       name = "notion";
       desktopName = "Notion";
       url = "https://www.notion.so/";
       description = "Notion note taking app wrapped in Electron";
-      icon = ./../resources/notion/icon.png;
+      icon = ../resources/notion/icon.png;
     })
   ];
 }
