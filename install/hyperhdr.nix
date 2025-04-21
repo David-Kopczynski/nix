@@ -46,6 +46,12 @@ lib.mkIf (config.system.name == "workstation") {
     OnlyShowIn=GNOME;
   '';
 
+  # Make desktop file executable using `gtk-launch hyperhdr` (for debugging)
+  home-manager.users."user".xdg.dataFile."applications/hyperhdr.desktop".source =
+    config.home-manager.users."user".xdg.configHome
+    + "/../"
+    + config.home-manager.users."user".xdg.configFile."autostart/hyperhdr.desktop".target;
+
   # Writable config directory
   home-manager.users."user".xdg.configFile."_hyperhdr" = {
 
