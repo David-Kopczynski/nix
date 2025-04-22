@@ -25,6 +25,9 @@
 
       "mail.SpellCheckBeforeSend" = true;
       "spellchecker.dictionary" = "en-US,de-DE";
+
+      # Mail overview
+      "mailnews.mark_message_read.auto" = false;
     };
   };
 
