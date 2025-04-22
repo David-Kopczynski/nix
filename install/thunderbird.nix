@@ -2,9 +2,30 @@
 
 {
   home-manager.users."user".programs.thunderbird.enable = true;
+  home-manager.users."user".programs.thunderbird.package =
+    with pkgs;
+    thunderbird.override {
+
+      # Install required extensions
+      # updated in: https://github.com/nix-community/home-manager/issues/5654
+      # todo: update to native home-manager config with 25.5
+      extraPolicies.ExtensionSettings = {
+        "de-DE@dictionaries.addons.mozilla.org" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.thunderbird.net/thunderbird/downloads/latest/dictionary-german/latest.xpi";
+        };
+      };
+    };
   home-manager.users."user".programs.thunderbird = {
 
     profiles."default".isDefault = true;
+    settings = {
+      # Mail composition
+      "mail.identity.default.reply_on_top" = 1;
+
+      "mail.SpellCheckBeforeSend" = true;
+      "spellchecker.dictionary" = "en-US,de-DE";
+    };
   };
 
   # Mails
