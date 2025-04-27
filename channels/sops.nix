@@ -17,8 +17,8 @@
       home.activation."ssh-to-age" = lib.hm.dag.entryAfter [ "sshActivatioinAction" ] ''
         AGE_HOME="''${XDG_CONFIG_HOME:-$HOME/.config}/sops/age"
 
-        mkdir -p $AGE_HOME
-        : > $AGE_HOME/keys.txt
+        mkdir -p "$AGE_HOME"
+        : > "$AGE_HOME/keys.txt"
 
         for sshKey in ${builtins.concatStringsSep " " config.sops.age.sshKeyPaths}; do
           ${with pkgs; ssh-to-age}/bin/ssh-to-age -private-key -i $sshKey >> "$AGE_HOME/keys.txt"
