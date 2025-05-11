@@ -4,10 +4,17 @@
   home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
-    settings."org/gnome/desktop/background" = {
-      picture-uri = "file://${../resources/gnome/wallpaper-bright.jpg}";
-      picture-uri-dark = "file://${../resources/gnome/wallpaper-dark.jpg}";
-    };
+    settings."org/gnome/desktop/background" =
+      if config.system.name == "workstation" then
+        {
+          picture-uri = "file://${../resources/gnome/workstation-wallpaper-bright.jpg}";
+          picture-uri-dark = "file://${../resources/gnome/workstation-wallpaper-dark.jpg}";
+        }
+      else
+        {
+          picture-uri = "file://${../resources/gnome/laptop-wallpaper-bright.png}";
+          picture-uri-dark = "file://${../resources/gnome/laptop-wallpaper-dark.png}";
+        };
   };
 
   # Profile picture (workaround)
