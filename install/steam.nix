@@ -18,8 +18,6 @@
       "size=16G"
       "nodev"
       "nosuid"
-      "noexec"
-      "noatime"
       "noswap"
       "uid=${config.users.users."user".name}"
       "gid=${config.users.groups."users".name}"
