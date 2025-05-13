@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.steam.enable = true;
@@ -8,6 +8,23 @@
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
+  };
+
+  # Steam Game Recording on tmpfs (with my own steam id)
+  fileSystems."/home/user/.local/share/Steam/userdata/307220304/gamerecordings" = {
+    device = "tmpfs";
+    fsType = "tmpfs";
+    options = [
+      "size=16G"
+      "nodev"
+      "nosuid"
+      "noexec"
+      "noatime"
+      "noswap"
+      "uid=${config.users.users."user".name}"
+      "gid=${config.users.groups."users".name}"
+      "mode=755"
+    ];
   };
 
   # Gaming Optimizations
