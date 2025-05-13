@@ -33,13 +33,11 @@
     (pkgs.writeShellApplication {
       name = "gaming-mode";
       text = ''
-        gamescope -W 2560 -H 1440 -r 165 -f --adaptive-sync --immediate-flips --rt -- gamemoderun "$@"
+        gamemoderun "$@"
       '';
     })
   ];
 
   programs.gamemode.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-
   users.users."user".extraGroups = [ "gamemode" ];
 }
