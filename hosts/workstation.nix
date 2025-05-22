@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   system.name = "workstation";
@@ -55,9 +55,20 @@
     dconf = {
       inherit (config.programs.dconf) enable;
 
-      # Enable FreeSync support
+      # Enable FreeSync support and configure HDR
       settings."org/gnome/mutter" = {
+
         experimental-features = [ "variable-refresh-rate" ];
+        output-luminance = with lib.gvariant; [
+          (mkTuple [
+            "DP-2"
+            "GBT"
+            "Gigabyte M32Q"
+            "0x0000038a"
+            (mkUint32 1)
+            75.0
+          ])
+        ];
       };
 
       # Disable sleep mode
