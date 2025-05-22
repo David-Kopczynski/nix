@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    gnomeExtensions.smile-complementary-extension
-    smile
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [ gnomeExtensions.smile-complementary-extension ] ++ [ smile ];
 
   # Remove default gnome applications
   environment.gnome.excludePackages = with pkgs; [ gnome-characters ];

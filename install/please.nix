@@ -4,10 +4,7 @@ let
   please = pkgs.writeShellApplication {
 
     name = "please";
-    runtimeInputs = with pkgs; [
-      nix-output-monitor
-      nvd
-    ];
+    runtimeInputs = with pkgs; [ nix-output-monitor ] ++ [ nvd ];
     text = ''
       # ---------- switch ---------- #
       if [ $# -ge 1 ] && [ "$1" = "switch" ]; then

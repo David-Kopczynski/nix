@@ -4,11 +4,7 @@ let
   vpn = pkgs.writeShellApplication {
 
     name = "vpn";
-    runtimeInputs = with pkgs; [
-      openconnect
-      bitwarden-cli
-      libsecret
-    ];
+    runtimeInputs = with pkgs; [ openconnect ] ++ [ bitwarden-cli ] ++ [ libsecret ];
     text = ''
       # Configuration
       bitwarden_entry="c01c571c-0a1b-4c7a-b44f-b29d013a3099"

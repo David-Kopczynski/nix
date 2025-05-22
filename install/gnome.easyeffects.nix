@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    gnomeExtensions.easyeffects-preset-selector
-    easyeffects
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [ gnomeExtensions.easyeffects-preset-selector ] ++ [ easyeffects ];
 
   # Presets
   home-manager.users."user".xdg.configFile."easyeffects/output".source = pkgs.fetchFromGitHub {

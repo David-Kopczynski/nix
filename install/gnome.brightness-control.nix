@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    gnomeExtensions.brightness-control-using-ddcutil
-    ddcutil
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [ gnomeExtensions.brightness-control-using-ddcutil ] ++ [ ddcutil ];
 
   # Allow access to I2C peripherals
   hardware.i2c.enable = true;

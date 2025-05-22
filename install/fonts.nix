@@ -2,19 +2,13 @@
 
 {
   # see https://www.programmingfonts.org for more examples
-  fonts.packages = with pkgs; [
-    fira-code
-    monocraft
-  ];
+  fonts.packages = with pkgs; [ fira-code ] ++ [ monocraft ];
 
   # Default fonts for special purposes
   fonts.fontconfig.defaultFonts = {
 
     # other values are: serif sansSerif emoji
-    monospace = [
-      "FiraCode"
-      "Monocraft"
-    ];
+    monospace = [ "FiraCode" ] ++ [ "Monocraft" ];
   };
 
   home-manager.users."user".dconf = {
