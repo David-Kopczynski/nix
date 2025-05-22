@@ -55,13 +55,6 @@
     flavor = "gmail.com";
 
     thunderbird.enable = true;
-
-    # fixed in: https://github.com/nix-community/home-manager/commit/26ccff08df360afd888b08633a5dddbb99f04d8f
-    # todo: remove this with 25.5
-    thunderbird.settings = id: {
-      "mail.smtpserver.smtp_${id}.authMethod" = 10;
-      "mail.server.server_${id}.authMethod" = 10;
-    };
   };
   home-manager.users."user".accounts.email.accounts."RWTH Aachen" = {
 
