@@ -14,14 +14,14 @@ cd nix/hosts/laptop
 Before installing anything on this system, make sure to have the secret configured on the YubiKey:
 
 ```bash
-nix-shell luks_yubikey_generate.sh # if freshly setting up
-nix-shell luks_yubikey_restore.sh  # if trying to restore secret
+./luks_yubikey_generate.sh # if freshly setting up
+./luks_yubikey_restore.sh  # if trying to restore secret
 ```
 
 Then, to install the partition layout and the base starting configuration (after which the steps within the base [README.md](../../README.md) apply), simply run the following command:
 
 ```bash
-nix-shell install.sh
+./install.sh
 ```
 
 *It is important for this process to have the YubiKey inserted, as it is used to calculate the LUKS key.* \
