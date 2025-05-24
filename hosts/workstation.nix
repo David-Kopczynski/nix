@@ -47,7 +47,9 @@
 
   # Hardware supported
   hardware.bluetooth.enable = true;
+
   hardware.graphics.enable = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
   hardware.nvidia.powerManagement.enable = true;
 
   home-manager.users."user" = {
