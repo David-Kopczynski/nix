@@ -15,7 +15,7 @@
 
 stdenv.mkDerivation rec {
   pname = name;
-  version = "1.0.1";
+  version = "1.0.2";
 
   src = ./.;
   dontUnpack = true;
