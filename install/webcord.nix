@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ webcord ];
+  environment.systemPackages = with pkgs.unstable; [ webcord ];
 
   home-manager.users."user".xdg.configFile."WebCord/_config.json" = {
 
