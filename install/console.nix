@@ -26,4 +26,7 @@
       favorite-apps = [ "org.gnome.Console.desktop" ];
     };
   };
+
+  # Remove default application
+  services.xserver.excludePackages = with pkgs; [ xterm ];
 }

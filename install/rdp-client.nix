@@ -39,3 +39,7 @@ lib.mkIf (config.system.name == "laptop") {
     owner = config.users.users."user".name;
   };
 }
+// {
+  # Remove gnome default application
+  services.xserver.excludePackages = with pkgs; [ gnome-connections ];
+}
