@@ -21,7 +21,7 @@
           SALT="$(dd if=/dev/random bs=1 count=16 2>/dev/null | rbtohex)"
           CHALLENGE="$(echo -n "$SALT" | ${with pkgs; openssl}/bin/openssl dgst -binary -sha512 | rbtohex)"
           RESPONSE="$(${with pkgs; yubikey-personalization}/bin/ykchalresp -2 -x "$CHALLENGE" 2>/dev/null)"
-          LUKS_KEY="$(${
+          LUKS_KEY="$(echo | ${
             pkgs.callPackage "${
               pkgs.fetchFromGitHub {
                 owner = "sgillespie";
