@@ -31,15 +31,17 @@ let
     '';
   };
 in
-lib.mkIf (config.system.name == "laptop") {
-  environment.systemPackages = [ rdp-desktop ];
+lib.mkMerge [
+  (lib.mkIf (config.system.name == "laptop") {
+    environment.systemPackages = [ rdp-desktop ];
 
-  # Secrets for RDP
-  sops.secrets."rdp/password" = {
-    owner = config.users.users."user".name;
-  };
-}
-// {
-  # Remove gnome default application
-  services.xserver.excludePackages = with pkgs; [ gnome-connections ];
-}
+    # Secrets for RDP
+    sops.secrets."rdp/password" = {
+      owner = config.users.users."user".name;
+    };
+  })
+  {
+    # Remove gnome default application
+    environment.gnome.excludePackages = with pkgs; [ gnome-connections ];
+  }
+]

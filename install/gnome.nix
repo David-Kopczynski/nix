@@ -12,5 +12,5 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Remove gnome default application
-  services.xserver.excludePackages = with pkgs; [ gnome-tour ] ++ [ yelp ];
+  environment.gnome.excludePackages = with pkgs; [ gnome-tour ] ++ [ yelp ];
 }
