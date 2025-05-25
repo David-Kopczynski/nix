@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, nativeTheme } from "electron";
 
 app.on("ready", () => {
 
@@ -8,8 +8,6 @@ app.on("ready", () => {
     minWidth: 800, minHeight: 600,
     autoHideMenuBar: true,
     show: false,
-    transparent: true,
-    backgroundColor: "#00000000",
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false
@@ -21,7 +19,11 @@ app.on("ready", () => {
 
   // Show window when ready
   // Wait for short time to allow page to load in
-  window.once("ready-to-show", () => setTimeout(() => window.show(), 500));
+  window.once("ready-to-show", () => {
+
+    window.setBackgroundColor(nativeTheme.shouldUseDarkColors ? "#222222" : "#fafafa");
+    setTimeout(() => window.show(), 500);
+  });
 
   // Init all features
   Promise.all([
