@@ -7,8 +7,8 @@ const windowStorage = path.join(app.getPath("userData"), "window.json");
 export function init(window) {
 
   // Restore window position and size if available
-  let { x, y, width, height } = { x: undefined, y: undefined, width: 1000, height: 800 };
-  try { ({ x, y, width, height } = JSON.parse(fs.readFileSync(windowStorage))) } catch (e) { }
+  let { x, y, width, height, fullscreen } = { x: undefined, y: undefined, width: 1000, height: 800, fullscreen: false };
+  try { ({ x, y, width, height, fullscreen } = JSON.parse(fs.readFileSync(windowStorage))) } catch (e) { }
 
   // Check if window is offscreen
   if (x || y) {
@@ -26,13 +26,15 @@ export function init(window) {
 
   // Set position and wait for event to add listeners
   window.setBounds({ x, y, width, height });
+  window.once("show", () => { setTimeout(() => { fullscreen ? window.maximize() : window.unmaximize() }, 250) });
 
   window.once("ready-to-show", () => {
 
     // Handle all important window events
     ["resize", "move"].forEach(event => window.on(event, () => { ({ x, y, width, height } = window.getNormalBounds()) }));
+    ["maximize", "unmaximize"].forEach(event => window.on(event, () => { fullscreen = window.isMaximized() }));
 
     // Store window position and size on close
-    window.on("close", () => { fs.writeFileSync(windowStorage, JSON.stringify({ x, y, width, height })) });
+    window.on("close", () => { fs.writeFileSync(windowStorage, JSON.stringify({ x, y, width, height, fullscreen })) });
   });
 }
