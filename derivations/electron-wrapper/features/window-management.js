@@ -24,6 +24,14 @@ export function init(window) {
     }
   }
 
+  // Center at main screen if no position is set
+  if (!x || !y) {
+    const primary = screen.getPrimaryDisplay();
+
+    x = primary.bounds.x + primary.bounds.width / 2 - width / 2;
+    y = primary.bounds.y + primary.bounds.height / 2 - height / 2;
+  }
+
   // Set position and wait for event to add listeners
   window.setBounds({ x, y, width, height });
   window.once("show", () => { setTimeout(() => { fullscreen ? window.maximize() : window.unmaximize() }, 250) });
