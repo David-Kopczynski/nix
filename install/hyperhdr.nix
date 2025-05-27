@@ -6,45 +6,37 @@
 }:
 
 lib.mkIf (config.system.name == "workstation") {
-  home-manager.users."user".xdg.configFile."autostart/hyperhdr.desktop".text = ''
-    [Desktop Entry]
-    Type=Application
-    Name=HyperHDR
-    Exec=sh ${
-      pkgs.writeShellApplication {
+  systemd.user.services."hyperhdr" = {
 
-        name = "hyperhdr-wrapper";
-        runtimeInputs = with pkgs; [ hyperhdr ];
-        text = ''
-          # Check if running via RDP etc. by checking for :10 in DISPLAY
-          if [ "''${DISPLAY#:10}" == "$DISPLAY" ]; then
-            tmpfile=$(mktemp)
-            echo "Starting HyperHDR..."
+    description = "HyperHDR Ambient Light Systemd Service";
+    wantedBy = [ "graphical-session.target" ];
 
-            # Allow capture crashes (e.g. when locking screen)
-            for _ in $(seq 1 3); do
-              hyperhdr --pipewire --userdata ${
-                config.home-manager.users."user".xdg.configHome
-              }/hyperhdr &> "$tmpfile" &
-              pid=$!
+    after = [ "graphical-session.target" ];
+    bindsTo = [ "graphical-session.target" ];
 
-              tail -F "$tmpfile" | grep -q "'no more input formats'" || true
-              echo "Capture crashed."
-              kill $pid || true
-              wait $pid || true
+    serviceConfig = {
 
-              sleep 1
-            done
+      ExecStart = "${
+        pkgs.writeShellApplication {
 
-            rm "$tmpfile"
-            echo "Max retries reached. Exiting..."
-          fi
-        '';
-      }
-    }/bin/hyperhdr-wrapper
-    X-GNOME-Autostart-enabled=true
-    OnlyShowIn=GNOME;
-  '';
+          name = "hyperhdr-wrapper";
+          runtimeInputs = with pkgs; [ hyperhdr ];
+          text = ''
+            # Check if running via RDP etc. by checking for :10 in DISPLAY
+            if [ "''${DISPLAY#:10}" == "$DISPLAY" ]; then
+              exec hyperhdr --pipewire --userdata ${config.home-manager.users."user".xdg.configHome}/hyperhdr
+            fi
+          '';
+        }
+      }/bin/hyperhdr-wrapper";
+
+      KillMode = "mixed";
+      TimeoutStopSec = "5s";
+
+      Restart = "on-failure";
+      RestartSec = "2s";
+    };
+  };
 
   # Writable config directory
   home-manager.users."user".xdg.configFile."_hyperhdr" = {
@@ -63,11 +55,24 @@ lib.mkIf (config.system.name == "workstation") {
     source = ../resources/hyperhdr;
   };
 
-  # Prevent screen lock
   home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
+    # Prevent screen lock
     settings."org/gnome/desktop/session".idle-delay = lib.gvariant.mkUint32 0;
+
+    # Keybindings for HyperHDR service management
+    settings."org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-hyperhdr/"
+      ];
+    };
+
+    settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-hyperhdr" = {
+      name = "hyperhdr";
+      command = "systemctl --user restart hyperhdr.service";
+      binding = "<Control><Alt>numbersign";
+    };
   };
 
   users.users."user".extraGroups = [ "dialout" ];
