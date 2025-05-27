@@ -38,11 +38,18 @@ export function init(window) {
 
   window.once("ready-to-show", () => {
 
-    // Handle all important window events
-    ["resize", "move"].forEach(event => window.on(event, () => { ({ x, y, width, height } = window.getNormalBounds()) }));
-    ["maximize", "unmaximize"].forEach(event => window.on(event, () => { fullscreen = window.isMaximized() }));
+    // Save window state to prevent data loss on unexpected closure
+    const saveWindowStateDebounced = (() => {
+      let timeout;
 
-    // Store window position and size on close
-    window.on("close", () => { fs.writeFileSync(windowStorage, JSON.stringify({ x, y, width, height, fullscreen })) });
+      return () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => { fs.writeFileSync(windowStorage, JSON.stringify({ x, y, width, height, fullscreen })) }, 250);
+      }
+    })();
+
+    // Handle all important window events
+    ["resize", "move"].forEach(event => window.on(event, () => { ({ x, y, width, height } = window.getNormalBounds()); saveWindowStateDebounced() }));
+    ["maximize", "unmaximize"].forEach(event => window.on(event, () => { fullscreen = window.isMaximized(); saveWindowStateDebounced() }));
   });
 }
