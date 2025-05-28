@@ -7,10 +7,11 @@
   programs.chromium.extraOpts = {
 
     # General configuration
-    "BrowserSignin" = 0;
-    "SyncDisabled" = true;
+    "BrowserSignin" = false;
+    "DefaultBrowserSettingEnabled" = false;
     "PasswordManagerEnabled" = false;
     "SpellcheckEnabled" = true;
     "SpellcheckLanguage" = [ "de" ] ++ [ "en-US" ];
+    "SyncDisabled" = true;
   };
 }
