@@ -2,7 +2,7 @@
 #               Reverse Proxy for SSH               #
 # # # # # # # # # # # # # # # # # # # # # # # # # # #
 192.168.0.170 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE0Oczr0l8wwIgl8I1MDRFpg5axqOILQBtRbKeYcj7g/
-home-assistant ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKJqvfH9XW70iqajAnIpHh7FrnaYUjKM3UyH32qKN2Dg
+home-assistant ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEBa+0/b/9qH9rk1qZdxc9oXNjpOUk71aSZW/EQsMrK
 immich ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEaFuVx62iHZZiIaS4yrxB9ESAM9b18MAgpE1BZc5U82
 nextcloud ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGW9QriBYWifeMjTLd24S2ZyLEzMx2pIxh80rS2z/XvA
 ssh.davidkopczynski.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAZz3LhKcZ7JO0svukrUqPoPr7qt8h1KcRR4OGt/8LiP
