@@ -69,7 +69,7 @@
         user = "root";
       };
       "workstation" = {
-        hostname = "192.168.0.20";
+        hostname = "nixos-workstation";
         proxyJump = "nginx";
         user = "user";
       };
