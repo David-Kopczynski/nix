@@ -34,6 +34,11 @@
         proxyJump = "nginx";
         user = "root";
       };
+      "minecraft" = {
+        hostname = "minecraft";
+        proxyJump = "nginx";
+        user = "root";
+      };
       "nextcloud" = {
         hostname = "nextcloud";
         proxyJump = "nginx";
