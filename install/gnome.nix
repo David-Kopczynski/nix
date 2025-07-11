@@ -11,6 +11,10 @@
   '';
   services.xserver.desktopManager.gnome.enable = true;
 
+  # fixes: https://github.com/NixOS/nixpkgs/issues/234265
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
+
   # Remove gnome default application
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ] ++ [ yelp ];
 }
