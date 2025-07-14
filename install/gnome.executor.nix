@@ -28,81 +28,38 @@
             command = "${
               pkgs.writeShellApplication {
 
-                name = "executor-alarm";
-                runtimeInputs = with pkgs; [ curl ];
+                name = "work-balance";
+                runtimeInputs = with pkgs; [ curl ] ++ [ jq ];
                 text = ''
                   result=$(curl \
-                    --retry 9 --retry-delay 60 --retry-connrefused --max-time 10 \
-                    -H "Authorization: Bearer $(cat ${config.sops.secrets."homeassistant".path})" \
-                    -H "Content-Type: application/json" https://home.davidkopczynski.com/api/states/sensor.david_handy_next_alarm \
-                  | grep -Po '"state":"\K[^"]*') || result="unavailable"
+                    --silent --retry 9 --retry-delay 60 --retry-connrefused --max-time 10 \
+                    -u "$(cat ${config.sops.secrets."toggl".path}):api_token" -H "Content-Type: application/json" \
+                    "https://api.track.toggl.com/api/v9/me/time_entries?start_date=2025-06-01&end_date=$(date -d tomorrow +%Y-%m-%d)" \
+                  ) || result="unavailable"
 
-                  alarm=$(date -d "$result" +%s) || alarm=0
-                  current=$(date +%s)
-                  diff=$((alarm - current))
+                  daily=$(echo "$result" | jq '[.[].duration] | add / 3600 | round')           || daily=0
+                  days=$(echo "$result"  | jq '[.[].start | split("T")[0]] | unique | length') || days=0
+                  diff=$((daily - days * 8))
 
-                  if [ "$result" = "unavailable" ] || [ 0 -gt $diff ]; then
-                    echo "No Alarm Set"
+                  if [ "$result" = "unavailable" ]; then
+                    echo "Toggl API unavailable"
                   else
-                    hours=$((diff / 3600))
-                    minutes=$(((diff % 3600) / 60))
-                    output="Alarm in"
-
-                    if   [ $minutes -lt 5 ];  then                       minutes=0; output="$output About"
-                    elif [ $minutes -gt 55 ]; then hours=$((hours + 1)); minutes=0; output="$output About"
-                    elif [ $minutes -ge 40 ]; then hours=$((hours + 1)); minutes=0; output="$output Nearly"
-                    elif [ $minutes -le 20 ]; then                       minutes=0; output="$output Just Over"
-                    fi
-                    if   [ $hours -gt 0 ] && [ $minutes -ne 0 ]; then               output="$output $hours and a Half Hours"
-                    elif [ $minutes -ne 0 ];                     then               output="$output Half an Hour"
-                    elif [ $hours -gt 1 ];                       then               output="$output $hours Hours"
-                    elif [ $hours -gt 0 ];                       then               output="$output 1 Hour"
-                    else                                                            output="Alarm Soon"
-                    fi
-
-                    echo "$output"
+                    echo "Work balance: $((diff))h"
                   fi
                 '';
               }
-            }/bin/executor-alarm";
-            interval = 600;
+            }/bin/work-balance";
+            interval = 3600;
             uuid = "alarm";
           }
         ];
       };
       center-index = 10;
 
-      left-active = true;
-      left-commands-json = builtins.toJSON {
-        commands = [
-          {
-            isActive = true;
-            command = "${
-              pkgs.writeShellApplication {
-
-                name = "executor-ppm";
-                runtimeInputs = with pkgs; [ curl ];
-                text = ''
-                  result=$(curl \
-                    --retry 4 --retry-delay 60 --retry-connrefused --max-time 10 \
-                    -H "Authorization: Bearer $(cat ${config.sops.secrets."homeassistant".path})" \
-                    -H "Content-Type: application/json" https://home.davidkopczynski.com/api/states/sensor.esphome_co2_david_co2_gehalt_david \
-                  | grep -Po '"state":"\K[^"]*') || result="unavailable"
-
-                  if [ "$result" = "unavailable" ]; then
-                    echo "HomeAssistant Offline"
-                  else
-                    echo "$result ppm"
-                  fi
-                '';
-              }
-            }/bin/executor-ppm";
-            interval = 300;
-            uuid = "ppm";
-          }
-        ];
-      };
-      left-index = 10;
+      left-active = false;
+      left-commands-json = with lib.gvariant; [
+        (mkDictionaryEntry "commands" [ (mkEmptyArray (type.dictionaryEntryOf type.string type.string)) ])
+      ];
 
       right-active = false;
       right-commands-json = with lib.gvariant; [
@@ -113,8 +70,8 @@
     };
   };
 
-  # Secrets for homeassistant
-  sops.secrets."homeassistant" = {
+  # Secrets for toggle track
+  sops.secrets."toggl" = {
     owner = config.users.users."user".name;
   };
 }
