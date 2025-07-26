@@ -5,9 +5,6 @@
   ...
 }:
 
-# MAYBE ADD [ "iommu=pt" ] FOR BETTER PERFORMANCE?
-# MAYBE ADD kvm,input groups?
-
 lib.mkIf (config.system.name == "workstation") {
   boot.kernelParams = [ "intel_iommu=on" ];
 
@@ -18,40 +15,48 @@ lib.mkIf (config.system.name == "workstation") {
     qemu.swtpm.enable = true;
 
     # Single GPU passthrough hook for Windows VM
-    hooks.qemu."gpu-passthrough-windows-vm" = pkgs.writeShellApplication {
+    hooks.qemu."gpu-passthrough-windows-vm" = "${
+      pkgs.writeShellApplication {
 
-      name = "gpu-passthrough-windows-vm";
-      text = ''
-        if [[ $1 == "gpu-passthrough-windows-vm" && $2 == "prepare" && $3 == "begin" ]]; then
+        name = "gpu-passthrough-windows-vm";
+        runtimeInputs = with pkgs; [ libvirt ];
+        text = ''
+          if [[ $1 == "gpu-passthrough-windows-vm" && $2 == "prepare" && $3 == "begin" ]]; then
 
-          # Stop GNOME
-          systemctl stop display-manager.service
+            # Stop GNOME
+            systemctl stop display-manager.service
 
-          # Setup vfio
-          echo 0 > /sys/class/vtconsole/vtcon0/bind
-          modprobe -r nvidia_drm nvidia_modeset nvidia_uvm nvidia
+            # Setup vfio
+            echo 0 > /sys/class/vtconsole/vtcon0/bind
+            modprobe --wait 60000 -r nvidia_drm nvidia_modeset nvidia_uvm nvidia
 
-          virsh nodedev-detach pci_0000_01_00_0
-          virsh nodedev-detach pci_0000_01_00_1
-          modprobe vfio-pci
-        fi
+            virsh nodedev-detach pci_0000_01_00_0
+            virsh nodedev-detach pci_0000_01_00_1
+            virsh nodedev-detach pci_0000_01_00_2
+            virsh nodedev-detach pci_0000_01_00_3
+            modprobe --wait 60000 vfio-pci
 
-        if [[ $1 == "gpu-passthrough-windows-vm-stop" && $2 == "release" && $3 == "end" ]]; then
+            # Setup networking
+            if [[ "$(virsh net-info --network default)" =~ Active:[[:space:]]+no ]]; then virsh net-start --network default; fi
+          fi
 
-          # Setup nvidia
-          modprobe -r vfio-pci
-          virsh nodedev-reattach pci_0000_01_00_0
-          virsh nodedev-reattach pci_0000_01_00_1
+          if [[ $1 == "gpu-passthrough-windows-vm" && $2 == "release" && $3 == "end" ]]; then
 
-          modprobe nvidia_drm nvidia_modeset nvidia_uvm nvidia
-          echo 1 > /sys/class/vtconsole/vtcon0/bind
+            # Setup nvidia
+            modprobe --wait 60000 -r vfio-pci
+            virsh nodedev-reattach pci_0000_01_00_0
+            virsh nodedev-reattach pci_0000_01_00_1
+            virsh nodedev-reattach pci_0000_01_00_2
+            virsh nodedev-reattach pci_0000_01_00_3
 
-          # Start GNOME
-          systemctl start display-manager.service
-        fi
-      '';
-    };
+            modprobe --wait 60000 nvidia_drm nvidia_modeset nvidia_uvm nvidia
+            echo 1 > /sys/class/vtconsole/vtcon0/bind
+
+            # Start GNOME
+            systemctl start display-manager.service
+          fi
+        '';
+      }
+    }/bin/gpu-passthrough-windows-vm";
   };
-
-  users.users."user".extraGroups = [ "libvirtd" ];
 }
