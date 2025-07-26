@@ -14,7 +14,8 @@ read -rep "Windows ISO Path: " windows_iso_path; if [[ ! -f "$windows_iso_path" 
 read -rep "Windows Data Directory: " windows_data_dir; mkdir -p "$windows_data_dir" || { echo "Error: Could not create Windows data directory."; exit 1; }
 
 # Create Windows VM
-virt-install -c      qemu:///system \
+virt-install \
+  --connect          qemu:///system \
   --name             gpu-passthrough-windows-vm \
   --os-variant       win11 \
   --cdrom            "$windows_iso_path" \
