@@ -18,7 +18,7 @@
   users.defaultUserShell = with pkgs; zsh;
   environment.shells = with pkgs; [ zsh ];
 
-  programs.bash.interactiveShellInit = ''exec "${with pkgs; zsh}/bin/zsh"'';
+  programs.bash.interactiveShellInit = ''if [ -n "$IN_NIX_SHELL" ]; then exec "${with pkgs; zsh}/bin/zsh"; fi'';
 
   # Main application
   home-manager.users."user".dconf = {
