@@ -15,7 +15,6 @@ in
       # Packages required by various profiles
       nixd
       nixfmt-rfc-style
-      texliveFull
     ])
   );
 
