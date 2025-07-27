@@ -18,6 +18,8 @@
   users.defaultUserShell = with pkgs; zsh;
   environment.shells = with pkgs; [ zsh ];
 
+  programs.bash.interactiveShellInit = ''exec "${with pkgs; zsh}/bin/zsh"'';
+
   # Main application
   home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
