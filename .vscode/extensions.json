@@ -2,5 +2,8 @@
   "recommendations": [
     // Nix related
     "jnoortheen.nix-ide",
+    //
+    // Code cleanness
+    "gruntfuggly.todo-tree",
   ]
 }
