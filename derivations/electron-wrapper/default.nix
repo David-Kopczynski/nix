@@ -50,7 +50,7 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/{bin,share/pixmaps}
 
-    makeWrapper "${lib.getExe electron}" "$out/bin/${pname}" \
+    makeWrapper "${electron}/bin/electron" "$out/bin/${pname}" \
       --add-flags $out/lib/app.asar \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}" \
       --set-default ELECTRON_IS_DEV 0 \
