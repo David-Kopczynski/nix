@@ -5,7 +5,6 @@
   programs.steam = {
 
     # General configuration
-    extraCompatPackages = with pkgs.unstable; [ proton-ge-bin ];
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
