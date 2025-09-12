@@ -14,6 +14,7 @@
         {
           picture-uri = "file://${../resources/gnome/laptop-wallpaper-bright.png}";
           picture-uri-dark = "file://${../resources/gnome/laptop-wallpaper-dark.png}";
+          picture-options = "spanned";
         };
   };
 
