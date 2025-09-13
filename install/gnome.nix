@@ -1,19 +1,6 @@
 { pkgs, ... }:
 
 {
-  # TODO: remove with release 25.11
-  nixpkgs.overlays = [
-    (final: prev: {
-      gdm =
-        with pkgs.unstable;
-        gdm.overrideAttrs (old: {
-          passthru = old.passthru // {
-            initialVT = "1";
-          };
-        });
-    })
-  ];
-
   # Enable windowing system
   services.xserver.enable = true;
 
