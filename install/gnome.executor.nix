@@ -20,11 +20,10 @@
     # Custom settings
     settings."org/gnome/shell/extensions/executor" = {
 
-      center-active = true;
+      center-active = false;
       center-commands-json = with lib.gvariant; [
         (mkDictionaryEntry "commands" [ (mkEmptyArray (type.dictionaryEntryOf type.string type.string)) ])
       ];
-      center-index = 10;
 
       left-active = false;
       left-commands-json = with lib.gvariant; [
