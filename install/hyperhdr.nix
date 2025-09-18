@@ -9,7 +9,6 @@ lib.mkIf (config.system.name == "workstation") {
   systemd.user.services."hyperhdr" = {
 
     description = "HyperHDR Ambient Light Systemd Service";
-    wantedBy = [ "graphical-session.target" ];
 
     after = [ "graphical-session.target" ];
     bindsTo = [ "graphical-session.target" ];
@@ -22,19 +21,13 @@ lib.mkIf (config.system.name == "workstation") {
           name = "hyperhdr-wrapper";
           runtimeInputs = with pkgs; [ hyperhdr ];
           text = ''
-            # Check if running via RDP etc. by checking for :10 in DISPLAY
-            if [ "''${DISPLAY#:10}" == "$DISPLAY" ]; then
-              exec hyperhdr --pipewire --userdata ${config.home-manager.users."user".xdg.configHome}/hyperhdr
-            fi
+            exec hyperhdr --pipewire --userdata ${config.home-manager.users."user".xdg.configHome}/hyperhdr
           '';
         }
       }/bin/hyperhdr-wrapper";
 
       KillMode = "mixed";
       TimeoutStopSec = "5s";
-
-      Restart = "on-failure";
-      RestartSec = "2s";
     };
   };
 
