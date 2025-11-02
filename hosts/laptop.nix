@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   system.name = "laptop";
@@ -28,7 +28,12 @@
   };
 
   # File systems
-  swapDevices = [ { device = "/dev/mapper/vg-swap"; } ];
+  swapDevices = [
+    {
+      device = "/dev/mapper/vg-swap";
+      options = [ "defaults" ] ++ lib.optionals config.services.fstrim.enable [ "discard" ];
+    }
+  ];
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-partlabel/disk-system-ESP";
