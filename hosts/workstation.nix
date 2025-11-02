@@ -22,6 +22,7 @@
   swapDevices = [
     {
       device = "/dev/disk/by-partlabel/swap";
+      options = [ "defaults" ] ++ lib.optionals config.services.fstrim.enable [ "discard" ];
       randomEncryption.enable = true;
       randomEncryption.allowDiscards = config.services.fstrim.enable;
     }
