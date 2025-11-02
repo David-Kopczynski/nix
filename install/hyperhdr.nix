@@ -48,6 +48,16 @@ lib.mkIf (config.system.name == "workstation") {
     source = ../resources/hyperhdr;
   };
 
+  # Autostart HyperHDR after complete login
+  home-manager.users."user".xdg.configFile."autostart/hyperhdr.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=HyperHDR
+    Exec=systemctl --user start hyperhdr.service
+    X-GNOME-Autostart-enabled=true
+    OnlyShowIn=GNOME;
+  '';
+
   home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
