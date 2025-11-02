@@ -46,6 +46,7 @@
       };
       "nginx" = {
         hostname = "ssh.davidkopczynski.com";
+        port = 2244;
         user = "root";
       };
       "octoprint" = {
@@ -72,11 +73,6 @@
         hostname = "uptime-kuma";
         proxyJump = "nginx";
         user = "root";
-      };
-      "workstation" = {
-        hostname = "nixos-workstation";
-        proxyJump = "nginx";
-        user = "user";
       };
     };
 
