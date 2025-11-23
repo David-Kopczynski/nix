@@ -30,6 +30,7 @@ sudo nix-channel --add https://github.com/nix-community/home-manager/archive/rel
 sudo nix-channel --add https://nixos.org/channels/nixos-25.05 nixos
 sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+sudo nix-channel --add https://github.com/nix-community/nix-snapd/archive/main.tar.gz nix-snapd
 sudo nix-channel --add https://github.com/Mic92/sops-nix/archive/master.tar.gz sops-nix
 ```
 
