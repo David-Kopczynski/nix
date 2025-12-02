@@ -15,6 +15,9 @@
   home-manager.users."user".programs.ssh = {
     inherit (config.services.openssh) enable;
 
+    # TODO: delete after defaults have been removed
+    enableDefaultConfig = false;
+
     matchBlocks = {
       # # # # # # # # # # # # # # # # # # # # # # # # # # #
       #               Reverse Proxy for SSH               #
@@ -74,9 +77,11 @@
         proxyJump = "nginx";
         user = "root";
       };
-    };
 
-    userKnownHostsFile = "~/.ssh/known_hosts ${../resources/ssh/known_hosts}";
+      "*" = {
+        userKnownHostsFile = "~/.ssh/known_hosts ${../resources/ssh/known_hosts}";
+      };
+    };
   };
 
   # Security

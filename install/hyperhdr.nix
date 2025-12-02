@@ -58,11 +58,20 @@ lib.mkIf (config.system.name == "workstation") {
     OnlyShowIn=GNOME;
   '';
 
+  # Prevent fullscreen pipewire issues
+  environment.systemPackages = with pkgs; [ gnomeExtensions.disable-unredirect ];
+
   home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
 
     # Prevent screen lock
     settings."org/gnome/desktop/session".idle-delay = lib.gvariant.mkUint32 0;
+
+    # Enable extension
+    settings."org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = with pkgs; [ gnomeExtensions.disable-unredirect.extensionUuid ];
+    };
 
     # Keybindings for HyperHDR service management
     settings."org/gnome/settings-daemon/plugins/media-keys" = {

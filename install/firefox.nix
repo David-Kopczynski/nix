@@ -50,7 +50,6 @@
   # Firefox as default browser
   xdg.mime.enable = true;
   xdg.mime.defaultApplications = lib.genAttrs [
-    "application/pdf"
     "text/html"
     "x-scheme-handler/about"
     "x-scheme-handler/http"
@@ -71,5 +70,5 @@
   };
 
   # Remove gnome default application
-  environment.gnome.excludePackages = with pkgs; [ epiphany ] ++ [ evince ];
+  environment.gnome.excludePackages = with pkgs; [ epiphany ];
 }

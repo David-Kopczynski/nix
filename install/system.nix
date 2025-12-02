@@ -25,8 +25,4 @@
   nix.gc.options = "--delete-older-than 14d";
 
   nix.settings.trusted-users = [ "@wheel" ];
-
-  # Prevent shutdown delays
-  systemd.extraConfig = "DefaultTimeoutStopSec=10s";
-  systemd.user.extraConfig = config.systemd.extraConfig;
 }

@@ -113,8 +113,6 @@
   };
 
   # Performance tweaks
-  services.preload.enable = true;
-
   services.thermald.enable = true;
 
   # Enable firmware updates

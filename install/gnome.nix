@@ -5,11 +5,9 @@
   services.xserver.enable = true;
 
   # Enable gnome desktop
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.banner = ''
-    Welcome back, David E. C. Kopczynski B.Sc.!
-  '';
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.banner = "Welcome back, David E. C. Kopczynski B.Sc.!";
+  services.desktopManager.gnome.enable = true;
 
   # Remove gnome default application
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ] ++ [ yelp ];
