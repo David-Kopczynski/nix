@@ -15,7 +15,7 @@ app.on("ready", () => {
   });
 
   // Load provided URL
-  window.loadURL(process.env.URL, { userAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" });
+  window.loadURL(process.env.URL, { userAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" });
 
   // Show window when ready
   // Wait for short time to allow page to load in
