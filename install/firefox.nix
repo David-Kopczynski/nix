@@ -7,7 +7,6 @@
 
 {
   programs.firefox.enable = true;
-  programs.firefox.package = with pkgs; firefox-esr;
   programs.firefox.policies = {
 
     # General
@@ -28,16 +27,8 @@
     AutofillCreditCardEnabled = false;
     OfferToSaveLogins = false;
 
-    # Default search engine (ESR only)
-    SearchEngines.Default = "Qwant";
-    SearchEngines.Add = [
-      {
-        Name = "Qwant";
-        IconURL = "https://www.qwant.com/favicon.ico";
-        URLTemplate = "https://www.qwant.com/?t=web&l=en&q={searchTerms}";
-        SuggestURLTemplate = "https://api.qwant.com/api/suggest?q={searchTerms}";
-      }
-    ];
+    # Default search engine
+    SearchEngines.Default = "DuckDuckGo";
   };
   programs.firefox.preferences = {
 
@@ -55,7 +46,7 @@
     "x-scheme-handler/http"
     "x-scheme-handler/https"
     "x-scheme-handler/unknown"
-  ] (_: "firefox-esr.desktop");
+  ] (_: "firefox.desktop");
 
   xdg.portal.enable = true;
   xdg.portal.xdgOpenUsePortal = true;
@@ -65,7 +56,7 @@
     inherit (config.programs.dconf) enable;
 
     settings."org/gnome/shell" = {
-      favorite-apps = [ "firefox-esr.desktop" ];
+      favorite-apps = [ "firefox.desktop" ];
     };
   };
 
