@@ -16,6 +16,9 @@
   users.defaultUserShell = with pkgs; zsh;
   environment.shells = with pkgs; [ zsh ];
 
+  # Additional utilities
+  programs.command-not-found.enable = true;
+
   # Main application
   home-manager.users."user".dconf = {
     inherit (config.programs.dconf) enable;
