@@ -24,7 +24,7 @@ let
 
       # test if configuration is valid
       sudo echo "testing configuration..."
-      sudo nixos-rebuild test --log-format internal-json |& nom --json && rm result
+      sudo nixos-rebuild test --log-format internal-json |& nom --json
 
       # ---------- help ---------- #
       else
