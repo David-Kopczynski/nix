@@ -15,7 +15,6 @@ This repository is structured into small nix files that are combined to create t
 | Directory | Description |
 | --- | --- |
 | `./channels` | channel configuration |
-| `./derivations` | custom derivations for the system |
 | `./hosts` | specific hardware / system configurations |
 | `./install` | general installation configurations |
 | `./resources` | resources for the system |
