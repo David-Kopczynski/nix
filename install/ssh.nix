@@ -27,13 +27,13 @@
         proxyJump = "nginx";
         user = "root";
       };
-      "home-assistant" = {
-        hostname = "home-assistant";
+      "immich" = {
+        hostname = "immich";
         proxyJump = "nginx";
         user = "root";
       };
-      "immich" = {
-        hostname = "immich";
+      "mealie" = {
+        hostname = "mealie";
         proxyJump = "nginx";
         user = "root";
       };
