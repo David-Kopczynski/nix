@@ -28,7 +28,7 @@
     OfferToSaveLogins = false;
 
     # Default search engine
-    SearchEngines.Default = "DuckDuckGo";
+    SearchEngines.Default = "Google";
   };
   programs.firefox.preferences = {
 
