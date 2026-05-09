@@ -6,14 +6,6 @@
 
   users.users."user".extraGroups = [ "networkmanager" ];
 
-  # Custom DNS (cloudflare malware blocking)
-  networking.nameservers = [
-    "2606:4700:4700::1112"
-    "2606:4700:4700::1002"
-    "1.1.1.2"
-    "1.0.0.2"
-  ];
-
   # Declarative wifi configuration
   sops.secrets."wifi.env" = { };
   networking.networkmanager.ensureProfiles.environmentFiles = [ config.sops.secrets."wifi.env".path ];
