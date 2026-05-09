@@ -1,7 +1,8 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #               Reverse Proxy for SSH               #
 # # # # # # # # # # # # # # # # # # # # # # # # # # #
-192.168.0.170 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE0Oczr0l8wwIgl8I1MDRFpg5axqOILQBtRbKeYcj7g/
+adguardhome ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMh5/fme7y7FgJbblviXAjskkw4vDKrM6DzkW41gADGT
+backup-server ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE0Oczr0l8wwIgl8I1MDRFpg5axqOILQBtRbKeYcj7g/
 immich ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEaFuVx62iHZZiIaS4yrxB9ESAM9b18MAgpE1BZc5U82
 mealie ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGra11agGDCPJL7E4xhC/DNP9IihxTobIHn52BFYk5d2
 minecraft ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF1jH8/fmzoV1ApfckrkyWWRUo/tKiMnnoxk7jEcfYsl
@@ -9,6 +10,6 @@ nextcloud ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGW9QriBYWifeMjTLd24S2ZyLEzMx2pIxh
 ssh.davidkopczynski.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAZz3LhKcZ7JO0svukrUqPoPr7qt8h1KcRR4OGt/8LiP
 octoprint ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKa6BE5+WLQpY8DBokdTdlCEuCRvksQM5Uw6aW0tJY45
 paperless ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGcUrveZXqiXnlPDD5ToWy2uXbwirzTLIW1o7dT5DlzP
-192.168.0.169 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEnQssJHJPe+Nea80W7j9jAYwBoa6rbbpkLmAVN+tIm
+proxmox ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEnQssJHJPe+Nea80W7j9jAYwBoa6rbbpkLmAVN+tIm
 stirling-pdf ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID6Y5ST4k4+dJvQZP2KIEbKJgKd0WgUMJ2bF0MajCqy3
 uptime-kuma ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGpt8nyXM2NN3MxxhwhPDPGJdND1YGnc6r8q0d+CaaS
