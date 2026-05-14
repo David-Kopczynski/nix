@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, pkgs, ... }:
 
 {
   # Bootloader
@@ -25,4 +25,8 @@
   nix.gc.options = "--delete-older-than 14d";
 
   nix.settings.trusted-users = [ "@wheel" ];
+
+  boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.18.22") (
+    lib.mkDefault pkgs.linuxPackages_6_18
+  );
 }
