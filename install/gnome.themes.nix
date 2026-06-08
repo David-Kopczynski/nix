@@ -1,12 +1,34 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
-  home-manager.users.${config.user}.dconf = {
-    inherit (config.programs.dconf) enable;
+  home-manager.users.${config.user} = {
+    dconf = {
+      inherit (config.programs.dconf) enable;
 
-    settings."org/gnome/desktop/background" = {
-      picture-uri = "file://${config.root}/resources/gnome/wallpaper-bright.jpg";
-      picture-uri-dark = "file://${config.root}/resources/gnome/wallpaper-dark.jpg";
+      settings."org/gnome/desktop/background" = {
+        picture-uri = "file://${config.root}/resources/gnome/wallpaper-bright.jpg";
+        picture-uri-dark = "file://${config.root}/resources/gnome/wallpaper-dark.jpg";
+      };
+    };
+
+    gtk = {
+      enable = true;
+      colorScheme = "dark";
+
+      theme = {
+        name = "adw-gtk3-dark";
+        package = pkgs.adw-gtk3;
+      };
+
+      gtk4.theme = {
+        name = "adw-gtk3-dark";
+        package = pkgs.adw-gtk3;
+      };
+
+      iconTheme = {
+        name = "Adwaita";
+        package = pkgs.adwaita-icon-theme;
+      };
     };
   };
 
