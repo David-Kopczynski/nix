@@ -1,5 +1,0 @@
-{ ... }:
-
-{
-  services.snap.enable = true;
-}
