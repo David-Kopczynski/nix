@@ -5,15 +5,13 @@
   "editor.detectIndentation": false,
   //
   "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
   //
   // Formatter settings
   "editor.formatOnSave": true,
   //
   "[nix]": {
     "editor.defaultFormatter": "jnoortheen.nix-ide"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   //
   // Nix related settings
@@ -25,9 +23,6 @@
         "command": [
           "nixfmt"
         ]
-      },
-      "nixpkgs": {
-        "expr": "import <nixpkgs> { }",
       },
     },
   },
