@@ -1,0 +1,11 @@
+keys:
+  - users:
+    - &user age1nhssvcts5qr9m3gjl2ps5p4ss7nez6nnhjncrvwm0gpy7x0nqeeq97tm9v
+  - hosts:
+    - &laptop age1v9s8jfemdur60pn7gdqd9rcl9tj0rzgd2f0uwspteeyg557z6dgqs8ezu8
+creation_rules:
+  - path_regex: ^[[:print:]]+$
+    key_groups:
+      - age:
+        - *user
+        - *laptop
