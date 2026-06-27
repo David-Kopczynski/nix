@@ -9,4 +9,7 @@
     configurationLimit = 16;
     consoleMode = "max";
   };
+
+  # Persist bootloader
+  boot.loader.efi.canTouchEfiVariables = true;
 }
