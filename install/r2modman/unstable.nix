@@ -7,7 +7,7 @@ let
 in
 {
   disabledModules = modules;
-  imports = map (n: "${unstable}/nixos/modules/${n}") modules;
+  imports = map (n: unstable + /nixos/modules/${n}) modules;
 
   nixpkgs.overlays =
     let
