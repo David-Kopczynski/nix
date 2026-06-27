@@ -10,7 +10,7 @@
         AGE_KEY="''${XDG_CONFIG_HOME:-$HOME/.config}/sops/age/keys.txt"
 
         mkdir -p "dirname $AGE_KEY"
-        ${with pkgs; ssh-to-age}/bin/ssh-to-age -private-key -i $SSH_KEY > "$AGE_KEY"
+        ${lib.getExe (with pkgs; ssh-to-age)} -private-key -i $SSH_KEY > "$AGE_KEY"
       '';
     };
 }
