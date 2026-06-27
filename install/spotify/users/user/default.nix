@@ -2,6 +2,7 @@
 
 {
   home-manager.users.${user} = { pkgs, ... }: {
+
     home.packages = with pkgs; [ spotify ];
 
     # Show application in quick launcher
