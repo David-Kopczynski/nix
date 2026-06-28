@@ -14,7 +14,12 @@
     "editor.defaultFormatter": "jnoortheen.nix-ide"
   },
   //
-  // Nix related settings
+  // Nix environment
+  "nixEnvSelector.nixFile": "${workspaceFolder}/shell.nix",
+  "nixEnvSelector.suggestion": false,
+  "nixEnvSelector.useFlakes": false,
+  //
+  // Nixd language server
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nixd",
   "nix.serverSettings": {
