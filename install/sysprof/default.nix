@@ -1,0 +1,5 @@
+{ ... }:
+
+{
+  services.sysprof.enable = true;
+}
