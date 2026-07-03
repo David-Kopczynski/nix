@@ -3,8 +3,10 @@ I am using [NixOS](https://nixos.org/download/#nix-install-linux) with GNOME and
 However, multiple other channels are in use, which must be added for this configuration to work.
 
 ```bash
-sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-${VERSION}.tar.gz home-manager
-sudo nix-channel --add https://nixos.org/channels/nixos-${VERSION} nixos
+VERSION=26.05
+
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-$VERSION.tar.gz home-manager
+sudo nix-channel --add https://nixos.org/channels/nixos-$VERSION nixos
 sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 sudo nix-channel --add https://github.com/Mic92/sops-nix/archive/master.tar.gz sops-nix
