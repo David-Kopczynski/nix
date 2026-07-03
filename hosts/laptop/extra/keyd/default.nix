@@ -1,6 +1,6 @@
-{ config, lib, ... }:
+{ ... }:
 
-lib.mkIf (config.system.name == "laptop") {
+{
   services.keyd.enable = true;
   services.keyd.keyboards.default = {
 
