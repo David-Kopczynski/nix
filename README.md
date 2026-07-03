@@ -1,35 +1,45 @@
 # ❄️ NixOS
-[NixOS](https://nixos.org/download/#nix-install-linux) is installed with **GNOME** with the following system configuration:
-
-| Setting | Value |
-| --- | --- |
-| Name | `David Kopczynski` |
-| User | `user` |
-| Password | *(found in Bitwarden)* |
-
-More specific installation instructions can be found in `./hosts/{hostname}/README.md`.
-
-## 📁 Configuration Structure
-This repository is structured into small nix files that are combined to create the system configuration. The general structure is as follows:
-
-| Directory | Description |
-| --- | --- |
-| `./channels` | channel configuration |
-| `./hosts` | specific hardware / system configurations |
-| `./install` | general installation configurations |
-| `./resources` | resources for the system |
-
-## 🚀 Setup
-When copying the system to a new device it is necessary to add some base configuration to the system in order to clone this repository (git, ssh). Afterwards, the setup script can be run with `./setup.sh` to load this repository for the first time (when migrating the system to another device, the keystore in `~/.local/share/keyrings` should also be copied to the new device, as well as the SSH keys in `~/.ssh`), followed by `sudo nixos-rebuild switch` to build the system.
-
-Additionally, channels must be subscribed to manually with `sudo nix-channel --add $URL $NAME` and updated with `sudo nix-channel --update`. This setup requires the following channels:
+I am using [NixOS](https://nixos.org/download/#nix-install-linux) with GNOME and no experimental settings on the stable channel. \
+However, multiple other channels are in use, which must be added for this configuration to work.
 
 ```bash
-sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz home-manager
-sudo nix-channel --add https://nixos.org/channels/nixos-25.11 nixos
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-${VERSION}.tar.gz home-manager
+sudo nix-channel --add https://nixos.org/channels/nixos-${VERSION} nixos
 sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 sudo nix-channel --add https://github.com/Mic92/sops-nix/archive/master.tar.gz sops-nix
 ```
 
-*When reusing old configurations, make sure to update the `stateVersion` in the host configuration to the latest version.*
+## 📁 Configuration Structure
+This repository is structured into small nix files that are combined to create the system configuration.
+
+Most of the setup will be found within `./install`.
+This directory holds all configuration that applies to each host. \
+Some directories may also define user settings or switch specific modules to `nixos-unstable` for cutting edge features!
+
+The rest and most specific configuration will be found within `./hosts/$host`.
+Each host defines it's own hardware and optional `extra` programs and services it may need. \
+However, this discrepancy should be kept as small as possible to avoid overhead.
+
+<details>
+<summary>🔨 Installation</summary>
+
+Setup should be straightforward, simply cloning the project and applying the configuration!
+
+```bash
+# Go to desired project path
+cd ~
+
+# Simply clone
+git clone https://github.com/David-Kopczynski/nix.git
+cd nix
+
+# Apply and reboot
+./setup.sh
+sudo nixos-rebuild switch
+sudo reboot now
+```
+*When reusing old configurations, make sure to update the `stateVersion` in the host configuration to the latest version.* \
+*For `sops-nix` to work, the SSH keys should be added to `~/.ssh`.*
+
+</details>
