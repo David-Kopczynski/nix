@@ -7,7 +7,7 @@
       {
         assertion =
           let
-            proxmox = fetchTarball "https://github.com/David-Kopczynski/proxmox/archive/master.tar.gz";
+            proxmox = fetchTarball "https://github.com/David-Kopczynski/proxmox/tarball/master";
             vms = builtins.attrNames (builtins.readDir "${proxmox}/install");
             hosts = builtins.attrNames config.programs.ssh.settings;
           in
