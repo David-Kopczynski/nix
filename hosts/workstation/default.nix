@@ -1,5 +1,11 @@
 { config, lib, ... }:
 
+# TODO this needs migration!
+# TODO kms-modifiers in experimental-features
+# TODO check which options are default
+# TODO check if switch config show warnings and errors
+# TODO check journalctl logs
+
 {
   system.name = "workstation";
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -19,18 +25,17 @@
   boot.kernelModules = [ "kvm-intel" ];
 
   # File systems
-  swapDevices = [
-    {
-      device = "/dev/disk/by-partlabel/swap";
-      options = [ "defaults" ] ++ lib.optionals config.services.fstrim.enable [ "discard" ];
-      randomEncryption.enable = true;
-      randomEncryption.allowDiscards = config.services.fstrim.enable;
-    }
-  ];
+  swapDevices = lib.toList {
+    device = "/dev/disk/by-partlabel/swap";
+    options = [ "defaults" ] ++ lib.optionals config.services.fstrim.enable [ "discard" ];
+    randomEncryption.enable = true;
+    randomEncryption.allowDiscards = config.services.fstrim.enable;
+  };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/boot";
     fsType = "vfat";
+    options = [ "umask=0077" ];
   };
 
   fileSystems."/" = {
@@ -43,8 +48,6 @@
     fsType = "ext4";
     options = [ "defaults" ] ++ [ "x-gvfs-show" ];
   };
-
-  services.smartd.enable = true;
 
   # Hardware supported
   hardware.bluetooth.enable = true;
@@ -93,7 +96,7 @@
           chmod u+w ${dir}/monitors.xml
         '';
 
-      source = ../resources/gnome/workstation-monitors.xml;
+      source = ./workstation/workstation-monitors.xml;
     };
   };
 
@@ -111,13 +114,6 @@
       }
     ];
   };
-
-  # Performance tweaks
-  services.thermald.enable = true;
-
-  # Enable firmware updates
-  services.fwupd.enable = true;
-  services.fwupd.extraRemotes = [ "lvfs-testing" ];
 
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableAllFirmware = true;

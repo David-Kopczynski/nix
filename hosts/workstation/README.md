@@ -1,10 +1,14 @@
 # ❄️ Workstation
 My **i7 13700kf** + **RTX 2070 Super** workstation is currently running just fine with a basic partition layout.
 
-## 🚀 Setup
-Should the UEFI settings be reset, the `profile` configuration file can be found with:
+<details>
+<summary>🔨 Installation</summary>
+
+This setup currently runs out of the box. \
+However, if the UEFI of my motherboard should be reset, I can restore the settings using the following backup.
 
 ```bash
-cd nix/hosts/workstation
-nix-shell -p sops --run "sops -d ../../resources/sops/workstation/profile > profile"
+sops ./hosts/workstation/hardware/profile > ~/Desktop/profile
 ```
+
+</details>
