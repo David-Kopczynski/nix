@@ -8,7 +8,7 @@
       # Theming
       picture-uri = "file://${osConfig.sops.secrets."${user}/wallpaper/picture".path}";
       picture-uri-dark = "file://${osConfig.sops.secrets."${user}/wallpaper/picture-dark".path}";
-      picture-options = "spanned";
+      picture-options = "zoom";
       color-shading-type = "solid";
       primary-color = "#000000";
     };

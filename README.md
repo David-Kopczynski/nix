@@ -44,4 +44,19 @@ sudo reboot now
 *When reusing old configurations, make sure to update the `stateVersion` in the host configuration to the latest version.* \
 *For `sops-nix` to work, the SSH keys should be added to `~/.ssh`.*
 
+For new hosts, a new directory within `./hosts` should be created. \
+Also, `sops-nix` requires the age key from the machine within `.sops.yaml`.
+This is also the case, when migrating a host to a new machine, as the root keys will change.
+
+```bash
+# Get public age key
+nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+
+# Add to .sops.yaml
+nano .sops.yaml
+
+# Update all secrets
+nix-shell -p sops --run 'sops updatekeys $(find . -type f) 2>/dev/null'
+```
+
 </details>

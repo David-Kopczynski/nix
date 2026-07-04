@@ -3,9 +3,21 @@ keys:
     - &user age1nhssvcts5qr9m3gjl2ps5p4ss7nez6nnhjncrvwm0gpy7x0nqeeq97tm9v
   - hosts:
     - &laptop age1v9s8jfemdur60pn7gdqd9rcl9tj0rzgd2f0uwspteeyg557z6dgqs8ezu8
+    - &workstation age13t2jv09mwjyyxhcr2x2fvszq7j3w4xg2jns2zzk4a8u7v5l50quqakecpq
 creation_rules:
-  - path_regex: ^[[:print:]]+$
+  - path_regex: ^install/[[:print:]]+$
     key_groups:
       - age:
         - *user
         - *laptop
+        - *workstation
+  - path_regex: ^hosts/laptop/[[:print:]]+$
+    key_groups:
+      - age:
+        - *user
+        - *laptop
+  - path_regex: ^hosts/workstation/[[:print:]]+$
+    key_groups:
+      - age:
+        - *user
+        - *workstation
