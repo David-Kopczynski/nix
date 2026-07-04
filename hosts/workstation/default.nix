@@ -19,6 +19,7 @@
 
   # Additional hardware tweaks
   hardware.enableRedistributableFirmware = true;
+  hardware.nvidia.branch = "latest";
   hardware.nvidia.nvidiaSettings = false;
   hardware.nvidia.powerManagement.enable = true;
 
