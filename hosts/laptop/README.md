@@ -1,5 +1,5 @@
 # ❄️ Laptop
-My Framework 13 (Intel 13th Gen.) `laptop` is installed with a LUKS setup, running a LVM with ext4. \
+My **Framework 13** (Intel 13th Gen.) `laptop` is installed with a LUKS setup, running a LVM with ext4. \
 Unlocking the LUKS partition is done with a YubiKey, configured with the help of a declarative `disko` setup!
 
 <details>

@@ -63,8 +63,6 @@
   swapDevices = lib.toList {
     device = "/dev/disk/by-partlabel/swap";
     discardPolicy = lib.optionalString config.services.fstrim.enable "both";
-    randomEncryption.enable = true;
-    randomEncryption.allowDiscards = config.services.fstrim.enable;
   };
 
   # Versions

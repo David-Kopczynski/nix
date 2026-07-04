@@ -7,10 +7,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Encryption with Yubikey
+  # Encryption
   boot.initrd.luks.devices."crypted" = {
 
-    crypttabExtraOpts = [ "fido2-device=auto" ];
     device = "/dev/disk/by-partlabel/disk-system-crypted";
   };
 
