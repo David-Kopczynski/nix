@@ -25,7 +25,7 @@
 
   # Boot parameters
   boot.kernelParams = [
-    "mem_sleep_default=s2idle"
+    "intel_iommu=on"
     "video=DP-1:1920x1080@75,panel_orientation=left"
     "video=DP-2:2560x1440@165"
     "video=DP-3:2560x1080@75"
