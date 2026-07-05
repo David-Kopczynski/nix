@@ -47,9 +47,6 @@
             streetsidesoftware.code-spell-checker
             streetsidesoftware.code-spell-checker-german
 
-            # LLM
-            github.copilot-chat
-
             # Theming
             pkief.material-icon-theme
           ]
