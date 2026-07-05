@@ -41,15 +41,23 @@
 
   boot.kernelModules = [ "kvm-intel" ];
 
+  # Encryption
+  boot.initrd.luks.devices."crypted" = {
+
+    allowDiscards = config.services.fstrim.enable;
+    bypassWorkqueues = config.services.fstrim.enable;
+    device = "/dev/disk/by-partlabel/disk-system-crypted";
+  };
+
   # System
   fileSystems = {
 
     "/" = {
-      device = "/dev/disk/by-label/nixos";
+      device = "/dev/mapper/vg-root";
       fsType = "ext4";
     };
     "/boot" = {
-      device = "/dev/disk/by-label/boot";
+      device = "/dev/disk/by-partlabel/disk-system-ESP";
       fsType = "vfat";
       options = [ "umask=0077" ];
     };
@@ -61,7 +69,7 @@
   };
 
   swapDevices = lib.toList {
-    device = "/dev/disk/by-partlabel/swap";
+    device = "/dev/mapper/vg-swap";
     discardPolicy = lib.optionalString config.services.fstrim.enable "both";
   };
 
