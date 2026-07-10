@@ -28,9 +28,6 @@
           "git.autofetch" = true;
           "git.confirmSync" = false;
 
-          # LLMs
-          "chat.disableAIFeatures" = false;
-
           # Theming
           "window.autoDetectColorScheme" = true;
           "workbench.iconTheme" = "material-icon-theme";
