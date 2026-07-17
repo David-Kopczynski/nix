@@ -29,6 +29,14 @@
           "nixfmt"
         ]
       },
+      "options": {
+        "home-manager": {
+          "expr": "import .vscode/nixd/options/home-manager.nix"
+        },
+        "sops-nix": {
+          "expr": "import .vscode/nixd/options/sops-nix.nix"
+        }
+      }
     },
   },
 }
