@@ -28,9 +28,8 @@ However, this discrepancy should be kept as small as possible to avoid overhead.
 <details>
 <summary>🔨 Installation</summary>
 
-> [!IMPORTANT]
-> Setup is not straightforward due to initial provisioning for secrets.
-> Also, make sure that this repository is available for installation.
+**Setup is not straightforward due to initial provisioning for secrets.** \
+**Also, make sure that this repository is available for installation.**
 
 Given a host, we will be starting with the basic partitioning and a bare bones installation.
 For this, a simple install script for the desired host will be run.
