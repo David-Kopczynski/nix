@@ -1,15 +1,17 @@
 # ❄️ NixOS
-I am using [NixOS](https://nixos.org/download/#nix-install-linux) with GNOME and no experimental settings on the stable channel. \
-However, multiple other channels are in use, which must be added for this configuration to work.
+I am using [NixOS](https://nixos.org/download/#nix-install-linux) with GNOME,
+leveraging [npins](https://github.com/andir/npins) with [nh](https://github.com/nix-community/nh)
+and [sops-nix](https://github.com/mic92/sops-nix) on the stable channel.
+
+Thus, default tools may not work as expected. \
+Please use `npins` and `nh` as shown below.
 
 ```bash
-VERSION=26.05
+# Update dependencies (if required)
+npins -d ~/nix/npins update
 
-sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-$VERSION.tar.gz home-manager
-sudo nix-channel --add https://nixos.org/channels/nixos-$VERSION nixos
-sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
-sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-sudo nix-channel --add https://github.com/Mic92/sops-nix/archive/master.tar.gz sops-nix
+# 'test', 'boot' or 'switch' configuration
+nh os switch -f ~/nix/hosts/$host/system.nix
 ```
 
 ## 📁 Configuration Structure
@@ -26,37 +28,65 @@ However, this discrepancy should be kept as small as possible to avoid overhead.
 <details>
 <summary>🔨 Installation</summary>
 
-Setup should be straightforward, simply cloning the project and applying the configuration!
+> [!IMPORTANT]
+> Setup is not straightforward due to initial provisioning for secrets.
+> Also, make sure that this repository is available for installation.
+
+Given a host, we will be starting with the basic partitioning and a bare bones installation.
+For this, a simple install script for the desired host will be run.
+Afterwards, secrets can be setup and the actual system installed.
+
+Boot from a live USB and change TTY (Ctrl+Alt+Fx) to use the terminal. \
+Then, the following steps should be followed loosely for installation. \
+*This installation will automatically prompt for any input, installing a base configuration.*
 
 ```bash
-# Go to desired project path
-cd ~
+# All commands can/must be run privileged
+sudo -i
 
-# Simply clone
-git clone https://github.com/David-Kopczynski/nix.git
-cd nix
+# I use a different keyboard layout
+loadkeys de
 
-# Apply and reboot
-./setup.sh
-sudo nixos-rebuild switch
+# Install and check for errors
+./nix/hosts/$host/setup/install.sh
+
+# Check setup
+reboot now
+```
+
+Should the system boot properly, secrets can be tweaked. \
+*A mount with my known SSH-Keys should be provided and host keys updated accordingly.*
+
+```bash
+# Source tools
+nix-shell -p ssh-to-age yq-go
+
+# Source user keys
+cp -rp /mnt/.../.ssh ~/
+
+# Prepare sops-nix
+mkdir -p ~/.config/sops/age
+ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
+
+# Update hosts age (if required)
+export age=$(sudo cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age)
+yq '(.keys.hosts[] | select(anchor == "$host")) = env(age)' -i .sops.yaml
+
+# Add hosts age (if required)
+export age=$(sudo cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age)
+yq '.keys.hosts += env(age) | .keys.hosts[-1] anchor |= "$host"' -i .sops.yaml
+nano .sops.yaml # manual modification required
+
+# Update secrets (if required)
+sops updatekeys $(find . -type f) 2>/dev/null
+
+# Prepare npins
+npins -d ~/nix/npins init
+
+# Install and reboot
+nh os switch -f ~/nix/hosts/$host/system.nix
 sudo reboot now
 ```
-*When reusing old configurations, make sure to update the `stateVersion` in the host configuration to the latest version.* \
-*For `sops-nix` to work, the SSH keys should be added to `~/.ssh`.*
-
-For new hosts, a new directory within `./hosts` should be created. \
-Also, `sops-nix` requires the age key from the machine within `.sops.yaml`.
-This is also the case, when migrating a host to a new machine, as the root keys will change.
-
-```bash
-# Get public age key
-nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
-
-# Add to .sops.yaml
-nano .sops.yaml
-
-# Update all secrets
-nix-shell -p sops --run 'sops updatekeys $(find . -type f) 2>/dev/null'
-```
+*When reusing old configurations, make sure to update the `stateVersion` in the host configuration to the latest version.*
 
 </details>

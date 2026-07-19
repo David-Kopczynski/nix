@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -14,18 +14,6 @@
     device = "/dev/disk/by-partlabel/disk-system-crypted";
   };
 
-  # System
-  fileSystems."/" = lib.mkForce {
-    device = "/dev/mapper/vg-root";
-    fsType = "ext4";
-  };
-  fileSystems."/boot" = lib.mkForce {
-    device = "/dev/disk/by-partlabel/disk-system-ESP";
-    fsType = "vfat";
-    options = [ "umask=0077" ];
-  };
-  swapDevices = lib.mkForce [ { device = "/dev/mapper/vg-swap"; } ];
-
   # Keyboard layout
   console.keyMap = "de";
 
@@ -36,4 +24,7 @@
     initialPassword = "password";
     isNormalUser = true;
   };
+
+  # SSH Keys
+  services.openssh.generateHostKeys = true;
 }
