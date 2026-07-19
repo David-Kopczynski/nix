@@ -38,6 +38,19 @@
       "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.5449.293d6abedf04/nixexprs.tar.xz",
       "hash": "sha256-tdf956RzIg3clDWEZsQrngaEJVxpPNzUsGhVHgGKBj8="
     },
+    "proxmox": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "David-Kopczynski",
+        "repo": "proxmox"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "f4bdb68d1a2fd9f828bd9d961f811994fd20303f",
+      "url": "https://github.com/David-Kopczynski/proxmox/archive/f4bdb68d1a2fd9f828bd9d961f811994fd20303f.tar.gz",
+      "hash": "sha256-fMimKHDOoEAmVn6DCwtBsQjIDmqy1UbAJksGUJMZ00o="
+    },
     "sops-nix": {
       "type": "Git",
       "repository": {

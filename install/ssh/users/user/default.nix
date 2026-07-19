@@ -1,20 +1,18 @@
 { user }:
 
 {
-  home-manager.users.${user} = { config, ... }: {
+  home-manager.users.${user} = { config, lib, ... }: {
 
-    assertions = [
-      {
-        assertion =
-          let
-            proxmox = fetchTarball "https://github.com/David-Kopczynski/proxmox/tarball/master";
-            vms = builtins.attrNames (builtins.readDir "${proxmox}/install");
-            hosts = builtins.attrNames config.programs.ssh.settings;
-          in
-          builtins.all (x: builtins.elem x hosts) vms;
-        message = "VMs are missing from Proxmox setup for SSH.";
-      }
-    ];
+    assertions = lib.toList {
+      assertion =
+        let
+          proxmox = (import ../../../../npins).proxmox;
+          vms = builtins.attrNames (builtins.readDir "${proxmox}/install");
+          hosts = builtins.attrNames config.programs.ssh.settings;
+        in
+        builtins.all (x: builtins.elem x hosts) vms && builtins.length vms + 2 == builtins.length hosts;
+      message = "VMs are missing from Proxmox setup for SSH.";
+    };
 
     programs.ssh.enable = true;
     programs.ssh = {
@@ -82,12 +80,6 @@
         user = "root";
         proxyJump = "nginx";
         knownHostsCommand = "/usr/bin/env printf '%H ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEnQssJHJPe+Nea80W7j9jAYwBoa6rbbpkLmAVN+tIm'";
-        strictHostKeyChecking = "yes";
-      };
-      settings."stirling-pdf" = {
-        user = "root";
-        proxyJump = "nginx";
-        knownHostsCommand = "/usr/bin/env printf '%H ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID6Y5ST4k4+dJvQZP2KIEbKJgKd0WgUMJ2bF0MajCqy3'";
         strictHostKeyChecking = "yes";
       };
       settings."uptime-kuma" = {
