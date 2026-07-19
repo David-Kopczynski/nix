@@ -5,9 +5,13 @@
   nixpkgs.hostPlatform = "x86_64-linux";
 
   imports =
-    # Source nixos-hardware configuration
+    # Source default configuration
     [
-      <nixos-hardware/framework/13-inch/13th-gen-intel>
+      ../../default.nix
+    ]
+    # Source nixos-hardware configuration
+    ++ [
+      "${(import ../../npins).nixos-hardware}/framework/13-inch/13th-gen-intel"
     ]
     # Source extra configuration from ./extra/*
     ++ lib.pipe (builtins.readDir ./extra) [

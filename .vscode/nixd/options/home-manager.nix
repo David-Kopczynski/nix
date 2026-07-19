@@ -1,4 +1,4 @@
-(import <home-manager/modules> {
+(import "${(import ../../../npins).home-manager}/modules" {
 
   configuration = {
 
@@ -6,5 +6,5 @@
     home.stateVersion = "18.09";
     home.username = "_";
   };
-  pkgs = import <nixpkgs> { };
+  pkgs = import (import ../../../npins).nixpkgs { };
 }).options

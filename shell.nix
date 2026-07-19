@@ -1,5 +1,5 @@
 {
-  pkgs ? import <nixpkgs> { },
+  pkgs ? import (import ./npins).nixpkgs { },
 }:
 
 pkgs.mkShell {

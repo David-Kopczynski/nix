@@ -5,12 +5,16 @@
   nixpkgs.hostPlatform = "x86_64-linux";
 
   imports =
-    # Source nixos-hardware configuration
+    # Source default configuration
     [
-      <nixos-hardware/common/pc>
-      <nixos-hardware/common/pc/ssd>
-      <nixos-hardware/common/gpu/nvidia/turing>
-      <nixos-hardware/common/cpu/intel/cpu-only.nix>
+      ../../default.nix
+    ]
+    # Source nixos-hardware configuration
+    ++ [
+      "${(import ../../npins).nixos-hardware}/common/pc"
+      "${(import ../../npins).nixos-hardware}/common/pc/ssd"
+      "${(import ../../npins).nixos-hardware}/common/gpu/nvidia/turing"
+      "${(import ../../npins).nixos-hardware}/common/cpu/intel/cpu-only.nix"
     ]
     # Source extra configuration from ./extra/*
     ++ lib.pipe (builtins.readDir ./extra) [
