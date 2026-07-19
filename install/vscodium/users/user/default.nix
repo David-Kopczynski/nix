@@ -27,9 +27,7 @@
           # Git
           "git.autofetch" = true;
           "git.confirmSync" = false;
-
-          # LLMs
-          "chat.disableAIFeatures" = false;
+          "git.suggestSmartCommit" = false;
 
           # Theming
           "window.autoDetectColorScheme" = true;
