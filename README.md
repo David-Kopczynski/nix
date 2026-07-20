@@ -58,7 +58,7 @@ Should the system boot properly, secrets can be tweaked. \
 
 ```bash
 # Source tools
-nix-shell -p ssh-to-age yq-go
+nix-shell -p nh npins ssh-to-age yq-go
 
 # Source user keys
 cp -rp /mnt/.../.ssh ~/
@@ -83,7 +83,7 @@ sops updatekeys $(find . -type f) 2>/dev/null
 npins -d ~/nix/npins init
 
 # Install and reboot
-nh os switch -f ~/nix/hosts/$host/system.nix
+nh os switch -f ~/nix/hosts/$host/system.nix -- --extra-experimental-features nix-command
 sudo reboot now
 ```
 *When reusing old configurations, make sure to update the `stateVersion` in the host configuration to the latest version.*
