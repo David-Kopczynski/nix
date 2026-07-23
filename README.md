@@ -79,9 +79,6 @@ nano .sops.yaml # manual modification required
 # Update secrets (if required)
 sops updatekeys $(find . -type f) 2>/dev/null
 
-# Prepare npins
-npins -d ~/nix/npins init
-
 # Install and reboot
 nh os switch -f ~/nix/hosts/$host/system.nix -- --extra-experimental-features nix-command
 sudo reboot now
