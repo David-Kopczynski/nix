@@ -31,11 +31,28 @@
   };
 
   home-manager.users."user" =
-    { ... }:
+    { config, ... }:
     {
+      # Writable config directory
+      xdg.configFile."hyperhdr.db" = {
+
+        # Copy config into place to prevent read-only errors
+        onChange =
+          let
+            dir = config.xdg.configHome;
+          in
+          ''
+            rm -f ${dir}/hyperhdr/db/hyperhdr.db
+            cp -L ${dir}/hyperhdr.db ${dir}/hyperhdr/db/hyperhdr.db
+            chmod +w ${dir}/hyperhdr/db/hyperhdr.db
+          '';
+
+        source = ./hyperhdr.db;
+      };
+
+      # Custom keybindings
       dconf.settings =
         let
-          # Custom keybindings
           target = "org/gnome/settings-daemon/plugins/media-keys";
           keybindings = [
             {
@@ -56,13 +73,6 @@
           }) keybindings
         );
     };
-
-  # Configuration
-  systemd.tmpfiles.rules = [
-    "L+ ${
-      config.home-manager.users."user".xdg.configHome
-    }/hyperhdr/db/hyperhdr.db - - - - ${./hyperhdr.db}"
-  ];
 
   # Allow serial port access
   users.users."user".extraGroups = [ "dialout" ];
