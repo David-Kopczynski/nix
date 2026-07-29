@@ -17,5 +17,6 @@
     sopsFile = ./user.dat;
     format = "binary";
     path = "/var/lib/howdy/models/user.dat";
+    mode = "0644";
   };
 }
