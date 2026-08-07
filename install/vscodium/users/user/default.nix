@@ -1,7 +1,7 @@
 { user }:
 
 {
-  home-manager.users.${user} = { config, pkgs, ... }: {
+  home-manager.users.${user} = { pkgs, ... }: {
 
     programs.vscodium.enable = true;
     programs.vscodium = {
@@ -34,6 +34,16 @@
           "workbench.iconTheme" = "material-icon-theme";
         };
 
+        keybindings = [
+
+          # Basic keybindings
+          {
+            key = "ctrl+[Backslash]"; # ctrl+# with de
+            command = "editor.action.commentLine";
+            when = "editorTextFocus && !editorReadonly";
+          }
+        ];
+
         extensions =
           with pkgs.vscode-extensions;
           [
@@ -64,20 +74,6 @@
               sha256 = "sha256-MhLl/Ftw/EdIbw5SYJPYoO90XfFaeAdc1TZf5bdKj6g=";
             }
           ];
-      };
-
-      profiles."Nix" = {
-
-        userSettings = config.programs.vscodium.profiles.default.userSettings;
-        keybindings = config.programs.vscodium.profiles.default.keybindings;
-
-        extensions =
-          with pkgs.vscode-extensions;
-          [
-            jnoortheen.nix-ide
-            gruntfuggly.todo-tree
-          ]
-          ++ config.programs.vscodium.profiles.default.extensions;
       };
     };
 

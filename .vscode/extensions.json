@@ -1,0 +1,7 @@
+{
+  // Required extensions for Nix
+  "recommendations": [
+    "jnoortheen.nix-ide",
+    "gruntfuggly.todo-tree",
+  ]
+}
