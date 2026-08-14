@@ -1,8 +1,6 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
 {
   # Allow unfree application
-  nixpkgs.config.allowUnfreePackages = map lib.getName [
-    config.hardware.nvidia.package
-  ];
+  nixpkgs.config.allowUnfreePackages = lib.toList "nvidia-x11";
 }

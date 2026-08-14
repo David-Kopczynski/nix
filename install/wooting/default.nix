@@ -1,8 +1,8 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 
 {
   hardware.wooting.enable = true;
 
   # Allow unfree application
-  nixpkgs.config.allowUnfreePackages = map lib.getName (with pkgs; [ wootility ]);
+  nixpkgs.config.allowUnfreePackages = lib.toList "wootility";
 }

@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ ... }:
 
 {
   programs.steam.enable = true;
@@ -11,11 +11,5 @@
   };
 
   # Allow unfree application
-  nixpkgs.config.allowUnfreePackages = map lib.getName (
-    with pkgs;
-    [
-      steam
-      steam-unwrapped
-    ]
-  );
+  nixpkgs.config.allowUnfreePackages = [ "steam" ] ++ [ "steam-unwrapped" ];
 }

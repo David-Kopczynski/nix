@@ -1,5 +1,6 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 
 {
-  nixpkgs.config.allowUnfreePackages = map lib.getName (with pkgs; [ spotify ]);
+  # Allow unfree application
+  nixpkgs.config.allowUnfreePackages = lib.toList "spotify";
 }
