@@ -8,8 +8,8 @@
       # Desktop keybindings
       switch-applications = with lib.gvariant; mkEmptyArray type.string;
       switch-applications-backward = with lib.gvariant; mkEmptyArray type.string;
-      switch-windows = [ "<Alt>Tab" ];
-      switch-windows-backward = [ "<Shift><Alt>Tab" ];
+      switch-windows = lib.toList "<Alt>Tab";
+      switch-windows-backward = lib.toList "<Shift><Alt>Tab";
     };
   };
 }

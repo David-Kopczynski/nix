@@ -38,7 +38,7 @@
 
   # Declarative channels
   nix.channel.enable = false;
-  nix.nixPath = [ "nixpkgs=${(import ./npins).nixpkgs}" ];
+  nix.nixPath = lib.toList "nixpkgs=${(import ./npins).nixpkgs}";
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # #
   #                   Home Manager                    #
