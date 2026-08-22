@@ -72,11 +72,11 @@
       fsType = "vfat";
       options = [ "umask=0077" ];
     };
-    # "/data" = {
-    #   device = "/dev/disk/by-partlabel/disk-data-data";
-    #   fsType = "ext4";
-    #   options = [ "defaults" ] ++ [ "x-gvfs-show" ];
-    # };
+    "/data" = {
+      device = "/dev/disk/by-partlabel/disk-data-crypted";
+      fsType = "ext4";
+      options = [ "defaults" ] ++ [ "x-gvfs-show" ];
+    };
   };
 
   swapDevices = lib.toList {
