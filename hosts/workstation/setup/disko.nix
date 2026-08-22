@@ -26,7 +26,7 @@
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted";
+                name = "crypted0";
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
@@ -41,7 +41,7 @@
         };
       };
       "data" = {
-        device = "/dev/disk/by-id/nvme.eui.002538b531a2b099";
+        device = "/dev/disk/by-id/nvme-eui.002538b531a2b099";
         type = "disk";
         content = {
           type = "gpt";
@@ -51,7 +51,7 @@
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted";
+                name = "crypted1";
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
