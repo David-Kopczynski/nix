@@ -3,7 +3,7 @@ keys:
     - &user "age1nhssvcts5qr9m3gjl2ps5p4ss7nez6nnhjncrvwm0gpy7x0nqeeq97tm9v"
   hosts:
     - &laptop "age1v9s8jfemdur60pn7gdqd9rcl9tj0rzgd2f0uwspteeyg557z6dgqs8ezu8"
-    - &workstation "age16ly8zs8hvvlht9yzg7k6dsyegsd0vmwrfrnhwjnd87f4agh4u5hs9zactw"
+    - &workstation "age1mymurwd3vx478w5zaaxm8nqzlx3z4th5k4rkqnuj3ktchjksturq62dk63"
 creation_rules:
   - path_regex: ^install/[[:print:]]+$
     key_groups:
