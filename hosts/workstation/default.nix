@@ -73,9 +73,9 @@
       options = [ "umask=0077" ];
     };
     "/data" = {
-      device = "/dev/disk/by-partlabel/disk-data-crypted";
+      device = "/dev/mapper/crypted1";
       fsType = "ext4";
-      options = [ "defaults" ] ++ [ "x-gvfs-show" ];
+      options = [ "nofail" ];
     };
   };
 

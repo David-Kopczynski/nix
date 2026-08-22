@@ -60,7 +60,7 @@
                   type = "filesystem";
                   format = "ext4";
                   mountpoint = "/data";
-                  mountOptions = [ "defaults" ] ++ [ "x-gvfs-show" ];
+                  mountOptions = [ "defaults" ];
                 };
               };
             };
