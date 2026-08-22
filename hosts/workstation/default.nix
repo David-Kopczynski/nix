@@ -51,13 +51,13 @@
 
     allowDiscards = config.services.fstrim.enable;
     bypassWorkqueues = config.services.fstrim.enable;
-    device = "/dev/disk/by-partlabel/disk-system-crypted0";
+    device = "/dev/disk/by-partlabel/disk-system-crypted";
   };
   boot.initrd.luks.devices."crypted1" = {
 
     allowDiscards = config.services.fstrim.enable;
     bypassWorkqueues = config.services.fstrim.enable;
-    device = "/dev/disk/by-partlabel/disk-system-crypted1";
+    device = "/dev/disk/by-partlabel/disk-data-crypted";
   };
 
   # System
@@ -72,11 +72,11 @@
       fsType = "vfat";
       options = [ "umask=0077" ];
     };
-    "/data" = {
-      device = "/dev/disk/by-partlabel/disk-system-data";
-      fsType = "ext4";
-      options = [ "defaults" ] ++ [ "x-gvfs-show" ];
-    };
+    # "/data" = {
+    #   device = "/dev/disk/by-partlabel/disk-data-data";
+    #   fsType = "ext4";
+    #   options = [ "defaults" ] ++ [ "x-gvfs-show" ];
+    # };
   };
 
   swapDevices = lib.toList {

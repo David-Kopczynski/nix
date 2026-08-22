@@ -21,12 +21,12 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            "crypted0" = {
+            "crypted" = {
               priority = 2;
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted0";
+                name = "crypted";
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
@@ -46,12 +46,12 @@
         content = {
           type = "gpt";
           partitions = {
-            "crypted1" = {
+            "crypted" = {
               priority = 1;
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted1";
+                name = "crypted";
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
