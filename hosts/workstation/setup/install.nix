@@ -8,7 +8,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Encryption
-  boot.initrd.luks.devices."crypted" = {
+  boot.initrd.luks.devices."crypted0" = {
 
     device = "/dev/disk/by-partlabel/disk-system-crypted";
   };

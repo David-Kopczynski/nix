@@ -5,7 +5,7 @@
     # Default disk setup using EFI partition with LUKS
     {
       "system" = {
-        device = "/dev/nvme0n1";
+        device = "/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b444a48ec9210";
         type = "disk";
         content = {
           type = "gpt";
