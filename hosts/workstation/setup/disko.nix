@@ -21,12 +21,12 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            "crypted" = {
+            "crypted0" = {
               priority = 2;
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted";
+                name = "crypted0";
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
@@ -34,6 +34,33 @@
                 content = {
                   type = "lvm_pv";
                   vg = "vg";
+                };
+              };
+            };
+          };
+        };
+      };
+      "data" = {
+        device = "/dev/nvme1n1";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            "crypted1" = {
+              priority = 1;
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "crypted1";
+                settings = {
+                  allowDiscards = true;
+                  bypassWorkqueues = true;
+                };
+                content = {
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/data";
+                  mountOptions = [ "defaults" ] ++ [ "x-gvfs-show" ];
                 };
               };
             };
