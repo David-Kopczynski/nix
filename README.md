@@ -57,8 +57,12 @@ Should the system boot properly, secrets can be tweaked. \
 *A mount with my known SSH-Keys should be provided and host keys updated accordingly.*
 
 ```bash
+# Login with default password
+user
+password
+
 # Source tools
-nix-shell -p nh npins ssh-to-age yq-go
+nix-shell -p git nh npins sops ssh-to-age yq-go
 
 # Source user keys
 cp -rp /mnt/.../.ssh ~/
@@ -66,6 +70,10 @@ cp -rp /mnt/.../.ssh ~/
 # Prepare sops-nix
 mkdir -p ~/.config/sops/age
 ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
+
+# Source repository
+git clone git@github.com:David-Kopczynski/nix.git
+cd nix
 
 # Update hosts age (if required)
 export age=$(sudo cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age)
@@ -80,7 +88,7 @@ nano .sops.yaml # manual modification required
 sops updatekeys $(find . -type f) 2>/dev/null
 
 # Install and reboot
-nh os switch -f ~/nix/hosts/$host/system.nix -- --extra-experimental-features nix-command
+nh os boot -f ~/nix/hosts/$host/system.nix -- --extra-experimental-features nix-command
 sudo reboot now
 ```
 *When reusing old configurations, make sure to update the `stateVersion` in the host configuration to the latest version.*
