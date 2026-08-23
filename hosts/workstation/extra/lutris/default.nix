@@ -5,6 +5,6 @@
 
     device = "/data/games/lutris";
     fsType = "none";
-    options = [ "bind" ] ++ [ "nofail" ];
+    options = [ "bind" ] ++ [ "nofail" ] ++ [ "x-gvfs-hide" ];
   };
 }
