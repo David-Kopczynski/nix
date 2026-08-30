@@ -22,21 +22,21 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "0471accf8d0a8210b31d947497d179ecc99e0021",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/0471accf8d0a8210b31d947497d179ecc99e0021.tar.gz",
-      "hash": "sha256-HHfv2/HkNSKbbSyU9iD/g8lbP6r4tl33sSw1W4rXCk0="
+      "revision": "dc3f0cfde2050172abf6c3cdb684f735c15a57c5",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/dc3f0cfde2050172abf6c3cdb684f735c15a57c5.tar.gz",
+      "hash": "sha256-cmOd3iGoE140M2GidgQMQbyxHZ4dT7C0QZq2+CrXQyA="
     },
     "nixos-unstable": {
       "type": "Channel",
       "name": "nixos-unstable",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1059570.2c423e03bbaf/nixexprs.tar.xz",
-      "hash": "sha256-95aJfHyQTLWslCXFVNB0odgmVkpdmDezQwTg9mhqV1E="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1063296.83199d0d373d/nixexprs.tar.xz",
+      "hash": "sha256-5GWj0FI2uOwKNpXkmpWrSFDe1rCaNBCUQ8d+HDtFQPI="
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-26.05",
-      "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.8111.5880666fd9eb/nixexprs.tar.xz",
-      "hash": "sha256-Rb7J0ykni6QA+m5ZC6t5gbBBgkS0xn3bf2fgKpSSbFE="
+      "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.8639.c5c4a43b0e80/nixexprs.tar.xz",
+      "hash": "sha256-SYbFPw4Je7tTpsl5qPqmmxPWuQyA9AGddCDieY5QG5A="
     },
     "proxmox": {
       "type": "Git",
@@ -47,9 +47,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "99b6466ed235aed81cc8edad082bd2e8dceef2a2",
-      "url": "https://github.com/David-Kopczynski/proxmox/archive/99b6466ed235aed81cc8edad082bd2e8dceef2a2.tar.gz",
-      "hash": "sha256-GpfULepM6q0ijlREEAhis9r9CMWrxrRDCT8iViNoguc="
+      "revision": "af5537d4c4f69667283bf525e8d3e4afbe3a7aee",
+      "url": "https://github.com/David-Kopczynski/proxmox/archive/af5537d4c4f69667283bf525e8d3e4afbe3a7aee.tar.gz",
+      "hash": "sha256-mOP3m1KWc6SWELmMqGo9Uih7yuAayT6CQzAdL+QM0OI="
     },
     "sops-nix": {
       "type": "Git",
