@@ -6,7 +6,7 @@
     dconf.settings =
       let
         folder = [
-          ({ name = "Audio & Video"; } // { categories = [ "Audio" ] ++ [ "Video" ]; })
+          ({ name = "Audio & Video"; } // { categories = [ "Audio" ] ++ [ "Video" ] ++ [ "AudioVideo" ]; })
           ({ name = "Browsing"; } // { categories = [ "Network" ]; })
           ({ name = "Design"; } // { categories = [ "Graphics" ]; })
           ({ name = "Development"; } // { categories = [ "Development" ] ++ [ "Engineering" ]; })
