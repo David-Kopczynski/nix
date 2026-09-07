@@ -28,6 +28,17 @@
       record.record_options.record_area_option DP-2
       replay.record_options.record_area_option DP-2
       streaming.record_options.record_area_option DP-2
+
+      # Audio
+      record.record_options.audio_track_item false [add_audio_track]
+      record.record_options.audio_track_item false device:default_output
+      record.record_options.audio_track_item false device:default_input
+      replay.record_options.audio_track_item false [add_audio_track]
+      replay.record_options.audio_track_item false device:default_output
+      replay.record_options.audio_track_item false device:default_input
+      streaming.record_options.audio_track_item false [add_audio_track]
+      streaming.record_options.audio_track_item false device:default_output
+      streaming.record_options.audio_track_item false device:default_input
     '';
   };
 }
