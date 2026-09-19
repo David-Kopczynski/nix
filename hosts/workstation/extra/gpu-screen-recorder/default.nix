@@ -6,6 +6,9 @@
     # Basic configuration
     xdg.configFile."gpu-screen-recorder/config_ui".text = ''
 
+      # General
+      main.wayland_warning_shown true
+
       # Disable all hotkeys
       record.pause_unpause_hotkey 0 0
       record.start_stop_hotkey 0 0
@@ -39,6 +42,12 @@
       streaming.record_options.audio_track_item false [add_audio_track]
       streaming.record_options.audio_track_item false device:default_output
       streaming.record_options.audio_track_item false device:default_input
+
+      # Notifications
+      screenshot.show_notifications false
+      replay.record_options.show_notifications false
+      record.record_options.show_notifications false
+      streaming.record_options.show_notifications false
     '';
   };
 }
