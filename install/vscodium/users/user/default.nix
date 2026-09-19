@@ -13,6 +13,9 @@
             patches = (prev.patches or [ ]) ++ [ ./openssh.patch ];
             doCheck = false;
           }))
+
+          # Packages for extensions
+          ripgrep
         ]
       );
 

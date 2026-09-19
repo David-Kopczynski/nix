@@ -14,6 +14,9 @@
     "editor.defaultFormatter": "jnoortheen.nix-ide"
   },
   //
+  // Todo-Tree ripgrep
+  "todo-tree.ripgrep.ripgrep": "/usr/bin/rg",
+  //
   // Nix environment
   "nixEnvSelector.nixFile": "${workspaceFolder}/shell.nix",
   "nixEnvSelector.suggestion": false,
