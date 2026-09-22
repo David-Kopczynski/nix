@@ -2,12 +2,8 @@
 { config, ... }:
 
 let
-  modules = [ "programs/gpu-screen-recorder.nix" ];
-  packages = [
-    "gpu-screen-recorder"
-    "gpu-screen-recorder-ui"
-    "gpu-screen-recorder-notification"
-  ];
+  modules = [ ];
+  packages = [ "discord" ];
 in
 {
   disabledModules = modules;
