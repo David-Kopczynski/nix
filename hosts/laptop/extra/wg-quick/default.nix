@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-  networking.wg-quick.interfaces."Home" = {
+  networking.wg-quick.interfaces."wg0" = {
 
     # Basic setup
     address = [ "10.0.100.3/32" ] ++ [ "fd00:100::3/128" ];
@@ -16,7 +16,7 @@
   };
 
   # Hide from GNOME
-  networking.networkmanager.unmanaged = [ "interface-name:Home" ];
+  networking.networkmanager.unmanaged = [ "interface-name:wg0" ];
 
   # Secrets
   sops.secrets."wg0/private".sopsFile = ./secrets.yaml;
