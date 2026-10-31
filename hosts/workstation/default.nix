@@ -11,8 +11,6 @@
     ]
     # Source nixos-hardware configuration
     ++ [
-      "${(import ../../npins).nixos-hardware}/common/pc"
-      "${(import ../../npins).nixos-hardware}/common/pc/ssd"
       "${(import ../../npins).nixos-hardware}/common/gpu/nvidia/turing"
       "${(import ../../npins).nixos-hardware}/common/cpu/intel/cpu-only.nix"
     ]
