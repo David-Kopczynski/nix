@@ -44,17 +44,11 @@
   boot.kernelModules = [ "kvm-intel" ];
 
   # Encryption
-  boot.initrd.luks.devices."crypted0" = {
+  boot.initrd.luks.devices."crypted" = {
 
     allowDiscards = config.services.fstrim.enable;
     bypassWorkqueues = config.services.fstrim.enable;
     device = "/dev/disk/by-partlabel/disk-system-crypted";
-  };
-  boot.initrd.luks.devices."crypted1" = {
-
-    allowDiscards = config.services.fstrim.enable;
-    bypassWorkqueues = config.services.fstrim.enable;
-    device = "/dev/disk/by-partlabel/disk-data-crypted";
   };
 
   # System
@@ -68,11 +62,6 @@
       device = "/dev/disk/by-partlabel/disk-system-ESP";
       fsType = "vfat";
       options = [ "umask=0077" ];
-    };
-    "/data" = {
-      device = "/dev/mapper/crypted1";
-      fsType = "ext4";
-      options = [ "nofail" ];
     };
   };
 
