@@ -26,7 +26,7 @@
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted0";
+                name = "crypted";
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
@@ -34,33 +34,6 @@
                 content = {
                   type = "lvm_pv";
                   vg = "vg";
-                };
-              };
-            };
-          };
-        };
-      };
-      "data" = {
-        device = "/dev/disk/by-id/nvme-eui.002538b531a2b099";
-        type = "disk";
-        content = {
-          type = "gpt";
-          partitions = {
-            "crypted" = {
-              priority = 1;
-              size = "100%";
-              content = {
-                type = "luks";
-                name = "crypted1";
-                settings = {
-                  allowDiscards = true;
-                  bypassWorkqueues = true;
-                };
-                content = {
-                  type = "filesystem";
-                  format = "ext4";
-                  mountpoint = "/data";
-                  mountOptions = [ "defaults" ];
                 };
               };
             };
