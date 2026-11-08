@@ -26,7 +26,6 @@
 
   # Boot parameters
   boot.kernelParams = [
-    "intel_iommu=on"
     "mem_sleep_default=s2idle"
     "video=DP-1:1920x1080@75,panel_orientation=left"
     "video=DP-2:2560x1440@165"
@@ -40,8 +39,6 @@
   ];
   boot.blacklistedKernelModules = [ "i2c_nvidia_gpu" ];
   boot.resumeDevice = lib.mkDefault (lib.head config.swapDevices).device;
-
-  boot.kernelModules = [ "kvm-intel" ];
 
   # Encryption
   boot.initrd.luks.devices."crypted" = {
