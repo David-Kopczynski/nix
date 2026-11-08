@@ -62,26 +62,22 @@ user
 password
 
 # Source tools
-nix-shell -p git nh npins sops ssh-to-age yq-go
+nix-shell -p git nh npins sops yq-go
 
 # Source user keys
 cp -rp /mnt/.../.ssh ~/
-
-# Prepare sops-nix
-mkdir -p ~/.config/sops/age
-ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
 
 # Source repository
 git clone git@github.com:David-Kopczynski/nix.git
 cd nix
 
-# Update hosts age (if required)
-export age=$(sudo cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age)
-yq '(.keys.hosts[] | select(anchor == "$host")) = env(age)' -i .sops.yaml
+# Update hosts pubkey (if required)
+export pubkey=$(sudo cat /etc/ssh/ssh_host_ed25519_key.pub)
+yq '(.keys.hosts[] | select(anchor == "$host")) = env(pubkey)' -i .sops.yaml
 
-# Add hosts age (if required)
-export age=$(sudo cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age)
-yq '.keys.hosts += env(age) | .keys.hosts[-1] anchor |= "$host"' -i .sops.yaml
+# Add hosts pubkey (if required)
+export pubkey=$(sudo cat /etc/ssh/ssh_host_ed25519_key.pub)
+yq '.keys.hosts += env(pubkey) | .keys.hosts[-1] anchor |= "$host"' -i .sops.yaml
 nano .sops.yaml # manual modification required
 
 # Update secrets (if required)
