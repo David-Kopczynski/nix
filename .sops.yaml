@@ -1,9 +1,9 @@
 keys:
   users:
-    - &user "age1nhssvcts5qr9m3gjl2ps5p4ss7nez6nnhjncrvwm0gpy7x0nqeeq97tm9v"
+    - &user "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPLqP71iBRAFd7OFIjlkN6yGEr++G5eRDJ+U57R9f8e"
   hosts:
-    - &laptop "age1v9s8jfemdur60pn7gdqd9rcl9tj0rzgd2f0uwspteeyg557z6dgqs8ezu8"
-    - &workstation "age1mymurwd3vx478w5zaaxm8nqzlx3z4th5k4rkqnuj3ktchjksturq62dk63"
+    - &laptop "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHR+xdVogG9Flg5L6jWX2ia8HvWXIkahAIOGWH63pQQW"
+    - &workstation "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFy3V41tIA08f+4fhF9XCOTBSnbFYeooHcgnGdz0aMPA"
 creation_rules:
   - path_regex: ^install/[[:print:]]+$
     key_groups:

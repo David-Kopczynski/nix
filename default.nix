@@ -49,6 +49,8 @@
   # # # # # # # # # # # # # # # # # # # # # # # # # # #
   #                     sops-nix                      #
   # # # # # # # # # # # # # # # # # # # # # # # # # # #
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.age.sshKeyFile = "/etc/ssh/ssh_host_ed25519_key";
+
+  sops.age.sshKeyPaths = [ ];
   sops.gnupg.sshKeyPaths = [ ];
 }
