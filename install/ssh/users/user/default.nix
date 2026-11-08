@@ -82,6 +82,12 @@
         knownHostsCommand = "/usr/bin/env printf '%H ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEnQssJHJPe+Nea80W7j9jAYwBoa6rbbpkLmAVN+tIm'";
         strictHostKeyChecking = "yes";
       };
+      settings."siegenia" = {
+        user = "root";
+        proxyJump = "nginx";
+        knownHostsCommand = "/usr/bin/env printf '%H ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMYTJCVsU6h4ePY0BWTgVip5WjbTyMGuM8cjRT7E4OFY'";
+        strictHostKeyChecking = "yes";
+      };
       settings."uptime-kuma" = {
         user = "root";
         proxyJump = "nginx";
