@@ -2,6 +2,7 @@
 
 {
   system.name = "laptop";
+  networking.hostName = "nixos-laptop";
 
   imports =
     # Source default configuration

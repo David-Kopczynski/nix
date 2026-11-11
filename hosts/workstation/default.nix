@@ -2,6 +2,7 @@
 
 {
   system.name = "workstation";
+  networking.hostName = "nixos-workstation";
 
   imports =
     # Source default configuration
