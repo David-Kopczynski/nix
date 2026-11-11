@@ -68,6 +68,8 @@
     discardPolicy = lib.optionalString config.services.fstrim.enable "both";
   };
 
+  boot.zswap.enable = true;
+
   # Versions
   system.stateVersion = "23.11";
   home-manager.users."user".home.stateVersion = "24.05";
